@@ -12,9 +12,9 @@ export default function LyricsDisplay({ lyrics }: LyricsDisplayProps) {
 
     // Regex to find [ChordName] patterns
     const chordRegex = /\[([^\]]+)\]/g;
-    let match;
+    let match: RegExpExecArray | null = chordRegex.exec(line);
 
-    while ((match = chordRegex.exec(line)) !== null) {
+    while (match !== null) {
       // Add text before the chord
       if (match.index > currentIndex) {
         parts.push({ text: line.slice(currentIndex, match.index) });
@@ -23,6 +23,8 @@ export default function LyricsDisplay({ lyrics }: LyricsDisplayProps) {
       // Add the chord
       parts.push({ chord: match[1], text: "" });
       currentIndex = match.index + match[0].length;
+
+      match = chordRegex.exec(line);
     }
 
     // Add remaining text
@@ -55,16 +57,21 @@ export default function LyricsDisplay({ lyrics }: LyricsDisplayProps) {
     const parts = parseLine(line);
 
     return (
-      <div key={index} className="relative min-h-[2.5rem] mb-1">
+      <div key={index} className="relative min-h-10 mb-1 leading-10">
         <div className="flex flex-wrap items-baseline">
           {parts.map((part, partIndex) => (
-            <span key={partIndex} className="relative inline-block">
+            <span
+              key={`${index}-${partIndex}-${part.chord || "text"}`}
+              className="relative inline-block"
+            >
               {part.chord && (
                 <span className="absolute -top-8 left-0 text-blue-600 font-bold text-sm whitespace-nowrap">
                   {part.chord}
                 </span>
               )}
-              <span className="text-gray-800">{part.text}</span>
+              <span className="text-gray-800 whitespace-pre-wrap">
+                {part.text}
+              </span>
             </span>
           ))}
         </div>

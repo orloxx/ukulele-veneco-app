@@ -111,6 +111,7 @@ export default function SongList({ songs }: SongListProps) {
           {/* Reset button */}
           {(searchTerm || keyFilter || artistFilter) && (
             <button
+              type="button"
               onClick={resetFilters}
               className="px-4 py-2 text-gray-600 hover:text-gray-900 underline"
             >

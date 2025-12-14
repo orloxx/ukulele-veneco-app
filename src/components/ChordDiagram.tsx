@@ -19,9 +19,9 @@ export default function ChordDiagram({ chord }: ChordDiagramProps) {
       <div className="relative">
         {/* Fretboard */}
         <svg
-          width="80"
+          width="100"
           height="100"
-          viewBox="0 0 80 100"
+          viewBox="0 0 100 100"
           className="chord-diagram"
         >
           {/* Vertical strings (4 strings for ukulele: G C E A) */}
@@ -52,11 +52,14 @@ export default function ChordDiagram({ chord }: ChordDiagramProps) {
 
           {/* Finger positions */}
           {strings.map((fret, stringIndex) => {
+            const stringNames = ["G", "C", "E", "A"];
+            const stringName = stringNames[stringIndex];
+
             if (fret === 0) {
               // Open string - draw circle above the nut
               return (
                 <circle
-                  key={`pos-${stringIndex}`}
+                  key={`pos-${stringName}`}
                   cx={20 + stringIndex * 20}
                   cy="5"
                   r="3"
@@ -69,7 +72,7 @@ export default function ChordDiagram({ chord }: ChordDiagramProps) {
               // Fretted note - draw filled circle
               return (
                 <circle
-                  key={`pos-${stringIndex}`}
+                  key={`pos-${stringName}`}
                   cx={20 + stringIndex * 20}
                   cy={10 + (fret - 0.5) * 20}
                   r="5"
@@ -80,18 +83,7 @@ export default function ChordDiagram({ chord }: ChordDiagramProps) {
             return null;
           })}
         </svg>
-
-        {/* String labels */}
-        <div className="flex justify-between w-20 mt-1 text-xs text-gray-500">
-          <span>G</span>
-          <span>C</span>
-          <span>E</span>
-          <span>A</span>
-        </div>
       </div>
-
-      {/* Position notation */}
-      <div className="text-xs text-gray-500 mt-1 font-mono">{positions}</div>
     </div>
   );
 }
