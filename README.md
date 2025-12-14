@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ukulele Veneco App
+
+A Next.js application for displaying Venezuelan ukulele songs with chord diagrams and lyrics.
+
+## Credits
+
+The song collection is based on the work of **Ciro Durán** from [El Ukulele Veneco](https://elukulelevene.co). Special thanks for compiling and sharing these Venezuelan songs adapted for ukulele.
 
 ## Getting Started
 
-First, run the development server:
+To start the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Song Format
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Songs are written in Markdown files with YAML Frontmatter, stored in the `songs/` directory. Each song includes:
 
-## Learn More
+- Metadata (title, artist, year, key, time signature)
+- Chord definitions with ukulele positions
+- Lyrics with chord placement markers
 
-To learn more about Next.js, take a look at the following resources:
+For detailed information about the song file format and how to add new songs, see [songs/README.md](./songs/README.md).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Run development server
+pnpm run dev
 
-## Deploy on Vercel
+# Build for production
+pnpm run build
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Start production server
+pnpm start
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Run linter and automatic formatter
+pnpm run lint
+```
+
+## Contributing
+
+We welcome contributions! If you'd like to add songs, fix bugs, or improve the app, please read our [Contributing Guidelines](./CONTRIBUTING.md) for details on how to submit pull requests.
+
+## License
+
+This project is licensed under CC BY-NC 4.0 - see the [LICENSE](./LICENSE) file for details.

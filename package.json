@@ -1,7 +1,9 @@
 {
   "name": "ukulele-veneco-app",
   "version": "0.1.0",
-  "private": true,
+  "description": "A Next.js application for displaying Venezuelan ukulele songs with chord diagrams and lyrics. Based on the song collection by Ciro Durán from https://elukulelevene.co",
+  "license": "CC-BY-NC-4.0",
+  "packageManager": "pnpm@10.22.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
