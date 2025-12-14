@@ -39,7 +39,7 @@ This is a line with a [G]chord in the [Am]middle
 
 ### Example Song File
 
-See `example-song.md` for a complete example.
+See `barlovento.md` for a complete example.
 
 ## File Naming Convention
 
