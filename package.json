@@ -1,15 +1,16 @@
 {
-  "name": "cg-ukelele-veneco",
+  "name": "ukulele-veneco-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "biome check",
+    "lint": "biome check --write",
     "format": "biome format --write"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-dom": "19.2.1"
