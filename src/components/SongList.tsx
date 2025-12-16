@@ -2,10 +2,32 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { containerStyles } from "@/lib/styles";
 import type { ParsedSong } from "@/types/song";
 
 interface SongListProps {
   songs: ParsedSong[];
+}
+
+// Helper component to reduce table cell duplication
+function SongTableCell({
+  slug,
+  children,
+  className = "text-sm text-gray-900",
+  noWrap = false,
+}: {
+  slug: string;
+  children: React.ReactNode;
+  className?: string;
+  noWrap?: boolean;
+}) {
+  return (
+    <td className={`px-6 py-4${noWrap ? " whitespace-nowrap" : ""}`}>
+      <Link href={`/song/${slug}`} className={`block ${className}`}>
+        {children}
+      </Link>
+    </td>
+  );
 }
 
 export default function SongList({ songs }: SongListProps) {
@@ -56,9 +78,6 @@ export default function SongList({ songs }: SongListProps) {
     <div className="w-full">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          El Ukulele Veneco
-        </h1>
         <p className="text-gray-600">
           {filteredSongs.length}{" "}
           {filteredSongs.length === 1 ? "canción" : "canciones"}
@@ -74,7 +93,7 @@ export default function SongList({ songs }: SongListProps) {
             placeholder="Buscar por título o artista..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            className={containerStyles.input}
           />
         </div>
 
@@ -84,7 +103,7 @@ export default function SongList({ songs }: SongListProps) {
           <select
             value={keyFilter}
             onChange={(e) => setKeyFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            className={containerStyles.select}
           >
             <option value="">Todas las tonalidades</option>
             {uniqueKeys.map((key) => (
@@ -98,7 +117,7 @@ export default function SongList({ songs }: SongListProps) {
           <select
             value={artistFilter}
             onChange={(e) => setArtistFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            className={containerStyles.select}
           >
             <option value="">Todos los artistas</option>
             {uniqueArtists.map((artist) => (
@@ -113,7 +132,7 @@ export default function SongList({ songs }: SongListProps) {
             <button
               type="button"
               onClick={resetFilters}
-              className="px-4 py-2 text-gray-600 hover:text-gray-900 underline"
+              className={`px-4 py-2 underline ${containerStyles.interactiveText}`}
             >
               Limpiar filtros
             </button>
@@ -156,46 +175,29 @@ export default function SongList({ songs }: SongListProps) {
                   key={song.slug}
                   className="hover:bg-gray-50 cursor-pointer transition-colors"
                 >
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <Link
-                      href={`/song/${song.slug}`}
-                      className="block text-sm text-gray-900 font-medium"
-                    >
-                      {song.metadata.artist}
-                    </Link>
-                  </td>
-                  <td className="px-6 py-4">
-                    <Link
-                      href={`/song/${song.slug}`}
-                      className="block text-sm text-gray-900"
-                    >
-                      {song.metadata.title}
-                    </Link>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <Link
-                      href={`/song/${song.slug}`}
-                      className="block text-sm text-gray-500"
-                    >
-                      {song.metadata.year || "-"}
-                    </Link>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <Link
-                      href={`/song/${song.slug}`}
-                      className="block text-sm text-gray-900"
-                    >
-                      {song.metadata.key}
-                    </Link>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <Link
-                      href={`/song/${song.slug}`}
-                      className="block text-sm text-gray-900"
-                    >
-                      {song.metadata.timeSignature}
-                    </Link>
-                  </td>
+                  <SongTableCell
+                    slug={song.slug}
+                    className="text-sm text-gray-900 font-medium"
+                    noWrap
+                  >
+                    {song.metadata.artist}
+                  </SongTableCell>
+                  <SongTableCell slug={song.slug}>
+                    {song.metadata.title}
+                  </SongTableCell>
+                  <SongTableCell
+                    slug={song.slug}
+                    className="text-sm text-gray-500"
+                    noWrap
+                  >
+                    {song.metadata.year || "-"}
+                  </SongTableCell>
+                  <SongTableCell slug={song.slug} noWrap>
+                    {song.metadata.key}
+                  </SongTableCell>
+                  <SongTableCell slug={song.slug} noWrap>
+                    {song.metadata.timeSignature}
+                  </SongTableCell>
                 </tr>
               ))
             )}

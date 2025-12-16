@@ -1,15 +1,20 @@
+import { EXTERNAL_URLS, SITE_INFO } from "@/lib/constants";
+import { containerStyles } from "@/lib/styles";
+
 export function Footer() {
   return (
     <footer className="border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-600">
-        Songs sourced from{" "}
+      <div
+        className={`${containerStyles.main} py-6 text-center text-sm text-gray-600`}
+      >
+        Canciones traídas desde{" "}
         <a
-          href="https://elukulelevene.co"
+          href={EXTERNAL_URLS.EL_UKULELE_VENECO}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-600 hover:text-blue-800 underline"
+          className={containerStyles.externalLink}
         >
-          El Ukulele Veneco
+          {SITE_INFO.name}
         </a>
       </div>
     </footer>
