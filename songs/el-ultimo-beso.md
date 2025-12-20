@@ -15,7 +15,7 @@ chords:
     positions: "0003"
 ---
 
-[F] · · · | [Dm] · · · | [Bb] · · · | [C] · · ·
+[F]· · · · | [Dm]·  · · · | [Bb]·  · · · | [C]· · · ·
 
 ## Coro
 ¿Por [F]qué se fue y por [Dm]qué murió?
@@ -47,7 +47,7 @@ Al [F]verme lloró, me [Dm]dijo amor
 [F] Él ha querido sepa[Dm]rarnos hoy
 A[Bb]brázame fuerte por[C]que me voy
 Al [F]fin la abracé y al be[Dm]sarla se sonrió
-Des[Bb]pués dio un suspiro y en mis [C]brazos quedó[F] [F]
+Des[Bb]pués dio un suspiro y en mis [C]brazos quedó[F]  [F]
 
 ## Coro
 ¿Por [F]qué se fue y por [Dm]qué murió?
@@ -56,5 +56,5 @@ Des[Bb]pués dio un suspiro y en mis [C]brazos quedó[F] [F]
 De[Bb]bo también ser bueno para es[C]tar con mi a[F]mor [F]
 
 [F]Aah-[Dm]-aah [Bb]Aah-[C]-aah
-[F]Aah-[Dm]-aah [Bb] [C]
+[F]Aah-[Dm]-aah [Bb]   [C]
 [F]↓

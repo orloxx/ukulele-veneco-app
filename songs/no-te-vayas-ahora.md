@@ -21,7 +21,7 @@ chords:
 
 Sahora no era novia de Pedro
 
-[G] [G] [C] [C] [Dm] [Dm] [Am] [Am]
+[G]· [G]· [C]· [C]· [Dm]·  [Dm]·  [Am]·  [Am]·
 
 [G] No pen[G]sé que nos i[C]ba a pasar,[C] fue un des[Dm]cuido tan so[Dm]lo
 ¿Me [Am]podrás perdonar?[Am]
@@ -34,7 +34,7 @@ Que con[F]tigo ahora siento el amor[G] por primera vez
 [C] No te [C]vayas aho[F]ra, que no [G]quiero estar
 Sin[Am]tiéndome tan [Gm6]solo, piensa un [F]poco y dame o[G]tra oportunidad
 
-[C] [C] [F] [G] [C] [C] [F] [G] [Am] [Gm6] [F] [F]
+[C]· [C]· [F]· [G]· [C]· [C]· [F]· [G]· [Am]·  [Gm6]·    [F]· [F]·
 
 [G] Nece[G]sito estar cer[C]ca de ti,[C] oja[Dm]lá no haya o[Dm]tro [Am]en mi lugar[Am]
 [G] Paso el [G]día pensan[C]do en los dos[C]
@@ -52,8 +52,8 @@ Sin[Am]tiéndome tan [Gm6]solo, piensa un [F]poco y dame o[G]tra oportunidad
 
 [C] No te [C]vayas aho[F]ra [G]
 [C] No te [C]vayas aho[F]ra [G]
-[Am] [Gm6] [F] [G]
-[Am] [Gm6] [F] [G]
+[Am]·  [Gm6]·    [F]· [G]·
+[Am]·  [Gm6]·    [F]· [G]·
 [C] No te [C]vayas aho[F]ra [G]No, no, no
 [C] No te [C]vayas aho[F]ra [G]
 [Am]No te [Gm6]vayas [F] No, no, [G]no, no, no

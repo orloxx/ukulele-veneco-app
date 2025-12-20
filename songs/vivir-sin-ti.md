@@ -23,8 +23,8 @@ chords:
     positions: "0231"
 ---
 
-[Dmaj7] · · · | [Bm7] · · · | [G] · · · | [A7] · · ·
-[Dmaj7] · · · | [Bm7] · · · | [G] · · · | [A7]↓
+[Dmaj7]·     · · · | [Bm7]·   · · · | [G]· · · · | [A7]·  · · ·
+[Dmaj7]·     · · · | [Bm7]·   · · · | [G]· · · · | [A7]↓
 
 [D]Esta tristeza [Bm7]me quiebra el alma, no [G]puedo disfru[A7]tar la mañana
 Sin mi[D]rar la ventana pensa[Bm7]ré tu sonrisa me [G]siento tan per[A7]dida

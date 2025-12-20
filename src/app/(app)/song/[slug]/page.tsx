@@ -38,6 +38,9 @@ export default async function SongPage({ params }: SongPageProps) {
             {song.metadata.artist}
             {song.metadata.year && ` • ${song.metadata.year}`}
           </p>
+          <p className="text-xl text-gray-600">
+            {song.metadata.timeSignature} • {song.metadata.key}
+          </p>
         </div>
 
         {/* Two column layout */}

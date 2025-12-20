@@ -25,7 +25,7 @@ chords:
     positions: "2223"
 ---
 
-[Dm] [Gm] [C] [F] [Bb] [Em7b5] [A7sus4] [A7]
+[Dm]·  [Gm]·  [C]· [F]· [Bb]·  [Em7b5]·      [A7sus4]·       [A7]·
 
 [F] Me enamoré[A7] de la perso[Dm]na ideal
 Pero a la vez[D7], se tuvo que ir[Gm]
@@ -46,7 +46,7 @@ Así es la [C]vida y tiene desilusión[F]
 Cuando se [Gm]quiere con el alma
 Al [Em7b5]prójimo que Dios[A7] te puso a[Dm]↓llí
 
-[Gm]↓ [C]↓ [F]↓ [Bb]↓ [Em7b5]↓ [A7sus4]↓ [A7]↓
+[Gm]↓  [C]↓ [F]↓ [Bb]↓  [Em7b5]↓     [A7sus4]↓      [A7]↓
 
 [Dm] Llegó otro amor[A7] de una perso[Dm]na ideal
 Pero también[D7] se tuvo que ir[Gm]
@@ -64,7 +64,7 @@ Me tengo que ii-[Gm]-ii-[C]-ii-[F]-ir
 Cuando se [Gm]quiere con el alma
 Al [Em7b5]prójimo que Dios[A7] te puso a[Bb]↓llí · [C]↓ · a-[Dm]↓llí · · ·
 
-[Dm] · · · | [Bb] · · · | [Dm] · · · | [Bb] · · · | [Dm] · · · | [Bb] · · · | [Dm]↓
+[Dm]·  · · · | [Bb]·  · · · | [Dm]·  · · · | [Bb]·  · · · | [Dm]·  · · · | [Bb]·  · · · | [Dm]↓
 
 (Me tengo que ir)[Gm]
 Y no es por mí[C] (Contigo está mi corazón)[F]
@@ -83,4 +83,4 @@ Triste el a[A7]diós, triste tu par[Dm]tida (Me ten[D7]go que ir)[Gm]
 Y te ama[A7]ré toda la [Dm]vida (Me ten[D7]go que ir)[Gm]
 Es la verdad de una pasión[C] cuando se entrega el corazón[F]
 Me ten[A7]go que ir
-[Dm] · · · | [Bb] · · · | [Dm] · · · | [Bb] · · · | [Dm]↓
+[Dm]·  · · · | [Bb]·  · · · | [Dm]·  · · · | [Bb]·  · · · | [Dm]↓

@@ -33,8 +33,8 @@ chords:
     positions: "0212"
 ---
 
-[Ab] [Bb] [Cm] [Cm]
-[Ab] [Bb] [C]↓ ◦
+[Ab]·  [Bb]·  [Cm]·  [Cm]·
+[Ab]·  [Bb]·  [C]↓ ◦
 
 [G] Mientras tomo un ca[D]fé
 [Dm] Y trato de enten[C]der por qué
@@ -61,8 +61,8 @@ con lo irrita[Bb]ble de tu ca[F]rácter
 pe[Am]ro no puedo y es [G]incontro[C]lable
 y es[D] que me faltas [G]tú
 
-[Ab] [Bb] [Cm] [Cm]
-[Ab] [Bb] [C]↓ ◦
+[Ab]·  [Bb]·  [Cm]·  [Cm]·
+[Ab]·  [Bb]·  [C]↓ ◦
 
 [G] Cómo iba a sa[D]berlo
 [Dm] Nunca me lo [C]imaginé
@@ -84,5 +84,5 @@ con lo irrita[Bb]ble de tu ca[F]rácter
 pe[Am]ro no puedo y es [G]incontro[C]lable
 y es[D] que me faltas [G]tú
 
-[Ab] [Bb] [Cm] [Cm]
-[Ab] [Bb] [C]↓
+[Ab]·  [Bb]·  [Cm]·  [Cm]·
+[Ab]·  [Bb]·  [C]↓

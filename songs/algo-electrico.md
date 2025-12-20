@@ -24,8 +24,8 @@ chords:
 ---
 
 ## Intro
-[D] · · · | [Bm] · · ·
-[G] · [F#m] · | [Em] · [A]↓ ◦
+[D]· · · · | [Bm]·  · · ·
+[G]· · [F#m]·   · | [Em]·  · [A]↓ ·
 
 ## Estrofa 1
 [D] Es tu sonri[F#m]sa o tu [G]pelo no lo sé[D]

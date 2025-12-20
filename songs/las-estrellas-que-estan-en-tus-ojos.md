@@ -15,8 +15,8 @@ chords:
     positions: "0231"
 ---
 
-[Cm7] · · · | [Cm7] · · · | [F] · · · | [F] · · · | [Bbmaj7] · · · | [Bbmaj7] · · · | [Gm] · · · | [Gm] · · ·
-[Cm7] · · · | [Cm7] · · · | [F] · · · | [F] · · · | [Bbmaj7] · · · | [Bbmaj7] · · · | [Gm] · · · | [Gm]↓
+[Cm7]·   · · · | [Cm7]·   · · · | [F]· · · · | [F]· · · · | [Bbmaj7]·      · · · | [Bbmaj7]·      · · · | [Gm]·  · · · | [Gm]·  · · ·
+[Cm7]·   · · · | [Cm7]·   · · · | [F]· · · · | [F]· · · · | [Bbmaj7]·      · · · | [Bbmaj7]·      · · · | [Gm]·  · · · | [Gm]↓
 
 Siento[Cm7] que me [F]nace una [Bbmaj7]luz en el [Gm]pecho
 Que [Cm7]se vuelve in[F]mensa cuan[Bbmaj7]do veo tus [Bbmaj7]dedos
@@ -28,9 +28,9 @@ Pa[Cm7]ra abrirle es[F]pacio a las estre[Bbmaj7]llas [Gm]
 Las es[Cm7]trellas que es[F]tán en tus [Bbmaj7]ojos me [Gm]miran
 Y [Cm7]brillan sol[F]tando des[Bbmaj7]tellos [Gm]↓
 
-[Gm] · · · | [Gm] · · ·
+[Gm]·  · · · | [Gm]·  · · ·
 
-[Cm7] · · · | [F] · · · | [Bbmaj7] · · · | [Gm] · · · | [Cm7] · · · | [F] · · · | [Bbmaj7] · · · | [Gm]↓
+[Cm7]·   · · · | [F]· · · · | [Bbmaj7]·      · · · | [Gm]·  · · · | [Cm7]·   · · · | [F]· · · · | [Bbmaj7]·      · · · | [Gm]↓
 
 Con[Cm7]tengo en si[F]lencio to[Bbmaj7]do lo que [Gm]piensas
 Te [Cm7]siento muy [F]cerca de [Bbmaj7]verlo [Bbmaj7]
@@ -55,5 +55,5 @@ Te [Cm7]guardo... [F] Co[Bbmaj7]mo ángel [Gm]↓
 La [Cm7]↓noche se[F]↓rena a[Bbmaj7]↓livia tus [Gm]↓penas
 Me en[Cm7]↓cuentro a tu [F]↓lado de [Bbmaj7]↓nuevo [Gm]↓
 
-[Cm7] · · · | [Cm7] · · · | [F] · · · | [F] · · · | [Bbmaj7] · · · | [Bbmaj7] · · · | [Gm] · · · | [Gm]↓
+[Cm7]·   · · · | [Cm7]·   · · · | [F]· · · · | [F]· · · · | [Bbmaj7]·      · · · | [Bbmaj7]·      · · · | [Gm]·  · · · | [Gm]↓
 [Cm7]↓

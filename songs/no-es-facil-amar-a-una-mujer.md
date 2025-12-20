@@ -21,8 +21,8 @@ chords:
     positions: "1202"
 ---
 
-[Am9] · · · | [D] · · · | [Am9] · · · | [D] · · ·
-[Am9] · · · | [D] · · · | [Am9] · · · | [D] · · ·
+[Am9]·   · · · | [D]· · · · | [Am9]·   · · · | [D]· · · ·
+[Am9]·   · · · | [D]· · · · | [Am9]·   · · · | [D]· · · ·
 
 Si te [Am9]vas ahora, [D] no vuelvas más,[Am9] si es para siem[D]pre
 Ahora [Am9] si te vas, [D] sólo por un ra[Am9]to... dímelo ya,[D] dímelo ya
@@ -34,7 +34,7 @@ Yo sé[Am] que volverás a go[Cm]zar junto a mi
 [Cm] · · · De nue[Am9]vo · · · [D]De nuevo, nuevo [Am9] · · · [D] ¡Echa pa'ca!
 
 ## Coro
-[Am9] · · · | [Am9]No es fácil amar [Am9] a una mujer
+[Am9]·   · · · | [Am9]No es fácil amar [Am9] a una mujer
 [Am9]No es fácil amar [Am9] a una mujer
 [Am9]No es fácil amar [Am9] a una mujer
 [Am9]No es fácil amar
@@ -51,7 +51,7 @@ Guardas[Am] la verdad sin de[Cm]cir ni hablar...
 Na[Am9]da · · · [D] Sin decir ni hablar na[Am9]da · · · [D] ¡Baila no má'!
 
 ## Coro
-[Am9] · · · | [Am9]No es fácil amar [Am9] a una mujer
+[Am9]·   · · · | [Am9]No es fácil amar [Am9] a una mujer
 [Am9]No es fácil amar [Am9] a una mujer
 [Am9]No es fácil amar [Am9] a una mujer
 [Am9]No es fácil amar [Am9] a una mujer
