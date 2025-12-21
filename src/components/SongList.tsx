@@ -22,8 +22,8 @@ function SongTableCell({
   noWrap?: boolean;
 }) {
   return (
-    <td className={`px-6 py-4${noWrap ? " whitespace-nowrap" : ""}`}>
-      <Link href={`/song/${slug}`} className={`block ${className}`}>
+    <td className={noWrap ? " whitespace-nowrap" : ""}>
+      <Link href={`/song/${slug}`} className={`px-6 py-4 block ${className}`}>
         {children}
       </Link>
     </td>
