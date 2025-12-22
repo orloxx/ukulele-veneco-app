@@ -10,21 +10,23 @@ This project follows a **mobile-first** and **offline-first** approach, prioriti
 
 ## Development Commands
 
+This project uses `pnpm`. Never `npm` or `yarn`.
+
 ```bash
 # Start development server
-npm run dev
+pnpm run dev
 
 # Build for production
-npm run build
+pnpm run build
 
 # Start production server
-npm start
+pnpm start
 
 # Run linter and auto-fix issues
-npm run lint
+pnpm run lint
 
 # Format code
-npm run format
+pnpm run format
 ```
 
 ## Architecture
