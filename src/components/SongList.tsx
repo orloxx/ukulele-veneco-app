@@ -4,6 +4,10 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { containerStyles } from "@/lib/styles";
 import type { ParsedSong } from "@/types/song";
+import {
+	useOfflineSongs,
+	parsedSongToStoredSong,
+} from "@/contexts/OfflineSongsContext";
 
 interface SongListProps {
   songs: ParsedSong[];
@@ -34,6 +38,8 @@ export default function SongList({ songs }: SongListProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [keyFilter, setKeyFilter] = useState<string>("");
   const [artistFilter, setArtistFilter] = useState<string>("");
+
+  const { offlineSongs, saveSong, removeSong } = useOfflineSongs();
 
   // Get unique values for filters
   const uniqueKeys = useMemo(() => {
@@ -72,6 +78,50 @@ export default function SongList({ songs }: SongListProps) {
     setSearchTerm("");
     setKeyFilter("");
     setArtistFilter("");
+  };
+
+  // Check if all filtered songs are saved offline
+  const allFilteredSongsOffline = useMemo(() => {
+    if (filteredSongs.length === 0) return false;
+    return filteredSongs.every((song) => offlineSongs.has(song.slug));
+  }, [filteredSongs, offlineSongs]);
+
+  // Toggle offline status for a song
+  const toggleOffline = async (song: ParsedSong) => {
+    try {
+      if (offlineSongs.has(song.slug)) {
+        await removeSong(song.slug);
+      } else {
+        const storedSong = parsedSongToStoredSong(song);
+        await saveSong(storedSong);
+      }
+    } catch (error) {
+      console.error("Error toggling offline status:", error);
+    }
+  };
+
+  // Toggle offline status for all filtered songs
+  const toggleAllOffline = async () => {
+    try {
+      if (allFilteredSongsOffline) {
+        // Remove all filtered songs from offline
+        for (const song of filteredSongs) {
+          if (offlineSongs.has(song.slug)) {
+            await removeSong(song.slug);
+          }
+        }
+      } else {
+        // Save all filtered songs offline
+        for (const song of filteredSongs) {
+          if (!offlineSongs.has(song.slug)) {
+            const storedSong = parsedSongToStoredSong(song);
+            await saveSong(storedSong);
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Error toggling all offline status:", error);
+    }
   };
 
   return (
@@ -132,7 +182,7 @@ export default function SongList({ songs }: SongListProps) {
             <button
               type="button"
               onClick={resetFilters}
-              className={`px-4 py-2 underline ${containerStyles.interactiveText}`}
+              className={`px-4 py-2 underline cursor-pointer ${containerStyles.interactiveText}`}
             >
               Limpiar filtros
             </button>
@@ -145,11 +195,24 @@ export default function SongList({ songs }: SongListProps) {
         <table className="w-full">
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Artista
+              <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <div className="flex items-center justify-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={allFilteredSongsOffline}
+                    onChange={toggleAllOffline}
+                    className="h-4 w-4 rounded border-gray-300 cursor-pointer"
+                    aria-label="Seleccionar todas las canciones visibles"
+                    disabled={filteredSongs.length === 0}
+                  />
+                  <span>Offline</span>
+                </div>
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Título
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Artista
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Año
@@ -165,7 +228,7 @@ export default function SongList({ songs }: SongListProps) {
           <tbody className="bg-white divide-y divide-gray-200">
             {filteredSongs.length === 0 ? (
               <tr>
-                <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
+                <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
                   No se encontraron canciones
                 </td>
               </tr>
@@ -173,17 +236,27 @@ export default function SongList({ songs }: SongListProps) {
               filteredSongs.map((song) => (
                 <tr
                   key={song.slug}
-                  className="hover:bg-gray-50 cursor-pointer transition-colors"
+                  className="hover:bg-gray-50 transition-colors"
                 >
+                  <td className="px-4 py-4 text-center">
+                    <input
+                      type="checkbox"
+                      checked={offlineSongs.has(song.slug)}
+                      onChange={() => toggleOffline(song)}
+                      onClick={(e) => e.stopPropagation()}
+                      className="h-4 w-4 rounded border-gray-300 cursor-pointer"
+                      aria-label={`Guardar ${song.metadata.title} offline`}
+                    />
+                  </td>
+                  <SongTableCell slug={song.slug}>
+                    {song.metadata.title}
+                  </SongTableCell>
                   <SongTableCell
                     slug={song.slug}
                     className="text-sm text-gray-900 font-medium"
                     noWrap
                   >
                     {song.metadata.artist}
-                  </SongTableCell>
-                  <SongTableCell slug={song.slug}>
-                    {song.metadata.title}
                   </SongTableCell>
                   <SongTableCell
                     slug={song.slug}

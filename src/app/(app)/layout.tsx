@@ -1,6 +1,7 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { OfflineIndicator } from "@/components/OfflineIndicator";
+import { OfflineSongsProvider } from "@/contexts/OfflineSongsContext";
 
 export default function AppLayout({
   children,
@@ -10,7 +11,7 @@ export default function AppLayout({
   return (
     <>
       <Header />
-      {children}
+      <OfflineSongsProvider>{children}</OfflineSongsProvider>
       <Footer />
       <OfflineIndicator />
     </>
