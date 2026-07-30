@@ -184,10 +184,15 @@ resolves the page through the PDF's page tree, decodes the subset fonts through 
 as frontmatter you can paste plus lyrics already in `[Chord]` notation.
 
 ```bash
-node scripts/extract-page.mjs 14          # book page 14, as text
-node scripts/extract-page.mjs 14 --json   # the same, structured
-node scripts/extract-page.mjs --check     # read all 277 pages and self-check
+node scripts/extract-page.mjs 14                    # book page 14, as text
+node scripts/extract-page.mjs 14 --json             # the same, structured
+node scripts/extract-page.mjs --find "Barlovento"   # look the page up by title
+node scripts/extract-page.mjs --check               # read all 277 pages and self-check
 ```
+
+**Prefer `--find` when you are working from a list of titles**, which the milestone issues
+are. Their numbers come from the book's *index*, which counts songs, and songs and pages
+stop agreeing at 197 — see below.
 
 The page number is the **printed** one, not the PDF's — page 1 of the book is the 24th
 page of the file. The script refuses to print a page whose printed footer disagrees with
@@ -211,6 +216,10 @@ What it will not do for you:
   and 197, the only song in the book that does. So there are **277 numbered pages and 276
   songs**, and past page 197 the progress count is one behind the page number:
   `ls songs/*.md | wc -l` + 1 is the next page to transcribe.
+
+  The milestone issues on GitHub number their songs from the book's index, so from
+  *Nuestro amor será* onward their numbers are one **below** the book page. `--find` is
+  immune to this and the numbers are not; use it.
 - **Three pages are set in two columns** (102, 196, 197). The extractor prints the left
   column and then the right, and says so at the top. Read them in that order.
 - **Two songs share a title.** Sentimiento Muerto's *Sin sombra no hay luz* is on pages

@@ -2,9 +2,10 @@
 /**
  * extract-page.mjs — print one page of the source cancionero as text.
  *
- *   node scripts/extract-page.mjs 14        one book page, ready to transcribe
- *   node scripts/extract-page.mjs 14 --json the same thing as JSON
- *   node scripts/extract-page.mjs --check   prove the page mapping over the whole book
+ *   node scripts/extract-page.mjs 14            one book page, ready to transcribe
+ *   node scripts/extract-page.mjs 14 --json     the same thing as JSON
+ *   node scripts/extract-page.mjs --find "…"    look a page up by song title
+ *   node scripts/extract-page.mjs --check       prove the page mapping over the whole book
  *
  * The source is `public/elukuleleveneco_2025_web.pdf`, and it is temporary: see
  * DECISIONS.md 4 in the vault. This script is scoped to die with it. Anything learned
@@ -885,6 +886,15 @@ const layoutSide = (lines, keep) =>
 
 /* --------------------------------------------------------------------- CLI */
 
+/** Fold a title down to something two spellings of it will agree on. */
+const normalise = (title) =>
+  title
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
 function render(page) {
   const out = [];
   out.push(
@@ -1001,10 +1011,52 @@ function main(argv) {
     return tally.misnumbered + tally.untitled + tally.unreadable === 0 ? 0 : 1;
   }
 
+  // `--find` exists because the book's index numbers songs and this script wants pages,
+  // and the two stop agreeing at page 197, where one song takes two pages. Anything
+  // working from a list of titles should look the page up rather than count to it.
+  if (flags.has("--find")) {
+    const wanted = normalise(argv[argv.indexOf("--find") + 1] ?? "");
+    if (!wanted) {
+      console.error(
+        'Usage: node scripts/extract-page.mjs --find "<song title>"',
+      );
+      return 1;
+    }
+    const hits = [];
+    for (let book = 1; offset + book - 1 < pages.length; book++) {
+      const song = extract(pdf, pages[offset + book - 1]);
+      if (song.printedPage === null) break;
+      if (song.title && normalise(song.title).includes(wanted)) {
+        hits.push({ book, song });
+      }
+    }
+    if (hits.length === 0) {
+      console.error(
+        `Nothing in the book matches “${argv[argv.indexOf("--find") + 1]}”.`,
+      );
+      return 1;
+    }
+    if (hits.length > 1) {
+      console.error(`${hits.length} songs match — say which:`);
+      for (const hit of hits) {
+        console.error(
+          `  page ${hit.book}: ${hit.song.title} — ${hit.song.credit}`,
+        );
+      }
+      return 1;
+    }
+    console.log(
+      flags.has("--json")
+        ? JSON.stringify(hits[0].song, null, 2)
+        : render(hits[0].song),
+    );
+    return 0;
+  }
+
   const book = Number(rest[rest.length - 1]);
   if (!Number.isInteger(book) || book < 1) {
     console.error(
-      "Usage: node scripts/extract-page.mjs <book page> [--json] [--check]",
+      'Usage: node scripts/extract-page.mjs <book page> | --find "<title>" [--json] [--check]',
     );
     return 1;
   }
