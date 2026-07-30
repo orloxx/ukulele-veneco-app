@@ -25,7 +25,7 @@ chords:
     positions: "2223"
 ---
 
-[Dm]·  [Gm]·  [C]· [F]· [Bb]·  [Em7b5]·      [A7sus4]·       [A7]·
+[Dm]·  [Gm]·  [C]· [F]· [Bb]·  [Em7b5]·     [A7sus4]·      [A7]·
 
 [F] Me enamoré[A7] de la perso[Dm]na ideal
 Pero a la vez[D7], se tuvo que ir[Gm]

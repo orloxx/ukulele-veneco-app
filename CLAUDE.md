@@ -27,7 +27,14 @@ pnpm run lint
 
 # Format code
 pnpm run format
+
+# Check every song in songs/ against the format spec
+pnpm run validate
 ```
+
+`pnpm lint` deliberately does **not** run `pnpm validate`. Biome's subject is the code;
+the validator's subject is the content, it never rewrites a file, and it is the last step
+before committing a song rather than something to run while editing a component.
 
 ## Architecture
 
@@ -151,6 +158,78 @@ This spacing ensures:
 - Visual alignment of beats in the strumming pattern
 - Readability when chords have different name lengths
 - Consistent formatting across all song files
+
+## Transcribing a song from the cancionero
+
+Most of the work left on this project is one job: getting the rest of Ciro Durán's
+songbook out of `public/elukuleleveneco_2025_web.pdf` and into `songs/`. It is a loop,
+and it is the same loop every time.
+
+```bash
+node scripts/extract-page.mjs 14        # 1. read the book page
+$EDITOR songs/quinta-anauco.md          # 2. write the song file
+pnpm validate                           # 3. check it
+git commit                              # 4. commit it
+```
+
+**Songs are transcribed in the book's own order, starting from page 1.** That is a
+decision, not a habit: it makes progress a single number instead of a set difference.
+`ls songs/*.md | wc -l` is the last page transcribed — with one correction, below.
+
+### 1. Read the page
+
+`scripts/extract-page.mjs` prints one book page as text. It needs nothing installed: it
+resolves the page through the PDF's page tree, decodes the subset fonts through their own
+`/ToUnicode` tables, and reads the chord diagrams off the vector art, so a page comes back
+as frontmatter you can paste plus lyrics already in `[Chord]` notation.
+
+```bash
+node scripts/extract-page.mjs 14          # book page 14, as text
+node scripts/extract-page.mjs 14 --json   # the same, structured
+node scripts/extract-page.mjs --check     # read all 277 pages and self-check
+```
+
+The page number is the **printed** one, not the PDF's — page 1 of the book is the 24th
+page of the file. The script refuses to print a page whose printed footer disagrees with
+the page it was asked for, so a silently-off-by-something mapping cannot reach a song
+file. `--check` proves the mapping over the whole book in one go.
+
+What it will not do for you:
+
+- **Section headings.** The book sets *Intro*, *Coro*, *Puente* in bold; the extractor
+  prints them as plain lines and you turn them into `## Coro`.
+- **The spacing rules.** The extractor reproduces the book's own spacing. The rules in
+  `songs/README.md` are what the app needs, and they are not the same thing.
+- **`year`.** The credit line reads `Artist (Composers, 1966)`; the year is the one in
+  the parentheses, and the artist is the part before them.
+- **`capo`.** Some pages print a capo fret. The song format has no field for it, so the
+  extractor emits it as a comment and it is dropped. See the vault ROADMAP's backlog.
+
+### 2. Watch for these
+
+- **Page 197 has no song of its own.** *La Muerte del Rucio Moro* runs across pages 196
+  and 197, the only song in the book that does. So there are **277 numbered pages and 276
+  songs**, and past page 197 the progress count is one behind the page number:
+  `ls songs/*.md | wc -l` + 1 is the next page to transcribe.
+- **Three pages are set in two columns** (102, 196, 197). The extractor prints the left
+  column and then the right, and says so at the top. Read them in that order.
+- **Two songs share a title.** Sentimiento Muerto's *Sin sombra no hay luz* is on pages
+  218 and 219, in Gm and in Am. The book disambiguates them in the title and so does the
+  filename — see the naming rules in `songs/README.md`.
+
+### 3. Check it
+
+`pnpm validate` reads every file in `songs/` and reports:
+
+- **errors** — frontmatter missing a required field, a `positions` string that is not
+  four digits, a `[Chord]` used but never defined, a filename that is not the title's
+  slug. These break the app, and the command exits non-zero.
+- **warnings** — a chord defined but never used, spacing that does not match the rules in
+  `songs/README.md`, a chord above the 4th fret. These do not fail the run.
+
+The spacing warnings are worth taking seriously even though they are only warnings: the
+app positions each chord absolutely above monospaced lyrics, so the spaces after a chord
+are what stop the next chord from landing on top of it.
 
 ## Path Aliases
 

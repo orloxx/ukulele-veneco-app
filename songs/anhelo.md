@@ -74,4 +74,4 @@ Púr[Gm6]pura de mi alma (eres), a[A7]gua de mi vida [A7]   [A7]
 (¿Por qué Dios[Dm] te hizo tan be[Gm]lla?) Eres mi es[Gm6]↓trella de a[A7]↓mor
 
 [Dm]·  · · [C]· | [Gm]·  · · [C]· | [Dm]·  · · · | [Gm]·  · [A7]·  · | [Dm]↓  ◦ ◦ ◦
-[Dm]·  · [Gm]·  · | [C]· · [F]· [A7]·  | [Dm]·  · [Dm7]·   · | [C#]·  · [Gm]·  [A7]·  | [A7]↓   [Dm]↓
+[Dm]·  · [Gm]·  · | [C]· · [F]· [A7]·  | [Dm]·  · [Dm7]·   · | [C#]·  · [Gm]·  [A7]·  | [A7]↓  [Dm]↓

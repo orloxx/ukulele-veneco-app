@@ -24,13 +24,13 @@ chords:
 ## Intro
 La línea de la introducción también se puede tocar Dm↓ F+↓ F↓ F+↓ Dm↓ Asus4↓ Dm · · Dm↑
 
-[Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]· · · [Dm]↑
-[Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]· · · [Dm]↑
-[Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]· · · [Dm]↑
-[Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]· · · [Dm]↑
+[Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]·  · · [Dm]↑
+[Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]·  · · [Dm]↑
+[Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]·  · · [Dm]↑
+[Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]·  · · [Dm]↑
 
-[A7]· · · · · · | [Dm]· · · · · ·
-[A7]· · · · · · | [Dm]· · · · · ·
+[A7]·  · · · · · | [Dm]·  · · · · ·
+[A7]·  · · · · · | [Dm]·  · · · · ·
 
 ## Verso 1
 Barlo[Dm]vento, Barlo[Dm]vento, tierra ar[A7]diente y del tam[Dm]bor,

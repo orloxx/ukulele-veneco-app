@@ -105,4 +105,20 @@ See `barlovento.md` for a complete example.
 
 ## File Naming Convention
 
-Use kebab-case for file names, e.g., `tonada-de-luna-llena.md`
+The filename is the title, kebab-cased: accents folded, everything that is not a letter
+or a digit collapsed to a hyphen. `Tonada de luna llena` → `tonada-de-luna-llena.md`,
+`Detén la noche` → `deten-la-noche.md`. `pnpm validate` enforces it, because the
+filename is the URL and a mismatch is a 404.
+
+**A title ending in parentheses may keep them or drop them**, because the cancionero
+uses parentheses for two different jobs:
+
+| Job | Example | Filename |
+| --- | --- | --- |
+| An alternative title | `It Never Ends (Quinta Anauco)` | `it-never-ends.md` — dropped |
+| Telling two songs apart | `Sin sombra no hay luz (Gm)` | `sin-sombra-no-hay-luz-gm.md` — kept |
+
+The second is not hypothetical: Sentimiento Muerto's *Sin sombra no hay luz* appears
+twice, once in Gm and once in Am, and the book itself disambiguates them in the title.
+When the parenthetical is the only thing telling two files apart, it stays in the
+filename. Otherwise it goes, and the full title still lives in the frontmatter.

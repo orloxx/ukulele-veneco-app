@@ -38,7 +38,7 @@ Poder[F#m] pensar tranqui[Em]la y se[Gm]↓guir mi vida
 Y po[D]der vivir sin ti,[Bm7] sin ti, sin ti[Em], a[A7]uuh
 Poder[D] vivir sin ti,[Bm7] sin ti, sin ti[Em], a[A7]uuh
 Poder[D] vivir sin ti,[Bm7] sin ti, sin ti[Em], a[A7]uuh
-Poder[D] vivir sin ti,[Bm7] sin ti, sin ti[Em] [A7]↓
+Poder[D] vivir sin ti,[Bm7] sin ti, sin ti[Em]   [A7]↓
 
 Aún ten[D]go el recuerdo de tu [Bm7]dulce mirada,
 La for[G]ma en que tus dedos to[A7]caban mi cara
@@ -54,7 +54,7 @@ Poder[F#m] pensar tranqui[Em]la y se[Gm]↓guir mi vida
 Y po[D]der vivir sin ti,[Bm7] sin ti, sin ti[Em], a[A7]uuh
 Poder[D] vivir sin ti,[Bm7] sin ti, sin ti[Em], a[A7]uuh
 Poder[D] vivir sin ti,[Bm7] sin ti, sin ti[Em], a[A7]uuh
-Poder[D] vivir sin ti,[Bm7] sin ti, sin ti[Em] [A7]
+Poder[D] vivir sin ti,[Bm7] sin ti, sin ti[Em]   [A7]
 
 Y es que es[Em]pero sacar[F#m]te de mi men[Em]te, que [F#m]sigas tu cami[Em]no
 Poder[F#m] pensar tranqui[Em]la y se[Gm]↓guir mi vida
@@ -63,6 +63,6 @@ Poder[F#m] pensar tranqui[Em]la y se[Gm]↓guir mi vida
 Y po[D]der vivir sin ti,[Bm7] sin ti, sin ti[Em], a[A7]uuh
 Poder[D] vivir sin ti,[Bm7] sin ti, sin ti[Em], a[A7]uuh
 Poder[D] vivir sin ti,[Bm7] sin ti, sin ti[Em], a[A7]uuh
-Poder[D] vivir sin ti,[Bm7] sin ti, sin ti[Em]↓ [A7]↓
+Poder[D] vivir sin ti,[Bm7] sin ti, sin ti[Em]↓  [A7]↓
 
 [Dmaj7]↓

@@ -31,7 +31,7 @@ chords:
 [C]· [B7]·  [Em]·  [Em]·  [Am]·  [F#7]·   [B]· [B]↓
 
 [Cmaj7] De donde [D]viene tu nom[G]bre [G]
-[Am] Tiene [B7]perfume de piel[Em] [Em]
+[Am] Tiene [B7]perfume de piel[Em]   [Em]
 [C] El co[B7]lor de tu cuer[Em]po [Em]
 [Am] Que me em[F#7]briaga cada vez[B]  [B]↓
 
@@ -40,9 +40,9 @@ chords:
 [C]  [B7] Arena me con[Em]vertiré [Em]
 [Am] Y de [F#7]mí te llena[B]rás, hasta el [B]tope, nena
 
-[Cmaj7] Mía eres,[Gmaj7] [Cmaj7] tuyo soy,[Gmaj7] amor
+[Cmaj7] Mía eres,[Gmaj7]      [Cmaj7] tuyo soy,[Gmaj7] amor
 [Cmaj7] Pa' mi[Gmaj7] solita, [Cmaj7] pa' ti[Gmaj7] todito mi amor
-[Cmaj7]↓     · · [Cmaj7]↓     · [Cmaj7]↓ | ◦ ◦ ◦ ◦ ◦ ◦
+[Cmaj7]↓     · · [Cmaj7]↓     · [Cmaj7]↓     | ◦ ◦ ◦ ◦ ◦ ◦
 
 [Cmaj7]·     [D]· [G]· Mía, mía, [G]· [Am]·  [B7]·  pa' mi [Em]·  solita [Em]·
 [C]· [B7]·  [Em]·  [Em]·  [Am]·  [F#7]·   [B]· [B]↓
