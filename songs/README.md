@@ -27,6 +27,25 @@ chords:
 ---
 ```
 
+**`key` and `timeSignature` hold whatever the masthead said, including more than one.** A
+song that modulates carries both keys separated by `; ` — `venezuela.md` reads `A; Bb`,
+`tus-ojos.md` reads `G; E; C`, and `hay-que-ser-del-caribe.md` reads `B; C; D; Eb`. Ten
+songs do this. The compás can change mid-song the same way. Where the change happens is a
+heading in the body, because that is where the book prints it; the frontmatter only says
+which keys the song visits.
+
+**`year` may be absent.** Seven songs have no four-digit year to take — the credit reads
+`~1930`, or `1916-1946`, or `s. XIX`. The rule is *take the first number the credit
+prints*, and where there is no number the field is omitted and the century goes in the
+notes slot below. See `DECISIONS.md` 10 in the vault.
+
+**No Cyrillic, ever.** Three pages of the book decoded with a Cyrillic **е** (U+0435) where
+the word wants a Latin `e`, because the subset font's own character table was wrong.
+`pnpm validate` fails on any character in the Cyrillic block, and the reason it is an error
+rather than a warning is that nothing about it is visible: it renders as `e`, and the only
+symptom is a search that finds a song it should have found and does not. See `DECISIONS.md`
+11 in the vault.
+
 ### Fingerings follow the book, not the standard shapes
 
 `positions` is a 4-digit fret string for the GCEA strings, and it is **whatever the
@@ -42,10 +61,20 @@ Two things follow from that, and both catch people out:
 - **Do not "correct" an unfamiliar shape.** `C#` = `6544` is high up the neck and looks
   wrong beside the usual `1114`. It is not wrong; it is what the book prints.
 
-`node scripts/extract-page.mjs <page>` reads the fingerings off the printed diagrams, so
-the `chords:` block comes out already correct — paste it as it comes.
-`node scripts/extract-page.mjs --verify` checks every song against its page and fails on
-a disagreement.
+Every `positions` string in this folder was read off the diagram printed on that song's own
+page, and then checked back against it. The last run of that check, taken immediately
+before the source was retired at M6, reported **276 songs checked against the book, 0
+disagreeing**. Both the book and the tool that read it are gone, so nothing can re-derive
+that number: **a fingering already in a file is the record**, and changing one is changing
+the source, not correcting it.
+
+**The book coins a new name rather than reuse one.** Where a song needs two fingerings of
+the same chord, the cancionero gives the second shape a second name — `Edim7` beside
+`Edim7²` in `criollisima.md`, `C#m²` and `B²` in `papua-retroespas.md`, `Em7^` beside a
+plain `Em7` in `terrenal.md`, `E²` in `mi-cura-mi-enfermedad.md`. That is this rule seen
+from the other side: a fingering belongs to a song, so a song that needs two of them needs
+two names. The superscripts and carets are deliberate, and chord names match literally —
+`[Edim7]` and `[Edim7²]` are two different chords.
 
 ### Notes above the song
 
@@ -62,11 +91,24 @@ Capo 1
 ## Intro
 ```
 
-The two that occur are **`Capo <n>`**, printed on 51 of the book's 277 pages, and the
+The two that occur most are **`Capo <n>`**, printed on 51 of the book's 277 pages, and the
 occasional instruction like `Versión más simple para el ukulele`. The frontmatter has no
 field for either. A `capo` field would be the better home for the first, and that is the
 backlog's *capo or transpose control*; until it exists, a line of text is what keeps the
 information in the song instead of losing it.
+
+`src/lib/songs.ts` reads this slot at build time and needs no edit here to do it: a bare
+`Capo <n>` becomes the badge on the sheet, anything else becomes a plain note under the
+title. The parse is deliberately conservative — a leading line carrying a bracket, a bar
+line or a strum arrow is left in the body, because the cost of an untidy sheet is smaller
+than the cost of a missing lyric. Two songs rely on that: `jota-carupanera.md` opens with a
+rasgueo, and `sin-sombra-no-hay-luz-gm.md`'s `Capo en traste 1, versión de estudio` stays a
+note rather than becoming a badge that would drop half of it.
+
+**A duet's voice legend goes here too.** Two songs name their voices in a stacked legend
+that the book sets in the top-right margin, keying a colour coding that plain text cannot
+carry — see `colgando-en-tus-manos.md`. The names are kept as plain lines at the top of the
+body, unattached to any line, the same way `Capo 1` is.
 
 ### Chord Notation in Lyrics
 
@@ -101,6 +143,19 @@ across the first 79 songs it was.
 Round brackets around anything that is not one of the song's chords are ordinary text — the
 book uses them for backing vocals and asides too, like `(Cuidado, mucho cuidado)` in
 `colgando-en-tus-manos.md`. Those are left exactly alone.
+
+#### A lyric line keeps the book's own beat dots
+
+The cancionero prints a middle dot `·` inside the lyric line to mark where the beat falls,
+on 133 of its 277 pages — so it lands wherever the beat lands, including mid-word: page 16
+sets `Es difí·cil recobrar·`. **A line with words in it is copied exactly as the book sets
+it**, dots included. `no-es-facil-amar-a-una-mujer.md` is the reference.
+
+The `·`-attachment and spacing rules below are for lines with **no words** — an intro, a
+solo, a strumming pattern. They do not apply to a lyric line, and the one thing to
+normalise in a lyric line is a gap wider than the rule where two chords sit together: the
+book aligns those in a proportional font and the app renders monospaced. `pnpm validate`
+gives the exact count it wants; take its number.
 
 #### Spacing Between Consecutive Chords
 
@@ -163,6 +218,43 @@ Examples:
 - `[Bm]·  ` (2 letters) → middle dot + 1 extra space
 - `[F#m]·   ` (3 letters) → middle dot + 2 extra spaces
 - `[A]↓` → no middle dot (has strumming indicator)
+
+### Sections, and the one heading that is deliberately empty
+
+Section headings are `##` — `## Coro`, `## Intro`, `## Riff (x2)`, whatever the book sets in
+bold. Two things it prints look alike and are not:
+
+- **An abbreviated section is written out in full.** Where the book prints the bare word
+  *Coro* to mean "and the chorus again", the chorus is copied out under the heading. A
+  phone has no page to flip back to, so an abbreviation costs the player more than the
+  duplication costs the file.
+- **A repeat instruction is not.** `Repetir desde Instrumental`, `Repetir desde el
+  principio`, `Repetir desde el principio y luego Outro` — these span whole sections, and
+  writing one out would double the song to spare one scroll. They stay as a heading with
+  nothing under it.
+
+That second case is the **only** reason a `##` in this folder is ever empty; an empty
+heading anywhere else is a transcription that stopped halfway. See `DECISIONS.md` 8 in the
+vault.
+
+### Alignment the rules cannot describe
+
+Three songs keep a layout that the spacing rules above cannot express, and in all three the
+book's own alignment is what a player needs. They are the reason `pnpm validate` is not
+expected to come back with zero warnings:
+
+| File | What it keeps | What it costs |
+| --- | --- | --- |
+| `aun.md`, `volare.md`, `comando-borracho.md`, `la-piel-del-mal.md` | chords over a four-line TAB staff, verbatim | six spacing warnings, all in `aun.md` |
+| `jota-carupanera.md` | a rasgueo drawn as chord names over `↦ ← ↠` | one *defined but never used* |
+
+The body renders monospaced, which is exactly what a TAB staff needs. **Do not re-space
+either shape to satisfy the validator** — the warning is the right answer being reported as
+the wrong one, and silencing it breaks the song.
+
+The other eleven *defined but never used* warnings are an ordinary thing and also stay: the
+cancionero prints a diagram for a chord the arrangement never reaches, and dropping it from
+`chords:` would be editing the book rather than transcribing it.
 
 ### Example Song File
 

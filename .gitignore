@@ -40,10 +40,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# The source cancionero, read by scripts/extract-page.mjs. Deliberately never committed:
-# public/ is served verbatim, so a tracked copy would hand the whole book out at a
-# guessable URL — and git history would keep doing it long after the file was deleted.
-# Fetch it from https://elukulelevene.co if you need to transcribe.
+# The source cancionero left at M6 and nothing here reads a PDF any more. The rule stays
+# anyway, because it was never about the extractor: public/ is served verbatim, so a
+# tracked copy hands the whole book out at a guessable URL, and on a public repo the
+# history would keep doing it long after the file was deleted. That is a fact about
+# public/, so it outlives the tool. The book is at https://elukulelevene.co; if you want a
+# copy, keep it outside the working tree.
 /public/*.pdf
 
 # PWA files
