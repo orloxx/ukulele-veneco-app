@@ -774,6 +774,7 @@ samp {
    under --touch-min; the label around it is not, which is what keeps the target
    reachable in a dense row where the whole row is also a link. */
 .uv-check {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -805,9 +806,55 @@ samp {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5 6.5 11.5 12.5 4.5'/%3E%3C/svg%3E");
   background-size: 100%;
 }
-.uv-check input:disabled {
+.uv-check input:disabled,
+.uv-check input[aria-disabled="true"] {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+/* Saving is a write to IndexedDB and two network fetches (BUG-008), so the box
+   cannot tick until the song really is on the phone — and until M8 nothing said
+   so, which read as a dead control for as long as the fetch took.
+
+   The ring is drawn *around* the box rather than beside it. Beside it, adding a
+   sibling to a centred flex label shifts the box sideways, and "guardar todas"
+   is 276 rows doing that one after another. Around it, nothing moves. */
+.uv-check__spinner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: var(--border-thick) solid transparent;
+  border-top-color: var(--action-primary);
+  border-radius: var(--radius-pill);
+  animation: uv-spin 700ms linear infinite;
+  pointer-events: none;
+}
+@keyframes uv-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* A stopped spinner says nothing, so under reduced motion it stops being one:
+   the arc closes into a full ring, which still marks the row as working. The
+   motion tokens above cannot do this — they zero a duration, and an infinite
+   animation with a 0ms duration is not a still frame. */
+@media (prefers-reduced-motion: reduce) {
+  .uv-check__spinner {
+    animation: none;
+    border-color: var(--action-primary);
+    opacity: 0.55;
+  }
+}
+
+/* Hidden from the page, still read aloud. The saving ring carries its song's
+   name on one of these, because a ring is not a sentence. */
+.uv-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* ---------------- Card ---------------- */

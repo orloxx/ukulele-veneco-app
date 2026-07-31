@@ -31,6 +31,15 @@ import type { ParsedSong } from "@/types/song";
 
 interface OfflineSongsContextType {
   offlineSongs: Set<string>;
+  /**
+   * The slugs with a save or a remove in flight right now.
+   *
+   * It lives here rather than in a component because *being saved* is a
+   * property of the operation, not of the screen watching it: the song page's
+   * button and the list's checkbox are the same state, and holding it twice is
+   * how the two grow separate vocabularies for one thing.
+   */
+  savingSlugs: Set<string>;
   saveSong: (song: StoredSong) => Promise<void>;
   removeSong: (slug: string) => Promise<void>;
   saveMultipleSongs: (songs: StoredSong[]) => Promise<void>;
@@ -57,7 +66,28 @@ export function parsedSongToStoredSong(song: ParsedSong): StoredSong {
 
 export function OfflineSongsProvider({ children }: { children: ReactNode }) {
   const [offlineSongs, setOfflineSongs] = useState<Set<string>>(new Set());
+  const [savingSlugs, setSavingSlugs] = useState<Set<string>>(new Set());
   const [isLoading, setIsLoading] = useState(true);
+
+  /**
+   * Add or drop a slug from the in-flight set.
+   *
+   * The identity guard is not a micro-optimisation: "guardar todas" marks a
+   * slug on every one of 276 iterations, and a new Set each time re-renders
+   * every row in the table for a set that did not change.
+   */
+  const markSaving = useCallback((slug: string, busy: boolean) => {
+    setSavingSlugs((prev) => {
+      if (prev.has(slug) === busy) return prev;
+      const next = new Set(prev);
+      if (busy) {
+        next.add(slug);
+      } else {
+        next.delete(slug);
+      }
+      return next;
+    });
+  }, []);
 
   // Load saved song slugs on mount
   useEffect(() => {
@@ -84,78 +114,117 @@ export function OfflineSongsProvider({ children }: { children: ReactNode }) {
    *
    * If the caching fails the IndexedDB record is rolled back, because a saved
    * song that will not open is worse than one that admits it did not save.
+   *
+   * The `markSaving` pair around it is why the two network round-trips are
+   * legible rather than a dead control: nothing here is fast, so every caller
+   * gets the in-flight slug for free instead of remembering to track it.
    */
-  const saveSong = useCallback(async (song: StoredSong) => {
-    const result = await saveSongToDB(song);
-    if (!result.success) {
-      console.error("Failed to save song:", result.error);
-      throw new Error(result.error || "Failed to save song");
-    }
-
-    try {
-      await cacheSongPages(song.slug);
-    } catch (error) {
-      await removeSongFromDB(song.slug);
-      console.error("Failed to cache song pages:", error);
-      throw error;
-    }
-
-    setOfflineSongs((prev) => new Set(prev).add(song.slug));
-  }, []);
-
-  const removeSong = useCallback(async (slug: string) => {
-    const result = await removeSongFromDB(slug);
-    if (result.success) {
-      // Unsaving has to take the pages with it, or a song stays readable after
-      // being removed and the checkbox is lying in the other direction.
-      await uncacheSongPages(slug);
-      setOfflineSongs((prev) => {
-        const next = new Set(prev);
-        next.delete(slug);
-        return next;
-      });
-    } else {
-      console.error("Failed to remove song:", result.error);
-      throw new Error(result.error || "Failed to remove song");
-    }
-  }, []);
-
-  const saveMultipleSongs = useCallback(async (songs: StoredSong[]) => {
-    const result = await saveMultipleSongsToDB(songs);
-    if (result.success) {
-      await cacheManySongPages(songs.map((song) => song.slug));
-      setOfflineSongs((prev) => {
-        const next = new Set(prev);
-        for (const song of songs) {
-          next.add(song.slug);
+  const saveSong = useCallback(
+    async (song: StoredSong) => {
+      markSaving(song.slug, true);
+      try {
+        const result = await saveSongToDB(song);
+        if (!result.success) {
+          console.error("Failed to save song:", result.error);
+          throw new Error(result.error || "Failed to save song");
         }
-        return next;
-      });
-    } else {
-      console.error("Failed to save multiple songs:", result.error);
-      throw new Error(result.error || "Failed to save songs");
-    }
-  }, []);
 
-  const removeMultipleSongs = useCallback(async (slugs: string[]) => {
-    const result = await removeMultipleSongsFromDB(slugs);
-    if (result.success) {
-      await uncacheManySongPages(slugs);
-      setOfflineSongs((prev) => {
-        const next = new Set(prev);
-        for (const slug of slugs) {
-          next.delete(slug);
+        try {
+          await cacheSongPages(song.slug);
+        } catch (error) {
+          await removeSongFromDB(song.slug);
+          console.error("Failed to cache song pages:", error);
+          throw error;
         }
-        return next;
-      });
-    } else {
-      console.error("Failed to remove multiple songs:", result.error);
-      throw new Error(result.error || "Failed to remove songs");
-    }
-  }, []);
+
+        setOfflineSongs((prev) => new Set(prev).add(song.slug));
+      } finally {
+        markSaving(song.slug, false);
+      }
+    },
+    [markSaving],
+  );
+
+  const removeSong = useCallback(
+    async (slug: string) => {
+      markSaving(slug, true);
+      try {
+        const result = await removeSongFromDB(slug);
+        if (result.success) {
+          // Unsaving has to take the pages with it, or a song stays readable
+          // after being removed and the checkbox is lying in the other
+          // direction.
+          await uncacheSongPages(slug);
+          setOfflineSongs((prev) => {
+            const next = new Set(prev);
+            next.delete(slug);
+            return next;
+          });
+        } else {
+          console.error("Failed to remove song:", result.error);
+          throw new Error(result.error || "Failed to remove song");
+        }
+      } finally {
+        markSaving(slug, false);
+      }
+    },
+    [markSaving],
+  );
+
+  const saveMultipleSongs = useCallback(
+    async (songs: StoredSong[]) => {
+      const slugs = songs.map((song) => song.slug);
+      for (const slug of slugs) markSaving(slug, true);
+      try {
+        const result = await saveMultipleSongsToDB(songs);
+        if (result.success) {
+          await cacheManySongPages(slugs);
+          setOfflineSongs((prev) => {
+            const next = new Set(prev);
+            for (const slug of slugs) {
+              next.add(slug);
+            }
+            return next;
+          });
+        } else {
+          console.error("Failed to save multiple songs:", result.error);
+          throw new Error(result.error || "Failed to save songs");
+        }
+      } finally {
+        for (const slug of slugs) markSaving(slug, false);
+      }
+    },
+    [markSaving],
+  );
+
+  const removeMultipleSongs = useCallback(
+    async (slugs: string[]) => {
+      for (const slug of slugs) markSaving(slug, true);
+      try {
+        const result = await removeMultipleSongsFromDB(slugs);
+        if (result.success) {
+          await uncacheManySongPages(slugs);
+          setOfflineSongs((prev) => {
+            const next = new Set(prev);
+            for (const slug of slugs) {
+              next.delete(slug);
+            }
+            return next;
+          });
+        } else {
+          console.error("Failed to remove multiple songs:", result.error);
+          throw new Error(result.error || "Failed to remove songs");
+        }
+      } finally {
+        for (const slug of slugs) markSaving(slug, false);
+      }
+    },
+    [markSaving],
+  );
 
   const value = {
     offlineSongs,
+    savingSlugs,
     saveSong,
     removeSong,
     saveMultipleSongs,
@@ -196,8 +265,9 @@ export function useOfflineStatus(slug: string) {
  * Returns a toggle function that saves or removes based on current status
  */
 export function useSaveOffline(song: ParsedSong) {
-  const { offlineSongs, saveSong, removeSong } = useOfflineSongs();
+  const { offlineSongs, savingSlugs, saveSong, removeSong } = useOfflineSongs();
   const isOffline = offlineSongs.has(song.slug);
+  const isSaving = savingSlugs.has(song.slug);
 
   const toggleOffline = useCallback(async () => {
     if (isOffline) {
@@ -210,6 +280,7 @@ export function useSaveOffline(song: ParsedSong) {
 
   return {
     isOffline,
+    isSaving,
     toggleOffline,
   };
 }

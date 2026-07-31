@@ -7,10 +7,28 @@ import {
   parsedSongToStoredSong,
   useOfflineSongs,
 } from "@/contexts/OfflineSongsContext";
+import { OFFLINE_SAVE_CONCURRENCY } from "@/lib/offlinePages";
 import type { ParsedSong } from "@/types/song";
 
 interface SongListProps {
   songs: ParsedSong[];
+}
+
+/**
+ * The ring that says this row is working.
+ *
+ * It is drawn *around* the checkbox rather than beside it, and the box is not
+ * removed while it spins: a spinner in a 78px column that pushes the box aside
+ * makes 276 rows jitter as they tick over one by one, and swapping the input
+ * out drops keyboard focus to the top of the document mid-save.
+ */
+function SavingRing({ label }: { label: string }) {
+  return (
+    <>
+      <span className="uv-check__spinner" aria-hidden="true" />
+      <span className="uv-sr-only">{label}</span>
+    </>
+  );
 }
 
 /**
@@ -43,7 +61,12 @@ export default function SongList({ songs }: SongListProps) {
   const [keyFilter, setKeyFilter] = useState<string>("");
   const [artistFilter, setArtistFilter] = useState<string>("");
 
-  const { offlineSongs, saveSong, removeSong } = useOfflineSongs();
+  const { offlineSongs, savingSlugs, saveSong, removeSong } = useOfflineSongs();
+  // Which way the header checkbox is running, not just that it is: the two
+  // read differently to a screen reader, and "guardando" over a run that is
+  // removing songs is the same lie the checkbox used to tell (BUG-012).
+  const [bulkAction, setBulkAction] = useState<"save" | "remove" | null>(null);
+  const isBulkRunning = bulkAction !== null;
 
   // Get unique values for filters
   const uniqueKeys = useMemo(() => {
@@ -91,8 +114,11 @@ export default function SongList({ songs }: SongListProps) {
     return filteredSongs.every((song) => offlineSongs.has(song.slug));
   }, [filteredSongs, offlineSongs]);
 
-  // Toggle offline status for a song
+  // One song. `saveSong` marks the slug in flight itself, so the row's ring
+  // needs nothing from here — only the guard against starting a second
+  // operation on a table that is already running one.
   const toggleOffline = async (song: ParsedSong) => {
+    if (isBulkRunning || savingSlugs.has(song.slug)) return;
     try {
       if (offlineSongs.has(song.slug)) {
         await removeSong(song.slug);
@@ -105,25 +131,62 @@ export default function SongList({ songs }: SongListProps) {
     }
   };
 
-  // Toggle offline status for all filtered songs
+  /**
+   * Every visible song, six at a time.
+   *
+   * **Not serial, and not `saveMultipleSongs`.** Serial was what this did, and
+   * with no filters that is 276 songs and 552 fetches queued end to end — the
+   * rows do tick over visibly, but the whole run takes long enough that the
+   * reader is watching a progress bar, not saving a songbook. The bulk helper
+   * next door is the opposite trade: one transaction, one pool, and no way to
+   * know which song is in flight, so no row could say anything. A pool over
+   * `saveSong` keeps both — up to six rings at once, each row resolving on its
+   * own — at the price of 276 small IndexedDB writes, which is nothing.
+   *
+   * `OFFLINE_SAVE_CONCURRENCY` is the same six `cacheManySongPages` uses, and
+   * it is imported rather than retyped so there is one answer to the question.
+   *
+   * **A song that fails does not stop the rest.** It used to: one `throw` left
+   * the loop in the `catch` with the remaining songs untouched and nothing on
+   * screen saying so. The failure is per song now, and the report is the row —
+   * `saveSong` rolls its own IndexedDB write back when the pages will not
+   * cache, so a song that did not save is a box that did not tick and a count
+   * that does not include it.
+   */
   const toggleAllOffline = async () => {
-    try {
-      if (allFilteredSongsOffline) {
-        for (const song of filteredSongs) {
-          if (offlineSongs.has(song.slug)) {
+    if (isBulkRunning) return;
+
+    const removing = allFilteredSongsOffline;
+    const targets = filteredSongs.filter((song) =>
+      removing ? offlineSongs.has(song.slug) : !offlineSongs.has(song.slug),
+    );
+    if (targets.length === 0) return;
+
+    setBulkAction(removing ? "remove" : "save");
+    const queue = [...targets];
+    const worker = async () => {
+      for (let song = queue.shift(); song; song = queue.shift()) {
+        try {
+          if (removing) {
             await removeSong(song.slug);
+          } else {
+            await saveSong(parsedSongToStoredSong(song));
           }
-        }
-      } else {
-        for (const song of filteredSongs) {
-          if (!offlineSongs.has(song.slug)) {
-            const storedSong = parsedSongToStoredSong(song);
-            await saveSong(storedSong);
-          }
+        } catch (error) {
+          console.error(`Error toggling ${song.slug}:`, error);
         }
       }
-    } catch (error) {
-      console.error("Error toggling all offline status:", error);
+    };
+
+    try {
+      await Promise.all(
+        Array.from(
+          { length: Math.min(OFFLINE_SAVE_CONCURRENCY, queue.length) },
+          worker,
+        ),
+      );
+    } finally {
+      setBulkAction(null);
     }
   };
 
@@ -228,17 +291,34 @@ export default function SongList({ songs }: SongListProps) {
                 <span className="uv-table__check-head">
                   <span>Guardar</span>
                   <label className="uv-check">
+                    {/* `aria-disabled` rather than `disabled` while the run is
+                        going: disabling an input blurs it, so a keyboard user
+                        who ticks this box is thrown back to the top of the
+                        document for as long as 276 songs take. The handler
+                        refuses the second press instead. `disabled` is still
+                        right for the empty table — there is nothing there to
+                        keep focus on. */}
                     <input
                       type="checkbox"
                       checked={allFilteredSongsOffline}
                       onChange={toggleAllOffline}
                       disabled={filteredSongs.length === 0}
+                      aria-disabled={isBulkRunning || undefined}
                       aria-label={
                         allFilteredSongsOffline
                           ? "Quitar del teléfono todas las visibles"
                           : "Guardar en el teléfono todas las visibles"
                       }
                     />
+                    {isBulkRunning && (
+                      <SavingRing
+                        label={
+                          bulkAction === "remove"
+                            ? "Quitando del teléfono las canciones visibles"
+                            : "Guardando en el teléfono las canciones visibles"
+                        }
+                      />
+                    )}
                   </label>
                 </span>
               </th>
@@ -262,47 +342,74 @@ export default function SongList({ songs }: SongListProps) {
                 </td>
               </tr>
             ) : (
-              filteredSongs.map((song) => (
-                <tr key={song.slug}>
-                  <td className="uv-table__check">
-                    <div className="uv-cell uv-table__check-cell">
-                      <label className="uv-check">
-                        <input
-                          type="checkbox"
-                          checked={offlineSongs.has(song.slug)}
-                          onChange={() => toggleOffline(song)}
-                          // Without this a tap on the box navigates: the cells
-                          // around it are all links to the song.
-                          onClick={(e) => e.stopPropagation()}
-                          aria-label={
-                            offlineSongs.has(song.slug)
-                              ? `Quitar ${song.metadata.title} del teléfono`
-                              : `Guardar ${song.metadata.title} en el teléfono`
-                          }
-                        />
-                      </label>
-                    </div>
-                  </td>
-                  <SongCell slug={song.slug} className="uv-td-title">
-                    {song.metadata.title}
-                  </SongCell>
-                  <SongCell slug={song.slug} className="uv-td-muted">
-                    {song.metadata.artist}
-                  </SongCell>
-                  {/* Mono from here on: a year, a tono and a compás are the
+              filteredSongs.map((song) => {
+                const isSaved = offlineSongs.has(song.slug);
+                const isSaving = savingSlugs.has(song.slug);
+
+                return (
+                  <tr key={song.slug} aria-busy={isSaving || undefined}>
+                    <td className="uv-table__check">
+                      <div className="uv-cell uv-table__check-cell">
+                        <label className="uv-check">
+                          <input
+                            type="checkbox"
+                            checked={isSaved}
+                            onChange={() => toggleOffline(song)}
+                            // Without this a tap on the box navigates: the cells
+                            // around it are all links to the song.
+                            onClick={(e) => e.stopPropagation()}
+                            // Every box in the table, not only the one in
+                            // flight: while "guardar todas" is running, a row
+                            // that has not come up yet is not a control the
+                            // reader can usefully press.
+                            aria-disabled={
+                              isBulkRunning || isSaving || undefined
+                            }
+                            aria-label={
+                              isSaved
+                                ? `Quitar ${song.metadata.title} del teléfono`
+                                : `Guardar ${song.metadata.title} en el teléfono`
+                            }
+                          />
+                          {isSaving && (
+                            <SavingRing
+                              label={
+                                isSaved
+                                  ? `Quitando ${song.metadata.title}`
+                                  : `Guardando ${song.metadata.title}`
+                              }
+                            />
+                          )}
+                        </label>
+                      </div>
+                    </td>
+                    <SongCell slug={song.slug} className="uv-td-title">
+                      {song.metadata.title}
+                    </SongCell>
+                    <SongCell slug={song.slug} className="uv-td-muted">
+                      {song.metadata.artist}
+                    </SongCell>
+                    {/* Mono from here on: a year, a tono and a compás are the
                       musical facts about a song, and nothing else in the
                       interface is allowed to be monospaced. */}
-                  <SongCell slug={song.slug} className="uv-td-mono uv-td-muted">
-                    {song.metadata.year || "—"}
-                  </SongCell>
-                  <SongCell slug={song.slug} className="uv-td-mono">
-                    {song.metadata.key}
-                  </SongCell>
-                  <SongCell slug={song.slug} className="uv-td-mono uv-td-muted">
-                    {song.metadata.timeSignature}
-                  </SongCell>
-                </tr>
-              ))
+                    <SongCell
+                      slug={song.slug}
+                      className="uv-td-mono uv-td-muted"
+                    >
+                      {song.metadata.year || "—"}
+                    </SongCell>
+                    <SongCell slug={song.slug} className="uv-td-mono">
+                      {song.metadata.key}
+                    </SongCell>
+                    <SongCell
+                      slug={song.slug}
+                      className="uv-td-mono uv-td-muted"
+                    >
+                      {song.metadata.timeSignature}
+                    </SongCell>
+                  </tr>
+                );
+              })
             )}
           </tbody>
         </table>

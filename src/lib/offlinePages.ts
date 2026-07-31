@@ -29,6 +29,18 @@
 /** The cache the `cachePages` rule in `next.config.ts` writes to. */
 const PAGES_CACHE = "pages";
 
+/**
+ * How many songs may be in flight at once when saving a lot of them.
+ *
+ * "Guardar todas las visibles" over an unfiltered list is 276 songs and 552
+ * pages. Unbounded, that is 552 simultaneous requests and a browser that stops
+ * responding; serial, it is slow enough to look broken. Six is the middle, and
+ * it is exported because `SongList` runs its own pool over `saveSong` — one
+ * song at a time so each row can say it is saving — and a second answer to the
+ * same question is how the two drift.
+ */
+export const OFFLINE_SAVE_CONCURRENCY = 6;
+
 /** Every page that has to exist for a saved song to be usable offline. */
 export function songPageUrls(slug: string): string[] {
   return [`/song/${slug}`, `/song/${slug}/acordes`];
@@ -78,17 +90,11 @@ export async function uncacheSongPages(slug: string): Promise<void> {
   await Promise.all(songPageUrls(slug).map((url) => cache.delete(url)));
 }
 
-/**
- * The same, for many songs at once, six at a time.
- *
- * "Guardar todas las visibles" over an unfiltered list is 276 songs and 552
- * pages. Unbounded, that is 552 simultaneous requests and a browser that stops
- * responding; serial, it is slow enough to look broken.
- */
+/** The same, for many songs at once, `OFFLINE_SAVE_CONCURRENCY` at a time. */
 export async function cacheManySongPages(slugs: string[]): Promise<void> {
   const queue = [...slugs];
   const workers = Array.from(
-    { length: Math.min(6, queue.length) },
+    { length: Math.min(OFFLINE_SAVE_CONCURRENCY, queue.length) },
     async () => {
       for (let slug = queue.shift(); slug; slug = queue.shift()) {
         await cacheSongPages(slug);
