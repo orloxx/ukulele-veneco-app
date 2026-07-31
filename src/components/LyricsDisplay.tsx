@@ -5,8 +5,8 @@ interface LyricsDisplayProps {
   /**
    * The names of the chords this song defines.
    *
-   * Needed because a chord in round brackets is only a chord if the song says so: the
-   * cancionero uses round brackets for backing vocals and asides too, and
+   * Needed because a chord in round brackets is only a chord if the song says so:
+   * the cancionero uses round brackets for backing vocals and asides too, and
    * `(Cuidado, mucho cuidado)` in colgando-en-tus-manos must stay as words.
    */
   chordNames: string[];
@@ -16,25 +16,57 @@ interface LinePart {
   chord?: string;
   /** True for `(X)` — the chord arriving early rather than one to strum. */
   anticipated?: boolean;
+  /** The text the chord sits over. A chord is never its own empty part. */
   text: string;
 }
 
+/**
+ * A song sheet.
+ *
+ * How a chord is held over its syllable is the whole of this component, and it
+ * is the most sensitive code in the app: a redesign that quietly moves a chord
+ * one syllable to the left is worse than no redesign, because it looks correct
+ * and plays wrong. Nothing automated catches it — `pnpm validate` reads the
+ * source Markdown and the extractor's `--verify` compares fingerings, and
+ * neither of them looks at the screen.
+ *
+ * Two things do the holding, and they are a pair:
+ *
+ * - Every chord is attached to the text that *follows* it, and positioned at
+ *   `bottom: 100%` of that text's own box. It is never pushed as its own part
+ *   with an empty string, which is what the first version did.
+ * - The room it needs is reserved as `padding-top: var(--lyric-chord-gap)` on
+ *   the line, not as leading inside it. The old version offset the chord from
+ *   the baseline and depended on the line-height being generous enough to hold
+ *   it; where it was not, a chord climbed onto the line above.
+ *
+ * There is deliberately no zoom control here, and no `--sheet-scale` in
+ * `globals.css` to drive one — vault `DECISIONS.md` 13. The design prototype
+ * ships a −/+ that scales the lyric type, so this will be re-proposed by anyone
+ * who opens it. The browser already has pinch-zoom and the phone already has a
+ * system text-size setting; both work, both persist, and both follow the reader
+ * to every other screen, which a control living inside one page of one app never
+ * will. What the app owes them instead is `maximumScale: 5` and
+ * `userScalable: true` in the viewport, which `layout.tsx` keeps.
+ */
 export default function LyricsDisplay({
   lyrics,
   chordNames,
 }: LyricsDisplayProps) {
   const defined = new Set(chordNames);
 
-  // Parse a line to extract chords and text
   const parseLine = (line: string) => {
     const parts: LinePart[] = [];
-    let currentIndex = 0;
 
-    // `[X]` is a chord to strum; `(X)` is an anticipation — the same chord landing
-    // early, optional or passing, which is what the book means by the round brackets
-    // (DECISIONS.md 9 in the vault). Both float above the syllable they sit on, and
-    // only the styling tells them apart.
+    // `[X]` is a chord to strum; `(X)` is an anticipation — the same chord
+    // landing early, optional or passing, which is what the book means by the
+    // round brackets (DECISIONS.md 9 in the vault). Only the styling tells them
+    // apart, and it must not be flattened: rojo means strum this, muted grey
+    // with its brackets still on means maybe.
     const chordRegex = /\[([^\]]+)\]|\(([^()\s]+)\)/g;
+
+    let cursor = 0;
+    let pending: LinePart | null = null;
     let match: RegExpExecArray | null = chordRegex.exec(line);
 
     while (match !== null) {
@@ -42,90 +74,76 @@ export default function LyricsDisplay({
       const chord =
         bracketed ?? (defined.has(parenthesised) ? parenthesised : undefined);
 
-      // Round brackets around anything the song has not defined are ordinary words,
-      // so they are left in the text: skipping the match without moving currentIndex
-      // means the next slice picks them up.
+      // Round brackets around anything the song has not defined are ordinary
+      // words, so they are left in the text: skipping the match without moving
+      // the cursor means the next slice picks them up.
       if (chord) {
-        // Add text before the chord
-        if (match.index > currentIndex) {
-          parts.push({ text: line.slice(currentIndex, match.index) });
+        const text = line.slice(cursor, match.index);
+        if (pending) {
+          pending.text = text;
+          parts.push(pending);
+        } else if (text) {
+          parts.push({ text });
         }
-
-        // Add the chord
-        parts.push({
-          chord,
-          anticipated: bracketed === undefined,
-          text: "",
-        });
-        currentIndex = match.index + whole.length;
+        pending = { chord, anticipated: bracketed === undefined, text: "" };
+        cursor = match.index + whole.length;
       }
 
       match = chordRegex.exec(line);
     }
 
-    // Add remaining text
-    if (currentIndex < line.length) {
-      parts.push({ text: line.slice(currentIndex) });
+    const tail = line.slice(cursor);
+    if (pending) {
+      pending.text = tail;
+      parts.push(pending);
+    } else if (tail) {
+      parts.push({ text: tail });
     }
 
     return parts;
   };
 
   const renderLine = (line: string, index: number) => {
-    // Check if it's a section header (starts with ##)
     if (line.trim().startsWith("##")) {
       return (
-        <h3
-          key={index}
-          className="text-lg font-semibold text-gray-700 mt-6 mb-2"
-        >
+        <h3 key={index} className="uv-sheet-section">
           {line.replace(/^##\s*/, "")}
         </h3>
       );
     }
 
-    // Empty line
     if (!line.trim()) {
-      return <div key={index} className="h-4" />;
+      return <div key={index} className="uv-sheet-blank" />;
     }
 
-    // Parse the line for chords
-    const parts = parseLine(line);
-
     return (
-      <div key={index} className="relative min-h-10 mb-1 leading-10">
-        <div className="flex flex-wrap items-baseline">
-          {parts.map((part, partIndex) => (
-            <span
-              key={`${index}-${partIndex}-${part.chord || "text"}`}
-              className="relative inline-block"
-            >
-              {part.chord && (
-                <span
-                  className={`absolute -top-8 left-0 text-sm whitespace-nowrap ${
-                    part.anticipated
-                      ? "text-gray-500 font-medium"
-                      : "text-blue-600 font-bold"
-                  }`}
-                >
-                  {part.anticipated ? `(${part.chord})` : part.chord}
-                </span>
-              )}
-              <span className="text-gray-800 whitespace-pre-wrap">
-                {part.text}
+      <div key={index} className="uv-sheet-line">
+        {parseLine(line).map((part, partIndex) => (
+          <span
+            key={`${index}-${partIndex}-${part.chord || "text"}`}
+            className="uv-sheet-syllable"
+          >
+            {part.chord && (
+              <span
+                className={
+                  part.anticipated
+                    ? "uv-chord uv-chord--anticipated"
+                    : "uv-chord"
+                }
+              >
+                {part.anticipated ? `(${part.chord})` : part.chord}
               </span>
-            </span>
-          ))}
-        </div>
+            )}
+            {part.text}
+          </span>
+        ))}
       </div>
     );
   };
 
-  const lines = lyrics.split("\n");
-
   return (
-    <div className="font-mono text-base leading-relaxed">
-      {lines.map((line, index) => renderLine(line, index))}
+    <div className="uv-sheet">
+      {lyrics.split("\n").map((line, index) => renderLine(line, index))}
     </div>
   );
 }

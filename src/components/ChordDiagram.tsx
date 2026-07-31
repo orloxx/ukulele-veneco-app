@@ -2,6 +2,14 @@ import type { Chord } from "@/types/song";
 
 interface ChordDiagramProps {
   chord: Chord;
+  /**
+   * The rendered size of the grid, in px. The drawing is a 100×100 viewBox and
+   * scales; only the frame around it changes.
+   */
+  size?: number;
+  /** Off in the chord viewer, which sets the name in heading type instead. */
+  showName?: boolean;
+  className?: string;
 }
 
 /** Strings low to high — the order a `positions` string is written in. */
@@ -40,7 +48,12 @@ function windowBase(frets: number[]): number {
   return Math.min(...stopped) - 1;
 }
 
-export default function ChordDiagram({ chord }: ChordDiagramProps) {
+export default function ChordDiagram({
+  chord,
+  size = 100,
+  showName = true,
+  className,
+}: ChordDiagramProps) {
   const { name, positions } = chord;
 
   // Parse the positions string (e.g., "0003" means strings G=0, C=0, E=0, A=3)
@@ -48,16 +61,16 @@ export default function ChordDiagram({ chord }: ChordDiagramProps) {
   const base = windowBase(strings);
 
   return (
-    <div className="flex flex-col items-center p-3 bg-white border border-gray-200 rounded-lg">
-      {/* Chord name */}
-      <div className="text-lg font-bold text-gray-900 mb-2">{name}</div>
+    <div className={className ? `uv-diagram ${className}` : "uv-diagram"}>
+      {/* Chord name — mono, because a chord name is musical notation. */}
+      {showName && <div className="uv-diagram__name">{name}</div>}
 
       {/* Chord diagram */}
-      <div className="relative">
+      <div>
         {/* Fretboard */}
         <svg
-          width="100"
-          height="100"
+          width={size}
+          height={size}
           viewBox="0 0 100 100"
           className="chord-diagram"
           role="img"
@@ -77,7 +90,7 @@ export default function ChordDiagram({ chord }: ChordDiagramProps) {
               y1={NUT_Y}
               x2={FIRST_STRING_X + stringIndex * STRING_GAP}
               y2={NUT_Y + WINDOW * FRET_HEIGHT}
-              stroke="#333"
+              stroke="var(--diagram-string)"
               strokeWidth="1"
             />
           ))}
@@ -91,7 +104,11 @@ export default function ChordDiagram({ chord }: ChordDiagramProps) {
               y1={NUT_Y + fretIndex * FRET_HEIGHT}
               x2={FIRST_STRING_X + (STRING_NAMES.length - 1) * STRING_GAP}
               y2={NUT_Y + fretIndex * FRET_HEIGHT}
-              stroke="#333"
+              stroke={
+                fretIndex === 0 && base === 0
+                  ? "var(--diagram-nut)"
+                  : "var(--diagram-fret)"
+              }
               strokeWidth={fretIndex === 0 && base === 0 ? "3" : "1"}
             />
           ))}
@@ -104,7 +121,9 @@ export default function ChordDiagram({ chord }: ChordDiagramProps) {
               textAnchor="end"
               dominantBaseline="central"
               fontSize="11"
-              fill="#333"
+              fontFamily="var(--font-mono)"
+              fontWeight="600"
+              fill="var(--diagram-label)"
             >
               {base + 1}
             </text>
@@ -124,7 +143,7 @@ export default function ChordDiagram({ chord }: ChordDiagramProps) {
                   cy="5"
                   r="3"
                   fill="none"
-                  stroke="#333"
+                  stroke="var(--diagram-open)"
                   strokeWidth="1.5"
                 />
               );
@@ -138,7 +157,7 @@ export default function ChordDiagram({ chord }: ChordDiagramProps) {
                 cx={cx}
                 cy={NUT_Y + (row - 0.5) * FRET_HEIGHT}
                 r="5"
-                fill="#2563eb"
+                fill="var(--diagram-dot)"
               />
             );
           })}

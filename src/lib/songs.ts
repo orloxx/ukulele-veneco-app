@@ -5,6 +5,83 @@ import type { Chord, ParsedSong, SongMetadata } from "@/types/song";
 
 const songsDirectory = path.join(process.cwd(), "songs");
 
+/** A capo, exactly as the book prints it and the format spec keeps it. */
+const CAPO_LINE = /^Capo (\d+)$/;
+
+/**
+ * Characters that only ever appear in something aligned to a beat: a chord in
+ * brackets, a bar line, a strum arrow, a rasgueo stroke.
+ *
+ * A leading line carrying any of them belongs to the sheet and has to stay in
+ * it — `songs/jota-carupanera.md` opens with a rasgueo whose chord names sit
+ * over a row of `↦ ← ↠`, and lifting that out would destroy the one thing the
+ * app has to preserve. The middle dot is deliberately not in this set: it marks
+ * a beat inside a lyric, but it also turns up in prose quoting a riff.
+ */
+const ALIGNED = /[[\]|↓↑↦←↠]/;
+
+/** How many leading lines can be metadata before the block is just the song. */
+const MAX_LEADING_LINES = 3;
+
+/**
+ * Split the run of lines above the first blank line into metadata and the rest.
+ *
+ * The book has one slot for things true of a whole song — a capo, a duet's voice
+ * legend, "Versión más simple para el ukulele" — and it is a plain line at the
+ * top of the page, above the first section. `DECISIONS.md` 7 in the vault kept
+ * it as a plain line of text rather than inventing a frontmatter field, which is
+ * why this is read here instead of by `gray-matter`, and why nothing in `songs/`
+ * had to change for the capo badge to exist.
+ *
+ * It is deliberately conservative. If any line in the block looks aligned, or
+ * the block runs past three lines, nothing is lifted and all of it stays in the
+ * sheet: leaving an instruction in the lyrics costs a slightly untidy sheet,
+ * and taking a lyric out of them costs a song a line. Across all 276 songs this
+ * lifts 50 capos and 12 notes, and no lyric.
+ */
+export function parseLeadingNotes(body: string): {
+  capo?: number;
+  notes?: string[];
+  lyrics: string;
+} {
+  const lines = body.split("\n");
+
+  const block: string[] = [];
+  for (const line of lines) {
+    if (!line.trim()) break;
+    block.push(line.trim());
+  }
+
+  if (
+    block.length === 0 ||
+    block.length > MAX_LEADING_LINES ||
+    block[0].startsWith("##")
+  ) {
+    return { lyrics: body };
+  }
+
+  let capo: number | undefined;
+  const notes: string[] = [];
+
+  for (const [index, line] of block.entries()) {
+    const match = index === 0 ? line.match(CAPO_LINE) : null;
+    if (match) {
+      capo = Number(match[1]);
+      continue;
+    }
+    if (ALIGNED.test(line)) return { lyrics: body };
+    notes.push(line);
+  }
+
+  if (capo === undefined && notes.length === 0) return { lyrics: body };
+
+  return {
+    capo,
+    notes: notes.length > 0 ? notes : undefined,
+    lyrics: lines.slice(block.length).join("\n").replace(/^\n+/, ""),
+  };
+}
+
 /**
  * Get all song files from the songs directory
  */
@@ -45,6 +122,9 @@ export function parseSongFile(filename: string): ParsedSong {
     },
   );
 
+  // Lift the capo and any leading instruction out of the body
+  const { capo, notes, lyrics } = parseLeadingNotes(content.trim());
+
   // Build metadata
   const metadata: SongMetadata = {
     title: data.title || "Untitled",
@@ -53,12 +133,14 @@ export function parseSongFile(filename: string): ParsedSong {
     key: data.key || "",
     timeSignature: data.timeSignature || "4/4",
     chords: chordDefinitions.map((c) => c.name),
+    capo,
+    notes,
   };
 
   return {
     slug,
     metadata,
-    lyrics: content.trim(),
+    lyrics,
     chordDefinitions,
     filePath,
   };

@@ -7,7 +7,8 @@ export interface Chord {
 }
 
 /**
- * Song metadata from frontmatter
+ * Song metadata from frontmatter — plus, since M7, the two things the book
+ * prints above the first verse rather than in the masthead.
  */
 export interface SongMetadata {
   title: string;
@@ -16,6 +17,21 @@ export interface SongMetadata {
   key: string; // Musical key, e.g., "C", "Am"
   timeSignature: string; // e.g., "4/4", "3/4"
   chords: string[]; // Array of chord names used in the song
+  /**
+   * The fret a capo goes on, read from a plain `Capo <n>` line at the top of
+   * the body.
+   *
+   * Not a frontmatter field, and `songs/` is not edited for it: the book prints
+   * a capo on 52 of its 277 pages and the song format keeps it as a line of
+   * text, so it is parsed at build time instead. See `parseLeadingNotes`.
+   */
+  capo?: number;
+  /**
+   * Whatever else was in that same slot — "Versión más simple para el ukulele",
+   * a duet's voice legend, the century a song with no year comes from. Kept
+   * verbatim, and rendered under the title rather than as part of the sheet.
+   */
+  notes?: string[];
 }
 
 /**

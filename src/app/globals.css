@@ -1179,6 +1179,125 @@ samp {
 }
 
 /* ==========================================================================
+   The song sheet.
+   ========================================================================== */
+
+.uv-song-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+.uv-song-title {
+  font-size: var(--size-display-3);
+  line-height: var(--lh-display-3);
+  letter-spacing: var(--track-display);
+}
+.uv-song-byline {
+  color: var(--text-muted);
+  font-size: var(--size-body-lg);
+  margin-top: var(--space-1);
+}
+.uv-song-chips {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: var(--space-3);
+}
+.uv-song-note {
+  color: var(--text-muted);
+  font-size: var(--size-body-sm);
+  margin-top: var(--space-3);
+  max-width: var(--measure-prose);
+}
+
+.uv-song-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 224px;
+  gap: var(--space-8);
+  align-items: start;
+}
+/* The sheet is capped at --measure-sheet because a wrapped lyric line breaks the
+   chord-to-syllable relationship: the chord stays with its syllable, but the
+   syllable has moved to a line of its own. */
+.uv-sheet-paper {
+  background: var(--sheet-paper);
+  padding: var(--space-6) var(--space-8);
+  max-width: var(--measure-sheet);
+  overflow-x: auto;
+}
+
+.uv-chord-panel {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-4));
+}
+.uv-chord-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+.uv-chord-panel__title {
+  font-size: var(--size-h3);
+}
+.uv-chord-panel__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+/* ==========================================================================
+   The chord viewer.
+   ========================================================================== */
+
+.uv-chords-view__lede {
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+  max-width: 48ch;
+}
+.uv-chords-view__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+.uv-chords-view__card {
+  padding: var(--space-4);
+  box-shadow: var(--shadow-sm);
+}
+.uv-chords-view__name {
+  font-size: var(--size-h3);
+}
+.uv-chords-view__positions {
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  color: var(--text-faint);
+}
+
+/* ==========================================================================
+   Not found.
+   ========================================================================== */
+
+.uv-notfound {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  padding: var(--space-16) 0;
+}
+.uv-notfound__title {
+  font-size: var(--size-display-2);
+  letter-spacing: var(--track-display);
+}
+.uv-notfound__body {
+  color: var(--text-muted);
+  max-width: var(--measure-prose);
+}
+
+/* ==========================================================================
    The landing page.
 
    Its own layer, because it is the one screen that is marketing rather than

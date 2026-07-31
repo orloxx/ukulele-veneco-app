@@ -1,11 +1,15 @@
 "use client";
 
 /**
- * Client wrapper for song detail page
- * Handles interactive features like saving offline
+ * The song sheet: the screen the app exists for.
+ *
+ * Title, the musical facts as chips, the capo badge, the sheet itself capped at
+ * `--measure-sheet`, and the chords in a panel that sticks under the header.
  */
 
+import Link from "next/link";
 import ChordDiagram from "@/components/ChordDiagram";
+import { IconCapo, IconGrid } from "@/components/icons";
 import LyricsDisplay from "@/components/LyricsDisplay";
 import { SaveOfflineButton } from "@/components/SaveOfflineButton";
 import type { ParsedSong } from "@/types/song";
@@ -15,59 +19,75 @@ interface SongDetailClientProps {
 }
 
 export function SongDetailClient({ song }: SongDetailClientProps) {
+  const { metadata } = song;
+
   return (
-    <div className="relative">
-      {/* Main content */}
-      <div>
-        {/* Save button - positioned top right */}
-        <div className="absolute top-0 right-0">
-          <SaveOfflineButton
-            song={song as ParsedSong}
-            variant="full"
-            className="shadow-md"
+    <div>
+      <div className="uv-song-head">
+        <div>
+          <h1 className="uv-song-title">{metadata.title}</h1>
+          <p className="uv-song-byline">
+            {metadata.artist}
+            {metadata.year ? ` · ${metadata.year}` : ""}
+          </p>
+
+          <div className="uv-song-chips">
+            {/* Mono, because a tono and a compás are musical notation. */}
+            {metadata.key && (
+              <span className="uv-tag uv-tag--teal uv-tag--mono">
+                {metadata.key}
+              </span>
+            )}
+            <span className="uv-tag uv-tag--outline uv-tag--mono">
+              {metadata.timeSignature}
+            </span>
+            {/* Amarillo: a capo is an instruction to the player, not a fact
+                about the song, so it should be the first thing spotted. */}
+            {metadata.capo ? (
+              <span className="uv-capo">
+                <IconCapo />
+                Capo {metadata.capo}
+              </span>
+            ) : null}
+          </div>
+
+          {/* Whatever else the book printed in that slot: "Versión más simple
+              para el ukulele", a duet's voice legend, a century. Verbatim. */}
+          {metadata.notes?.map((note) => (
+            <p key={note} className="uv-song-note">
+              {note}
+            </p>
+          ))}
+        </div>
+
+        <SaveOfflineButton song={song as ParsedSong} />
+      </div>
+
+      <div className="uv-song-body">
+        <div className="uv-card uv-sheet-paper">
+          <LyricsDisplay
+            lyrics={song.lyrics}
+            chordNames={song.chordDefinitions.map((chord) => chord.name)}
           />
         </div>
 
-        {/* Song info */}
-        <div className="mb-8 pr-32">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            {song.metadata.title}
-          </h1>
-          <p className="text-xl text-gray-600">
-            {song.metadata.artist}
-            {song.metadata.year && ` • ${song.metadata.year}`}
-          </p>
-          <p className="text-xl text-gray-600">
-            {song.metadata.timeSignature} • {song.metadata.key}
-          </p>
-        </div>
-
-        {/* Two column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left column: Lyrics */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-              <LyricsDisplay
-                lyrics={song.lyrics}
-                chordNames={song.chordDefinitions.map((chord) => chord.name)}
-              />
-            </div>
+        <aside className="uv-chord-panel">
+          <div className="uv-chord-panel__head">
+            <h2 className="uv-chord-panel__title">Acordes</h2>
+            <Link
+              href={`/song/${song.slug}/acordes`}
+              className="uv-iconbtn"
+              aria-label="Ver los acordes en grande"
+            >
+              <IconGrid />
+            </Link>
           </div>
-
-          {/* Right column: Chords (sticky) */}
-          <div className="lg:col-span-1">
-            <div className="lg:sticky lg:top-24">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">
-                Acordes
-              </h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-4">
-                {song.chordDefinitions.map((chord) => (
-                  <ChordDiagram key={chord.name} chord={chord} />
-                ))}
-              </div>
-            </div>
+          <div className="uv-chord-panel__grid">
+            {song.chordDefinitions.map((chord) => (
+              <ChordDiagram key={chord.name} chord={chord} size={88} />
+            ))}
           </div>
-        </div>
+        </aside>
       </div>
     </div>
   );
