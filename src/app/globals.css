@@ -958,6 +958,10 @@ samp {
 .uv-table thead th {
   padding: var(--space-3) var(--space-4);
   text-align: left;
+  /* Top, not middle: the save column carries its checkbox under its heading,
+     and middle-aligned neighbours would sit half a control lower than it. All
+     six headings start on the same line and the box hangs below its own. */
+  vertical-align: top;
   background: var(--surface-sunken);
   border-bottom: var(--border-hairline) solid var(--line);
   color: var(--text-muted);
@@ -1190,6 +1194,11 @@ samp {
   color: var(--text-muted);
   font-size: var(--size-body-sm);
 }
+/* The line wraps on a phone, and a flex item that wraps takes its width off
+   whatever will give it — which was the tick, at 15px instead of 16. */
+.uv-list-saved svg {
+  flex: none;
+}
 
 .uv-filters {
   display: flex;
@@ -1218,6 +1227,20 @@ samp {
 .uv-table__check {
   width: 78px;
   text-align: center;
+}
+/* The save column is titled like the other five (BUG-012). The word goes above
+   the box rather than beside it — 78px holds one or the other, and beside it
+   the box would no longer sit over the boxes in the rows below. The cell gives
+   up its horizontal padding to fit GUARDAR at 67px in 78px, and keeps the same
+   top padding as its neighbours so all six headings start on one line. The box
+   keeps --touch-min. */
+.uv-table thead th.uv-table__check {
+  padding: var(--space-3) var(--space-1) var(--space-1);
+}
+.uv-table__check-head {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-1);
 }
 .uv-table__check-cell {
   display: grid;

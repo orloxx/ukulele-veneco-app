@@ -140,12 +140,23 @@ export default function SongList({ songs }: SongListProps) {
           </h1>
         </div>
         {/* The app has always tracked which songs are on the phone and never
-            said how many. */}
+            said how many.
+
+            The count changes and the instruction does not. The instruction
+            used to be the other half of the empty state, so the one line
+            connecting the checkbox to saving disappeared the moment it had
+            worked once — shown to readers who had never used the feature and
+            taken away from everyone who had (BUG-012). Below 640px the table
+            drops its header row, so on a phone this is the only place the
+            column is explained at all. */}
         <p className="uv-list-saved">
           <IconCheck size={16} />
-          {savedCount === 0
-            ? "Ninguna guardada todavía. Marca las que vayas a tocar."
-            : `${savedCount} ${savedCount === 1 ? "guardada" : "guardadas"} en el teléfono`}
+          <span>
+            {savedCount === 0
+              ? "Ninguna guardada todavía."
+              : `${savedCount} ${savedCount === 1 ? "guardada" : "guardadas"} en el teléfono.`}{" "}
+            Marca las que vayas a tocar.
+          </span>
         </p>
       </div>
 
@@ -205,16 +216,31 @@ export default function SongList({ songs }: SongListProps) {
         <table className="uv-table">
           <thead>
             <tr>
+              {/* Titled like the other five columns. The word is the half a
+                  sighted reader was missing: the input has carried an
+                  aria-label since M7, so the column read fine to a screen
+                  reader and to nobody else (BUG-012).
+
+                  The name flips with the state, because a checked box is
+                  about to un-save and announcing "Guardar" on it says the
+                  opposite of what it does. */}
               <th className="uv-table__check">
-                <label className="uv-check">
-                  <input
-                    type="checkbox"
-                    checked={allFilteredSongsOffline}
-                    onChange={toggleAllOffline}
-                    disabled={filteredSongs.length === 0}
-                    aria-label="Guardar todas las visibles"
-                  />
-                </label>
+                <span className="uv-table__check-head">
+                  <span>Guardar</span>
+                  <label className="uv-check">
+                    <input
+                      type="checkbox"
+                      checked={allFilteredSongsOffline}
+                      onChange={toggleAllOffline}
+                      disabled={filteredSongs.length === 0}
+                      aria-label={
+                        allFilteredSongsOffline
+                          ? "Quitar del teléfono todas las visibles"
+                          : "Guardar en el teléfono todas las visibles"
+                      }
+                    />
+                  </label>
+                </span>
               </th>
               <th>Título</th>
               <th>Artista</th>
@@ -248,7 +274,11 @@ export default function SongList({ songs }: SongListProps) {
                           // Without this a tap on the box navigates: the cells
                           // around it are all links to the song.
                           onClick={(e) => e.stopPropagation()}
-                          aria-label={`Guardar ${song.metadata.title} en el teléfono`}
+                          aria-label={
+                            offlineSongs.has(song.slug)
+                              ? `Quitar ${song.metadata.title} del teléfono`
+                              : `Guardar ${song.metadata.title} en el teléfono`
+                          }
                         />
                       </label>
                     </div>
