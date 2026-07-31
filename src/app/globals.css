@@ -151,6 +151,18 @@
   --status-offline-text: var(--amarillo-900);
   --status-saved-bg: var(--verde-100);
   --status-saved-text: var(--verde-700);
+
+  /* ---------- Semantic: the poster ----------
+     The landing's closing banner is the one full-colour field in the system, and
+     the only place a saturated ground carries type. It is the same colour in
+     both themes on purpose: it is a printed poster, not a surface. Aliased
+     rather than written as ramp steps, because product code never names a
+     ramp. */
+  --poster-bg: var(--turquesa-700);
+  --poster-text: var(--papel-200);
+  --poster-eyebrow: var(--amarillo-300);
+  --poster-action: var(--amarillo-300);
+  --poster-action-text: var(--papel-900);
 }
 
 /* --------------------------------------------------------------------------
@@ -1093,4 +1105,225 @@ samp {
 }
 .uv-mono {
   font-family: var(--font-mono);
+}
+
+/* ==========================================================================
+   The landing page.
+
+   Its own layer, because it is the one screen that is marketing rather than
+   tool: display type, a full-colour poster band, and a grid nothing else uses.
+   Kept as classes rather than inline styles so the phone pass is an edit to this
+   file and not to the JSX.
+   ========================================================================== */
+
+.uv-header--static {
+  position: static;
+}
+
+.uv-landing-section {
+  width: 100%;
+  max-width: var(--measure-page);
+  margin: 0 auto;
+  padding: var(--space-20) var(--space-8);
+}
+
+/* ---------------- Hero ---------------- */
+.uv-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: var(--space-16);
+  align-items: center;
+  padding-bottom: var(--space-16);
+}
+.uv-hero__title {
+  font-size: var(--size-display-1);
+  line-height: var(--lh-display-1);
+  letter-spacing: var(--track-display);
+  font-weight: var(--weight-display);
+  margin-top: var(--space-4);
+}
+.uv-hero__lede {
+  font-size: var(--size-body-lg);
+  color: var(--text-body);
+  max-width: 44ch;
+  margin-top: var(--space-6);
+}
+.uv-hero__credit {
+  color: var(--text-muted);
+  max-width: 46ch;
+  margin-top: var(--space-4);
+}
+.uv-hero__actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-8);
+}
+.uv-hero__fine {
+  font-size: var(--size-body-sm);
+  color: var(--text-faint);
+  margin-top: var(--space-5);
+}
+.uv-hero__art {
+  display: grid;
+  place-items: center;
+}
+/* The badge is a circular sticker and reads as one: never tinted, never
+   greyscaled, never cropped into a rectangle. The shadow lifts it off the
+   paper. */
+.uv-hero__art img {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  filter: drop-shadow(0 18px 34px rgba(20, 38, 46, 0.18));
+}
+[data-theme="dark"] .uv-hero__art img {
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.5));
+}
+
+/* ---------------- Stat row ---------------- */
+.uv-stats {
+  border-top: var(--border-hairline) solid var(--line-soft);
+  border-bottom: var(--border-hairline) solid var(--line-soft);
+  background: var(--surface-raised);
+}
+.uv-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  width: 100%;
+  max-width: var(--measure-page);
+  margin: 0 auto;
+  padding: var(--space-8);
+}
+/* Mono, because these are figures being counted rather than words. */
+.uv-stats__figure {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: var(--weight-semibold);
+  color: var(--action-primary);
+  letter-spacing: -0.03em;
+}
+.uv-stats__label {
+  font-size: var(--size-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: var(--weight-semibold);
+  margin-top: 2px;
+}
+
+/* ---------------- Features ---------------- */
+.uv-features__title {
+  font-size: var(--size-display-3);
+  letter-spacing: var(--track-display);
+  max-width: 24ch;
+}
+.uv-features__list {
+  display: grid;
+  margin-top: var(--space-12);
+}
+.uv-feature {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: var(--space-6);
+  padding: var(--space-8) 0;
+  border-top: var(--border-hairline) solid var(--line-soft);
+  align-items: start;
+}
+.uv-feature__n {
+  font-family: var(--font-mono);
+  color: var(--text-faint);
+  font-size: var(--size-body-sm);
+}
+.uv-feature__title {
+  font-size: var(--size-h2);
+}
+.uv-feature__body {
+  color: var(--text-body);
+}
+
+/* ---------------- Sheet preview ---------------- */
+.uv-preview {
+  background: var(--surface-sunken);
+  border-top: var(--border-hairline) solid var(--line-soft);
+}
+.uv-preview__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-12);
+  align-items: center;
+  width: 100%;
+  max-width: var(--measure-page);
+  margin: 0 auto;
+  padding: var(--space-16) var(--space-8);
+}
+.uv-preview__title {
+  font-size: var(--size-display-3);
+  letter-spacing: var(--track-display);
+  margin-top: var(--space-3);
+}
+.uv-preview__body {
+  color: var(--text-body);
+  margin-top: var(--space-4);
+  max-width: 42ch;
+}
+.uv-preview__card {
+  background: var(--sheet-paper);
+  padding: var(--space-6) var(--space-8);
+  box-shadow: var(--shadow-md);
+}
+.uv-preview__caption {
+  font-size: var(--size-micro);
+  color: var(--text-faint);
+  margin-top: var(--space-4);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: var(--weight-semibold);
+}
+
+/* ---------------- Poster close ---------------- */
+.uv-poster {
+  background: var(--poster-bg);
+  color: var(--poster-text);
+}
+.uv-poster__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-10);
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: var(--measure-page);
+  margin: 0 auto;
+  padding: var(--space-20) var(--space-8);
+}
+.uv-poster__eyebrow {
+  font-size: var(--size-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  font-weight: var(--weight-bold);
+  color: var(--poster-eyebrow);
+}
+.uv-poster__title {
+  font-size: var(--size-display-2);
+  line-height: var(--lh-display-2);
+  letter-spacing: var(--track-display);
+  color: var(--poster-text);
+  margin-top: var(--space-4);
+  max-width: 22ch;
+}
+.uv-btn--poster {
+  background: var(--poster-action);
+  color: var(--poster-action-text);
+}
+.uv-btn--poster:hover:not(:disabled) {
+  background: var(--amarillo-200);
+  color: var(--poster-action-text);
+}
+
+/* The landing's footer is the page's last band, so it carries no top rule. */
+.uv-footer--landing {
+  border-top: 0;
+  padding: var(--space-8);
 }
