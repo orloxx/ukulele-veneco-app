@@ -205,8 +205,10 @@ export default function Home() {
           <div className="uv-poster__inner">
             <div>
               <p className="uv-poster__eyebrow">Se toca donde sea</p>
+              {/* "Échale bola" is the idiom and the whole of it: échale on
+                  its own reads as a word that fell out (BUG-010). */}
               <h2 className="uv-poster__title">
-                Échale. El cancionero ya está en tu bolsillo.
+                Échale bola. El cancionero ya está en tu bolsillo.
               </h2>
             </div>
             <Link className="uv-btn uv-btn--lg uv-btn--poster" href="/list">
