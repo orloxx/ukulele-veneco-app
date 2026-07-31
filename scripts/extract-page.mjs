@@ -948,9 +948,11 @@ function main(argv) {
   const pdfPath = pdfArg >= 0 ? argv[pdfArg + 1] : DEFAULT_PDF;
 
   if (!fs.existsSync(pdfPath)) {
-    console.error(`No PDF at ${pdfPath}`);
+    console.error(`No cancionero at ${pdfPath}.`);
     console.error(
-      "The source is temporary by design — see DECISIONS.md 4 in the vault.",
+      "It is gitignored on purpose — public/ is served verbatim, so a committed copy\n" +
+        "would hand the whole book out at a guessable URL. Download the 2025 web edition\n" +
+        "from https://elukulelevene.co and drop it there.",
     );
     return 1;
   }

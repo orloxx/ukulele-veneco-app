@@ -40,6 +40,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# The source cancionero, read by scripts/extract-page.mjs. Deliberately never committed:
+# public/ is served verbatim, so a tracked copy would hand the whole book out at a
+# guessable URL — and git history would keep doing it long after the file was deleted.
+# Fetch it from https://elukulelevene.co if you need to transcribe.
+/public/*.pdf
+
 # PWA files
 /public/sw.js
 /public/sw.js.map

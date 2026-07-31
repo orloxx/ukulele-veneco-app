@@ -165,6 +165,12 @@ Most of the work left on this project is one job: getting the rest of Ciro Durá
 songbook out of `public/elukuleleveneco_2025_web.pdf` and into `songs/`. It is a loop,
 and it is the same loop every time.
 
+**That PDF is not in the repository, and never will be.** `public/` is served verbatim by
+Vercel, so a committed copy would publish the whole book at a guessable URL — and deleting
+it later would not help, because the history would keep serving it to every clone. It is
+gitignored. Download the 2025 web edition from [elukulelevene.co](https://elukulelevene.co)
+into `public/` when you need to transcribe, and leave it there.
+
 ```bash
 node scripts/extract-page.mjs 14        # 1. read the book page
 $EDITOR songs/quinta-anauco.md          # 2. write the song file
