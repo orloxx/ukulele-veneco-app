@@ -2,27 +2,63 @@
 
 interface LyricsDisplayProps {
   lyrics: string;
+  /**
+   * The names of the chords this song defines.
+   *
+   * Needed because a chord in round brackets is only a chord if the song says so: the
+   * cancionero uses round brackets for backing vocals and asides too, and
+   * `(Cuidado, mucho cuidado)` in colgando-en-tus-manos must stay as words.
+   */
+  chordNames: string[];
 }
 
-export default function LyricsDisplay({ lyrics }: LyricsDisplayProps) {
+interface LinePart {
+  chord?: string;
+  /** True for `(X)` — the chord arriving early rather than one to strum. */
+  anticipated?: boolean;
+  text: string;
+}
+
+export default function LyricsDisplay({
+  lyrics,
+  chordNames,
+}: LyricsDisplayProps) {
+  const defined = new Set(chordNames);
+
   // Parse a line to extract chords and text
   const parseLine = (line: string) => {
-    const parts: Array<{ chord?: string; text: string }> = [];
+    const parts: LinePart[] = [];
     let currentIndex = 0;
 
-    // Regex to find [ChordName] patterns
-    const chordRegex = /\[([^\]]+)\]/g;
+    // `[X]` is a chord to strum; `(X)` is an anticipation — the same chord landing
+    // early, optional or passing, which is what the book means by the round brackets
+    // (DECISIONS.md 9 in the vault). Both float above the syllable they sit on, and
+    // only the styling tells them apart.
+    const chordRegex = /\[([^\]]+)\]|\(([^()\s]+)\)/g;
     let match: RegExpExecArray | null = chordRegex.exec(line);
 
     while (match !== null) {
-      // Add text before the chord
-      if (match.index > currentIndex) {
-        parts.push({ text: line.slice(currentIndex, match.index) });
-      }
+      const [whole, bracketed, parenthesised] = match;
+      const chord =
+        bracketed ?? (defined.has(parenthesised) ? parenthesised : undefined);
 
-      // Add the chord
-      parts.push({ chord: match[1], text: "" });
-      currentIndex = match.index + match[0].length;
+      // Round brackets around anything the song has not defined are ordinary words,
+      // so they are left in the text: skipping the match without moving currentIndex
+      // means the next slice picks them up.
+      if (chord) {
+        // Add text before the chord
+        if (match.index > currentIndex) {
+          parts.push({ text: line.slice(currentIndex, match.index) });
+        }
+
+        // Add the chord
+        parts.push({
+          chord,
+          anticipated: bracketed === undefined,
+          text: "",
+        });
+        currentIndex = match.index + whole.length;
+      }
 
       match = chordRegex.exec(line);
     }
@@ -65,8 +101,14 @@ export default function LyricsDisplay({ lyrics }: LyricsDisplayProps) {
               className="relative inline-block"
             >
               {part.chord && (
-                <span className="absolute -top-8 left-0 text-blue-600 font-bold text-sm whitespace-nowrap">
-                  {part.chord}
+                <span
+                  className={`absolute -top-8 left-0 text-sm whitespace-nowrap ${
+                    part.anticipated
+                      ? "text-gray-500 font-medium"
+                      : "text-blue-600 font-bold"
+                  }`}
+                >
+                  {part.anticipated ? `(${part.chord})` : part.chord}
                 </span>
               )}
               <span className="text-gray-800 whitespace-pre-wrap">

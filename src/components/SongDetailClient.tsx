@@ -48,7 +48,10 @@ export function SongDetailClient({ song }: SongDetailClientProps) {
           {/* Left column: Lyrics */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-              <LyricsDisplay lyrics={song.lyrics} />
+              <LyricsDisplay
+                lyrics={song.lyrics}
+                chordNames={song.chordDefinitions.map((chord) => chord.name)}
+              />
             </div>
           </div>
 
