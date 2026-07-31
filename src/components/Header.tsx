@@ -22,7 +22,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => router.back()}
-            className="uv-btn uv-btn--ghost"
+            className="uv-btn uv-btn--ghost uv-btn--back"
           >
             <IconBack />
             <span>Volver</span>

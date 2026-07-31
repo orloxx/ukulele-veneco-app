@@ -225,7 +225,9 @@ export default function SongList({ songs }: SongListProps) {
           </thead>
           <tbody>
             {filteredSongs.length === 0 ? (
-              <tr>
+              // Marked, because below 640px every other row is laid out as a
+              // card grid and this one is a single full-width cell.
+              <tr className="uv-table__empty-row">
                 <td colSpan={6}>
                   <div className="uv-cell uv-table__empty">
                     No encontramos esa canción. Prueba con el nombre del

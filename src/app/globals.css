@@ -274,17 +274,23 @@
   --weight-bold: 700;
   --weight-display: 800;
 
-  /* Display — landing hero, section statements. Tight, negative-tracked. */
-  --size-display-1: 4.25rem;
+  /* Display — landing hero, section statements. Tight, negative-tracked.
+
+     Fluid rather than fixed: 4.25rem is 68px, which is a quarter of a 390px
+     phone's width per line. The design system declared the desktop size and did
+     no breakpoint work at all, so each of these keeps its declared value as the
+     ceiling and falls back on a viewport ratio below it. Nothing else in the
+     system scales — body copy at 16px is right at every width. */
+  --size-display-1: clamp(2.5rem, 8.5vw, 4.25rem);
   --lh-display-1: 0.98;
-  --size-display-2: 3rem;
+  --size-display-2: clamp(2rem, 6.5vw, 3rem);
   --lh-display-2: 1.02;
-  --size-display-3: 2.125rem;
+  --size-display-3: clamp(1.75rem, 5vw, 2.125rem);
   --lh-display-3: 1.08;
   --track-display: -0.025em;
 
   /* Headings — in-app titles. */
-  --size-h1: 1.75rem;
+  --size-h1: clamp(1.5rem, 4.5vw, 1.75rem);
   --size-h2: 1.375rem;
   --size-h3: 1.0625rem;
   --lh-heading: 1.2;
@@ -593,6 +599,9 @@ samp {
   background: transparent;
   color: var(--text-muted);
   padding: 0 var(--space-3);
+  /* A ghost button sizes to its content, and an icon-only one would come out
+     33px wide. --touch-min is a floor in both directions. */
+  min-width: var(--touch-min);
 }
 .uv-btn--ghost:hover:not(:disabled) {
   background: var(--surface-hover);
@@ -824,6 +833,10 @@ samp {
   /* The only transparency and the only blur in the whole system. It is here for
      one reason: lyrics scrolling under a sticky header have to stay legible. */
   background: color-mix(in oklab, var(--surface-page) 88%, transparent);
+  /* The prefix is not optional: iOS Safari only dropped it at 18, and the app is
+     used on whatever phone is in the room. Without it the bar is 88% opaque and
+     lyrics still read under it — the blur is the improvement, not the floor. */
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
   backdrop-filter: blur(10px) saturate(1.2);
   border-bottom: var(--border-hairline) solid var(--line-soft);
 }
@@ -963,6 +976,11 @@ samp {
   align-items: baseline;
   /* The chord's room. Reserved here rather than as leading inside the line box. */
   padding-top: var(--lyric-chord-gap);
+  /* And again between wrapped rows. The padding only reserves space above the
+     first row, so without this a line long enough to wrap — which on a phone is
+     most of them — drops the second row's chords on top of the first row's
+     words. Same measurement, same reason. */
+  row-gap: var(--lyric-chord-gap);
 }
 .uv-sheet-blank {
   height: 0.9em;
@@ -1058,6 +1076,9 @@ samp {
   gap: var(--space-3);
   text-decoration: none;
   color: inherit;
+  /* The mark is 27px tall and the lockup is a link home, so the box it is
+     tapped through is grown to --touch-min rather than the drawing. */
+  min-height: var(--touch-min);
 }
 .uv-logo:hover {
   color: inherit;
@@ -1519,4 +1540,223 @@ samp {
 .uv-footer--landing {
   border-top: 0;
   padding: var(--space-8);
+}
+
+/* ==========================================================================
+   The phone.
+
+   This is not the polish section. The app exists because a 300-page PDF is a bad
+   phone experience, and a redesign that is beautiful at 1200px and awkward at
+   375px would have reproduced the problem in a new typeface. The design system
+   said so in its own *Known gaps*: both UI kits were laid out for a desktop
+   viewport and no breakpoint work was done. All of this is work it deferred.
+
+   Two breakpoints, and each is where something actually breaks rather than where
+   a device happens to be:
+
+   - 900px — the two-column layouts (the hero, the sheet beside its chord panel)
+     stop having room for two columns.
+   - 640px — the song table stops having room for six columns.
+
+   Touch is a token, not a judgement call: nothing tappable goes below
+   --touch-min, because the app is used standing up holding an instrument. The
+   list's 18px checkbox is the single exception, and it sits inside a 44px label
+   in a row that is itself a link.
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .uv-page {
+    padding: var(--space-6) var(--space-4) var(--space-12);
+  }
+
+  /* The hero: art under the words, not beside them. */
+  .uv-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-10);
+  }
+  .uv-hero__art {
+    order: -1;
+  }
+  .uv-hero__art img {
+    max-width: 320px;
+  }
+  .uv-landing-section {
+    padding: var(--space-12) var(--space-6);
+  }
+  .uv-stats__grid,
+  .uv-preview__grid,
+  .uv-poster__inner {
+    padding: var(--space-10) var(--space-6);
+  }
+
+  .uv-preview__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+  .uv-preview__card {
+    padding: var(--space-5);
+    overflow-x: auto;
+  }
+
+  .uv-feature {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: var(--space-2) var(--space-4);
+    padding: var(--space-6) 0;
+  }
+  .uv-feature__body {
+    grid-column: 2;
+  }
+
+  /* The chord panel becomes a strip ABOVE the lyrics. Below them it is a
+     footnote nobody scrolls to — the chords are what you look up mid-song. */
+  .uv-song-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+  .uv-chord-panel {
+    order: -1;
+    position: static;
+  }
+  .uv-chord-panel__grid {
+    display: flex;
+    gap: var(--space-2);
+    overflow-x: auto;
+    padding-bottom: var(--space-2);
+    /* Each diagram keeps its size and the strip scrolls; shrinking them to fit
+       would defeat the point of showing a fingering at all. */
+    scroll-snap-type: x proximity;
+  }
+  .uv-chord-panel__grid > * {
+    flex: none;
+    scroll-snap-align: start;
+  }
+  .uv-sheet-paper {
+    padding: var(--space-5) var(--space-4);
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  /* "Volver" keeps its arrow and loses its word: at this width the header is
+     the mark, and the mark is what has to stay readable. The word is hidden
+     rather than dropped, so the button keeps its accessible name. */
+  .uv-btn--back span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .uv-btn--back {
+    padding: 0 var(--space-2);
+  }
+  /* The landing header keeps one action. The link to the original cancionero is
+     in the hero and in the footer, both a scroll away. */
+  .uv-header--static .uv-btn--ghost {
+    display: none;
+  }
+  .uv-logo__word--header {
+    font-size: 0.85rem;
+  }
+
+  .uv-stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6) var(--space-4);
+  }
+  .uv-poster__inner {
+    align-items: flex-start;
+    gap: var(--space-6);
+  }
+
+  .uv-filters__select {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  /* ---- The song table becomes a stack of cards ----
+     Same markup, laid out as cards: the alternative is a second component to
+     keep in step with the first. The header row goes, because a card carries no
+     column it needs explaining. */
+  .uv-table,
+  .uv-table tbody,
+  .uv-table td {
+    display: block;
+  }
+  .uv-table thead {
+    display: none;
+  }
+  .uv-table tbody tr {
+    display: grid;
+    grid-template-columns: auto auto auto 1fr auto;
+    grid-template-areas:
+      "title  title title title check"
+      "artist artist artist artist check"
+      "year   tono  compas .    check";
+    column-gap: var(--space-2);
+    row-gap: var(--space-1);
+    padding: var(--space-3) var(--space-4);
+    align-items: center;
+  }
+  .uv-table tbody td > a,
+  .uv-table tbody td > .uv-cell {
+    padding: 0;
+  }
+  .uv-table tbody td:nth-child(1) {
+    grid-area: check;
+  }
+  .uv-table tbody td:nth-child(2) {
+    grid-area: title;
+  }
+  .uv-table tbody td:nth-child(3) {
+    grid-area: artist;
+  }
+  .uv-table tbody td:nth-child(4) {
+    grid-area: year;
+  }
+  .uv-table tbody td:nth-child(5) {
+    grid-area: tono;
+  }
+  .uv-table tbody td:nth-child(6) {
+    grid-area: compas;
+  }
+  /* Año, tono and compás become chips. Still mono, because they are still the
+     musical facts. */
+  .uv-table tbody td:nth-child(n + 4) > a {
+    display: inline-flex;
+    align-items: center;
+    height: 22px;
+    padding: 0 var(--space-2);
+    border-radius: var(--radius-sm);
+    background: var(--surface-sunken);
+    font-size: var(--size-micro);
+    margin-top: var(--space-1);
+  }
+  /* The save box stays reachable at 44px and stays out of the way: the card's
+     primary action is opening the song, and the whole card is that. */
+  .uv-table__check-cell {
+    justify-content: flex-end;
+  }
+  .uv-table__empty-row {
+    display: block;
+  }
+  .uv-table__empty {
+    padding: var(--space-10) var(--space-4);
+  }
+}
+
+/* The narrowest screen the sheet should still be readable on. */
+@media (max-width: 380px) {
+  .uv-page {
+    padding: var(--space-5) var(--space-3) var(--space-10);
+  }
+  .uv-sheet {
+    font-size: 1rem;
+  }
+  .uv-sheet-paper {
+    padding: var(--space-4) var(--space-3);
+  }
+  .uv-table tbody tr {
+    padding: var(--space-3);
+  }
 }
