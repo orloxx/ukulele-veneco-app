@@ -4,6 +4,7 @@ import {
   IBM_Plex_Mono,
   Instrument_Sans,
 } from "next/font/google";
+import { ServiceWorker } from "@/components/ServiceWorker";
 import { THEME_SCRIPT } from "@/lib/theme";
 import "./globals.css";
 
@@ -142,6 +143,7 @@ export default function RootLayout({
           // biome-ignore lint/security/noDangerouslySetInnerHtml: the only way to inline a blocking script, and the source is a constant
           dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }}
         />
+        <ServiceWorker />
         {children}
       </body>
     </html>

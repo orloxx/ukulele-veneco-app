@@ -1,6 +1,42 @@
 import type { NextConfig } from "next";
 import withPWA from "next-pwa";
 
+/** One entry of `runtimeCaching`, as `next-pwa` types it. */
+type RuntimeCachingRule = NonNullable<
+  NonNullable<Parameters<typeof withPWA>[0]>["runtimeCaching"]
+>[number];
+
+/**
+ * Everything else on this origin — which above all means the pages themselves.
+ *
+ * It has to be last, because workbox takes the first rule that matches, and it
+ * has to exist at all: declaring `runtimeCaching` replaces next-pwa's defaults
+ * wholesale, and the default it replaced ended with exactly this rule. Without
+ * it not one HTML document was ever cached, so the app opened to the browser's
+ * offline page however many songs had been saved (BUG-007).
+ *
+ * 300 entries rather than next-pwa's 32: this app is 276 songs and two pages
+ * each, and a cached document is a few KB. `networkTimeoutSeconds` is what stops
+ * NetworkFirst from waiting out the browser's full timeout on one bar of signal
+ * before it reaches for the copy it already has.
+ *
+ * The cast covers two things next-pwa hands straight to workbox and left out of
+ * its own `.d.ts`: a function `urlPattern` and `networkTimeoutSeconds`. Its own
+ * default config uses both. The types are incomplete; the values are right.
+ */
+const cachePages = {
+  urlPattern: ({ url }: { url: URL }) => self.origin === url.origin,
+  handler: "NetworkFirst",
+  options: {
+    cacheName: "pages",
+    expiration: {
+      maxEntries: 300,
+      maxAgeSeconds: 60 * 60 * 24 * 30,
+    },
+    networkTimeoutSeconds: 10,
+  },
+} as unknown as RuntimeCachingRule;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -72,5 +108,6 @@ export default withPWA({
         },
       },
     },
+    cachePages,
   ],
 })(nextConfig);
