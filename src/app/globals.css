@@ -1,26 +1,1032 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   El Ukulele Veneco — the design system.
+
+   This file *is* the design system (vault DECISIONS.md 12). It was designed
+   outside the repo, in a Claude Design project, and landed here at M7; there is
+   no upstream to sync with and nothing is vendored. Edit this file.
+
+   Three rules the rest of the app depends on:
+
+   1. Product code uses the semantic aliases — --action-primary, --sheet-chord,
+      --text-muted — and NEVER a ramp step like --turquesa-600. That is the only
+      reason the dark theme below can be one block of overrides instead of an
+      audit of every component.
+   2. Monospace never appears outside a song sheet, a chord name, a tono or a
+      compás. One rule, and it is the whole reason a page of chord charts does
+      not read like a terminal.
+   3. No emoji anywhere in the interface. The middle dot and the em dash are
+      typographic separators, not symbols.
+
+   The semantic aliases are re-exported through `@theme inline` further down, so
+   `bg-surface-page` and `text-sheet-chord` are real Tailwind utilities. `inline`
+   is load-bearing: it compiles the utility to `var(--surface-page)` rather than
+   baking the light value in, which is what lets [data-theme="dark"] override it.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Ramps — 100 (lightest) to 900 (darkest). For one-off tints only.
+   -------------------------------------------------------------------------- */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Turquesa — the brand's primary. Off the ukulele badge's teal field. */
+  --turquesa-100: #dceff1;
+  --turquesa-200: #b3dde2;
+  --turquesa-300: #7fc3cc;
+  --turquesa-400: #45a3b0;
+  --turquesa-500: #14808f;
+  --turquesa-600: #0e6b7a;
+  --turquesa-700: #0b5462;
+  --turquesa-800: #08404b;
+  --turquesa-900: #062e36;
+
+  /* Amarillo — the turpial's breast. Capo, highlights, "nuevo". */
+  --amarillo-100: #fdf2d2;
+  --amarillo-200: #fae29a;
+  --amarillo-300: #f5ce5e;
+  --amarillo-400: #edb92c;
+  --amarillo-500: #dca30f;
+  --amarillo-600: #b8850a;
+  --amarillo-700: #8f6708;
+  --amarillo-800: #6b4c06;
+  --amarillo-900: #4a3404;
+
+  /* Rojo — chord names, and destructive actions. */
+  --rojo-100: #fce4de;
+  --rojo-200: #f7c1b5;
+  --rojo-300: #ef9682;
+  --rojo-400: #e26a50;
+  --rojo-500: #ce4227;
+  --rojo-600: #ae341c;
+  --rojo-700: #8a2816;
+  --rojo-800: #661d10;
+  --rojo-900: #46140b;
+
+  /* Azul — links and informational chrome. */
+  --azul-100: #dee7f8;
+  --azul-200: #b7c9ef;
+  --azul-300: #86a4e1;
+  --azul-400: #5079cb;
+  --azul-500: #2a55ae;
+  --azul-600: #1f4390;
+  --azul-700: #183470;
+  --azul-800: #112550;
+  --azul-900: #0b1934;
+
+  /* Verde — saved offline, success. */
+  --verde-100: #ddf0e3;
+  --verde-200: #b0dcbe;
+  --verde-300: #7cc291;
+  --verde-400: #46a063;
+  --verde-500: #1f8046;
+  --verde-600: #166438;
+  --verde-700: #114e2c;
+  --verde-800: #0c3a20;
+  --verde-900: #082715;
+
+  /* Papel — the warm neutral ramp. Not grey: the cancionero is printed paper. */
+  --papel-100: #fdfbf7;
+  --papel-200: #faf6ee;
+  --papel-300: #f2ebdd;
+  --papel-400: #e4dac6;
+  --papel-500: #c4b8a1;
+  --papel-600: #8d9298;
+  --papel-700: #566a72;
+  --papel-800: #2b444e;
+  --papel-900: #14262e;
+
+  /* ---------- Semantic: surfaces ---------- */
+  --surface-page: var(--papel-200);
+  --surface-raised: #ffffff;
+  --surface-sunken: var(--papel-300);
+  --surface-inverse: var(--papel-900);
+  --surface-hover: color-mix(in oklab, var(--papel-900) 5%, transparent);
+  --surface-press: color-mix(in oklab, var(--papel-900) 9%, transparent);
+
+  /* ---------- Semantic: text ---------- */
+  --text-strong: var(--papel-900);
+  --text-body: #23383f;
+  --text-muted: var(--papel-700);
+  --text-faint: var(--papel-600);
+  --text-on-accent: #ffffff;
+  --text-on-inverse: var(--papel-200);
+  --text-link: var(--azul-600);
+  --text-link-hover: var(--azul-700);
+
+  /* ---------- Semantic: lines ---------- */
+  --line-soft: var(--papel-400);
+  --line: var(--papel-500);
+  --line-strong: var(--papel-800);
+  --focus-ring: var(--turquesa-500);
+
+  /* ---------- Semantic: actions ---------- */
+  --action-primary: var(--turquesa-600);
+  --action-primary-hover: var(--turquesa-700);
+  --action-primary-press: var(--turquesa-800);
+  --action-primary-tint: var(--turquesa-100);
+  --action-danger: var(--rojo-600);
+  --action-danger-hover: var(--rojo-700);
+
+  /* ---------- Semantic: the song sheet ----------
+     These five are the load-bearing tokens of the whole product. */
+  --sheet-paper: #ffffff;
+  --sheet-lyric: var(--papel-900);
+  --sheet-chord: var(--rojo-600); /* [C] — a chord to strum */
+  --sheet-chord-anticipated: var(--papel-700); /* (C) — arriving early */
+  --sheet-section: var(--turquesa-700); /* Verso, Coro, Puente */
+  --sheet-capo: var(--amarillo-700);
+  --sheet-rule: var(--papel-400);
+
+  /* ---------- Semantic: chord diagram ---------- */
+  --diagram-string: var(--papel-700);
+  --diagram-fret: var(--papel-600);
+  --diagram-nut: var(--papel-900);
+  --diagram-dot: var(--turquesa-600);
+  --diagram-open: var(--papel-700);
+  --diagram-label: var(--papel-900);
+
+  /* ---------- Semantic: status ---------- */
+  --status-offline-bg: var(--amarillo-200);
+  --status-offline-text: var(--amarillo-900);
+  --status-saved-bg: var(--verde-100);
+  --status-saved-text: var(--verde-700);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* --------------------------------------------------------------------------
+   Space, size and shape. 4px base.
+
+   --radius-xs … --radius-xl deliberately reuse Tailwind's own theme variable
+   names, so `rounded-md` means 10px everywhere without a second vocabulary.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  --border-hairline: 1px;
+  --border-thick: 2px;
+
+  /* Layout */
+  --measure-page: 1200px;
+  --measure-prose: 62ch;
+  --measure-sheet: 40rem;
+  --header-height: 60px;
+
+  /* Touch — the app is played standing up, holding a ukulele. Nothing under 44. */
+  --touch-min: 44px;
+  --control-sm: 32px;
+  --control-md: 40px;
+  --control-lg: 48px;
 }
 
-@media (prefers-color-scheme: dark) {
+/* --------------------------------------------------------------------------
+   Elevation. Warm and shallow, tinted from the ink rather than pure black, so
+   cards read as paper lying on paper instead of glass floating in space.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --shadow-sm:
+    0 1px 2px rgba(20, 38, 46, 0.06), 0 1px 1px rgba(20, 38, 46, 0.04);
+  --shadow-md:
+    0 2px 4px rgba(20, 38, 46, 0.06), 0 6px 16px -6px rgba(20, 38, 46, 0.12);
+  --shadow-lg:
+    0 4px 8px rgba(20, 38, 46, 0.06), 0 18px 40px -12px rgba(20, 38, 46, 0.18);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --shadow-focus: 0 0 0 3px
+    color-mix(in oklab, var(--focus-ring) 35%, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   Motion. Short and unfussy. Nothing bounces; --ease-pluck is reserved for a
+   chord chip being pressed and is otherwise unused.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --dur-instant: 90ms;
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-slow: 400ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.5, 0, 0.5, 1);
+  --ease-pluck: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --dur-instant: 0ms;
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
   }
 }
 
+/* --------------------------------------------------------------------------
+   Type. Bricolage Grotesque sets the voice, Instrument Sans carries the
+   interface, IBM Plex Mono carries the music.
+
+   The three --font-* families are wired to next/font in layout.tsx: the fonts
+   are self-hosted at build time, so an offline-first PWA never calls Google.
+
+   There is no --sheet-scale. The song sheet has no zoom control, deliberately —
+   vault DECISIONS.md 13.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --font-display:
+    var(--font-bricolage), "Instrument Sans", system-ui, sans-serif;
+  --font-body: var(--font-instrument), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-display: 800;
+
+  /* Display — landing hero, section statements. Tight, negative-tracked. */
+  --size-display-1: 4.25rem;
+  --lh-display-1: 0.98;
+  --size-display-2: 3rem;
+  --lh-display-2: 1.02;
+  --size-display-3: 2.125rem;
+  --lh-display-3: 1.08;
+  --track-display: -0.025em;
+
+  /* Headings — in-app titles. */
+  --size-h1: 1.75rem;
+  --size-h2: 1.375rem;
+  --size-h3: 1.0625rem;
+  --lh-heading: 1.2;
+  --track-heading: -0.015em;
+
+  /* Body */
+  --size-body-lg: 1.125rem;
+  --size-body: 1rem;
+  --size-body-sm: 0.875rem;
+  --lh-body: 1.6;
+
+  /* Labels — table headers, kickers, eyebrow text. Uppercase, wide. */
+  --size-label: 0.75rem;
+  --track-label: 0.09em;
+  --size-micro: 0.6875rem;
+
+  /* Song sheet — the sizes a player reads at arm's length.
+     The lyric line-height hugs the text; the room a chord needs is added as
+     padding above each line (--lyric-chord-gap) instead, so the chord always
+     sits directly over its own syllable and can never drift onto the line
+     above. */
+  --size-lyric: 1.0625rem;
+  --lh-lyric: 1.3;
+  --lyric-chord-gap: 1.25em;
+  --size-chord: 0.8125rem;
+  --track-chord: 0.01em;
+  --size-sheet-section: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   Dark theme. Light is the default; dark exists because the app gets used at
+   night, on a porch, at a party. The ground goes to a deep teal-black rather
+   than neutral grey, and every accent steps two rungs lighter.
+
+   One block, no per-component work — that is rule 1 at the top of this file
+   paying for itself.
+   -------------------------------------------------------------------------- */
+
+[data-theme="dark"] {
+  --surface-page: #0f1a1e;
+  --surface-raised: #16252b;
+  --surface-sunken: #0a1316;
+  --surface-inverse: var(--papel-200);
+  --surface-hover: color-mix(in oklab, #ffffff 7%, transparent);
+  --surface-press: color-mix(in oklab, #ffffff 12%, transparent);
+
+  --text-strong: #ece6da;
+  --text-body: #d6cfc2;
+  --text-muted: #a1aeb3;
+  --text-faint: #74858b;
+  --text-on-accent: #06171b;
+  --text-on-inverse: var(--papel-900);
+  --text-link: var(--azul-300);
+  --text-link-hover: var(--azul-200);
+
+  --line-soft: #22343b;
+  --line: #2f454d;
+  --line-strong: #5c7078;
+  --focus-ring: var(--turquesa-300);
+
+  --action-primary: var(--turquesa-400);
+  --action-primary-hover: var(--turquesa-300);
+  --action-primary-press: var(--turquesa-200);
+  --action-primary-tint: color-mix(
+    in oklab,
+    var(--turquesa-400) 18%,
+    transparent
+  );
+  --action-danger: var(--rojo-400);
+  --action-danger-hover: var(--rojo-300);
+
+  --sheet-paper: #16252b;
+  --sheet-lyric: #ece6da;
+  --sheet-chord: var(--rojo-300);
+  --sheet-chord-anticipated: #8b9aa0;
+  --sheet-section: var(--turquesa-300);
+  --sheet-capo: var(--amarillo-300);
+  --sheet-rule: #2a3f47;
+
+  --diagram-string: #8b9aa0;
+  --diagram-fret: #5c7078;
+  --diagram-nut: #ded7c9;
+  --diagram-dot: var(--turquesa-300);
+  --diagram-open: #a1aeb3;
+  --diagram-label: #ece6da;
+
+  --status-offline-bg: var(--amarillo-800);
+  --status-offline-text: var(--amarillo-200);
+  --status-saved-bg: color-mix(in oklab, var(--verde-400) 22%, transparent);
+  --status-saved-text: var(--verde-200);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md:
+    0 2px 4px rgba(0, 0, 0, 0.35), 0 6px 16px -6px rgba(0, 0, 0, 0.5);
+  --shadow-lg:
+    0 4px 8px rgba(0, 0, 0, 0.35), 0 18px 40px -12px rgba(0, 0, 0, 0.6);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   The semantic aliases as Tailwind utilities. `inline` compiles each utility to
+   the aliased variable rather than to its light-theme value, which is what makes
+   the dark block above work.
+
+   Only semantic names are exported. A ramp step has no utility, on purpose.
+   -------------------------------------------------------------------------- */
+
+@theme inline {
+  --color-surface-page: var(--surface-page);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-inverse: var(--surface-inverse);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-press: var(--surface-press);
+
+  --color-strong: var(--text-strong);
+  --color-body: var(--text-body);
+  --color-muted: var(--text-muted);
+  --color-faint: var(--text-faint);
+  --color-on-accent: var(--text-on-accent);
+  --color-on-inverse: var(--text-on-inverse);
+  --color-link: var(--text-link);
+
+  --color-line-soft: var(--line-soft);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-action-primary: var(--action-primary);
+  --color-action-primary-hover: var(--action-primary-hover);
+  --color-action-primary-tint: var(--action-primary-tint);
+  --color-action-danger: var(--action-danger);
+
+  --color-sheet-paper: var(--sheet-paper);
+  --color-sheet-lyric: var(--sheet-lyric);
+  --color-sheet-chord: var(--sheet-chord);
+  --color-sheet-chord-anticipated: var(--sheet-chord-anticipated);
+  --color-sheet-section: var(--sheet-section);
+  --color-sheet-capo: var(--sheet-capo);
+  --color-sheet-rule: var(--sheet-rule);
+
+  --color-diagram-string: var(--diagram-string);
+  --color-diagram-fret: var(--diagram-fret);
+  --color-diagram-nut: var(--diagram-nut);
+  --color-diagram-dot: var(--diagram-dot);
+  --color-diagram-open: var(--diagram-open);
+  --color-diagram-label: var(--diagram-label);
+
+  --color-status-offline-bg: var(--status-offline-bg);
+  --color-status-offline-text: var(--status-offline-text);
+  --color-status-saved-bg: var(--status-saved-bg);
+  --color-status-saved-text: var(--status-saved-text);
+}
+
+/* --------------------------------------------------------------------------
+   Base element layer. Resets, the body type ramp, themed selection and focus.
+   Anything component-shaped lives in the uv-* layer below, not here.
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--surface-page);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  color: var(--text-strong);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--track-heading);
+  font-weight: var(--weight-bold);
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--text-link-hover);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+::selection {
+  background: var(--amarillo-200);
+  color: var(--papel-900);
+}
+
+[data-theme="dark"] ::selection {
+  background: var(--turquesa-700);
+  color: #ffffff;
+}
+
+code,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+/* ==========================================================================
+   The uv-* component layer.
+
+   Every primitive styles itself from here, so hover, focus and pressed states
+   live in one place and can never drift per screen.
+   ========================================================================== */
+
+/* ---------------- Button ---------------- */
+.uv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--touch-min);
+  padding: 0 var(--space-5);
+  border: var(--border-hairline) solid transparent;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--size-body-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-instant) var(--ease-out);
+}
+.uv-btn:active {
+  transform: translateY(1px);
+}
+.uv-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.uv-btn--primary {
+  background: var(--action-primary);
+  color: var(--text-on-accent);
+}
+.uv-btn--primary:hover:not(:disabled) {
+  background: var(--action-primary-hover);
+  color: var(--text-on-accent);
+}
+.uv-btn--primary:active:not(:disabled) {
+  background: var(--action-primary-press);
+}
+
+.uv-btn--secondary {
+  background: var(--surface-raised);
+  color: var(--text-strong);
+  border-color: var(--line);
+  box-shadow: var(--shadow-sm);
+}
+.uv-btn--secondary:hover:not(:disabled) {
+  border-color: var(--action-primary);
+  color: var(--action-primary);
+}
+.uv-btn--secondary:active:not(:disabled) {
+  background: var(--action-primary-tint);
+}
+
+.uv-btn--ghost {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 0 var(--space-3);
+}
+.uv-btn--ghost:hover:not(:disabled) {
+  background: var(--surface-hover);
+  color: var(--text-strong);
+}
+.uv-btn--ghost:active:not(:disabled) {
+  background: var(--surface-press);
+}
+
+/* Verde means saved. It is a state the button is reporting, not an action. */
+.uv-btn--saved {
+  background: var(--status-saved-bg);
+  color: var(--status-saved-text);
+  border-color: currentColor;
+}
+.uv-btn--saved:hover:not(:disabled) {
+  background: var(--status-saved-bg);
+  color: var(--status-saved-text);
+}
+
+.uv-btn--lg {
+  min-height: var(--control-lg);
+  padding: 0 var(--space-6);
+  font-size: var(--size-body);
+  border-radius: var(--radius-lg);
+}
+.uv-btn--block {
+  display: flex;
+  width: 100%;
+}
+
+/* ---------------- Icon button ---------------- */
+.uv-iconbtn {
+  display: inline-grid;
+  place-items: center;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+.uv-iconbtn:hover:not(:disabled) {
+  background: var(--surface-hover);
+  color: var(--text-strong);
+}
+.uv-iconbtn:active:not(:disabled) {
+  background: var(--surface-press);
+}
+.uv-iconbtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ---------------- Tag ---------------- */
+.uv-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: 22px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--size-micro);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+/* The licensed exception to "no mono outside a song sheet": a tono or a compás
+   is musical notation wherever it appears. */
+.uv-tag--mono {
+  font-family: var(--font-mono);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--size-label);
+}
+.uv-tag--teal {
+  background: var(--turquesa-100);
+  color: var(--turquesa-800);
+}
+.uv-tag--outline {
+  background: transparent;
+  color: var(--text-muted);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+[data-theme="dark"] .uv-tag--teal {
+  background: color-mix(in oklab, var(--turquesa-400) 20%, transparent);
+  color: var(--turquesa-200);
+}
+
+/* ---------------- Fields ---------------- */
+.uv-input,
+.uv-select {
+  width: 100%;
+  min-height: var(--touch-min);
+  padding: 0 var(--space-3);
+  background: var(--surface-raised);
+  color: var(--text-strong);
+  border: var(--border-hairline) solid var(--line);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--size-body-sm);
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+.uv-input::placeholder {
+  color: var(--text-faint);
+}
+.uv-input:hover,
+.uv-select:hover {
+  border-color: var(--line-strong);
+}
+.uv-input:focus-visible,
+.uv-select:focus-visible {
+  outline: none;
+  border-color: var(--action-primary);
+  box-shadow: var(--shadow-focus);
+}
+.uv-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.uv-search .uv-input {
+  padding-left: 38px;
+}
+.uv-search > svg {
+  position: absolute;
+  left: 12px;
+  color: var(--text-faint);
+  pointer-events: none;
+}
+.uv-select {
+  appearance: none;
+  padding-right: 34px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 52%,
+    calc(100% - 13px) 52%;
+  background-size:
+    5px 5px,
+    5px 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* Checkbox — the offline toggle in the song table lives on this. The 18px box is
+   under --touch-min; the label around it is not, which is what keeps the target
+   reachable in a dense row where the whole row is also a link. */
+.uv-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+  cursor: pointer;
+}
+.uv-check input {
+  appearance: none;
+  margin: 0;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  background: var(--surface-raised);
+  border: var(--border-thick) solid var(--line);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+.uv-check input:hover {
+  border-color: var(--action-primary);
+}
+.uv-check input:checked {
+  background: var(--action-primary);
+  border-color: var(--action-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5 6.5 11.5 12.5 4.5'/%3E%3C/svg%3E");
+  background-size: 100%;
+}
+.uv-check input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ---------------- Card ---------------- */
+.uv-card {
+  background: var(--surface-raised);
+  border: var(--border-hairline) solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------------- Header / footer ---------------- */
+.uv-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--header-height);
+  padding: 0 var(--space-4);
+  /* The only transparency and the only blur in the whole system. It is here for
+     one reason: lyrics scrolling under a sticky header have to stay legible. */
+  background: color-mix(in oklab, var(--surface-page) 88%, transparent);
+  backdrop-filter: blur(10px) saturate(1.2);
+  border-bottom: var(--border-hairline) solid var(--line-soft);
+}
+.uv-footer {
+  padding: var(--space-6) var(--space-4);
+  border-top: var(--border-hairline) solid var(--line-soft);
+  color: var(--text-muted);
+  font-size: var(--size-body-sm);
+}
+
+/* ---------------- Offline bar ---------------- */
+.uv-offline-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--status-offline-bg);
+  color: var(--status-offline-text);
+  font-size: var(--size-body-sm);
+  font-weight: var(--weight-medium);
+}
+
+/* ---------------- Song table ---------------- */
+.uv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--size-body-sm);
+}
+.uv-table thead th {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  background: var(--surface-sunken);
+  border-bottom: var(--border-hairline) solid var(--line);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: var(--size-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.uv-table tbody tr {
+  border-bottom: var(--border-hairline) solid var(--line-soft);
+}
+.uv-table tbody tr:last-child {
+  border-bottom: 0;
+}
+.uv-table tbody tr:hover {
+  background: var(--surface-hover);
+}
+.uv-table td {
+  padding: 0;
+  vertical-align: middle;
+}
+.uv-table td > a,
+.uv-table td > .uv-cell {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  color: inherit;
+  text-decoration: none;
+}
+.uv-table .uv-td-title {
+  font-weight: var(--weight-semibold);
+  color: var(--text-strong);
+}
+.uv-table .uv-td-muted {
+  color: var(--text-muted);
+}
+.uv-table .uv-td-mono {
+  font-family: var(--font-mono);
+  font-size: var(--size-body-sm);
+  color: var(--text-body);
+}
+
+/* ---------------- Song sheet ----------------
+   The one place monospace belongs. */
+.uv-sheet {
+  font-family: var(--font-mono);
+  font-size: var(--size-lyric);
+  line-height: var(--lh-lyric);
+  color: var(--sheet-lyric);
+}
+.uv-sheet-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  /* The chord's room. Reserved here rather than as leading inside the line box. */
+  padding-top: var(--lyric-chord-gap);
+}
+.uv-sheet-blank {
+  height: 0.9em;
+}
+.uv-sheet-syllable {
+  position: relative;
+  display: inline-block;
+  white-space: pre-wrap;
+  /* Guarantees a box for the chord to sit above, even on a chord-only fragment. */
+  min-height: 1em;
+}
+.uv-chord {
+  /* Pinned to the top of the syllable's line box rather than offset from its
+     baseline: the padding above the line reserves exactly this space, so the
+     chord can never climb onto the line above. */
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 0.1em;
+  left: 0;
+  font-family: var(--font-mono);
+  font-size: var(--size-chord);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--track-chord);
+  /* Tight box: without this the chord inherits the lyric's line-height and its
+     glyphs float a whole line too high. */
+  line-height: 1;
+  color: var(--sheet-chord);
+  white-space: nowrap;
+}
+.uv-chord--anticipated {
+  font-weight: var(--weight-medium);
+  color: var(--sheet-chord-anticipated);
+}
+.uv-sheet-section {
+  margin: var(--space-6) 0 var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--size-sheet-section);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--sheet-section);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.uv-sheet-section::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--sheet-rule);
+}
+
+/* ---------------- Chord diagram ---------------- */
+.uv-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-2) var(--space-3);
+  background: var(--surface-raised);
+  border: var(--border-hairline) solid var(--line-soft);
+  border-radius: var(--radius-md);
+}
+.uv-diagram__name {
+  font-family: var(--font-mono);
+  font-size: var(--size-body-sm);
+  font-weight: var(--weight-bold);
+  color: var(--diagram-label);
+}
+
+/* ---------------- Capo ---------------- */
+.uv-capo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--amarillo-100);
+  color: var(--sheet-capo);
+  font-size: var(--size-label);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+}
+[data-theme="dark"] .uv-capo {
+  background: color-mix(in oklab, var(--amarillo-400) 18%, transparent);
+}
+
+/* ---------------- Logo ---------------- */
+.uv-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: inherit;
+}
+.uv-logo:hover {
+  color: inherit;
+}
+.uv-logo__word {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  letter-spacing: var(--track-display);
+  line-height: 0.94;
+  color: var(--text-strong);
+}
+.uv-logo__word em {
+  font-style: normal;
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  font-size: 0.44em;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--action-primary);
+  line-height: 1.4;
+}
+
+/* ---------------- Utilities ---------------- */
+.uv-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--size-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--action-primary);
+}
+.uv-label {
+  font-family: var(--font-body);
+  font-size: var(--size-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.uv-display {
+  font-family: var(--font-display);
+  letter-spacing: var(--track-display);
+}
+.uv-mono {
+  font-family: var(--font-mono);
 }

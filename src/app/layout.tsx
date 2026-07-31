@@ -1,15 +1,41 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Bricolage_Grotesque,
+  IBM_Plex_Mono,
+  Instrument_Sans,
+} from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/**
+ * The design system's three families, loaded through `next/font/google` rather
+ * than the `@import` the design project shipped.
+ *
+ * Next self-hosts them at build time, which is the whole point for an
+ * offline-first PWA: no third-party request, no FOUT, and no cache rules for a
+ * host the app never calls — which is why `runtimeCaching` in `next.config.ts`
+ * has no `fonts.googleapis.com` or `fonts.gstatic.com` entry.
+ */
+
+/** Display and headings — slightly irregular, human, not another grotesk. */
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+/** All interface text — clean Spanish accents at small sizes. */
+const instrument = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin"],
+  display: "swap",
+});
+
+/** The song sheet, chord names, tonos and compases. Nowhere else. */
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -80,12 +106,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    // The three font variables go on <html>, not <body>: globals.css builds
+    // --font-mono and friends out of them in a `:root` block, and a var() that
+    // resolves to nothing makes the whole custom property invalid — which would
+    // silently drop the song sheet back to the body font.
+    <html
+      lang="es"
+      className={`${bricolage.variable} ${instrument.variable} ${plexMono.variable}`}
+    >
+      <body>{children}</body>
     </html>
   );
 }
