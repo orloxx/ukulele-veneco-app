@@ -1,0 +1,72 @@
+---
+title: Dame un break
+artist: Rawayana
+year: 2023
+key: Am
+timeSignature: 4/4
+chords:
+  - name: Am
+    positions: "2000"
+  - name: Em
+    positions: "0402"
+  - name: Dm
+    positions: "2210"
+---
+
+Capo 1
+
+[Am]·  · [Em]·  · | [Dm]·  · · · | [Am]·  · [Em]·  · | [Dm]·  ·
+
+## Coro
+Nadie nece[Am]sita saber [Em]si tú estás con [Dm]él
+Yo también es[Am]toy cuadrando [Em]con otra mu[Dm]jer
+Pero hay una [Am]regla que no [Em]se puede rom[Dm]per
+Y es que nadie pu[Am]blica al otro [Em]clavo en inter[Dm]net, eh, eh
+Dame un [Am]break, eh, [Em]eh, eh, [Dm]eh, eh, eh
+Dame un [Am]break, break, [Em]break, break, [Dm]break, break [Dm]↓
+
+Ya vi tus s[Am]tories, ah, [Em]   yo sé có[Dm]mo te pone el ron con Coca-Cola
+Tenías la [Am]tabla, ah, [Em]    todos sa[Dm]bemos que en esa playa no hay olas
+Y si tú la [Am]’tas pasando [Em]bien, ¿Por qué le pones [Dm]mi canción a él?
+¿Qué sitio ele[Am]giste pa’ escon[Em]der tu nuevo a[Dm]mor?, mmm
+
+Ya la emba[Am]rraste  [Em]
+Hasta mi [Dm]tía y la vecina saben del [Am]hombre  [Em]
+Llamó mi her[Dm]mana, para decirme: "no lleva [Am]chance"   [Em]
+Coño, ma[Dm]rica, es que esa línea ya la cru[Am]zaste, [Em] te bole[Dm]↓ teaste
+
+Nadie nece[Am]sita saber [Em]si tú estás con [Dm]él
+Yo también es[Am]toy cuadrando [Em]con otra mu[Dm]jer
+Pero hay una [Am]regla que no [Em]se puede rom[Dm]per
+Y es que nadie pu[Am]blica al otro [Em]clavo en inter[Dm]net, eh
+Nadie nece[Am]sita saber [Em]si tú estás con [Dm]él
+Yo también es[Am]toy cuadrando [Em]con otra mu[Dm]jer
+Pero hay una [Am]cosa que tú [Em]tienes que enten[Dm]der
+Y es que nadie pu[Am]blica al otro [Em]clavo en inter[Dm]net, eh, eh
+Dame un [Am]break, break, [Em]break, break, [Dm]break, break, break
+Dame un [Am]break, break, [Em]break, break, [Dm]break, break, bre—
+
+Cuida’o y [Am]te revuelcan [Em]esas olas, [Dm] ah, ah
+En TikTok [Am]te veo bai[Em]lando sola, [Dm] ah, ah
+Para olvi[Am]darte, no ve[Em]o la hora, [Dm] ah, ah
+Pero a ese [Am]ron le falta [Em]Coca-Cola, [Dm] ah, ah
+
+Ya la emba[Am]rraste  [Em]
+Hasta mi [Dm]tía y la vecina saben del [Am]hombre  [Em]
+Llamó mi her[Dm]mana, para decirme: "no lleva [Am]chance"   [Em]
+Coño, ma[Dm]mita, es que esa línea ya la cru[Am]zaste, [Em] te bole[Dm]↓ teaste
+
+Nadie nece[Am]sita saber [Em]si tú estás con [Dm]él
+Yo también es[Am]toy cuadrando [Em]con otra mu[Dm]jer
+Pero hay una [Am]regla que no [Em]se puede rom[Dm]per
+Y es que nadie pu[Am]blica al otro [Em]clavo en inter[Dm]net, eh
+Nadie nece[Am]sita saber [Em]si tú estás con [Dm]él (no, no)
+Yo también es[Am]toy cuadrando [Em]con otra mu[Dm]jer (y una mejor que tú)
+Pero hay una [Am]cosa que tú [Em]tienes que enten[Dm]der
+Y es que nadie pu[Am]blica al otro [Em]clavo en inter[Dm]net, eh, eh (Al clavo en internet)
+
+Dame un [Am]break, break, [Em]break, break, [Dm]break, break, break (Al clavo en internet)
+Dame un [Am]break, break, [Em]break, break, [Dm]break, break, break (Al clavo en internet)
+Dame un [Am]break, break, [Em]break, break, [Dm]break, break, break (Al clavo en internet)
+Dame un [Am]break, break, [Em]break, break, [Dm]break, break, break
+(Al clavo en inter     [Am]↓ net)
