@@ -4,6 +4,7 @@ import {
   IBM_Plex_Mono,
   Instrument_Sans,
 } from "next/font/google";
+import { THEME_SCRIPT } from "@/lib/theme";
 import "./globals.css";
 
 /**
@@ -125,11 +126,23 @@ export default function RootLayout({
     // --font-mono and friends out of them in a `:root` block, and a var() that
     // resolves to nothing makes the whole custom property invalid — which would
     // silently drop the song sheet back to the body font.
+    // suppressHydrationWarning because THEME_SCRIPT below has already written
+    // data-theme onto this element by the time React hydrates.
     <html
       lang="es"
       className={`${bricolage.variable} ${instrument.variable} ${plexMono.variable}`}
+      suppressHydrationWarning
     >
-      <body>{children}</body>
+      <body>
+        {/* First thing in the body, and blocking, so the stored theme is applied
+            before anything is painted. An effect would be too late: every
+            night-time load would flash cream. */}
+        <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: the only way to inline a blocking script, and the source is a constant
+          dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

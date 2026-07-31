@@ -785,6 +785,20 @@ samp {
   box-shadow: var(--shadow-sm);
 }
 
+/* ---------------- Page shell ---------------- */
+.uv-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+.uv-page {
+  flex: 1;
+  width: 100%;
+  max-width: var(--measure-page);
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6) var(--space-12);
+}
+
 /* ---------------- Header / footer ---------------- */
 .uv-header {
   position: sticky;
@@ -801,11 +815,52 @@ samp {
   backdrop-filter: blur(10px) saturate(1.2);
   border-bottom: var(--border-hairline) solid var(--line-soft);
 }
+/* The header is full-bleed but its contents line up with the page column, so the
+   mark sits over the first cell of the table rather than in the margin. */
+.uv-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: var(--measure-page);
+  margin: 0 auto;
+}
+.uv-header__spacer {
+  flex: 1;
+}
+.uv-logo__word--header {
+  font-size: 0.95rem;
+}
+
 .uv-footer {
   padding: var(--space-6) var(--space-4);
   border-top: var(--border-hairline) solid var(--line-soft);
   color: var(--text-muted);
   font-size: var(--size-body-sm);
+}
+.uv-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-6);
+  width: 100%;
+  max-width: var(--measure-page);
+  margin: 0 auto;
+}
+
+/* ---------------- Theme toggle ----------------
+   Both icons are always in the DOM and CSS picks one, so the correct icon is
+   showing before React hydrates and the server's markup matches the client's.
+   See ThemeToggle.tsx. */
+.uv-theme-toggle__light,
+.uv-theme-toggle__dark {
+  display: none;
+  line-height: 0;
+}
+[data-theme="light"] .uv-theme-toggle__light,
+[data-theme="dark"] .uv-theme-toggle__dark {
+  display: block;
 }
 
 /* ---------------- Offline bar ---------------- */
@@ -819,6 +874,15 @@ samp {
   color: var(--status-offline-text);
   font-size: var(--size-body-sm);
   font-weight: var(--weight-medium);
+  text-align: center;
+}
+.uv-offline-bar--fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding-bottom: max(var(--space-3), env(safe-area-inset-bottom));
 }
 
 /* ---------------- Song table ---------------- */

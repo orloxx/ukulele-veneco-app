@@ -8,7 +8,6 @@
 import ChordDiagram from "@/components/ChordDiagram";
 import LyricsDisplay from "@/components/LyricsDisplay";
 import { SaveOfflineButton } from "@/components/SaveOfflineButton";
-import { containerStyles } from "@/lib/styles";
 import type { ParsedSong } from "@/types/song";
 
 interface SongDetailClientProps {
@@ -17,11 +16,11 @@ interface SongDetailClientProps {
 
 export function SongDetailClient({ song }: SongDetailClientProps) {
   return (
-    <div className={containerStyles.page}>
+    <div className="relative">
       {/* Main content */}
-      <main className={`${containerStyles.main} py-8 relative`}>
+      <div>
         {/* Save button - positioned top right */}
-        <div className="absolute top-8 right-4 lg:right-0">
+        <div className="absolute top-0 right-0">
           <SaveOfflineButton
             song={song as ParsedSong}
             variant="full"
@@ -69,7 +68,7 @@ export function SongDetailClient({ song }: SongDetailClientProps) {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

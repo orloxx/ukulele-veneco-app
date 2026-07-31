@@ -1,18 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { IconWifiSlash } from "@/components/icons";
 
+/**
+ * The bar that appears when the device drops off the network.
+ *
+ * Amarillo, never rojo, and never the word *error*: being offline is this app
+ * working as designed. The copy says what the reader is looking at rather than
+ * what has gone wrong, and there is no 📱 — no emoji anywhere in this interface
+ * (vault DECISIONS.md 12).
+ */
 export function OfflineIndicator() {
   const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
-    const handleOnline = () => {
-      setIsOffline(false);
-    };
-
-    const handleOffline = () => {
-      setIsOffline(true);
-    };
+    const handleOnline = () => setIsOffline(false);
+    const handleOffline = () => setIsOffline(true);
 
     // Set initial state
     setIsOffline(!navigator.onLine);
@@ -29,8 +33,11 @@ export function OfflineIndicator() {
   if (!isOffline) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-yellow-500 text-white px-4 py-3 text-center text-sm z-50">
-      📱 Modo offline: Estás viendo contenido guardado en tu dispositivo
-    </div>
+    // <output> rather than a div with role="status": same implicit role and
+    // polite live region, one element less to explain.
+    <output className="uv-offline-bar uv-offline-bar--fixed">
+      <IconWifiSlash />
+      Sin conexión — estás viendo lo que guardaste en el teléfono.
+    </output>
   );
 }

@@ -1,15 +1,9 @@
 import SongList from "@/components/SongList";
 import { getAllSongs } from "@/lib/songs";
-import { containerStyles } from "@/lib/styles";
 
+// The page column belongs to the app shell, not to this route — (app)/layout.tsx.
 export default function ListPage() {
   const songs = getAllSongs();
 
-  return (
-    <div className={containerStyles.page}>
-      <main className={`${containerStyles.main} py-12`}>
-        <SongList songs={songs} />
-      </main>
-    </div>
-  );
+  return <SongList songs={songs} />;
 }
