@@ -41,7 +41,10 @@ before committing a song rather than something to run while editing a component.
 ### Song Data Flow
 
 1. **Source**: Songs are stored as markdown files in `songs/` directory
-2. **Parsing**: `src/lib/songs.ts` uses `gray-matter` to parse frontmatter and content
+2. **Parsing**: `src/lib/songs.ts` uses `gray-matter` to parse frontmatter and content,
+   then `parseLeadingNotes()` lifts a `Capo <n>` line and any leading instruction out
+   of the body into the metadata. Nothing in `songs/` is edited for it; the parse is
+   deliberately conservative and leaves anything that looks aligned in the sheet
 3. **Rendering**: Components consume `ParsedSong` objects with metadata and chord definitions
 
 ### Key Components
@@ -50,10 +53,28 @@ before committing a song rather than something to run while editing a component.
 - **LyricsDisplay** (`src/components/LyricsDisplay.tsx`): Parses `[ChordName]` notation and positions chords above lyrics
 - **ChordDiagram** (`src/components/ChordDiagram.tsx`): SVG-based ukulele chord diagrams using 4-digit position strings (GCEA)
 
+**`LyricsDisplay` is the most sensitive code in the app.** A chord moved one syllable
+to the left looks correct and plays wrong, and nothing automated catches it —
+`pnpm validate` reads the source Markdown, `extract-page.mjs --verify` compares
+fingerings, and neither looks at the screen. Two things hold a chord in place and
+they are a pair: it is attached to the text that *follows* it and positioned at
+`bottom: 100%` of that text's box, and the room it needs is reserved as
+`padding-top` **and** `row-gap` on the line — the row-gap is what stops a wrapped
+line, which on a phone is most of them, dropping the second row's chords onto the
+first row's words.
+
 ### Routes
 
-- `/` - Home page with filterable song list
-- `/song/[slug]` - Individual song page with lyrics and chord diagrams (static generation)
+- `/` — the landing page. Marketing rather than tool, and the only screen with
+  display type, a full-colour band and an image
+- `/list` — the catalogue: a filterable table, server-rendered, filtered client-side
+- `/song/[slug]` — the song sheet: lyrics with chords over their syllables, and the
+  chord panel (static generation)
+- `/song/[slug]/acordes` — every chord in the song drawn large, with the explainer.
+  Same `generateStaticParams` as the sheet
+- `src/app/not-found.tsx` — one 404 for the whole app. Both song routes set
+  `dynamicParams = false`, so an unknown slug is served this page statically
+  rather than booting a render just to throw
 
 ### Type System
 
@@ -340,3 +361,35 @@ with it at M6. That is also why this one is not wired into `pnpm validate` — s
 - Uses Biome for linting and formatting
 - TypeScript strict mode enabled
 - Tailwind CSS v4 for styling
+
+## The design system
+
+**`src/app/globals.css` is the design system.** It was designed outside the repo
+and landed here at M7; there is no upstream, nothing is vendored, and there is no
+sync to keep running. Edit that file. Read its header before writing any new
+screen — three rules in it are the ones that will rot first, because a grep of
+the existing code will not teach you any of them:
+
+1. **Product code uses the semantic aliases, never a ramp step.** `--action-primary`,
+   `--sheet-chord`, `--text-muted` — not `--turquesa-600`. This is the only reason
+   the dark theme is one block of overrides instead of an audit of every component.
+   The aliases are also Tailwind utilities (`bg-surface-page`, `text-sheet-chord`)
+   via `@theme inline`; a ramp step deliberately has no utility.
+2. **Monospace never appears outside a song sheet, a chord name, a tono or a
+   compás** — plus the landing's counted figures, which the system sanctions and
+   nothing else does.
+3. **No emoji anywhere in the interface.** If a UI needs a symbol it needs an icon
+   from `src/components/icons.tsx`, which inlines Phosphor paths so the PWA has
+   no icon dependency to cache.
+
+Components are styled with the `uv-*` class layer in that file plus Tailwind
+utilities for layout. `--radius-xs` through `--radius-xl` deliberately reuse
+Tailwind's own theme variable names, so `rounded-md` means 10px without a second
+vocabulary.
+
+**The song sheet has no zoom control, and `--sheet-scale` is not in the token
+layer.** The design prototype ships one, so this gets re-proposed; the reason it
+is not built is at the call site in `LyricsDisplay.tsx`.
+
+**`ServiceWorker.tsx` is not redundant with `register: true` in
+`next.config.ts`.** That setting is broken for the App Router — see BUG-007.
