@@ -9,6 +9,11 @@ interface ChordDiagramProps {
   size?: number;
   /** Off in the chord viewer, which sets the name in heading type instead. */
   showName?: boolean;
+  /**
+   * Off when the caller draws the card itself — the chord viewer wraps the grid
+   * in its own, and two `uv-diagram` borders inside each other read as a mistake.
+   */
+  frame?: boolean;
   className?: string;
 }
 
@@ -52,6 +57,7 @@ export default function ChordDiagram({
   chord,
   size = 100,
   showName = true,
+  frame = true,
   className,
 }: ChordDiagramProps) {
   const { name, positions } = chord;
@@ -60,8 +66,12 @@ export default function ChordDiagram({
   const strings = positions.split("").map((pos) => parseInt(pos, 10));
   const base = windowBase(strings);
 
+  const classes = [frame ? "uv-diagram" : null, className]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div className={className ? `uv-diagram ${className}` : "uv-diagram"}>
+    <div className={classes || undefined}>
       {/* Chord name — mono, because a chord name is musical notation. */}
       {showName && <div className="uv-diagram__name">{name}</div>}
 

@@ -1276,6 +1276,9 @@ samp {
   font-size: var(--size-micro);
   color: var(--text-faint);
 }
+.uv-chords-view__back {
+  margin-top: var(--space-10);
+}
 
 /* ==========================================================================
    Not found.
