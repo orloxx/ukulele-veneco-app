@@ -76,6 +76,7 @@ Ri[G]e sin la alegrí[F#m]a que te robé
 Que tal [F#m]vez un [G]día estarás allí[F#m] ...que de vez en [G]cuando pensarás en mí[A7]
 
 ## Riff
+[D]· · [Em]·  · | [A]· · [F#7]·   · | [Bm]·  · [Bm]·  · | [Em]·  · [A]· · (x2)
 
 [Bm7sus4]        [B7]
 
@@ -97,3 +98,4 @@ Que tal [F#m]vez un [G]día estarás allí[F#m]
 Que de vez en [G]cuando pensarás en mí[A7]
 
 ## Outro Riff
+[D]· · [Em]·  · | [A]· · [F#7]·   · | [Bm]·  · [Bm]·  · | [Em]·  · [A]· · (x2)
