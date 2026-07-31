@@ -727,7 +727,8 @@ samp {
     border-color var(--dur-fast) var(--ease-out),
     box-shadow var(--dur-fast) var(--ease-out);
 }
-.uv-input::placeholder {
+.uv-input::placeholder,
+.uv-select::placeholder {
   color: var(--text-faint);
 }
 .uv-input:hover,
@@ -768,6 +769,66 @@ samp {
     5px 5px;
   background-repeat: no-repeat;
   cursor: pointer;
+}
+
+/* Combobox — the two filters in /list. Closed it is a .uv-select and nothing
+   else: the trigger above is the same input, so the control the reader knows
+   does not change shape until they type at it. Open, the listbox hangs off the
+   wrapper, which is why the wrapper and not the input carries the sizing class
+   from .uv-filters. */
+.uv-combobox {
+  position: relative;
+}
+/* A pointer over a select says "this opens"; over this one it also says "this
+   takes what you type", and the caret above still says the first thing. */
+.uv-combobox__input {
+  cursor: text;
+  text-overflow: ellipsis;
+}
+.uv-combobox__list {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + var(--space-1));
+  left: 0;
+  right: 0;
+  /* 478 artistas. The cap is the difference between a list and a page that
+     grows past the bottom of the screen; --touch-min per row puts about six
+     of them in view, which is a list you can aim at standing up. */
+  max-height: calc(var(--touch-min) * 6);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin: 0;
+  padding: var(--space-1);
+  list-style: none;
+  background: var(--surface-raised);
+  border: var(--border-hairline) solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+.uv-combobox__option {
+  display: flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--text-body);
+  font-size: var(--size-body-sm);
+  cursor: pointer;
+}
+/* The active option is the one the arrow keys are on and the one the mouse is
+   over — one state, because they are one idea, and a list with two highlights
+   in it is a list where neither means anything. */
+.uv-combobox__option[data-active="true"] {
+  background: var(--surface-hover);
+}
+.uv-combobox__option[aria-selected="true"] {
+  color: var(--action-primary);
+  font-weight: var(--weight-semibold);
+}
+.uv-combobox__empty {
+  padding: var(--space-3);
+  color: var(--text-muted);
+  font-size: var(--size-body-sm);
 }
 
 /* Checkbox — the offline toggle in the song table lives on this. The 18px box is

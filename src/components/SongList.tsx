@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { FilterCombobox, foldForSearch } from "@/components/FilterCombobox";
 import { IconCheck, IconSearch } from "@/components/icons";
 import {
   parsedSongToStoredSong,
@@ -83,12 +84,18 @@ export default function SongList({ songs }: SongListProps) {
 
   // Filtering stays client-side over the in-memory array: 276 songs is nothing,
   // and there is no reason for it to be anything cleverer.
+  //
+  // The search box folds accents for the same reason the artista combobox
+  // beside it does, and through the same function: the two sit on one row over
+  // one collection, and a "simon" that finds Simón Díaz in one of them and
+  // nothing in the other is worse than neither doing it.
   const filteredSongs = useMemo(() => {
+    const needle = foldForSearch(searchTerm);
     return songs.filter((song) => {
       const matchesSearch =
-        searchTerm === "" ||
-        song.metadata.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        song.metadata.artist.toLowerCase().includes(searchTerm.toLowerCase());
+        needle === "" ||
+        foldForSearch(song.metadata.title).includes(needle) ||
+        foldForSearch(song.metadata.artist).includes(needle);
 
       const matchesKey = keyFilter === "" || song.metadata.key === keyFilter;
 
@@ -236,33 +243,26 @@ export default function SongList({ songs }: SongListProps) {
           />
         </div>
 
-        <select
-          className="uv-select uv-filters__select"
+        {/* The sizing class goes on the combobox's wrapper, not on its input:
+            the listbox is positioned against the wrapper, so the wrapper is
+            what has to be the width of the control. */}
+        <FilterCombobox
+          className="uv-filters__select"
+          label="Filtrar por tono"
+          emptyLabel="Todos los tonos"
+          options={uniqueKeys}
           value={keyFilter}
-          onChange={(e) => setKeyFilter(e.target.value)}
-          aria-label="Filtrar por tono"
-        >
-          <option value="">Todos los tonos</option>
-          {uniqueKeys.map((key) => (
-            <option key={key} value={key}>
-              {key}
-            </option>
-          ))}
-        </select>
+          onChange={setKeyFilter}
+        />
 
-        <select
-          className="uv-select uv-filters__select"
+        <FilterCombobox
+          className="uv-filters__select"
+          label="Filtrar por artista"
+          emptyLabel="Todos los artistas"
+          options={uniqueArtists}
           value={artistFilter}
-          onChange={(e) => setArtistFilter(e.target.value)}
-          aria-label="Filtrar por artista"
-        >
-          <option value="">Todos los artistas</option>
-          {uniqueArtists.map((artist) => (
-            <option key={artist} value={artist}>
-              {artist}
-            </option>
-          ))}
-        </select>
+          onChange={setArtistFilter}
+        />
 
         {hasFilters && (
           <button
