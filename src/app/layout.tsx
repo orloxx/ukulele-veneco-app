@@ -72,7 +72,8 @@ export const metadata: Metadata = {
 
   // The mark, at every size a platform asks for. There is no favicon.ico: the
   // 32px SVG is the same drawing and scales, where the .ico it replaced was a
-  // gradient square with a 🎸 set as text — a glyph that renders differently on
+  // gradient square with a guitar emoji set as text — a glyph that renders
+  // differently on
   // every platform and not at all where the font has no colour table.
   icons: {
     icon: [

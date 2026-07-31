@@ -8,7 +8,8 @@ import { IconWifiSlash } from "@/components/icons";
  *
  * Amarillo, never rojo, and never the word *error*: being offline is this app
  * working as designed. The copy says what the reader is looking at rather than
- * what has gone wrong, and there is no 📱 — no emoji anywhere in this interface
+ * what has gone wrong, and the phone emoji is gone with it — no emoji anywhere
+ * in this interface
  * (vault DECISIONS.md 12).
  */
 export function OfflineIndicator() {
