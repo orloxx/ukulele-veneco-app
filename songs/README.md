@@ -47,6 +47,27 @@ the `chords:` block comes out already correct — paste it as it comes.
 `node scripts/extract-page.mjs --verify` checks every song against its page and fails on
 a disagreement.
 
+### Notes above the song
+
+Anything the cancionero prints about the song as a whole, rather than about a line of it,
+goes as a plain line at the top of the body — above the first `##` heading:
+
+```markdown
+---
+…frontmatter…
+---
+
+Capo 1
+
+## Intro
+```
+
+The two that occur are **`Capo <n>`**, printed on 51 of the book's 277 pages, and the
+occasional instruction like `Versión más simple para el ukulele`. The frontmatter has no
+field for either. A `capo` field would be the better home for the first, and that is the
+backlog's *capo or transpose control*; until it exists, a line of text is what keeps the
+information in the song instead of losing it.
+
 ### Chord Notation in Lyrics
 
 Chords are indicated using square brackets `[ChordName]` at the position where they should be played:

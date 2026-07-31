@@ -33,6 +33,8 @@ chords:
     positions: "0212"
 ---
 
+Capo 1
+
 [Ab]·  [Bb]·  [Cm]·  [Cm]·
 [Ab]·  [Bb]·  [C]↓ ◦
 

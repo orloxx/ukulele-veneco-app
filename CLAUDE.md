@@ -222,8 +222,12 @@ What it will not do for you:
   `songs/README.md` are what the app needs, and they are not the same thing.
 - **`year`.** The credit line reads `Artist (Composers, 1966)`; the year is the one in
   the parentheses, and the artist is the part before them.
-- **`capo`.** Some pages print a capo fret. The song format has no field for it, so the
-  extractor emits it as a comment and it is dropped. See the vault ROADMAP's backlog.
+- **`capo`.** Some pages print a capo fret — **51 of the 277**, so this is not a rarity.
+  The frontmatter has no field for it, and the extractor emits it as a comment rather than
+  a key. **Write it as a plain `Capo <n>` line at the top of the body**, above the first
+  section heading, the way `songs/anoche.md` and `songs/es-que-me-faltas-tu.md` do. The app
+  renders it as text, which is enough to play from; a real field is a bigger change and is
+  the backlog's *capo or transpose control*.
 
 ### 2. Watch for these
 
