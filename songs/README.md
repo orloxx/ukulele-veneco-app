@@ -78,6 +78,30 @@ This is a line with a [G]chord in the [Am]middle
 [F]Another verse [C]line
 ```
 
+#### Round brackets are an anticipation, not a chord to strum
+
+`(ChordName)` is the cancionero's own mark, and it means something different from
+`[ChordName]`: the chord is **optional or passing, and the change starts earlier than the
+line it belongs to**. It is printed where the change actually begins — usually inside the
+last word of a line — rather than at the top of the line that follows.
+
+So the chord in round brackets is **always the chord that comes next**, arriving a few
+syllables early:
+
+```
+[Gmaj7] Mi burbu·ja   [Em] no se rom[F#m]pe aunque la so(Gmaj7)ples
+[Gmaj7]      [Gmaj7]      [Em] Puedes ver[F#m]me, no escuchar(Gmaj7)me
+```
+
+**Copy it as the book sets it, and never promote it to `[X]`.** A square bracket renders a
+diagram and tells the player to strum there, which is not what the page says. `pnpm
+validate` warns when a `(X)` is not the chord that follows it, because in 26 of 26 cases
+across the first 79 songs it was.
+
+Round brackets around anything that is not one of the song's chords are ordinary text — the
+book uses them for backing vocals and asides too, like `(Cuidado, mucho cuidado)` in
+`colgando-en-tus-manos.md`. Those are left exactly alone.
+
 #### Spacing Between Consecutive Chords
 
 When chords appear consecutively without enough natural spacing, add spacing for alignment:

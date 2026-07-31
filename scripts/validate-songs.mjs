@@ -151,6 +151,45 @@ function checkSpacing(body, report) {
   });
 }
 
+/**
+ * Check the anticipations — the chords the cancionero prints in parentheses.
+ *
+ * `M2 · 8` settled what the mark means: the chord is optional or passing, and it sits
+ * where the change actually starts rather than where the next line does. So a `(X)` is
+ * the chord that follows it, printed a few syllables early. That held for 26 of 26
+ * across the first 79 songs, without an exception. `DECISIONS.md` 9 in the vault.
+ *
+ * A mismatch is a **warning**, not an error. The rule is a pattern read off the book
+ * rather than something the format imposes, and 38 pages carrying the mark are still
+ * untranscribed — one of them is allowed to surprise us. What it catches meanwhile is
+ * the likelier cause: an anticipation mistyped, or copied onto the wrong line.
+ *
+ * A parenthesis around anything that is not one of the song's own chords is left alone;
+ * the book uses them for backing vocals and asides too, as `(Cuidado, mucho cuidado)`
+ * in `colgando-en-tus-manos.md` does.
+ */
+function checkAnticipations(body, defined, report) {
+  const lines = body.split(/\r?\n/);
+
+  lines.forEach((line, index) => {
+    for (const m of line.matchAll(/\(([^()\s]+)\)/g)) {
+      if (!defined.has(m[1])) continue;
+      const after = [
+        line.slice(m.index + m[0].length),
+        ...lines.slice(index + 1),
+      ];
+      const next = /\[([^\]]+)\]/.exec(after.join("\n"));
+      if (next?.[1] === m[1]) continue;
+      report.warn(
+        `\`(${m[1]})\` anticipates the chord after it, but the next one is ${
+          next ? `\`[${next[1]}]\`` : "nothing"
+        }`,
+        index,
+      );
+    }
+  });
+}
+
 /** Check one song file. Returns its errors and warnings. */
 function checkSong(file) {
   const errors = [];
@@ -252,10 +291,12 @@ function checkSong(file) {
     }
   }
 
-  checkSpacing(parts.body, {
+  const relay = {
     fail: (m, i) => report.fail(m, bodyLine(i)),
     warn: (m, i) => report.warn(m, bodyLine(i)),
-  });
+  };
+  checkSpacing(parts.body, relay);
+  checkAnticipations(parts.body, seen, relay);
 
   return { errors, warnings };
 }

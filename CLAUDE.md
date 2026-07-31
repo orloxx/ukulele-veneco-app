@@ -256,10 +256,15 @@ What it will not do for you:
   together: the book aligns them in a proportional font and the app renders monospaced, so
   `pnpm validate` will tell you the exact count it wants. Take its number.
 - **Some pages print a chord in parentheses** — `(Gmaj7)` on page 17, `(G)` on page 19,
-  40 pages in all. Nothing in the book says what it means, and it is not the same mark as
-  a bracketed chord. **Copy it verbatim**, parentheses included, and do not promote it to
-  `[Gmaj7]`. That keeps the question open and answerable later; guessing closes it wrongly
-  in 40 songs at once. It is `M2 · 8`.
+  40 pages in all. It is **an anticipation**: the chord is optional or passing, and the
+  change starts earlier than the line it belongs to, so the mark sits where the change
+  begins rather than where the next line does. Iker settled this on 2026-07-31, closing
+  `M2 · 8`; it is `DECISIONS.md` 9 in the vault and `songs/README.md` in the repo.
+
+  **Copy it verbatim and never promote it to `[Gmaj7]`** — a square bracket renders a
+  diagram and says *strum here*, which is not what the page says. The chord in round
+  brackets is always the one that follows it, and `pnpm validate` warns when it is not,
+  which held for 26 of 26 across the first 79 songs.
 - **An abbreviated chorus is written out; a repeat instruction is not.** Many pages print
   the bare word *Coro* where the chorus comes round again, and that is copied out in full,
   because a phone has no page to flip back to. What looks the same and is not is a *da
