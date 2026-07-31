@@ -1,0 +1,77 @@
+---
+title: Corrientes
+artist: Lebronch
+year: 2009
+key: Am
+timeSignature: 4/4
+chords:
+  - name: Am
+    positions: "2000"
+  - name: C
+    positions: "0003"
+  - name: G
+    positions: "0232"
+  - name: F
+    positions: "2010"
+  - name: Am9
+    positions: "2002"
+---
+
+[Am]·  · [C]· [G]· | [Am]·  · [C]· [G]· | [F]· · [G]· · | [F]· · [C]· [G]·
+[Am] Du-du · Du-du [C] Du-[G]du-du | [Am] Du-du · Du-du [C] Du-[G]du-du
+[F] Du-du · Du-du [G] Du-·du-du | [F] Du-du · Du-du
+
+[C] Y [G]cómo es que[Am] ya no hay un [C]camino se[G]guro ya don[Am]de pisar
+El hu[C]mano [G]poco avan[F]za    [C] poco en [G]cantidaa-[F]-ad,   no, no
+
+[C] Y ahora [G]mismo multi[Am]tudes van
+Com [C]partiendo un nu[G]blado triunfo en[Am] sociedad
+Por su [C]bien crea un [G]bello muraa-[F]-aal
+[C] Lleno de [G]costosa fe[F]licidaa-[C]-ad [G]
+
+[Am]·  · [Am9]·   · | [Am]·  · [Am9]·   · | [Am]·  · [Am9]·   · | [Am]·  · [G]↓ [G]↓
+
+## Coro
+[Am] Siempre iré a un paso constan[G]te   sin fi[C]jar mis [G]miedos
+[Am] Para romper el erróneo crite[G]rio, felici[C]dad, di[G]nero
+[Am] Seré así un gran navegan[G]te, del a[C]mor sin[G]cero
+[Am] Un río que te vuelve inmortal,[G]   si es [C]descu[G]bierto
+
+[Am] Du-du · Du-du [C] Du-[G]du-du | [Am] Du-du · Du-du [C] Du-[G]du-du
+[F] Du-du · Du-du [G] Du-·du-du | [F] Du-du · Du-du
+
+Y a u[C]na manada [G]peste brava en[Am]gañará
+A[C]buso de po[G]der vendrá y re[Am]sonará
+Luego u[C]no a u[G]no caeráa-[F]an
+[C] En un [G]ciclo que los[F] des-truirá
+
+[C] De [G]prueba al Dogville[Am] City Town
+Na[C]turaleza hu[G]mana en ex[Am]hibición
+Y es que a[C]sí algu[G]nos en conjun[F]to
+[C] Van da[G]ñando este mun[F]do,   no, no
+
+[Am]·  · [Am9]·   · | [Am]·  · [Am9]·   · | [Am]·  · [Am9]·   · | [Am]·  · [G]↓ [G]↓ [G]↓ [G]↓
+
+## Coro
+[Am] Siempre iré a un paso constan[G]te   sin fi[C]jar mis [G]miedos
+[Am] Para romper el erróneo crite[G]rio, felici[C]dad, di[G]nero
+[Am] Seré así un gran navegan[G]te, del a[C]mor sin[G]cero
+[Am] Un río que te vuelve inmortal,[G]   si es [C]descu[G]bierto
+
+[Am] Du-du · Du-du [C] Du-[G]du-du | [Am] Du-du · Du-du [C] Du-[G]du-du
+[F] Du-du · Du-du [G] Du-·du-du | [F] Du-du · Du-du [C] Du-[G]du-du
+[Am] Du-du · Du-du [C] Du-[G]du-du | [Am] Du-du · Du-du [C] Du-[G]du-du
+[F] Du-du · Du-du [G] Du-·du-du | [F] Du-du · Du-du [G]↓ [G]↓
+
+[Am]·  · [C]· [G]· | [Am]·  · [C]· [G]· | [F]· · [G]· · | [F]· · [C]· [G]·
+[Am]·  · [C]· [G]· | [Am]·  · [C]· [G]· | [F]· · [G]· · | [F]· · [G]↓ [G]↓ [G]↓
+
+## Coro
+[Am] Siempre iré a un paso constan[G]te   sin fi[C]jar mis [G]miedos
+[Am] Para romper el erróneo crite[G]rio, felici[C]dad, di[G]nero
+[Am] Seré así un gran navegan[G]te, del a[C]mor sin[G]cero
+[Am] Un río que te vuelve inmortal,[G]   si es [C]descu[G]bierto
+
+[Am] · [Am9] · | [Am] · Si es [Am9]descu·bierto
+[Am]·  · [Am9]·   · | [Am]·  · [G]↓ [G]↓
+[Am]↓

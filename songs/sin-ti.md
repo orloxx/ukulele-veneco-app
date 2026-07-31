@@ -1,0 +1,75 @@
+---
+title: Sin ti
+artist: King Changó
+year: 2000
+key: C
+timeSignature: 4/4
+chords:
+  - name: C
+    positions: "0003"
+  - name: Am
+    positions: "2000"
+  - name: F
+    positions: "2010"
+  - name: G
+    positions: "0232"
+  - name: Bdim7
+    positions: "4545"
+---
+
+[C]· [Am]·  [C]· [Am]·
+
+Ya no puedo ni co[C]mer... es que no te puedo olvi[Am]dar
+Ay vida mía, ayúda[C]me... sin ti no puedo vivir [Am]más
+
+## Pre-coro
+Y sigo a[F]sí, sin tu a[G]mor, oh-oh
+Y sigo a[F]sí, es que mi vida, sin [G]↓ti... no puedo vivir
+
+## Coro
+[C]No (So tough, so tough, so tough, so tough)
+I have to get on my knees and [Am]pray (So tough, so tough, so tough, so tough)
+Oh, baby it’s not e[C]nough (enough, enough, enough, enough)                 Baby, it’s not enough
+I have to get on my knees and [Am]pray (enough, enough, enough, enough)
+
+Todo quedó en el a[C]yer... lágrimas en nuestro al[Am]tar, oh-oh
+Tú eres mi alma ge[C]mela... sin ti no puedo respi[Am]rar
+
+## Pre-coro
+Y sigo a[F]sí, sin tu o[G]lor, oh-oh... Y sigo a[F]sí, es que mi vida, sin [G]↓ti... no puedo vivir
+
+## Coro
+[C]No (So tough, so tough, so tough, so tough)
+I have to get on my knees and [Am]pray (So tough, so tough, so tough, so tough)
+Oh, baby it’s not e[C]nough (enough, enough, enough, enough)                 Baby, it’s not enough
+I have to get on my knees and [Am]pray (enough, enough, enough, enough)
+
+## Puente
+Oh baby I and I [C]pray
+Me pray for another chance with you, me [C]pray
+Oh God, let this pain go away
+[Am]Dime porque nuestro amor tuvo que terminar
+¿Por[Am]que nuestro ego nos logró dominar?
+Aca[C]bando con todo lo que fue nuestro altar
+Tú e[C]res mi alma gemela y no te voy a olvidar
+Y rezo [Am]pa’ que, en otra vida, nos volvamos a encontrar
+[Am]↓  Oh baby I and I pray
+
+## Pre-coro
+Y sigo a[F]sí, sin tu a[G]mor, oh-oh... Y sigo a[F]sí, es que mi vida, sin [G]↓ti... no puedo vivir
+
+## Coro
+[C]No... (So tough, so tough, so tough, so tough)
+Come rock, steady, [Am]di-bi-du-ba-dey
+(o tough, so tough, so tough, so tough)                Come rock, steady, di-bi-du-ba-de-eh-eh
+uh-uh-[C]uh (enough, enough, enough, enough)
+I have to get on my knees and [Am]pray (enough, enough, enough, enough)
+
+## Outro
+Ya me tengo que [C]ir, y no me quiero ale[Am]jar, ah-ah, no-oh
+Ay vida mía, ayúda[C]me, sin ti no quiero vivir [Am]más
+Y sigo a[F]sí, sin tu o[G]lor, oh-oh
+Y sigo a[F]sí, no lo puedo evi[G]tar
+Ayúda[F]me, no te puedo olvi[G]dar
+Es que sin [F]ti, es que sin ti, es que sin [G]↓ti
+No puedo vivir... [Bdim7]↓máa-[C]↓aas
