@@ -82,10 +82,17 @@ export default function Home() {
               <br />
               nada más.
             </h1>
+            {/* The lede said "estas canciones se tocan en cuatro", and the
+                cancionero is not a cuatro repertoire — it is Venezuelan songs
+                across every genre (BUG-011). The cuatro belongs in the
+                sentence as the instrument you reach for at home and cannot get
+                hold of abroad, which is the reason the ukulele is here at all.
+                Wording is Iker's, 2026-07-31. */}
             <p className="uv-hero__lede">
-              Estas canciones se tocan en cuatro. Pero el cuatro no se consigue
-              en todas partes, y el ukulele sí — así que aquí están, con sus
-              acordes, pa' los que andamos lejos.
+              Canciones venezolanas de todas las épocas y de todo tipo. En casa
+              uno agarra el cuatro, pero el cuatro no se consigue en todas
+              partes y el ukulele sí — así que aquí están, con sus acordes, pa'
+              los que andamos lejos.
             </p>
             {/* The credit belongs here and not only in the footer: the
                 cancionero is Ciro Durán's, and naming him is the condition it
