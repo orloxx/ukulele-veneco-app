@@ -26,7 +26,7 @@ chords:
   - name: Am6
     positions: "2423"
   - name: Em
-    positions: "0432"
+    positions: "0402"
   - name: F
     positions: "2010"
   - name: G7

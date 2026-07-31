@@ -6,7 +6,7 @@ key: Am
 timeSignature: 4/4
 chords:
   - name: Am9
-    positions: "0000"
+    positions: "2002"
   - name: D
     positions: "2220"
   - name: Am

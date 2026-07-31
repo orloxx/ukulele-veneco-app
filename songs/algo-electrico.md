@@ -14,7 +14,7 @@ chords:
   - name: F#m
     positions: "2120"
   - name: Em
-    positions: "0432"
+    positions: "0402"
   - name: A
     positions: "2100"
   - name: Bb

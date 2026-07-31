@@ -16,7 +16,7 @@ chords:
   - name: D
     positions: "2220"
   - name: Em
-    positions: "0432"
+    positions: "0402"
   - name: "F#m"
     positions: "2120"
   - name: Gm

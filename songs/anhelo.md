@@ -18,11 +18,11 @@ chords:
   - name: Dm7
     positions: "2213"
   - name: "C#"
-    positions: "1114"
+    positions: "6544"
   - name: Gm6
     positions: "0201"
   - name: Edim7
-    positions: "2323"
+    positions: "0101"
 ---
 
 [Dm]·  · · [C]· | [Gm]·  · · [C]· | [Dm]·  · · · | [Gm]·  · [A7]·  · | [Dm]↓  ◦ ◦ ◦

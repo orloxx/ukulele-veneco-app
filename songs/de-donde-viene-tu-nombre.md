@@ -14,9 +14,9 @@ chords:
   - name: Am
     positions: "2000"
   - name: B7
-    positions: "2322"
+    positions: "4320"
   - name: Em
-    positions: "0432"
+    positions: "0402"
   - name: C
     positions: "0003"
   - name: "F#7"

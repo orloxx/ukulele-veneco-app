@@ -27,6 +27,26 @@ chords:
 ---
 ```
 
+### Fingerings follow the book, not the standard shapes
+
+`positions` is a 4-digit fret string for the GCEA strings, and it is **whatever the
+cancionero draws on that song's page** — not the shape you would find on a chord chart.
+The book draws `Em` as `0402` where every chart prints `0432`, and the book wins. See
+`DECISIONS.md` 6 in the vault for why.
+
+Two things follow from that, and both catch people out:
+
+- **It is per song, not per chord.** The same name can have different fingerings in
+  different songs — page 6 draws `D7` as `2020`, page 13 draws it as `2223` — because the
+  book voices a chord to suit the arrangement it sits in. Copy the page you are on.
+- **Do not "correct" an unfamiliar shape.** `C#` = `6544` is high up the neck and looks
+  wrong beside the usual `1114`. It is not wrong; it is what the book prints.
+
+`node scripts/extract-page.mjs <page>` reads the fingerings off the printed diagrams, so
+the `chords:` block comes out already correct — paste it as it comes.
+`node scripts/extract-page.mjs --verify` checks every song against its page and fails on
+a disagreement.
+
 ### Chord Notation in Lyrics
 
 Chords are indicated using square brackets `[ChordName]` at the position where they should be played:

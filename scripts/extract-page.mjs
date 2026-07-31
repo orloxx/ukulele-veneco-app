@@ -6,6 +6,13 @@
  *   node scripts/extract-page.mjs 14 --json     the same thing as JSON
  *   node scripts/extract-page.mjs --find "…"    look a page up by song title
  *   node scripts/extract-page.mjs --check       prove the page mapping over the whole book
+ *   node scripts/extract-page.mjs --verify      hold songs/ up against the book's diagrams
+ *
+ * --verify lives here rather than in `pnpm validate` on purpose. Fingerings follow the
+ * book (DECISIONS.md 6), so the check needs the book — and the book goes away at M6,
+ * while `validate-songs.mjs` does not. Putting it there would mean M6 had to gut a file
+ * it otherwise keeps; putting it here means M6 deletes this one and the check goes with
+ * it, which is the same scoping rule as the rest of this script.
  *
  * The source is `public/elukuleleveneco_2025_web.pdf`, and it is temporary: see
  * DECISIONS.md 4 in the vault. This script is scoped to die with it. Anything learned
@@ -893,6 +900,125 @@ const normalise = (title) =>
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 
+/**
+ * Read a song file's title and chord block.
+ *
+ * Deliberately not a YAML parser, for the same reason `validate-songs.mjs` isn't one:
+ * the frontmatter is four scalars and a list of pairs, and a dependency to read that
+ * would be the only one this script has.
+ */
+function readSong(file) {
+  const text = fs.readFileSync(file, "utf8");
+  const block = /^---\r?\n([\s\S]*?)\r?\n---/.exec(text);
+  if (!block) return null;
+  const title = /^title:\s*(.+?)\s*$/m.exec(block[1]);
+  const chords = new Map();
+  let name = null;
+  let inChords = false;
+  for (const line of block[1].split(/\r?\n/)) {
+    if (/^chords:\s*$/.test(line)) {
+      inChords = true;
+      continue;
+    }
+    if (!inChords) continue;
+    if (/^\S/.test(line)) break; // a new top-level key ends the list
+    const named = /^\s*-\s*name:\s*(.+?)\s*$/.exec(line);
+    if (named) {
+      name = named[1].replace(/^"(.*)"$/, "$1");
+      continue;
+    }
+    const positions = /^\s*positions:\s*(.+?)\s*$/.exec(line);
+    if (positions && name) {
+      chords.set(name, positions[1].replace(/^"(.*)"$/, "$1"));
+    }
+  }
+  return { title: title ? title[1] : null, chords };
+}
+
+/**
+ * Diff every song in songs/ against the diagrams printed on its own book page.
+ *
+ * This is the check that `M2 · 7` asked for. Fingerings follow the book (DECISIONS.md
+ * 6), and the book draws the same chord differently in different songs — page 6 has
+ * `D7` as 2020 and page 13 has it as 2223 — so a per-song comparison is the only one
+ * that means anything. A global chord table would call one of those two wrong.
+ */
+function verifySongs(pdf, pages, offset) {
+  const songsDir = path.join(REPO_ROOT, "songs");
+  const files = fs
+    .readdirSync(songsDir)
+    .filter((f) => f.endsWith(".md") && f !== "README.md")
+    .sort();
+
+  // One pass over the book, so 276 songs cost one read rather than 276.
+  const byTitle = new Map();
+  for (let book = 1; offset + book - 1 < pages.length; book++) {
+    const song = extract(pdf, pages[offset + book - 1]);
+    if (song.printedPage === null) break;
+    if (!song.title) continue;
+    const key = normalise(song.title);
+    // Two songs share a title; the book tells them apart with a parenthetical, which
+    // normalise() keeps, so the keys stay distinct and this only fires on a real clash.
+    if (!byTitle.has(key)) byTitle.set(key, { book, song });
+  }
+
+  let mismatched = 0;
+  let unmatched = 0;
+  let checked = 0;
+
+  for (const file of files) {
+    const song = readSong(path.join(songsDir, file));
+    if (!song || !song.title) {
+      console.log(`  ${file}: no readable frontmatter`);
+      unmatched++;
+      continue;
+    }
+    const key = normalise(song.title);
+    const hit =
+      byTitle.get(key) ??
+      // `It Never Ends (Quinta Anauco)` may be filed under either spelling.
+      byTitle.get(normalise(song.title.replace(/\s*\([^)]*\)\s*$/, "")));
+    if (!hit) {
+      console.log(`  ${file}: “${song.title}” matches no page in the book`);
+      unmatched++;
+      continue;
+    }
+    checked++;
+
+    const printed = new Map(
+      hit.song.chords.map((chord) => [chord.name, chord.positions]),
+    );
+    const lines = [];
+    for (const [name, positions] of song.chords) {
+      if (!printed.has(name)) {
+        lines.push(`${name} is ${positions}, and the book draws no such chord`);
+      } else if (printed.get(name) !== positions) {
+        lines.push(
+          `${name} is ${positions}, but the book draws ${printed.get(name)}`,
+        );
+      }
+    }
+    for (const [name, positions] of printed) {
+      if (!song.chords.has(name)) {
+        lines.push(
+          `${name} is drawn as ${positions} in the book and is missing here`,
+        );
+      }
+    }
+    if (lines.length) {
+      mismatched++;
+      console.log(`  ${file} (page ${hit.book})`);
+      for (const line of lines) console.log(`    ${line}`);
+    }
+  }
+
+  console.log(
+    `${checked} songs checked against the book, ${mismatched} disagreeing, ` +
+      `${unmatched} not matched to a page.`,
+  );
+  return mismatched + unmatched === 0 ? 0 : 1;
+}
+
 function render(page) {
   const out = [];
   out.push(
@@ -1011,6 +1137,10 @@ function main(argv) {
     return tally.misnumbered + tally.untitled + tally.unreadable === 0 ? 0 : 1;
   }
 
+  if (flags.has("--verify")) {
+    return verifySongs(pdf, pages, offset);
+  }
+
   // `--find` exists because the book's index numbers songs and this script wants pages,
   // and the two stop agreeing at page 197, where one song takes two pages. Anything
   // working from a list of titles should look the page up rather than count to it.
@@ -1056,7 +1186,7 @@ function main(argv) {
   const book = Number(rest[rest.length - 1]);
   if (!Number.isInteger(book) || book < 1) {
     console.error(
-      'Usage: node scripts/extract-page.mjs <book page> | --find "<title>" [--json] [--check]',
+      'Usage: node scripts/extract-page.mjs <book page> | --find "<title>" [--json] [--check] [--verify]',
     );
     return 1;
   }

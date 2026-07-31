@@ -20,13 +20,13 @@ chords:
   - name: Ebm
     positions: "3321"
   - name: F7
-    positions: "2313"
+    positions: "2310"
   - name: Dm
     positions: "2210"
   - name: A7
     positions: "0100"
   - name: Edim7
-    positions: "2323"
+    positions: "0101"
   - name: Bb
     positions: "3211"
   - name: Bbm

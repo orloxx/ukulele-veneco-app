@@ -16,13 +16,13 @@ chords:
   - name: Bb
     positions: "3211"
   - name: Em7b5
-    positions: "2333"
+    positions: "0201"
   - name: A7sus4
     positions: "0200"
   - name: A7
     positions: "0100"
   - name: D7
-    positions: "2223"
+    positions: "2020"
 ---
 
 [Dm]·  [Gm]·  [C]· [F]· [Bb]·  [Em7b5]·     [A7sus4]·      [A7]·

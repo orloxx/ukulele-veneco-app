@@ -174,8 +174,9 @@ into `public/` when you need to transcribe, and leave it there.
 ```bash
 node scripts/extract-page.mjs 14        # 1. read the book page
 $EDITOR songs/quinta-anauco.md          # 2. write the song file
-pnpm validate                           # 3. check it
-git commit                              # 4. commit it
+pnpm validate                           # 3. check the format
+node scripts/extract-page.mjs --verify  # 4. check the fingerings against the book
+git commit                              # 5. commit it
 ```
 
 **Songs are transcribed in the book's own order, starting from page 1.** That is a
@@ -194,6 +195,7 @@ node scripts/extract-page.mjs 14                    # book page 14, as text
 node scripts/extract-page.mjs 14 --json             # the same, structured
 node scripts/extract-page.mjs --find "Barlovento"   # look the page up by title
 node scripts/extract-page.mjs --check               # read all 277 pages and self-check
+node scripts/extract-page.mjs --verify              # diff songs/ against the diagrams
 ```
 
 **Prefer `--find` when you are working from a list of titles**, which the milestone issues
@@ -204,6 +206,13 @@ The page number is the **printed** one, not the PDF's — page 1 of the book is 
 page of the file. The script refuses to print a page whose printed footer disagrees with
 the page it was asked for, so a silently-off-by-something mapping cannot reach a song
 file. `--check` proves the mapping over the whole book in one go.
+
+**Paste the `chords:` block it gives you, exactly as it comes.** The fingerings follow
+the book, not the standard ukulele shapes — the book draws `Em` as `0402` where every
+chart prints `0432`, and the book wins (`DECISIONS.md` 6 in the vault). Do not "correct"
+a shape that looks unfamiliar; `--verify` will fail it if you do. This is per song, not
+per chord name: page 6 draws `D7` as `2020` and page 13 draws it as `2223`, and both are
+right on their own page.
 
 What it will not do for you:
 
@@ -252,6 +261,16 @@ wrong.
 The spacing warnings are worth taking seriously even though they are only warnings: the
 app positions each chord absolutely above monospaced lyrics, so the spaces after a chord
 are what stop the next chord from landing on top of it.
+
+**`node scripts/extract-page.mjs --verify` is the other half of the check.** `pnpm
+validate` knows the format; it does not know the book. `--verify` holds every song's
+`positions` up against the diagrams printed on its own page and exits non-zero on a
+disagreement, which is what stops a fingering drifting from the source over 276 songs.
+
+The two are separate commands because they have separate lifetimes: `validate-songs.mjs`
+is about the song format and outlives the PDF, while `--verify` needs the book and dies
+with it at M6. That is also why this one is not wired into `pnpm validate` — see
+`DECISIONS.md` 6 in the vault.
 
 ## Path Aliases
 
