@@ -2,32 +2,36 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { IconCheck, IconSearch } from "@/components/icons";
 import {
   parsedSongToStoredSong,
   useOfflineSongs,
 } from "@/contexts/OfflineSongsContext";
-import { containerStyles } from "@/lib/styles";
 import type { ParsedSong } from "@/types/song";
 
 interface SongListProps {
   songs: ParsedSong[];
 }
 
-// Helper component to reduce table cell duplication
-function SongTableCell({
+/**
+ * One cell of the table.
+ *
+ * Every cell except the checkbox is a link to the song, so the whole row is a
+ * target — which is the only reason the 18px checkbox is allowed to be under
+ * `--touch-min`.
+ */
+function SongCell({
   slug,
   children,
-  className = "text-sm text-gray-900",
-  noWrap = false,
+  className,
 }: {
   slug: string;
   children: React.ReactNode;
   className?: string;
-  noWrap?: boolean;
 }) {
   return (
-    <td className={noWrap ? " whitespace-nowrap" : ""}>
-      <Link href={`/song/${slug}`} className={`px-6 py-4 block ${className}`}>
+    <td>
+      <Link href={`/song/${slug}`} className={className}>
         {children}
       </Link>
     </td>
@@ -54,25 +58,26 @@ export default function SongList({ songs }: SongListProps) {
     return Array.from(artists).sort();
   }, [songs]);
 
-  // Filter songs based on search and filters
+  // Filtering stays client-side over the in-memory array: 276 songs is nothing,
+  // and there is no reason for it to be anything cleverer.
   const filteredSongs = useMemo(() => {
     return songs.filter((song) => {
-      // Search term filter (searches in title and artist)
       const matchesSearch =
         searchTerm === "" ||
         song.metadata.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         song.metadata.artist.toLowerCase().includes(searchTerm.toLowerCase());
 
-      // Key filter
       const matchesKey = keyFilter === "" || song.metadata.key === keyFilter;
 
-      // Artist filter
       const matchesArtist =
         artistFilter === "" || song.metadata.artist === artistFilter;
 
       return matchesSearch && matchesKey && matchesArtist;
     });
   }, [songs, searchTerm, keyFilter, artistFilter]);
+
+  const hasFilters =
+    searchTerm !== "" || keyFilter !== "" || artistFilter !== "";
 
   const resetFilters = () => {
     setSearchTerm("");
@@ -104,14 +109,12 @@ export default function SongList({ songs }: SongListProps) {
   const toggleAllOffline = async () => {
     try {
       if (allFilteredSongsOffline) {
-        // Remove all filtered songs from offline
         for (const song of filteredSongs) {
           if (offlineSongs.has(song.slug)) {
             await removeSong(song.slug);
           }
         }
       } else {
-        // Save all filtered songs offline
         for (const song of filteredSongs) {
           if (!offlineSongs.has(song.slug)) {
             const storedSong = parsedSongToStoredSong(song);
@@ -124,153 +127,148 @@ export default function SongList({ songs }: SongListProps) {
     }
   };
 
+  const savedCount = offlineSongs.size;
+
   return (
-    <div className="w-full">
-      {/* Header */}
-      <div className="mb-8">
-        <p className="text-gray-600">
-          {filteredSongs.length}{" "}
-          {filteredSongs.length === 1 ? "canción" : "canciones"}
+    <div>
+      <div className="uv-list-head">
+        <div>
+          <p className="uv-eyebrow">El cancionero</p>
+          <h1 className="uv-list-count">
+            {filteredSongs.length}{" "}
+            {filteredSongs.length === 1 ? "canción" : "canciones"}
+          </h1>
+        </div>
+        {/* The app has always tracked which songs are on the phone and never
+            said how many. */}
+        <p className="uv-list-saved">
+          <IconCheck size={16} />
+          {savedCount === 0
+            ? "Ninguna guardada todavía. Marca las que vayas a tocar."
+            : `${savedCount} ${savedCount === 1 ? "guardada" : "guardadas"} en el teléfono`}
         </p>
       </div>
 
-      {/* Filters */}
-      <div className="mb-6 space-y-4">
-        {/* Search */}
-        <div>
+      <div className="uv-filters">
+        <div className="uv-search uv-filters__search">
+          <IconSearch />
           <input
-            type="text"
+            className="uv-input"
+            type="search"
             placeholder="Buscar por título o artista..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className={containerStyles.input}
+            aria-label="Buscar por título o artista"
           />
         </div>
 
-        {/* Filter controls */}
-        <div className="flex flex-wrap gap-4">
-          {/* Key filter */}
-          <select
-            value={keyFilter}
-            onChange={(e) => setKeyFilter(e.target.value)}
-            className={containerStyles.select}
-          >
-            <option value="">Todas las tonalidades</option>
-            {uniqueKeys.map((key) => (
-              <option key={key} value={key}>
-                {key}
-              </option>
-            ))}
-          </select>
+        <select
+          className="uv-select uv-filters__select"
+          value={keyFilter}
+          onChange={(e) => setKeyFilter(e.target.value)}
+          aria-label="Filtrar por tono"
+        >
+          <option value="">Todos los tonos</option>
+          {uniqueKeys.map((key) => (
+            <option key={key} value={key}>
+              {key}
+            </option>
+          ))}
+        </select>
 
-          {/* Artist filter */}
-          <select
-            value={artistFilter}
-            onChange={(e) => setArtistFilter(e.target.value)}
-            className={containerStyles.select}
-          >
-            <option value="">Todos los artistas</option>
-            {uniqueArtists.map((artist) => (
-              <option key={artist} value={artist}>
-                {artist}
-              </option>
-            ))}
-          </select>
+        <select
+          className="uv-select uv-filters__select"
+          value={artistFilter}
+          onChange={(e) => setArtistFilter(e.target.value)}
+          aria-label="Filtrar por artista"
+        >
+          <option value="">Todos los artistas</option>
+          {uniqueArtists.map((artist) => (
+            <option key={artist} value={artist}>
+              {artist}
+            </option>
+          ))}
+        </select>
 
-          {/* Reset button */}
-          {(searchTerm || keyFilter || artistFilter) && (
-            <button
-              type="button"
-              onClick={resetFilters}
-              className={`px-4 py-2 underline cursor-pointer ${containerStyles.interactiveText}`}
-            >
-              Limpiar filtros
-            </button>
-          )}
-        </div>
+        {hasFilters && (
+          <button
+            type="button"
+            onClick={resetFilters}
+            className="uv-btn uv-btn--ghost"
+          >
+            <span>Limpiar filtros</span>
+          </button>
+        )}
       </div>
 
-      {/* Table */}
-      <div className="overflow-x-auto border border-gray-200 rounded-lg">
-        <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-200">
+      <div className="uv-table-frame">
+        <table className="uv-table">
+          <thead>
             <tr>
-              <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                <div className="flex items-center justify-center gap-2">
+              <th className="uv-table__check">
+                <label className="uv-check">
                   <input
                     type="checkbox"
                     checked={allFilteredSongsOffline}
                     onChange={toggleAllOffline}
-                    className="h-4 w-4 rounded border-gray-300 cursor-pointer"
-                    aria-label="Seleccionar todas las canciones visibles"
                     disabled={filteredSongs.length === 0}
+                    aria-label="Guardar todas las visibles"
                   />
-                  <span>Offline</span>
-                </div>
+                </label>
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Título
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Artista
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Año
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Tonalidad
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Compás
-              </th>
+              <th>Título</th>
+              <th>Artista</th>
+              <th className="uv-table__year">Año</th>
+              <th className="uv-table__key">Tono</th>
+              <th className="uv-table__time">Compás</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody>
             {filteredSongs.length === 0 ? (
               <tr>
-                <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
-                  No se encontraron canciones
+                <td colSpan={6}>
+                  <div className="uv-cell uv-table__empty">
+                    No encontramos esa canción. Prueba con el nombre del
+                    artista.
+                  </div>
                 </td>
               </tr>
             ) : (
               filteredSongs.map((song) => (
-                <tr
-                  key={song.slug}
-                  className="hover:bg-gray-50 transition-colors"
-                >
-                  <td className="px-4 py-4 text-center">
-                    <input
-                      type="checkbox"
-                      checked={offlineSongs.has(song.slug)}
-                      onChange={() => toggleOffline(song)}
-                      onClick={(e) => e.stopPropagation()}
-                      className="h-4 w-4 rounded border-gray-300 cursor-pointer"
-                      aria-label={`Guardar ${song.metadata.title} offline`}
-                    />
+                <tr key={song.slug}>
+                  <td className="uv-table__check">
+                    <div className="uv-cell uv-table__check-cell">
+                      <label className="uv-check">
+                        <input
+                          type="checkbox"
+                          checked={offlineSongs.has(song.slug)}
+                          onChange={() => toggleOffline(song)}
+                          // Without this a tap on the box navigates: the cells
+                          // around it are all links to the song.
+                          onClick={(e) => e.stopPropagation()}
+                          aria-label={`Guardar ${song.metadata.title} en el teléfono`}
+                        />
+                      </label>
+                    </div>
                   </td>
-                  <SongTableCell slug={song.slug}>
+                  <SongCell slug={song.slug} className="uv-td-title">
                     {song.metadata.title}
-                  </SongTableCell>
-                  <SongTableCell
-                    slug={song.slug}
-                    className="text-sm text-gray-900 font-medium"
-                    noWrap
-                  >
+                  </SongCell>
+                  <SongCell slug={song.slug} className="uv-td-muted">
                     {song.metadata.artist}
-                  </SongTableCell>
-                  <SongTableCell
-                    slug={song.slug}
-                    className="text-sm text-gray-500"
-                    noWrap
-                  >
-                    {song.metadata.year || "-"}
-                  </SongTableCell>
-                  <SongTableCell slug={song.slug} noWrap>
+                  </SongCell>
+                  {/* Mono from here on: a year, a tono and a compás are the
+                      musical facts about a song, and nothing else in the
+                      interface is allowed to be monospaced. */}
+                  <SongCell slug={song.slug} className="uv-td-mono uv-td-muted">
+                    {song.metadata.year || "—"}
+                  </SongCell>
+                  <SongCell slug={song.slug} className="uv-td-mono">
                     {song.metadata.key}
-                  </SongTableCell>
-                  <SongTableCell slug={song.slug} noWrap>
+                  </SongCell>
+                  <SongCell slug={song.slug} className="uv-td-mono uv-td-muted">
                     {song.metadata.timeSignature}
-                  </SongTableCell>
+                  </SongCell>
                 </tr>
               ))
             )}
