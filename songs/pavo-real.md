@@ -1,0 +1,79 @@
+---
+title: Pavo real
+artist: José Luis Rodríguez
+year: 1980
+key: A
+timeSignature: 4/4
+chords:
+  - name: A
+    positions: "2100"
+  - name: G
+    positions: "0232"
+  - name: D
+    positions: "2220"
+  - name: E7
+    positions: "1202"
+---
+
+Capo 2
+
+[A]· · [G]· · | [D]· · [E7]·  · | [A]· · [G]· · | [D]· · [E7]·  · | [A]· · [G]· · | [D]· · [E7]·  · | [A]· · [G]· · | [D]· · [E7]·  ·
+
+[A] Nume[G]rao, numerao[D], viva [E7]la numeración
+[A] ¿Quién ha [G]visto matrimo[D]nio sin co[E7]rrer amonestación?
+[A] Nume[G]rao, numerao[D], viva [E7]la numeración
+[A] ¿Quién ha [G]visto matrimo[D]nio sin co[E7]rrer amonestación?
+[A] Pavo real,[G] ¡uh!,[D] pavo real,[E7] ¡uh!,[A] pavo real,[G] ¡uh!,[D] pavo real,[E7] ¡uh!
+
+[A] A to[G]dos los que me escu[D]chan aquí [E7]les vengo a dejar
+[A] · [G] · [D] Aquí les [E7]vengo a dejar
+[A] Un co[G]rrío venezola[D]no que se [E7]llama el pavo real
+[A] · [G] · [D] Que se lla[E7]ma el pavo real
+[A] Y a las mu[G]chachas les di[D]go que aquí [E7]me quiero casar
+[A] · [G] · [D] Que aquí me [E7]quiero casar
+[A] Y ahora [G]mismo les ofrez[D]co cuatro ca[E7]sas por capital
+[A] La prena[G]tal, el manico[D]mio, la cár[E7]cel o el hospital
+[A] · [G] · [D] La cárcel[E7] o el hospital
+
+[A] Si no [G]cumplo lo ofreci[D]do nos po[E7]demos divorciar
+[A] · [G] · [D] Nos pode[E7]mos divorciar
+[A] Para eso e[G]xisten las le[D]yes que suelen [E7]todo arreglar
+[A] · [G] · [D] Que suelen [E7]todo arreglar
+[A] Y a usted, mi [G]joven, le ofrez[D]co una [E7]ganga en casamiento
+[A] · [G] · [D] Una ganga [E7]en casamiento
+[A] Mi ve[G]cina, la menor,[D] es más [E7]pura que un convento
+[A] · [G] · [D] Es más pu[E7]ra que un convento
+[A] Y por [G]eso yo le advier[D]to no me [E7]la venga a tantear
+[A] · [G] · [D] No me la ven[E7]ga a tantear
+[A] No es ra[G]dio en demostración,[D] ni instru[E7]mento de tocar
+
+[A] Nume[G]rao, numerao[D], viva [E7]la numeración
+[A] ¿Quién ha [G]visto matrimo[D]nio sin co[E7]rrer amonestación?
+[A] Nume[G]rao, numerao[D], viva [E7]la numeración
+[A] ¿Quién ha [G]visto matrimo[D]nio sin co[E7]rrer amonestación?
+
+[A] · [G]Chévere, cun chévere, cun [D]chévere, cun chévere, cun [E7]chévere, cun chévere
+[A]↓¡Ah! [A]↓¡Ah! [G]Chévere, cun chévere, cun [D]chévere, cun chévere, cun [E7]chévere, cun chévere
+[A] Pavo real,[G] ¡uh!,[D] pavo real,[E7] ¡uh!,[A] pavo real,[G] ¡uh!,[D] pavo real,[E7] ¡uh!
+
+[A] A todos los [G]negros presen[D]tes yo les [E7]voy a aconsejar
+[A] · [G] · [D] Yo les voy[E7] a aconsejar
+[A] Que com[G]bine los colo[D]res que la [E7]raza es natural
+[A] · [G] · [D] Que la ra[E7]za es natural
+[A] Que un ne[G]gro con una ne[D]gra es como [E7]noche sin luna
+[A] · [G] · [D] Es como no[E7]che sin luna
+[A] Y un blan[G]co con una blan[D]ca es como [E7]leche y espuma
+[A] · [G] · [D] Es como le[E7]che y espuma
+[A] Todo [G]negro pelo re[D]cio con ru[E7]bia se ha de casar
+[A] · [G] · [D] Con rubia se [E7]ha de casar
+[A] Para que [G]vengan los hi[D]jos con plu[E7]mas de pavo real
+[A] Para que [G]vengan los hi[D]jos con plu[E7]mas de pavo real
+[A] Para que [G]vengan los hi[D]jos con plu[E7]mas de pavo real
+
+[A] · [G]Chévere, cun chévere, cun [D]chévere, cun chévere, cun [E7]chévere, cun chévere
+[A]↓¡Ah! [A]↓¡Ah! [G]Chévere, cun chévere, cun [D]chévere, cun chévere, cun [E7]chévere, cun chévere
+[A] · [G]Chévere, cun chévere, cun [D]chévere, cun chévere, cun [E7]chévere, cun chévere
+... [A]↓¡Ah! [G]Chévere, cun chévere, cun [D]chévere, cun chévere, cun [E7]chévere, cun chévere
+[A] · [G]Chévere, cun chévere, cun [D]chévere, cun chévere, cun [E7]chévere, cun chévere
+[A]↓¡Ah! [A]↓¡Ah! [G]Chévere, cun chévere, cun [D]chévere, cun chévere, cun [E7]chévere, cun chévere
+[A] · [G]Chévere, cun chévere, cun [D]chévere, cun chévere, cun [E7]chévere, cun chévere [A]↓
