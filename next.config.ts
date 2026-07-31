@@ -15,10 +15,22 @@ type RuntimeCachingRule = NonNullable<
  * it not one HTML document was ever cached, so the app opened to the browser's
  * offline page however many songs had been saved (BUG-007).
  *
- * 300 entries rather than next-pwa's 32: this app is 276 songs and two pages
- * each, and a cached document is a few KB. `networkTimeoutSeconds` is what stops
- * NetworkFirst from waiting out the browser's full timeout on one bar of signal
- * before it reaches for the copy it already has.
+ * **The two expiration numbers are load-bearing, and both had to grow at
+ * BUG-008.** A saved song lives in this cache, so anything that evicts an entry
+ * un-saves a song behind the reader's back:
+ *
+ * - `maxEntries` has to sit above every page the app can produce, or the LRU
+ *   does it. The ceiling is 276 songs × 2 pages, plus the landing, the list and
+ *   an RSC payload apiece — call it 1200, which at a few KB a document is a
+ *   handful of MB and nowhere near an origin's quota. It was 300, and merely
+ *   scrolling the catalogue fills 123 of those with Next's own link prefetches.
+ * - `maxAgeSeconds` has to outlast the trip the songs were saved for. It was 30
+ *   days, which quietly deletes the songs of anyone who saves a set and does not
+ *   open the app for a month — precisely the person the feature is for.
+ *
+ * `networkTimeoutSeconds` is what stops NetworkFirst from waiting out the
+ * browser's full timeout on one bar of signal before it reaches for the copy it
+ * already has.
  *
  * The cast covers two things next-pwa hands straight to workbox and left out of
  * its own `.d.ts`: a function `urlPattern` and `networkTimeoutSeconds`. Its own
@@ -30,8 +42,8 @@ const cachePages = {
   options: {
     cacheName: "pages",
     expiration: {
-      maxEntries: 300,
-      maxAgeSeconds: 60 * 60 * 24 * 30,
+      maxEntries: 1200,
+      maxAgeSeconds: 60 * 60 * 24 * 365,
     },
     networkTimeoutSeconds: 10,
   },

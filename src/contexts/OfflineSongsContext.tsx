@@ -20,6 +20,12 @@ import {
   saveMultipleSongs as saveMultipleSongsToDB,
   saveSong as saveSongToDB,
 } from "@/lib/indexedDB";
+import {
+  cacheManySongPages,
+  cacheSongPages,
+  uncacheManySongPages,
+  uncacheSongPages,
+} from "@/lib/offlinePages";
 import type { StoredSong } from "@/types/offline";
 import type { ParsedSong } from "@/types/song";
 
@@ -69,19 +75,40 @@ export function OfflineSongsProvider({ children }: { children: ReactNode }) {
     loadSavedSlugs();
   }, []);
 
+  /**
+   * Saving is two things, and it is only done when both have happened: the
+   * song's data goes into IndexedDB, and its pages go into the service worker's
+   * cache. The second is what actually makes it open with no network — the
+   * sheet renders from the prerendered page, not from the store — and until
+   * BUG-008 nobody did it, so *Guardada* was a claim the app could not keep.
+   *
+   * If the caching fails the IndexedDB record is rolled back, because a saved
+   * song that will not open is worse than one that admits it did not save.
+   */
   const saveSong = useCallback(async (song: StoredSong) => {
     const result = await saveSongToDB(song);
-    if (result.success) {
-      setOfflineSongs((prev) => new Set(prev).add(song.slug));
-    } else {
+    if (!result.success) {
       console.error("Failed to save song:", result.error);
       throw new Error(result.error || "Failed to save song");
     }
+
+    try {
+      await cacheSongPages(song.slug);
+    } catch (error) {
+      await removeSongFromDB(song.slug);
+      console.error("Failed to cache song pages:", error);
+      throw error;
+    }
+
+    setOfflineSongs((prev) => new Set(prev).add(song.slug));
   }, []);
 
   const removeSong = useCallback(async (slug: string) => {
     const result = await removeSongFromDB(slug);
     if (result.success) {
+      // Unsaving has to take the pages with it, or a song stays readable after
+      // being removed and the checkbox is lying in the other direction.
+      await uncacheSongPages(slug);
       setOfflineSongs((prev) => {
         const next = new Set(prev);
         next.delete(slug);
@@ -96,6 +123,7 @@ export function OfflineSongsProvider({ children }: { children: ReactNode }) {
   const saveMultipleSongs = useCallback(async (songs: StoredSong[]) => {
     const result = await saveMultipleSongsToDB(songs);
     if (result.success) {
+      await cacheManySongPages(songs.map((song) => song.slug));
       setOfflineSongs((prev) => {
         const next = new Set(prev);
         for (const song of songs) {
@@ -112,6 +140,7 @@ export function OfflineSongsProvider({ children }: { children: ReactNode }) {
   const removeMultipleSongs = useCallback(async (slugs: string[]) => {
     const result = await removeMultipleSongsFromDB(slugs);
     if (result.success) {
+      await uncacheManySongPages(slugs);
       setOfflineSongs((prev) => {
         const next = new Set(prev);
         for (const slug of slugs) {
