@@ -1,15 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 64 64" role="img">
-  <rect width="64" height="64" rx="14" fill="#0e6b7a"></rect>
-  <mask id="sh" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 64 64" role="img">
+  <rect width="64" height="64" fill="#0e6b7a"></rect>
+  <g transform="translate(32 32) scale(0.72) translate(-32 -32)">
+  <mask id="shm" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
     <rect width="64" height="64" fill="#fff"></rect>
     <circle cx="33.4" cy="32.1" r="5.5" fill="#000"></circle>
   </mask>
-  <g mask="url(#sh)" transform="translate(-1.4 -2.6)">
+  <g mask="url(#shm)" transform="translate(-1.4 -2.6)">
     <g transform="rotate(20 32 38)" fill="#faf6ee">
       <rect x="29.2" y="-9" width="5.6" height="33" rx="2.6"></rect>
       <circle cx="32" cy="25.5" r="11"></circle>
       <rect x="25.2" y="21" width="13.6" height="23"></rect>
       <circle cx="32" cy="42" r="15"></circle>
     </g>
+  </g>
   </g>
 </svg>

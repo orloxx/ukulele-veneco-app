@@ -44,9 +44,15 @@ export const viewport: Viewport = {
   maximumScale: 5,
   userScalable: true,
   viewportFit: "cover",
+  // Turquesa 600 — the one action colour, and what `manifest.json` declares as
+  // its theme_color — over the light ground; the dark theme's own page ground
+  // over the dark one, so the browser chrome joins the app rather than glowing
+  // at it. `maximumScale` and `userScalable` stay as they are: pinch-zoom and the
+  // OS text-size setting are the reason the sheet needs no zoom control of its
+  // own (vault DECISIONS.md 13).
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#2563eb" },
-    { media: "(prefers-color-scheme: dark)", color: "#1e40af" },
+    { media: "(prefers-color-scheme: light)", color: "#0e6b7a" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f1a1e" },
   ],
 };
 
@@ -63,8 +69,17 @@ export const metadata: Metadata = {
     title: "Ukulele Veneco",
   },
 
+  // The mark, at every size a platform asks for. There is no favicon.ico: the
+  // 32px SVG is the same drawing and scales, where the .ico it replaced was a
+  // gradient square with a 🎸 set as text — a glyph that renders differently on
+  // every platform and not at all where the font has no colour table.
   icons: {
     icon: [
+      {
+        url: "/icons/favicon.svg",
+        sizes: "32x32",
+        type: "image/svg+xml",
+      },
       {
         url: "/icons/icon-192x192.svg",
         sizes: "192x192",

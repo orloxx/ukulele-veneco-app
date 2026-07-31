@@ -1,11 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="152" height="152" viewBox="0 0 152 152" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <rect width="152" height="152" fill="url(#grad)" rx="22.8"/>
-  <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="60.800000000000004" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="central">🎸</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="152" height="152" viewBox="0 0 64 64" role="img">
+  <rect width="64" height="64" rx="14" fill="#0e6b7a"></rect>
+  <mask id="sh" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+    <rect width="64" height="64" fill="#fff"></rect>
+    <circle cx="33.4" cy="32.1" r="5.5" fill="#000"></circle>
+  </mask>
+  <g mask="url(#sh)" transform="translate(-1.4 -2.6)">
+    <g transform="rotate(20 32 38)" fill="#faf6ee">
+      <rect x="29.2" y="-9" width="5.6" height="33" rx="2.6"></rect>
+      <circle cx="32" cy="25.5" r="11"></circle>
+      <rect x="25.2" y="21" width="13.6" height="23"></rect>
+      <circle cx="32" cy="42" r="15"></circle>
+    </g>
+  </g>
 </svg>

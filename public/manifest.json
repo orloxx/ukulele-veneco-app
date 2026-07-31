@@ -4,8 +4,8 @@
   "description": "Canciones venezolanas adaptadas al ukulele",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "background_color": "#faf6ee",
+  "theme_color": "#0e6b7a",
   "orientation": "portrait-primary",
   "scope": "/",
   "icons": [
@@ -56,6 +56,12 @@
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512x512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
     }
   ],
   "categories": ["music", "education"],
