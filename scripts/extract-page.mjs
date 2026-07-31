@@ -738,6 +738,11 @@ function chordDiagrams({ runs, strokes, fills }) {
       name: label ? label.text.trim() : "?",
       positions: unreadable ? null : positions.join(""),
       box: { x0: g.x0, x1: g.x1, y0: g.y0, y1: top + 14 },
+      // The exact runs this diagram owns. `extract` drops them from the body by
+      // identity: the label is centred over a 4-string grid, so a long name like
+      // `Dbmmaj7` overhangs it by more than any fixed margin can safely allow, and
+      // guessing at one either leaks the label into the lyrics or eats a lyric line.
+      labelRuns: [label, marker].filter(Boolean),
     });
   }
   diagrams.sort((a, b) => b.box.y1 - a.box.y1 || a.box.x0 - b.box.x0);
@@ -821,7 +826,12 @@ function extract(pdf, page) {
   const top = media ? Number(media[4]) : 842;
 
   // Runs belonging to a chord diagram's label or base-fret number are not body text.
+  // The box test catches whatever sits inside the grid; `labelRuns` catches the label
+  // itself, which `chordDiagrams` has already identified and which can start well left
+  // of the grid when the chord's name is long.
+  const labelRuns = new Set(diagrams.flatMap((d) => d.labelRuns));
   const inDiagram = (r) =>
+    labelRuns.has(r) ||
     diagrams.some(
       (d) =>
         r.x > d.box.x0 - 8 &&
@@ -878,7 +888,8 @@ function extract(pdf, page) {
     title: parts?.[4]?.trim() || (titleLine.trim() ? titleLine.trim() : null),
     credit: header[1]?.text.trim() ?? null,
     columns: column ? 2 : 1,
-    chords: diagrams,
+    // `labelRuns` is bookkeeping for the filter above, not part of a page's description.
+    chords: diagrams.map(({ labelRuns: _labelRuns, ...chord }) => chord),
     body,
   };
 }
