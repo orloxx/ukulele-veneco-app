@@ -49,7 +49,7 @@ Vo[C]laré conti[Cmaj7]go, mami, [C6]bailaré conti[C5]go
 [G7sus4]Te amaré por siem[G7]pre aunque no es[G7sus2]tés aquí conmi[G5]go, oh-oh
 
 ## Estrofa 2
-[C]↓ Buongiorno, ·principessa [C]↓Amorе mio, no te ·saco ’e la cabeza
+[C]↓ Buongiorno, ·principessa [C]↓Amore mio, no te ·saco ’e la cabeza
 Estoy a [G7]mil, ¡hey!, ·porfa manda PIN o a·cércate un chin, que te ·hago un ling ling
 
 ## Pre-Coro 2
