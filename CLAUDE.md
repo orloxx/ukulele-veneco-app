@@ -238,9 +238,16 @@ What it will not do for you:
 
 - **errors** — frontmatter missing a required field, a `positions` string that is not
   four digits, a `[Chord]` used but never defined, a filename that is not the title's
-  slug. These break the app, and the command exits non-zero.
+  slug, a chord spanning more than four frets. These break the app, and the command exits
+  non-zero.
 - **warnings** — a chord defined but never used, spacing that does not match the rules in
-  `songs/README.md`, a chord above the 4th fret. These do not fail the run.
+  `songs/README.md`. These do not fail the run.
+
+**A high fret is fine; a wide one is not.** `ChordDiagram` slides its four-fret window up
+the neck to wherever the chord sits and prints the starting fret beside the grid, so `Ab`
+= `5343` draws correctly. What it cannot show is a shape spread over more than four frets
+— and no chord in the cancionero is, so one in a song file means the transcription is
+wrong.
 
 The spacing warnings are worth taking seriously even though they are only warnings: the
 app positions each chord absolutely above monospaced lyrics, so the spaces after a chord

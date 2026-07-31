@@ -27,8 +27,16 @@ const SONGS = path.join(REPO_ROOT, "songs");
 /** Chord markers the spacing rules treat as attached to the chord that precedes them. */
 const MARKERS = "·◦↓↑";
 
-/** The highest fret ChordDiagram.tsx can draw. Anything above it renders as nothing. */
-const HIGHEST_DRAWABLE_FRET = 4;
+/**
+ * How many frets ChordDiagram.tsx shows at once.
+ *
+ * It slides that window up the neck to wherever the chord sits, so a high fret is fine;
+ * what it cannot draw is a shape whose fingers are spread over more frets than the window
+ * holds. The widest chord in the source cancionero spans exactly this many, so anything
+ * wider is a transcription error rather than a real fingering — which is why this is an
+ * error and not a warning. Keep it in step with `WINDOW` in ChordDiagram.tsx.
+ */
+const WINDOW_FRETS = 4;
 
 /**
  * The filename a song's title should produce.
@@ -206,12 +214,18 @@ function checkSong(file) {
       );
       continue;
     }
-    const highest = Math.max(...chord.positions.split("").map(Number));
-    if (highest > HIGHEST_DRAWABLE_FRET) {
-      report.warn(
-        `\`${chord.name}\` reaches fret ${highest}, and ChordDiagram draws nothing above fret ${HIGHEST_DRAWABLE_FRET} — that string will be missing from the diagram`,
-        chord.line,
-      );
+    const stopped = chord.positions
+      .split("")
+      .map(Number)
+      .filter((fret) => fret > 0);
+    if (stopped.length) {
+      const span = Math.max(...stopped) - Math.min(...stopped) + 1;
+      if (span > WINDOW_FRETS) {
+        report.fail(
+          `\`${chord.name}\` is \`${chord.positions}\`, which spans ${span} frets — ChordDiagram shows ${WINDOW_FRETS} at a time, so a finger would be missing from the diagram`,
+          chord.line,
+        );
+      }
     }
   }
 
