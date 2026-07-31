@@ -260,6 +260,35 @@ What it will not do for you:
   a bracketed chord. **Copy it verbatim**, parentheses included, and do not promote it to
   `[Gmaj7]`. That keeps the question open and answerable later; guessing closes it wrongly
   in 40 songs at once. It is `M2 · 8`.
+- **An abbreviated chorus is written out; a repeat instruction is not.** Many pages print
+  the bare word *Coro* where the chorus comes round again, and that is copied out in full,
+  because a phone has no page to flip back to. What looks the same and is not is a *da
+  capo* — page 48's `Repetir desde Instrumental`, page 62's `Repetir desde el principio`,
+  page 64's `Repetir desde el principio y luego Outro`. Those span whole sections, and
+  writing one out would double the song to spare one scroll. They stay as their own
+  heading with nothing under it, which is the only reason a `##` in `songs/` is ever
+  empty.
+- **Two pages carry a duet's voice legend** — 45 and 49, and no others in the book. Three
+  names sit stacked at `x≈426`, away from the lyric column at `x=40`, and at the same
+  three `y` positions on both pages: it is a top-right legend for a colour coding, not a
+  label attached to the line beside it. The extractor prints them interleaved with the
+  body, because it reads in `y` order. Move them to the top of the body as plain lines,
+  above the first heading, the way `Capo 1` sits — see `songs/colgando-en-tus-manos.md`.
+  `--json` and a filter on `x > 300` is how you find one.
+- **The book invents a chord name when a song needs two fingerings of one chord.** Page 64
+  draws `Edim7` at 0101 and `Edim7²` at 3434; page 77 has `C#m²` and `B²`; page 72 has
+  `Em7^` beside a plain `Em7`. Copy the superscript or the caret as set. This is the
+  corollary of `DECISIONS.md` 6 in the vault — a fingering belongs to a song, so a song
+  that needs two of them needs two names, and the book supplies one.
+- **One page prints tablature.** Page 68 closes *Volare* with `Riff inicial de la canción`
+  over a four-line TAB staff. It is kept verbatim under its own heading: the app renders
+  the body monospaced, which is what a TAB staff needs. `grep '^[AECG]|' songs/` finds
+  every one, and there is currently exactly one.
+- **A masthead can carry more than two keys, and the compás can change too.** Page 78's
+  reads `G; E; C` and the song is marked `Cambio de clave` twice; page 57 is marked
+  `Cambio de compás a 4/4, más rápido` and page 71 `Cambio ritmo a 6/8`. `key` and
+  `timeSignature` hold what the masthead says; the change itself is a heading where the
+  book prints it.
 
 ### 3. Check it
 
