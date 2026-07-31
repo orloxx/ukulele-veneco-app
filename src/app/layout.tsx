@@ -135,14 +135,25 @@ export default function RootLayout({
       className={`${bricolage.variable} ${instrument.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >
-      <body>
-        {/* First thing in the body, and blocking, so the stored theme is applied
-            before anything is painted. An effect would be too late: every
-            night-time load would flash cream. */}
+      {/* In an explicit <head>, and blocking, so the stored theme is on <html>
+          before anything is painted — an effect would be too late and every
+          night-time load would flash cream.
+
+          Two things it is not, both tried first. Not a plain <script> at the top
+          of <body>: that runs on every ordinary route and silently does not on a
+          404, where `notFound()` renders through the error boundary and React
+          creates the element rather than the parser reaching it — and a script
+          node created that way never executes, so the 404 came out unthemed. And
+          not `next/script` with `beforeInteractive`, which the App Router only
+          honours for scripts with a `src`; an inline one goes into the flight
+          payload and lands in the same place. */}
+      <head>
         <script
           // biome-ignore lint/security/noDangerouslySetInnerHtml: the only way to inline a blocking script, and the source is a constant
           dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }}
         />
+      </head>
+      <body>
         <ServiceWorker />
         {children}
       </body>

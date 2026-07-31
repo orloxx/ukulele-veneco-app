@@ -108,7 +108,14 @@
   --text-strong: var(--papel-900);
   --text-body: #23383f;
   --text-muted: var(--papel-700);
-  --text-faint: var(--papel-600);
+  /* Not papel-600. The ramp step it wants is #8d9298, which measures 3.14:1 on
+     white and 2.91:1 on the page ground — de-emphasised past the point of being
+     readable, on the smallest type in the system. This value is the lightest one
+     that clears 4.5:1 everywhere it lands: 5.04 on --surface-raised, 4.68 on
+     --surface-page, 4.25 on --surface-sunken, which is the one ground it is not
+     currently used on. There is no ramp step here because the papel ramp has no
+     rung between 600 and 700. */
+  --text-faint: #66707a;
   --text-on-accent: #ffffff;
   --text-on-inverse: var(--papel-200);
   --text-link: var(--azul-600);
@@ -340,7 +347,9 @@
   --text-strong: #ece6da;
   --text-body: #d6cfc2;
   --text-muted: #a1aeb3;
-  --text-faint: #74858b;
+  /* Same measurement on the dark ground: #74858b was 4.10:1 on
+     --surface-raised. This is 5.46. */
+  --text-faint: #8a9ba1;
   --text-on-accent: #06171b;
   --text-on-inverse: var(--papel-900);
   --text-link: var(--azul-300);
@@ -1308,9 +1317,11 @@ samp {
 .uv-notfound {
   display: grid;
   place-items: center;
+  align-content: center;
   text-align: center;
   gap: var(--space-4);
-  padding: var(--space-16) 0;
+  min-height: 100dvh;
+  padding: var(--space-16) var(--space-6);
 }
 .uv-notfound__title {
   font-size: var(--size-display-2);
@@ -1319,6 +1330,11 @@ samp {
 .uv-notfound__body {
   color: var(--text-muted);
   max-width: var(--measure-prose);
+}
+.uv-notfound__credit {
+  margin-top: var(--space-8);
+  font-size: var(--size-body-sm);
+  color: var(--text-faint);
 }
 
 /* ==========================================================================
