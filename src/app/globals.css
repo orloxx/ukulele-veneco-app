@@ -206,6 +206,10 @@
 
   /* Layout */
   --measure-page: 1200px;
+  /* The page column's inset, and the only one in the system. It steps down at
+     both breakpoints; see the page-column rule under *Page shell*, which is the
+     only place it is read. */
+  --gutter-page: var(--space-6);
   --measure-prose: 62ch;
   --measure-sheet: 40rem;
   --header-height: 60px;
@@ -821,12 +825,42 @@ samp {
   flex-direction: column;
   min-height: 100dvh;
 }
-.uv-page {
-  flex: 1;
+
+/* THE PAGE COLUMN — one rule, and every band that spans the viewport lines its
+   contents up in it: the header, the app body, the footer, and each of the
+   landing's four sections. That is what makes the mark in the header sit over
+   the first cell of the table, and the hero's eyebrow sit under both.
+
+   The cap and the inset are here together on purpose. They were five copies of
+   the cap with three different answers about the inset — none, 1.5rem and 2rem
+   — so the header overhung the body by 24px a side and the landing sat 32px
+   inside it (BUG-009). The width was single-sourced in a token and the inset
+   was not, which is exactly how the two drift apart.
+
+   A band's own rule keeps its vertical padding, its background and its grid,
+   and writes neither the cap nor a horizontal inset. Use `padding-block` and
+   never the `padding` shorthand: the shorthand resets the inset this rule
+   gives it, which is the way this bug comes back.
+
+   The landing's 2rem is gone rather than kept as a deliberate wider gutter: a
+   gutter that belongs to one page is a gutter the page above and the page
+   below do not have. */
+.uv-page,
+.uv-header__inner,
+.uv-footer__inner,
+.uv-landing-section,
+.uv-stats__grid,
+.uv-preview__grid,
+.uv-poster__inner {
   width: 100%;
   max-width: var(--measure-page);
-  margin: 0 auto;
-  padding: var(--space-8) var(--space-6) var(--space-12);
+  margin-inline: auto;
+  padding-inline: var(--gutter-page);
+}
+
+.uv-page {
+  flex: 1;
+  padding-block: var(--space-8) var(--space-12);
 }
 
 /* ---------------- Header / footer ---------------- */
@@ -838,7 +872,8 @@ samp {
   align-items: center;
   gap: var(--space-3);
   min-height: var(--header-height);
-  padding: 0 var(--space-4);
+  /* No horizontal padding: the bar is full-bleed and the inset belongs to the
+     page column on .uv-header__inner, or the two add up. */
   /* The only transparency and the only blur in the whole system. It is here for
      one reason: lyrics scrolling under a sticky header have to stay legible. */
   background: color-mix(in oklab, var(--surface-page) 88%, transparent);
@@ -850,14 +885,12 @@ samp {
   border-bottom: var(--border-hairline) solid var(--line-soft);
 }
 /* The header is full-bleed but its contents line up with the page column, so the
-   mark sits over the first cell of the table rather than in the margin. */
+   mark sits over the first cell of the table rather than in the margin. The cap
+   and the inset that do it are in the page-column rule above. */
 .uv-header__inner {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  width: 100%;
-  max-width: var(--measure-page);
-  margin: 0 auto;
 }
 .uv-header__spacer {
   flex: 1;
@@ -867,7 +900,7 @@ samp {
 }
 
 .uv-footer {
-  padding: var(--space-6) var(--space-4);
+  padding-block: var(--space-6);
   border-top: var(--border-hairline) solid var(--line-soft);
   color: var(--text-muted);
   font-size: var(--size-body-sm);
@@ -878,9 +911,6 @@ samp {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-2) var(--space-6);
-  width: 100%;
-  max-width: var(--measure-page);
-  margin: 0 auto;
 }
 
 /* ---------------- Theme toggle ----------------
@@ -1350,11 +1380,11 @@ samp {
   position: static;
 }
 
+/* The landing's bands are page-column bands like any other — the cap and the
+   inset come from the rule in *Page shell*, and each one keeps only its own
+   vertical rhythm. */
 .uv-landing-section {
-  width: 100%;
-  max-width: var(--measure-page);
-  margin: 0 auto;
-  padding: var(--space-20) var(--space-8);
+  padding-block: var(--space-20);
 }
 
 /* ---------------- Hero ---------------- */
@@ -1421,10 +1451,7 @@ samp {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-6);
-  width: 100%;
-  max-width: var(--measure-page);
-  margin: 0 auto;
-  padding: var(--space-8);
+  padding-block: var(--space-8);
 }
 /* Mono, because these are figures being counted rather than words. */
 .uv-stats__figure {
@@ -1483,10 +1510,7 @@ samp {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--space-12);
   align-items: center;
-  width: 100%;
-  max-width: var(--measure-page);
-  margin: 0 auto;
-  padding: var(--space-16) var(--space-8);
+  padding-block: var(--space-16);
 }
 .uv-preview__title {
   font-size: var(--size-display-3);
@@ -1523,10 +1547,7 @@ samp {
   align-items: flex-end;
   gap: var(--space-10);
   flex-wrap: wrap;
-  width: 100%;
-  max-width: var(--measure-page);
-  margin: 0 auto;
-  padding: var(--space-20) var(--space-8);
+  padding-block: var(--space-20);
 }
 .uv-poster__eyebrow {
   font-size: var(--size-label);
@@ -1555,7 +1576,7 @@ samp {
 /* The landing's footer is the page's last band, so it carries no top rule. */
 .uv-footer--landing {
   border-top: 0;
-  padding: var(--space-8);
+  padding-block: var(--space-8);
 }
 
 /* ==========================================================================
@@ -1581,8 +1602,13 @@ samp {
    ========================================================================== */
 
 @media (max-width: 900px) {
+  /* The gutter narrows once, here, and every band in the page column narrows
+     with it. */
+  :root {
+    --gutter-page: var(--space-4);
+  }
   .uv-page {
-    padding: var(--space-6) var(--space-4) var(--space-12);
+    padding-block: var(--space-6) var(--space-12);
   }
 
   /* The hero: art under the words, not beside them. */
@@ -1597,12 +1623,12 @@ samp {
     max-width: 320px;
   }
   .uv-landing-section {
-    padding: var(--space-12) var(--space-6);
+    padding-block: var(--space-12);
   }
   .uv-stats__grid,
   .uv-preview__grid,
   .uv-poster__inner {
-    padding: var(--space-10) var(--space-6);
+    padding-block: var(--space-10);
   }
 
   .uv-preview__grid {
@@ -1763,8 +1789,11 @@ samp {
 
 /* The narrowest screen the sheet should still be readable on. */
 @media (max-width: 380px) {
+  :root {
+    --gutter-page: var(--space-3);
+  }
   .uv-page {
-    padding: var(--space-5) var(--space-3) var(--space-10);
+    padding-block: var(--space-5) var(--space-10);
   }
   .uv-sheet {
     font-size: 1rem;
