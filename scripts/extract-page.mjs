@@ -726,11 +726,24 @@ function chordDiagrams({ runs, strokes, fills }) {
       if (fret > 9) unreadable = true; // `positions` is four digits and has no room
     }
 
-    // The chord's name sits directly above the grid.
+    // The chord's name sits directly above the grid, and the book centres it there.
+    // Centring is also what tells a label from a lyric line long enough to reach the
+    // diagram column: over all 2140 diagrams no real label's midpoint is more than
+    // 9.9pt from its grid's, and the nine stray runs that fall in the same 14pt band
+    // are 23.7pt out or worse — page 68's `go, oh-oh` is 42.2 and used to win the
+    // sort, because it sits a point *lower* than the G7 it stole the name from.
+    // 15pt is the middle of that gap. It has to be a tolerance rather than a fixed
+    // margin on the sides, because a long name like `Dbmmaj7` overhangs a 4-string
+    // grid by more than any such margin could safely allow.
+    const middle = (g.x0 + g.x1) / 2;
     const label = runs
       .filter(
         (r) =>
-          r.y > top && r.y < top + 14 && r.xEnd > g.x0 - 6 && r.x < g.x1 + 6,
+          r.y > top &&
+          r.y < top + 14 &&
+          r.xEnd > g.x0 - 6 &&
+          r.x < g.x1 + 6 &&
+          Math.abs((r.x + r.xEnd) / 2 - middle) < 15,
       )
       .sort((a, b) => a.y - b.y || a.x - b.x)[0];
 
