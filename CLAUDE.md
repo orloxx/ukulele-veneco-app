@@ -285,10 +285,15 @@ What it will not do for you:
   `Em7^` beside a plain `Em7`. Copy the superscript or the caret as set. This is the
   corollary of `DECISIONS.md` 6 in the vault — a fingering belongs to a song, so a song
   that needs two of them needs two names, and the book supplies one.
-- **One page prints tablature.** Page 68 closes *Volare* with `Riff inicial de la canción`
-  over a four-line TAB staff. It is kept verbatim under its own heading: the app renders
-  the body monospaced, which is what a TAB staff needs. `grep '^[AECG]|' songs/` finds
-  every one, and there is currently exactly one.
+- **Two pages print tablature.** Page 68 closes *Volare* with `Riff inicial de la canción`
+  over a four-line TAB staff, and page 161 opens *Comando Borracho* with another. They are
+  kept verbatim under their own heading: the app renders the body monospaced, which is what
+  a TAB staff needs. `grep '^[AECG]|' songs/` finds them.
+- **Three pages decode with a Cyrillic е where the word wants a Latin e** — 68, 187 and
+  236. The subset font maps that glyph to the wrong code point and its `/ToUnicode` table
+  repeats the mistake, so the extractor is faithfully decoding a wrong table and there is
+  nothing to fix in it. Type the Latin letter. `pnpm validate` fails on any Cyrillic in
+  `songs/`, which is BUG-006 and is the only reason those three are not still there.
 - **A masthead can carry more than two keys, and the compás can change too.** Page 78's
   reads `G; E; C` and the song is marked `Cambio de clave` twice; page 57 is marked
   `Cambio de compás a 4/4, más rápido` and page 71 `Cambio ritmo a 6/8`. `key` and
@@ -301,8 +306,8 @@ What it will not do for you:
 
 - **errors** — frontmatter missing a required field, a `positions` string that is not
   four digits, a `[Chord]` used but never defined, a filename that is not the title's
-  slug, a chord spanning more than four frets. These break the app, and the command exits
-  non-zero.
+  slug, a chord spanning more than four frets, a Cyrillic character anywhere in the file.
+  These break the app, and the command exits non-zero.
 - **warnings** — a chord defined but never used, spacing that does not match the rules in
   `songs/README.md`. These do not fail the run.
 

@@ -190,6 +190,34 @@ function checkAnticipations(body, defined, report) {
   });
 }
 
+/**
+ * Check for characters that look Latin and are not.
+ *
+ * Three pages of the cancionero — 68, 187 and 236 — decode with a Cyrillic е (U+0435)
+ * inside an ordinary word, because the subset font maps that glyph to the wrong code
+ * point and its `/ToUnicode` table repeats the mistake. The extractor is decoding the
+ * table it is handed, so there is nothing to fix upstream: the character has to be
+ * caught here, on the way in.
+ *
+ * It is an **error** rather than a warning because nothing about it is visible. `Amorе`
+ * renders exactly like `Amore` and never matches a search for it, which is how one sat
+ * in `songs/volare.md` from `M2 · 5` until BUG-006 — past a byte-range `grep` that was
+ * written to catch it and reported the file clean.
+ *
+ * The test is the whole Cyrillic block, not just `е`: any of it in a Spanish song is a
+ * decoding fault, and naming the one letter would only ever catch the one page.
+ */
+function checkHomoglyphs(source, report) {
+  source.split(/\r?\n/).forEach((line, i) => {
+    for (const m of line.matchAll(/[Ѐ-ӿ]/g)) {
+      report.fail(
+        `\`${m[0]}\` (U+${m[0].codePointAt(0).toString(16).toUpperCase().padStart(4, "0")}) is Cyrillic — it looks Latin and never matches a search`,
+        i + 1,
+      );
+    }
+  });
+}
+
 /** Check one song file. Returns its errors and warnings. */
 function checkSong(file) {
   const errors = [];
@@ -198,6 +226,7 @@ function checkSong(file) {
   const report = { fail: at(errors), warn: at(warnings) };
 
   const source = fs.readFileSync(path.join(SONGS, file), "utf8");
+  checkHomoglyphs(source, report);
   const parts = split(source);
   if (!parts) {
     report.fail("no frontmatter — a song starts with a `---` block", 1);
