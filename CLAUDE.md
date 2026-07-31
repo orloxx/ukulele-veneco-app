@@ -240,6 +240,22 @@ What it will not do for you:
 - **Two songs share a title.** Sentimiento Muerto's *Sin sombra no hay luz* is on pages
   218 and 219, in Gm and in Am. The book disambiguates them in the title and so does the
   filename — see the naming rules in `songs/README.md`.
+- **The book prints beat dots inside the lyric line, and half of it does** — 133 of the
+  277 pages. They mark where the beat falls, so they land wherever the beat lands,
+  including mid-word: page 16 sets `Es difí·cil recobrar·`. **Keep a lyric line exactly as
+  the book sets it.** The `·`-attachment and spacing rules in `songs/README.md` are for
+  lines with *no words* — an intro, a solo, a strumming pattern. `songs/no-es-facil-amar-a-una-mujer.md`
+  is the reference for a lyric line that keeps its dots; `songs/barlovento.md` for an
+  instrumental line that gets the rules applied.
+
+  The one thing to normalise is a **gap wider than the rule** where two chords sit
+  together: the book aligns them in a proportional font and the app renders monospaced, so
+  `pnpm validate` will tell you the exact count it wants. Take its number.
+- **Some pages print a chord in parentheses** — `(Gmaj7)` on page 17, `(G)` on page 19,
+  40 pages in all. Nothing in the book says what it means, and it is not the same mark as
+  a bracketed chord. **Copy it verbatim**, parentheses included, and do not promote it to
+  `[Gmaj7]`. That keeps the question open and answerable later; guessing closes it wrongly
+  in 40 songs at once. It is `M2 · 8`.
 
 ### 3. Check it
 
