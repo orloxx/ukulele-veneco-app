@@ -267,7 +267,7 @@ What it will not do for you:
   page 64's `Repetir desde el principio y luego Outro`. Those span whole sections, and
   writing one out would double the song to spare one scroll. They stay as their own
   heading with nothing under it, which is the only reason a `##` in `songs/` is ever
-  empty.
+  empty. That is `DECISIONS.md` 8 in the vault.
 - **Two pages carry a duet's voice legend** — 45 and 49, and no others in the book. Three
   names sit stacked at `x≈426`, away from the lyric column at `x=40`, and at the same
   three `y` positions on both pages: it is a top-right legend for a colour coding, not a
