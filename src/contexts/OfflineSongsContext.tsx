@@ -6,160 +6,160 @@
  */
 
 import {
-	createContext,
-	useContext,
-	useState,
-	useEffect,
-	useCallback,
-	type ReactNode,
+  createContext,
+  type ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
 } from "react";
+import {
+  getSavedSongSlugs,
+  removeMultipleSongs as removeMultipleSongsFromDB,
+  removeSong as removeSongFromDB,
+  saveMultipleSongs as saveMultipleSongsToDB,
+  saveSong as saveSongToDB,
+} from "@/lib/indexedDB";
 import type { StoredSong } from "@/types/offline";
 import type { ParsedSong } from "@/types/song";
-import {
-	getSavedSongSlugs,
-	saveSong as saveSongToDB,
-	removeSong as removeSongFromDB,
-	saveMultipleSongs as saveMultipleSongsToDB,
-	removeMultipleSongs as removeMultipleSongsFromDB,
-} from "@/lib/indexedDB";
 
 interface OfflineSongsContextType {
-	offlineSongs: Set<string>;
-	saveSong: (song: StoredSong) => Promise<void>;
-	removeSong: (slug: string) => Promise<void>;
-	saveMultipleSongs: (songs: StoredSong[]) => Promise<void>;
-	removeMultipleSongs: (slugs: string[]) => Promise<void>;
-	isLoading: boolean;
+  offlineSongs: Set<string>;
+  saveSong: (song: StoredSong) => Promise<void>;
+  removeSong: (slug: string) => Promise<void>;
+  saveMultipleSongs: (songs: StoredSong[]) => Promise<void>;
+  removeMultipleSongs: (slugs: string[]) => Promise<void>;
+  isLoading: boolean;
 }
 
 const OfflineSongsContext = createContext<OfflineSongsContextType | undefined>(
-	undefined,
+  undefined,
 );
 
 /**
  * Convert ParsedSong to StoredSong format
  */
 export function parsedSongToStoredSong(song: ParsedSong): StoredSong {
-	return {
-		slug: song.slug,
-		metadata: song.metadata,
-		lyrics: song.lyrics,
-		chordDefinitions: song.chordDefinitions,
-		savedAt: Date.now(),
-	};
+  return {
+    slug: song.slug,
+    metadata: song.metadata,
+    lyrics: song.lyrics,
+    chordDefinitions: song.chordDefinitions,
+    savedAt: Date.now(),
+  };
 }
 
 export function OfflineSongsProvider({ children }: { children: ReactNode }) {
-	const [offlineSongs, setOfflineSongs] = useState<Set<string>>(new Set());
-	const [isLoading, setIsLoading] = useState(true);
+  const [offlineSongs, setOfflineSongs] = useState<Set<string>>(new Set());
+  const [isLoading, setIsLoading] = useState(true);
 
-	// Load saved song slugs on mount
-	useEffect(() => {
-		async function loadSavedSlugs() {
-			try {
-				const slugs = await getSavedSongSlugs();
-				setOfflineSongs(new Set(slugs));
-			} catch (error) {
-				console.error("Error loading saved songs:", error);
-			} finally {
-				setIsLoading(false);
-			}
-		}
+  // Load saved song slugs on mount
+  useEffect(() => {
+    async function loadSavedSlugs() {
+      try {
+        const slugs = await getSavedSongSlugs();
+        setOfflineSongs(new Set(slugs));
+      } catch (error) {
+        console.error("Error loading saved songs:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
 
-		loadSavedSlugs();
-	}, []);
+    loadSavedSlugs();
+  }, []);
 
-	const saveSong = useCallback(async (song: StoredSong) => {
-		const result = await saveSongToDB(song);
-		if (result.success) {
-			setOfflineSongs((prev) => new Set(prev).add(song.slug));
-		} else {
-			console.error("Failed to save song:", result.error);
-			throw new Error(result.error || "Failed to save song");
-		}
-	}, []);
+  const saveSong = useCallback(async (song: StoredSong) => {
+    const result = await saveSongToDB(song);
+    if (result.success) {
+      setOfflineSongs((prev) => new Set(prev).add(song.slug));
+    } else {
+      console.error("Failed to save song:", result.error);
+      throw new Error(result.error || "Failed to save song");
+    }
+  }, []);
 
-	const removeSong = useCallback(async (slug: string) => {
-		const result = await removeSongFromDB(slug);
-		if (result.success) {
-			setOfflineSongs((prev) => {
-				const next = new Set(prev);
-				next.delete(slug);
-				return next;
-			});
-		} else {
-			console.error("Failed to remove song:", result.error);
-			throw new Error(result.error || "Failed to remove song");
-		}
-	}, []);
+  const removeSong = useCallback(async (slug: string) => {
+    const result = await removeSongFromDB(slug);
+    if (result.success) {
+      setOfflineSongs((prev) => {
+        const next = new Set(prev);
+        next.delete(slug);
+        return next;
+      });
+    } else {
+      console.error("Failed to remove song:", result.error);
+      throw new Error(result.error || "Failed to remove song");
+    }
+  }, []);
 
-	const saveMultipleSongs = useCallback(async (songs: StoredSong[]) => {
-		const result = await saveMultipleSongsToDB(songs);
-		if (result.success) {
-			setOfflineSongs((prev) => {
-				const next = new Set(prev);
-				for (const song of songs) {
-					next.add(song.slug);
-				}
-				return next;
-			});
-		} else {
-			console.error("Failed to save multiple songs:", result.error);
-			throw new Error(result.error || "Failed to save songs");
-		}
-	}, []);
+  const saveMultipleSongs = useCallback(async (songs: StoredSong[]) => {
+    const result = await saveMultipleSongsToDB(songs);
+    if (result.success) {
+      setOfflineSongs((prev) => {
+        const next = new Set(prev);
+        for (const song of songs) {
+          next.add(song.slug);
+        }
+        return next;
+      });
+    } else {
+      console.error("Failed to save multiple songs:", result.error);
+      throw new Error(result.error || "Failed to save songs");
+    }
+  }, []);
 
-	const removeMultipleSongs = useCallback(async (slugs: string[]) => {
-		const result = await removeMultipleSongsFromDB(slugs);
-		if (result.success) {
-			setOfflineSongs((prev) => {
-				const next = new Set(prev);
-				for (const slug of slugs) {
-					next.delete(slug);
-				}
-				return next;
-			});
-		} else {
-			console.error("Failed to remove multiple songs:", result.error);
-			throw new Error(result.error || "Failed to remove songs");
-		}
-	}, []);
+  const removeMultipleSongs = useCallback(async (slugs: string[]) => {
+    const result = await removeMultipleSongsFromDB(slugs);
+    if (result.success) {
+      setOfflineSongs((prev) => {
+        const next = new Set(prev);
+        for (const slug of slugs) {
+          next.delete(slug);
+        }
+        return next;
+      });
+    } else {
+      console.error("Failed to remove multiple songs:", result.error);
+      throw new Error(result.error || "Failed to remove songs");
+    }
+  }, []);
 
-	const value = {
-		offlineSongs,
-		saveSong,
-		removeSong,
-		saveMultipleSongs,
-		removeMultipleSongs,
-		isLoading,
-	};
+  const value = {
+    offlineSongs,
+    saveSong,
+    removeSong,
+    saveMultipleSongs,
+    removeMultipleSongs,
+    isLoading,
+  };
 
-	return (
-		<OfflineSongsContext.Provider value={value}>
-			{children}
-		</OfflineSongsContext.Provider>
-	);
+  return (
+    <OfflineSongsContext.Provider value={value}>
+      {children}
+    </OfflineSongsContext.Provider>
+  );
 }
 
 /**
  * Hook to access the offline songs context
  */
 export function useOfflineSongs() {
-	const context = useContext(OfflineSongsContext);
-	if (context === undefined) {
-		throw new Error(
-			"useOfflineSongs must be used within an OfflineSongsProvider",
-		);
-	}
-	return context;
+  const context = useContext(OfflineSongsContext);
+  if (context === undefined) {
+    throw new Error(
+      "useOfflineSongs must be used within an OfflineSongsProvider",
+    );
+  }
+  return context;
 }
 
 /**
  * Hook to check if a specific song is saved offline
  */
 export function useOfflineStatus(slug: string) {
-	const { offlineSongs } = useOfflineSongs();
-	return offlineSongs.has(slug);
+  const { offlineSongs } = useOfflineSongs();
+  return offlineSongs.has(slug);
 }
 
 /**
@@ -167,20 +167,20 @@ export function useOfflineStatus(slug: string) {
  * Returns a toggle function that saves or removes based on current status
  */
 export function useSaveOffline(song: ParsedSong) {
-	const { offlineSongs, saveSong, removeSong } = useOfflineSongs();
-	const isOffline = offlineSongs.has(song.slug);
+  const { offlineSongs, saveSong, removeSong } = useOfflineSongs();
+  const isOffline = offlineSongs.has(song.slug);
 
-	const toggleOffline = useCallback(async () => {
-		if (isOffline) {
-			await removeSong(song.slug);
-		} else {
-			const storedSong = parsedSongToStoredSong(song);
-			await saveSong(storedSong);
-		}
-	}, [isOffline, song, saveSong, removeSong]);
+  const toggleOffline = useCallback(async () => {
+    if (isOffline) {
+      await removeSong(song.slug);
+    } else {
+      const storedSong = parsedSongToStoredSong(song);
+      await saveSong(storedSong);
+    }
+  }, [isOffline, song, saveSong, removeSong]);
 
-	return {
-		isOffline,
-		toggleOffline,
-	};
+  return {
+    isOffline,
+    toggleOffline,
+  };
 }

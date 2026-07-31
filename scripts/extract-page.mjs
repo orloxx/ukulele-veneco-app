@@ -591,8 +591,6 @@ function readPage(pdf, pageDict) {
 
 /* ----------------------------------------------------------- chord diagrams */
 
-const STRING_NAMES = ["G", "C", "E", "A"]; // low to high, the order `positions` uses
-
 /**
  * Recover the chord diagrams drawn in the right margin as 4-digit `positions` strings.
  *

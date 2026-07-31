@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import { getAllSongSlugs, getSongBySlug } from "@/lib/songs";
 import { SongDetailClient } from "@/components/SongDetailClient";
+import { getAllSongSlugs, getSongBySlug } from "@/lib/songs";
 
 interface SongPageProps {
   params: Promise<{
@@ -23,7 +23,10 @@ export default async function SongPage({ params }: SongPageProps) {
     notFound();
   }
 
-  // Remove filePath for serialization (client component needs serializable props)
+  // Strip filePath at the route boundary: a client component's props have to serialize,
+  // and the build machine's absolute paths are nobody's business. Discarding it is the
+  // point, so the binding is deliberately unused.
+  // biome-ignore lint/correctness/noUnusedVariables: destructured only to drop it
   const { filePath, ...serializableSong } = song;
 
   return <SongDetailClient song={serializableSong} />;
