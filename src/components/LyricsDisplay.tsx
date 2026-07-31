@@ -26,9 +26,10 @@ interface LinePart {
  * How a chord is held over its syllable is the whole of this component, and it
  * is the most sensitive code in the app: a redesign that quietly moves a chord
  * one syllable to the left is worse than no redesign, because it looks correct
- * and plays wrong. Nothing automated catches it — `pnpm validate` reads the
- * source Markdown and the extractor's `--verify` compares fingerings, and
- * neither of them looks at the screen.
+ * and plays wrong. Nothing automated catches it: `pnpm validate` reads the
+ * source Markdown and never looks at the screen, and since M6 it is the only
+ * check there is — the extractor's `--verify` compared fingerings against the
+ * printed book, and it went with the book.
  *
  * Two things do the holding, and they are a pair:
  *
