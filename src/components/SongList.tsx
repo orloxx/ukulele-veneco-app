@@ -304,6 +304,12 @@ export default function SongList({ songs }: SongListProps) {
                       onChange={toggleAllOffline}
                       disabled={filteredSongs.length === 0}
                       aria-disabled={isBulkRunning || undefined}
+                      // Same as the rows: while its ring is up, this cell says
+                      // one thing (BUG-013). Here the two flags happen to
+                      // agree, and they are still written separately, because
+                      // one is "you cannot press this" and the other is "this
+                      // is working" — and in the rows below they diverge.
+                      data-busy={isBulkRunning || undefined}
                       aria-label={
                         allFilteredSongsOffline
                           ? "Quitar del teléfono todas las visibles"
@@ -365,6 +371,11 @@ export default function SongList({ songs }: SongListProps) {
                             aria-disabled={
                               isBulkRunning || isSaving || undefined
                             }
+                            // Per song, and deliberately not the line above:
+                            // this is what hides the box, and during a bulk
+                            // run every box is aria-disabled while only six
+                            // are actually working (BUG-013).
+                            data-busy={isSaving || undefined}
                             aria-label={
                               isSaved
                                 ? `Quitar ${song.metadata.title} del teléfono`

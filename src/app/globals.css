@@ -731,6 +731,28 @@ samp {
 .uv-select::placeholder {
   color: var(--text-faint);
 }
+/* 16px on touch, and it is not a style choice — it is the one number iOS
+   Safari watches. It zooms the page to fit any form control it focuses whose
+   text is under 16px, and 14px is what the type scale gives a field, so every
+   tap on the filter row zoomed the page in and left the reader to pinch back
+   out (BUG-014). Since 2.1.0 that row is three fields rather than one, and the
+   combobox is meant to be typed at, so the milestone that made the filters
+   better to use also tripled how often it fired.
+
+   The fix that suggests itself is `maximum-scale=1` in the viewport, and it is
+   the wrong one: it stops the zoom by taking pinch-zoom away from everyone,
+   and pinch-zoom is the documented reason the song sheet ships no zoom control
+   of its own (vault DECISIONS.md 13). layout.tsx keeps `maximumScale: 5` and
+   `userScalable: true`, and says so at the definition.
+
+   `pointer: coarse` rather than a width, because the rule belongs to the input
+   method and not to the screen: a mouse keeps the 14px field the scale chose. */
+@media (pointer: coarse) {
+  .uv-input,
+  .uv-select {
+    font-size: var(--size-body);
+  }
+}
 .uv-input:hover,
 .uv-select:hover {
   border-color: var(--line-strong);
@@ -872,6 +894,22 @@ samp {
   opacity: 0.4;
   cursor: not-allowed;
 }
+/* While *this* song is in flight the box is not drawn at all: the ring is the
+   whole of what that cell says, and a faded checkbox inside a spinner is two
+   indicators for one state (BUG-013).
+
+   `opacity: 0` and not `visibility: hidden` or `display: none`. The input has
+   to stay focusable — that is the entire reason the boxes go `aria-disabled`
+   rather than `disabled`, since disabling one blurs it and throws a keyboard
+   user to the top of the document — and both of those make it unfocusable, so
+   either would reintroduce the thing the markup was shaped to avoid. Painted
+   or not, it stays in the tab order and keeps the cell's geometry.
+
+   Keyed off `data-busy`, which is per song, and not off `aria-disabled`, which
+   during "guardar todas" is every box in the table. */
+.uv-check input[data-busy="true"] {
+  opacity: 0;
+}
 
 /* Saving is a write to IndexedDB and two network fetches (BUG-008), so the box
    cannot tick until the song really is on the phone — and until M8 nothing said
@@ -880,11 +918,21 @@ samp {
    The ring is drawn *around* the box rather than beside it. Beside it, adding a
    sibling to a centred flex label shifts the box sideways, and "guardar todas"
    is 276 rows doing that one after another. Around it, nothing moves. */
+/* 22px, not the 28 it was: at 28 it was a ring drawn *around* an 18px box, and
+   since BUG-013 hid the box it is the only thing in the cell, so it sits where
+   the box sat rather than around where the box was.
+
+   The track is the other half of that. A bare arc on transparent was legible
+   as the moving part of a two-part control; alone it is a hairline crescent
+   that reads as a rendering artefact. A faint full ring with one bright
+   quarter is a spinner at any single frame — which is what a screenshot, and a
+   glance, both are. */
 .uv-check__spinner {
   position: absolute;
-  width: 28px;
-  height: 28px;
-  border: var(--border-thick) solid transparent;
+  width: 22px;
+  height: 22px;
+  border: var(--border-thick) solid
+    color-mix(in oklab, var(--action-primary) 22%, transparent);
   border-top-color: var(--action-primary);
   border-radius: var(--radius-pill);
   animation: uv-spin 700ms linear infinite;
@@ -903,7 +951,6 @@ samp {
   .uv-check__spinner {
     animation: none;
     border-color: var(--action-primary);
-    opacity: 0.55;
   }
 }
 
