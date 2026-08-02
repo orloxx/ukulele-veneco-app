@@ -30,11 +30,32 @@ pnpm run format
 
 # Check every song in songs/ against the format spec
 pnpm run validate
+
+# Check the attribution is still everywhere it has to be
+pnpm run credits
+
+# Run the transposer over all 276 songs and every key it offers
+pnpm run transpose
+
+# Check the difficulty band rule, and print the chord-count distribution
+pnpm run difficulty
+
+# Check data/videos.json against songs/
+pnpm run videos
 ```
 
 `pnpm lint` deliberately does **not** run `pnpm validate`. Biome's subject is the code;
 the validator's subject is the content, it never rewrites a file, and it is the last step
 before committing a song rather than something to run while editing a component.
+
+**There are six checks because they have six subjects** — the code, the song format, the
+attribution, the transposer, the band rule, and the video map. **Two of them run inside
+`pnpm build`, and which two is the interesting part.** There is no CI here, so the build is
+the only check that cannot be forgotten, and the test for joining it is whether a check can
+fail for a reason that is **not** a defect. `pnpm credits` and `pnpm videos` cannot, so they
+are wired in. `pnpm transpose` can and is meant to: it asserts the collection's exact reach,
+so adding one song to `songs/` fails it on purpose. That is a tripwire in a command you run
+and an outage in one the deploy runs.
 
 ## Architecture
 
@@ -83,6 +104,22 @@ Core types in `src/types/song.ts`:
 - `SongMetadata`: Frontmatter data (title, artist, year, key, timeSignature, chords)
 - `Chord`: Chord definition with name and 4-digit positions string (e.g., "0003" for C)
 - `ParsedSong`: Complete song data including slug, metadata, lyrics, and chordDefinitions
+- `SongVideo`: a reference recording, and **deliberately not a field on `SongMetadata`** —
+  every field there comes off the book's page and a YouTube ID does not. See its doc
+  comment and `data/README.md`
+
+### `songs/` is the book, `data/` is not
+
+`songs/` is the cancionero, and since M6 deleted the source PDF it is the *record* rather
+than a copy of one — `songs/README.md` says a fingering in a file **is** the source.
+`data/` is the sibling directory for what the app knows that the book never printed, and
+it holds one file: `data/videos.json`, a slug → reference-recording map.
+
+`src/lib/videos.ts` is its only reader, the way `src/lib/songs.ts` is the only reader of
+`songs/`. It is server-only, which is the boundary rather than a convention: `/list` hands
+all 276 songs' metadata to a client component, so a video field on `SongMetadata` would
+ship 276 references in a payload no row draws. A song page gets `getSongVideo(slug)` — its
+own entry — as a prop.
 
 ## Song File Format
 
