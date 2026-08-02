@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { buildTranspositions, type Transposition } from "@/lib/transpose";
+import { buildChordVocabulary, type ChordVocabulary } from "@/lib/vocabulary";
 import type { Chord, ParsedSong, SongMetadata } from "@/types/song";
 
 const songsDirectory = path.join(process.cwd(), "songs");
@@ -182,4 +184,37 @@ export function getSongBySlug(slug: string): ParsedSong | null {
 export function getAllSongSlugs(): string[] {
   const files = getSongFiles();
   return files.map((filename) => filename.replace(/\.md$/, ""));
+}
+
+/**
+ * The book's chord vocabulary, read once.
+ *
+ * Memoised because every one of the 552 song pages asks for it during
+ * `next build` and the answer is the same every time — it is a fact about
+ * `songs/`, which does not change while the build runs.
+ *
+ * **It never reaches the browser.** The index is roughly the whole collection's
+ * chord data and no screen needs it: what a song page needs is *its own* keys,
+ * which `getTranspositions` resolves here, at build time, into a list small
+ * enough to be a prop. `M11 · 1` asked for that boundary explicitly, and this
+ * module being server-only — it reads `fs` — is what keeps it.
+ */
+let vocabularyCache: ChordVocabulary | null = null;
+
+export function getChordVocabulary(): ChordVocabulary {
+  if (!vocabularyCache) vocabularyCache = buildChordVocabulary(getAllSongs());
+  return vocabularyCache;
+}
+
+/**
+ * The keys one song can actually be played in, printed key first.
+ *
+ * Derived rather than guessed, and the derivation is the milestone: a key is
+ * offered only when the cancionero prints a fingering for every chord the song
+ * would need in it (vault `DECISIONS.md` 6). 164 songs come back with all
+ * twelve entries; 18 come back with only the one they were printed in, and the
+ * screen says so rather than offering a key it cannot draw.
+ */
+export function getTranspositions(song: ParsedSong): Transposition[] {
+  return buildTranspositions(song, getChordVocabulary());
 }
