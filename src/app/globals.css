@@ -2071,6 +2071,48 @@ samp {
   color: var(--text-body);
 }
 
+/* ---------------- The tuner, named on the landing ----------------
+   A band rather than a fourth feature card, because a feature card describes
+   and this has to be pressable. Its inset comes from .uv-landing-section in the
+   page-column rule and its vertical space is written as padding-block, never as
+   the `padding` shorthand — DECISIONS.md 16, and that is how BUG-009 comes
+   back. */
+.uv-tuner-pitch {
+  padding-block: var(--space-4) var(--space-12);
+}
+.uv-tuner-pitch__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: var(--surface-raised);
+  border: var(--border-hairline) solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.uv-tuner-pitch__title {
+  margin-top: var(--space-2);
+  font-size: var(--size-h2);
+}
+.uv-tuner-pitch__body {
+  margin-top: var(--space-2);
+  max-width: 46ch;
+  color: var(--text-muted);
+}
+/* The button goes full width once the row has wrapped: a 200px button alone on
+   a line under a paragraph reads as an afterthought, which is the opposite of
+   what this band is for. */
+@media (max-width: 640px) {
+  .uv-tuner-pitch__inner {
+    padding: var(--space-5);
+  }
+  .uv-tuner-pitch__inner .uv-btn {
+    width: 100%;
+  }
+}
+
 /* ---------------- Sheet preview ---------------- */
 .uv-preview {
   background: var(--surface-sunken);

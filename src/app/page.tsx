@@ -159,6 +159,35 @@ export default function Home() {
           </div>
         </section>
 
+        {/* The tuner, named.
+            It sits here because a reader has just learnt what the app is and has
+            not yet been shown a song sheet — and because the landing is the one
+            screen with no link to it otherwise: this page renders its own static
+            header rather than <Header />, so the gauge on every in-app screen is
+            missing from the first screen anybody sees. A third action in that
+            header was the other option and would fight the rule that the landing
+            header keeps one (see the 640px block in globals.css). */}
+        <section className="uv-landing-section uv-tuner-pitch">
+          <div className="uv-tuner-pitch__inner">
+            <div>
+              <p className="uv-eyebrow">El afinador</p>
+              <h2 className="uv-tuner-pitch__title">Antes de tocar, afina.</h2>
+              <p className="uv-tuner-pitch__body">
+                El micrófono oye la cuerda, te dice qué nota es y cuánto le
+                falta pa' llegar. Estándar, sol grave, en re y barítono — y sin
+                señal también.
+              </p>
+            </div>
+            <Link
+              className="uv-btn uv-btn--secondary uv-btn--lg"
+              href="/afinador"
+            >
+              <span>Abrir el afinador</span>
+              <IconArrow />
+            </Link>
+          </div>
+        </section>
+
         <section className="uv-preview">
           <div className="uv-preview__grid">
             <div>
