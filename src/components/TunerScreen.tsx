@@ -20,6 +20,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useMicrophone } from "@/hooks/useMicrophone";
+import { useWakeLock } from "@/hooks/useWakeLock";
 import {
   ANALYSIS_WINDOW,
   detectPitch,
@@ -51,13 +52,23 @@ const DETECT_INTERVAL_MS = 45;
 const SMOOTHING_WINDOW = 5;
 
 /**
- * How long a reading stays on screen after the last one the detector could make.
+ * How long a gap counts as a new pluck rather than a pause in the same one, in ms.
  *
- * A silent room is the normal case between plucks, not an error — but this is
- * deliberately short, because a note left standing in a quiet room is a tuner
- * that appears to be hearing something it is not.
+ * Crossing it throws the median's history away, so the next note is not averaged
+ * with one that stopped sounding a minute ago.
+ *
+ * **It does not clear the reading, and it used to.** The first version wiped the
+ * meter back to *Esperando una cuerda…* here, on the argument that a note left
+ * standing in a quiet room is a tuner appearing to hear something it is not.
+ * That argument is right about a note it never heard and wrong about the note it
+ * just did: a ukulele string decays in a couple of seconds, so it turned the
+ * meter off at exactly the moment the reader looks up from the peg to see how
+ * they did. Iker found it on a real instrument in `M10 · 6`. The reading now
+ * stays until another note is played or the microphone is stopped — and it is
+ * marked held, which is how the original argument is honoured rather than
+ * ignored: what must not happen is a *stale* reading passing for a live one.
  */
-const HOLD_MS = 900;
+const NEW_PLUCK_GAP_MS = 900;
 
 /**
  * Far enough apart to be a different string rather than a wobble, in cents.
@@ -88,6 +99,8 @@ function formatHz(frequency: number): string {
 export function TunerScreen() {
   const [tuningId, setTuningId] = useState<TuningId>(DEFAULT_TUNING_ID);
   const [reading, setReading] = useState<Reading | null>(null);
+  /** The note on screen stopped sounding — see `NEW_PLUCK_GAP_MS`. */
+  const [held, setHeld] = useState(false);
   const { status, start, stop, read, sampleRate } = useMicrophone();
 
   // Read on mount and not in the initial state: this component is prerendered,
@@ -107,9 +120,22 @@ export function TunerScreen() {
 
   const listening = status === "listening";
 
+  // The same lock the song sheet takes, and the case for it is stronger here.
+  // A phone dims in about thirty seconds and four strings take longer than that,
+  // so the screen goes dark in the middle of tuning — and unlike a reader
+  // playing from the sheet, someone tuning has both hands on the instrument and
+  // one of them on a peg, so tapping the phone awake costs them the string they
+  // were on. Found on a real ukulele in `M10 · 6`. It is released the moment the
+  // microphone is, which `useMicrophone` already does on pause, on hidden and on
+  // unmount.
+  useWakeLock(listening);
+
   useEffect(() => {
     if (!listening || sampleRate === null) {
+      // Stopping is the reader saying they are done. A note held from before is
+      // no longer an answer to anything, so this is where it goes.
       setReading(null);
+      setHeld(false);
       return;
     }
 
@@ -128,10 +154,12 @@ export function TunerScreen() {
       const frequency = detectPitch(buffer, sampleRate);
 
       if (frequency === null) {
-        if (lastHeard !== 0 && now - lastHeard > HOLD_MS) {
+        if (lastHeard !== 0 && now - lastHeard > NEW_PLUCK_GAP_MS) {
           recent.length = 0;
           lastHeard = 0;
-          setReading(null);
+          // The reading stays. Only the median's history goes, so the next
+          // pluck starts clean rather than being averaged with this one.
+          setHeld(true);
         }
         return;
       }
@@ -157,6 +185,7 @@ export function TunerScreen() {
       const match = nearestTarget(median, stringsRef.current);
       if (match === null) return;
 
+      setHeld(false);
       setReading({
         stringIndex: stringsRef.current.indexOf(match.target),
         cents: match.cents,
@@ -172,6 +201,7 @@ export function TunerScreen() {
     setTuningId(next);
     writeTuningId(next);
     setReading(null);
+    setHeld(false);
   };
 
   const state =
@@ -247,7 +277,15 @@ export function TunerScreen() {
         </p>
       )}
 
-      <div className="uv-tuner__meter" data-state={state}>
+      {/* `data-held` dims the block a little when the note has stopped
+          sounding. The reading stays — that is the point of it — but a held one
+          must not pass for a live one, which is the honest half of the argument
+          that used to clear it outright. */}
+      <div
+        className="uv-tuner__meter"
+        data-state={state}
+        data-held={reading !== null && held}
+      >
         {listening ? (
           reading !== null && target !== null ? (
             <>

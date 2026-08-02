@@ -1757,6 +1757,12 @@ samp {
 .uv-tuner__meter[data-state="sharp"] {
   color: var(--tuner-sharp);
 }
+/* The note stopped sounding and the reading is being held. It stays readable —
+   holding it is the whole point, and the moment the reader looks up from the peg
+   is after the string has died — but it is visibly not live. */
+.uv-tuner__meter[data-held="true"] {
+  opacity: 0.62;
+}
 
 /* A note name is musical notation, so it takes the same licence a tono and a
    compás take on .uv-tag--mono. The cents figure below is a *measurement* and
