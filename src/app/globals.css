@@ -145,6 +145,22 @@
   --sheet-capo: var(--amarillo-700);
   --sheet-rule: var(--papel-400);
 
+  /* ---------- Semantic: difficulty ----------
+     How many chords a song asks you to remember, banded — see
+     `src/lib/difficulty.ts` for where the boundaries come from.
+
+     **Verde is deliberately not here**, and it is the colour a traffic light
+     would have reached for first. Verde means *saved offline* in this app, and
+     the difficulty chip's own row carries the save checkbox — a green chip
+     beside a green tick is one colour saying two things. Turquesa is the calm
+     end of the scale instead, and it means nothing else in the song table. */
+  --difficulty-facil: var(--turquesa-700);
+  --difficulty-facil-tint: var(--turquesa-100);
+  --difficulty-media: var(--amarillo-700);
+  --difficulty-media-tint: var(--amarillo-100);
+  --difficulty-dificil: var(--rojo-700);
+  --difficulty-dificil-tint: var(--rojo-100);
+
   /* ---------- Semantic: chord diagram ---------- */
   --diagram-string: var(--papel-700);
   --diagram-fret: var(--papel-600);
@@ -408,6 +424,28 @@
   --sheet-section: var(--turquesa-300);
   --sheet-capo: var(--amarillo-300);
   --sheet-rule: #2a3f47;
+
+  /* The tints go to a mix rather than to ramp step 100: on the dark surface a
+     100 is lighter than the page and the chip reads as a highlight, which is
+     the same correction `.uv-capo` makes below. */
+  --difficulty-facil: var(--turquesa-200);
+  --difficulty-facil-tint: color-mix(
+    in oklab,
+    var(--turquesa-400) 20%,
+    transparent
+  );
+  --difficulty-media: var(--amarillo-200);
+  --difficulty-media-tint: color-mix(
+    in oklab,
+    var(--amarillo-400) 20%,
+    transparent
+  );
+  --difficulty-dificil: var(--rojo-200);
+  --difficulty-dificil-tint: color-mix(
+    in oklab,
+    var(--rojo-400) 22%,
+    transparent
+  );
 
   --diagram-string: #8b9aa0;
   --diagram-fret: #5c7078;
@@ -1192,6 +1230,44 @@ samp {
   color: var(--text-body);
 }
 
+/* The difficulty chip — the chord count, tinted by its band.
+   `src/lib/difficulty.ts` decides the band; this only paints it.
+
+   One selector for three bands, keyed off `data-difficulty`, so adding a band
+   to the scale is a token pair here and nothing else. The *number* is what
+   carries the meaning and the accessible name carries the word, so a reader who
+   cannot separate the three tints has lost nothing — the tint is the glance,
+   never the message.
+
+   It stays mono for the reason año, tono and compás do: a chord count is a
+   musical fact about the song, which is the whole of what rule 2 at the top of
+   this file allows. */
+.uv-table .uv-td-difficulty {
+  font-family: var(--font-mono);
+  font-size: var(--size-body-sm);
+}
+.uv-difficulty {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+  color: var(--text-body);
+  white-space: nowrap;
+}
+.uv-difficulty[data-difficulty="facil"] {
+  background: var(--difficulty-facil-tint);
+  color: var(--difficulty-facil);
+}
+.uv-difficulty[data-difficulty="media"] {
+  background: var(--difficulty-media-tint);
+  color: var(--difficulty-media);
+}
+.uv-difficulty[data-difficulty="dificil"] {
+  background: var(--difficulty-dificil-tint);
+  color: var(--difficulty-dificil);
+}
+
 /* ---------------- Song sheet ----------------
    The one place monospace belongs. */
 .uv-sheet {
@@ -1402,6 +1478,55 @@ samp {
   min-width: 210px;
 }
 
+/* The difficulty filter — three chips, and deliberately not a third combobox.
+
+   Vault DECISIONS.md 17 says its own answer does not generalise: the combobox
+   next door exists because a `<select>` was specifically inadequate at 181
+   artists, and three options behind a popup is the case it warned about. Chips
+   are also the only one of the three candidates that is *visible* — a reader
+   learns the collection has three bands without opening anything.
+
+   No fourth "todas" chip: the cleared state is none of the three pressed, and a
+   chip meaning "no filter" would look pressed in exactly the state it produces.
+   Pressing the pressed chip clears it. */
+.uv-segmented {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  /* A `<fieldset>` brings a border, padding and margin the `*` reset at the top
+     of this file does not clear — without these three the filter row grows an
+     inset box that none of the controls beside it has. */
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.uv-segmented__option {
+  /* --touch-min in the block direction: the app is played standing up with a
+     ukulele in the other hand, and nothing here goes under 44. */
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  padding: 0 var(--space-4);
+  border: var(--border-hairline) solid var(--line-soft);
+  border-radius: var(--radius-pill);
+  background: var(--surface-raised);
+  color: var(--text-body);
+  font-size: var(--size-body-sm);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.uv-segmented__option:hover {
+  background: var(--surface-hover);
+}
+.uv-segmented__option[aria-pressed="true"] {
+  background: var(--action-primary);
+  border-color: var(--action-primary);
+  color: var(--text-on-accent);
+}
+
 /* The frame is what gives the table its card edge; the table itself has no
    border of its own, so the rules inside can stay hairlines. */
 .uv-table-frame {
@@ -1441,6 +1566,11 @@ samp {
 }
 .uv-table__time {
   width: 96px;
+}
+/* Wide enough for "24 acordes" — the collection's maximum, in
+   `muera-el-amor.md` — so the chip never wraps at the one song that would. */
+.uv-table__difficulty {
+  width: 130px;
 }
 .uv-table__empty {
   padding: var(--space-12) var(--space-4);
@@ -2415,9 +2545,9 @@ samp {
     display: grid;
     grid-template-columns: auto auto auto 1fr auto;
     grid-template-areas:
-      "title  title title title check"
+      "title  title title title  check"
       "artist artist artist artist check"
-      "year   tono  compas .    check";
+      "year   tono  compas dificultad check";
     column-gap: var(--space-2);
     row-gap: var(--space-1);
     padding: var(--space-3) var(--space-4);
@@ -2445,15 +2575,34 @@ samp {
   .uv-table tbody td:nth-child(6) {
     grid-area: compas;
   }
+  /* The seventh column lands in the cell the third row already had spare — it
+     was a literal `.` in the areas above, so the card needed no reshaping. */
+  .uv-table tbody td:nth-child(7) {
+    grid-area: dificultad;
+    justify-self: end;
+  }
   /* Año, tono and compás become chips. Still mono, because they are still the
-     musical facts. */
-  .uv-table tbody td:nth-child(n + 4) > a {
+     musical facts.
+
+     Column 7 is excluded because it is already a chip at every width — it draws
+     its own tinted `.uv-difficulty` inside the link, and letting this rule paint
+     the link too puts a sunken box around a tinted box. The link there stays a
+     plain padded block, which is what keeps the whole card a tap target. */
+  .uv-table tbody td:nth-child(n + 4):not(:nth-child(7)) > a {
     display: inline-flex;
     align-items: center;
     height: 22px;
     padding: 0 var(--space-2);
     border-radius: var(--radius-sm);
     background: var(--surface-sunken);
+    font-size: var(--size-micro);
+    margin-top: var(--space-1);
+  }
+  /* The difficulty chip matches the three beside it — same 22px box, same
+     micro type — while the link around it keeps the cell's own padding at 0 so
+     the chip sits on the card's baseline rather than floating off it. */
+  .uv-table tbody td:nth-child(7) .uv-difficulty {
+    height: 22px;
     font-size: var(--size-micro);
     margin-top: var(--space-1);
   }

@@ -8,6 +8,12 @@ import {
   parsedSongToStoredSong,
   useOfflineSongs,
 } from "@/contexts/OfflineSongsContext";
+import {
+  DIFFICULTY_BANDS,
+  type Difficulty,
+  difficultyLabel,
+  songDifficulty,
+} from "@/lib/difficulty";
 import { OFFLINE_SAVE_CONCURRENCY } from "@/lib/offlinePages";
 import type { ParsedSong } from "@/types/song";
 
@@ -61,6 +67,9 @@ export default function SongList({ songs }: SongListProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [keyFilter, setKeyFilter] = useState<string>("");
   const [artistFilter, setArtistFilter] = useState<string>("");
+  // The empty string is "no band chosen", the same shape the two comboboxes
+  // use, so `hasFilters` and `resetFilters` treat all four alike.
+  const [difficultyFilter, setDifficultyFilter] = useState<Difficulty | "">("");
 
   const { offlineSongs, savingSlugs, saveSong, removeSong } = useOfflineSongs();
   // Which way the header checkbox is running, not just that it is: the two
@@ -102,17 +111,28 @@ export default function SongList({ songs }: SongListProps) {
       const matchesArtist =
         artistFilter === "" || song.metadata.artist === artistFilter;
 
-      return matchesSearch && matchesKey && matchesArtist;
+      // The count is the frontmatter's own distinct-chord list, so this asks
+      // the same question the chip in the row answers — one function, and no
+      // second copy of the band boundaries.
+      const matchesDifficulty =
+        difficultyFilter === "" ||
+        songDifficulty(song.metadata.chords.length) === difficultyFilter;
+
+      return matchesSearch && matchesKey && matchesArtist && matchesDifficulty;
     });
-  }, [songs, searchTerm, keyFilter, artistFilter]);
+  }, [songs, searchTerm, keyFilter, artistFilter, difficultyFilter]);
 
   const hasFilters =
-    searchTerm !== "" || keyFilter !== "" || artistFilter !== "";
+    searchTerm !== "" ||
+    keyFilter !== "" ||
+    artistFilter !== "" ||
+    difficultyFilter !== "";
 
   const resetFilters = () => {
     setSearchTerm("");
     setKeyFilter("");
     setArtistFilter("");
+    setDifficultyFilter("");
   };
 
   // Check if all filtered songs are saved offline
@@ -264,6 +284,46 @@ export default function SongList({ songs }: SongListProps) {
           onChange={setArtistFilter}
         />
 
+        {/* Three chips rather than a third combobox — vault DECISIONS.md 17
+            says its own answer was for 181 options and does not generalise.
+            They are rendered from DIFFICULTY_BANDS, so a band cannot exist in
+            the scale and be missing from the control.
+
+            There is no fourth "todas" chip: the cleared state is none of the
+            three pressed, and a chip meaning "no filter" would look pressed in
+            exactly the state it produces. Pressing the pressed one clears it,
+            which is also what makes the group reachable by keyboard without a
+            roving tabindex — these are three ordinary toggle buttons, not a
+            radio group pretending to be one. */}
+        <fieldset className="uv-segmented">
+          {/* A real `<fieldset>` and `<legend>` rather than `role="group"` with
+              an `aria-label` — biome asks for the element over the role, and it
+              is right: this is a group of form controls, which is the one thing
+              a fieldset is for.
+
+              The legend is visually hidden because the two comboboxes beside it
+              carry no visible label either, and a lone "DIFICULTAD" over three
+              chips would be the only labelled control in the row — and would
+              make this the tallest item in a flex row that currently stretches
+              everything to match. The chips say what they are. */}
+          <legend className="uv-sr-only">Filtrar por dificultad</legend>
+          {DIFFICULTY_BANDS.map((band) => (
+            <button
+              key={band.id}
+              type="button"
+              className="uv-segmented__option"
+              aria-pressed={difficultyFilter === band.id}
+              onClick={() =>
+                setDifficultyFilter((current) =>
+                  current === band.id ? "" : band.id,
+                )
+              }
+            >
+              {band.label}
+            </button>
+          ))}
+        </fieldset>
+
         {hasFilters && (
           <button
             type="button"
@@ -333,6 +393,10 @@ export default function SongList({ songs }: SongListProps) {
               <th className="uv-table__year">Año</th>
               <th className="uv-table__key">Tono</th>
               <th className="uv-table__time">Compás</th>
+              {/* "Acordes" and not "Dificultad": the column prints the number,
+                  and the number is the criterion. The band is what tints it and
+                  what the filter beside the table selects on. */}
+              <th className="uv-table__difficulty">Acordes</th>
             </tr>
           </thead>
           <tbody>
@@ -340,7 +404,7 @@ export default function SongList({ songs }: SongListProps) {
               // Marked, because below 640px every other row is laid out as a
               // card grid and this one is a single full-width cell.
               <tr className="uv-table__empty-row">
-                <td colSpan={6}>
+                <td colSpan={7}>
                   <div className="uv-cell uv-table__empty">
                     No encontramos esa canción. Prueba con el nombre del
                     artista.
@@ -351,6 +415,8 @@ export default function SongList({ songs }: SongListProps) {
               filteredSongs.map((song) => {
                 const isSaved = offlineSongs.has(song.slug);
                 const isSaving = savingSlugs.has(song.slug);
+                const chordCount = song.metadata.chords.length;
+                const difficulty = songDifficulty(chordCount);
 
                 return (
                   <tr key={song.slug} aria-busy={isSaving || undefined}>
@@ -400,9 +466,9 @@ export default function SongList({ songs }: SongListProps) {
                     <SongCell slug={song.slug} className="uv-td-muted">
                       {song.metadata.artist}
                     </SongCell>
-                    {/* Mono from here on: a year, a tono and a compás are the
-                      musical facts about a song, and nothing else in the
-                      interface is allowed to be monospaced. */}
+                    {/* Mono from here on: a year, a tono, a compás and a chord
+                      count are the musical facts about a song, and nothing else
+                      in the interface is allowed to be monospaced. */}
                     <SongCell
                       slug={song.slug}
                       className="uv-td-mono uv-td-muted"
@@ -417,6 +483,27 @@ export default function SongList({ songs }: SongListProps) {
                       className="uv-td-mono uv-td-muted"
                     >
                       {song.metadata.timeSignature}
+                    </SongCell>
+                    {/* The tint is the glance and the number is the message.
+                        The band word reaches a screen reader through the
+                        title's own sentence below, so nothing here depends on
+                        telling three colours apart.
+
+                        Not wired to `useTransposition`, and that is deliberate:
+                        transposing maps distinct chords to distinct chords, so
+                        this count is the same in all twelve keys M11 offers. A
+                        chip that moved with the key would be reporting a change
+                        that did not happen. */}
+                    <SongCell slug={song.slug} className="uv-td-difficulty">
+                      <span
+                        className="uv-difficulty"
+                        data-difficulty={difficulty}
+                      >
+                        {chordCount} {chordCount === 1 ? "acorde" : "acordes"}
+                      </span>
+                      <span className="uv-sr-only">
+                        {` — dificultad ${difficultyLabel(difficulty)}`}
+                      </span>
                     </SongCell>
                   </tr>
                 );
