@@ -13,7 +13,8 @@
     "validate": "node scripts/validate-songs.mjs",
     "credits": "node scripts/check-credits.mjs",
     "clean": "rm -rf .next node_modules",
-    "transpose": "node scripts/check-transpose.mjs"
+    "transpose": "node scripts/check-transpose.mjs",
+    "difficulty": "node scripts/check-difficulty.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
