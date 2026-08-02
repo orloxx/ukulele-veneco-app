@@ -204,12 +204,26 @@ export function TunerScreen() {
     setHeld(false);
   };
 
+  /**
+   * The figure on screen, and **the figure the verdict is judged on** — BUG-015.
+   *
+   * Rounding once is the whole fix. Judging the raw reading while displaying a
+   * rounded one let the meter show `−5 cents` and say `Baja` on a screen whose
+   * own rule is that ±5 is in tune, because anything from 5.0 to 5.5 cents flat
+   * rounds down to five and fails the test. The number a reader sees and the
+   * word under it have to be answers to the same question.
+   *
+   * The needle keeps the raw value below: it is a position, not a claim, and one
+   * that snapped to whole cents would be worse.
+   */
+  const shownCents = reading === null ? 0 : Math.round(reading.cents);
+
   const state =
     reading === null
       ? "waiting"
-      : Math.abs(reading.cents) <= IN_TUNE_CENTS
+      : Math.abs(shownCents) <= IN_TUNE_CENTS
         ? "in-tune"
-        : reading.cents < 0
+        : shownCents < 0
           ? "flat"
           : "sharp";
 
@@ -310,8 +324,8 @@ export function TunerScreen() {
               </div>
 
               <div className="uv-tuner__cents">
-                {reading.cents >= 0 ? "+" : "−"}
-                {Math.abs(Math.round(reading.cents))}
+                {shownCents >= 0 ? "+" : "−"}
+                {Math.abs(shownCents)}
                 <span className="uv-tuner__unit">cents</span>
               </div>
               <div className="uv-tuner__verdict">{verdict}</div>
