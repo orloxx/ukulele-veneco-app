@@ -47,6 +47,31 @@ failure as a check nobody can run.
 So an entry with an ID and no evidence is worse than no entry: it is a claim with nothing
 behind it. `pnpm videos` fails on one.
 
+### This file has never been reviewed end to end, and it is not going to be
+
+**2026-08-02, Iker, closing `M14 · 5`:** *"I'm not going to go and check every song has the
+right video. I will file bugs whenever I find a discrepancy and share the right video
+whenever I can."* Read that before trusting anything here: **`pnpm videos` passing means
+261 entries are well-formed, uniquely claimed and point at real songs in `songs/`. It has
+never meant the video is the song.** Nothing in this repo can mean that.
+
+The paragraph above is still the reason the evidence is stored — it just bought something
+different from what it was stored for. The affordable-review argument was right about the
+cost and wrong about who pays it: a one-hour read is still an hour spent on 276 songs
+nobody is playing that afternoon. What the evidence actually buys is that **any single
+entry can be judged in the two seconds before it matters**, by the person about to play
+that one song, on the panel, before a request is made. The review did not become cheap
+enough to do in one sitting; it became cheap enough to do one song at a time, by whoever
+turned up.
+
+That makes the reader the entire verification mechanism, so **a discrepancy has to be easy
+to report and easy to fix** — which is what the two sections below are for, and why the
+channel is on screen rather than only in this file. Expect entries to be wrong. `M14 · 2`
+found one class of failure that no acceptance rule anticipated: `cancion-para-ti` matched
+the right song, by the right artist, on that artist's own channel, and an eleven-minute
+guitar lesson. A **right** match that is not a recording is the failure mode to watch for,
+and it is invisible to every check here.
+
 **All three are also printed on the collapsed panel**, which was not the plan and is the
 better answer. The alternative was a mystery box: a button that says *escuchar* and will
 not tell you what it is about to fetch from Google until you have already let it. Printing
