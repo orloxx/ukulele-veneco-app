@@ -159,6 +159,32 @@
   --status-saved-bg: var(--verde-100);
   --status-saved-text: var(--verde-700);
 
+  /* ---------- Semantic: the afinador ----------
+     Three states the needle can be in, and they are their own tokens rather
+     than a reuse of --status-saved-*: verde means *saved offline* everywhere
+     else in this app, and a token carrying two meanings is a token that cannot
+     be changed for either.
+
+     **Colour is never the only signal here.** Which side of the centre the
+     needle sits on says flat or sharp, and a word beside it says so again — so
+     a reader who cannot tell these three apart loses nothing. That is what
+     makes it safe for them to be three different hues instead of one; it is
+     also why verde and rojo are not the pair, since red and green are the
+     common confusion and these are the two states furthest apart in meaning.
+
+     Not re-exported through `@theme inline` below: nothing outside the
+     .uv-tuner block reads them, and the poster's tokens set the same
+     precedent. */
+  --tuner-in-tune: var(--verde-500);
+  --tuner-flat: var(--azul-500);
+  /* Not amarillo-600. These three carry the verdict word as well as the needle,
+     and 600 measures 3.28:1 on the meter's white ground — enough for a graphic
+     and not enough for the 18px it is also set in. 700 is 5.11:1, and the dark
+     theme's 300 is 10.4:1 on its own ground. */
+  --tuner-sharp: var(--amarillo-700);
+  --tuner-track: var(--papel-500);
+  --tuner-target: var(--papel-700);
+
   /* ---------- Semantic: the poster ----------
      The landing's closing banner is the one full-colour field in the system, and
      the only place a saturated ground carries type. It is the same colour in
@@ -394,6 +420,12 @@
   --status-offline-text: var(--amarillo-200);
   --status-saved-bg: color-mix(in oklab, var(--verde-400) 22%, transparent);
   --status-saved-text: var(--verde-200);
+
+  --tuner-in-tune: var(--verde-300);
+  --tuner-flat: var(--azul-300);
+  --tuner-sharp: var(--amarillo-300);
+  --tuner-track: #2a3f47;
+  --tuner-target: #a1aeb3;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md:
@@ -1651,6 +1683,226 @@ samp {
 }
 .uv-chords-view__back {
   margin-top: var(--space-10);
+}
+
+/* ==========================================================================
+   The afinador.
+
+   Read at arm's length, with both hands on an instrument, so the note is the
+   largest thing in the app after the landing's display type and the needle is
+   read without looking for it.
+   ========================================================================== */
+
+.uv-tuner {
+  max-width: var(--measure-sheet);
+}
+.uv-tuner__lede {
+  margin-top: var(--space-2);
+  color: var(--text-muted);
+  max-width: 52ch;
+}
+
+.uv-tuner__tuning {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  max-width: 24rem;
+}
+.uv-tuner__tuning-label {
+  font-size: var(--size-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* A native <select>, and that is DECISIONS.md 17 answered the other way on
+   purpose: the combobox was hand-built because <select> was *specifically*
+   inadequate at 181 options, and nothing about it is inadequate at four. */
+.uv-tuner__caveat {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--status-offline-bg);
+  color: var(--status-offline-text);
+  border-radius: var(--radius-md);
+  font-size: var(--size-body-sm);
+}
+
+/* The card the needle lives in. Its height is fixed rather than fitted, so the
+   page does not jump between a silent room and a note — which on this screen is
+   a thing that happens several times a second. */
+.uv-tuner__meter {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: var(--space-3);
+  min-height: 17rem;
+  margin-top: var(--space-6);
+  padding: var(--space-6) var(--space-4);
+  background: var(--surface-raised);
+  border: var(--border-hairline) solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  /* The state colour, inherited by the needle and the verdict so the two cannot
+     disagree. --tuner-target is the resting value: nothing is being heard. */
+  color: var(--tuner-target);
+}
+.uv-tuner__meter[data-state="in-tune"] {
+  color: var(--tuner-in-tune);
+}
+.uv-tuner__meter[data-state="flat"] {
+  color: var(--tuner-flat);
+}
+.uv-tuner__meter[data-state="sharp"] {
+  color: var(--tuner-sharp);
+}
+
+/* A note name is musical notation, so it takes the same licence a tono and a
+   compás take on .uv-tag--mono. The cents figure below is a *measurement* and
+   stays in the interface face — the pair is easy to swap round while tidying,
+   which is why both sides of it say so. */
+.uv-tuner__note {
+  font-family: var(--font-mono);
+  font-size: clamp(3.5rem, 17vw, 4.75rem);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: var(--track-display);
+  color: var(--text-strong);
+}
+.uv-tuner__octave {
+  font-size: 0.38em;
+  font-weight: var(--weight-medium);
+  color: var(--text-muted);
+}
+.uv-tuner__string {
+  font-family: var(--font-body);
+  font-size: var(--size-body-sm);
+  color: var(--text-muted);
+}
+
+.uv-tuner__track {
+  position: relative;
+  width: 100%;
+  max-width: 24rem;
+  height: 3.5rem;
+}
+.uv-tuner__rail {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--tuner-track);
+  border-radius: var(--radius-pill);
+}
+/* The target, dead centre. Taller than the needle is wide so it reads as the
+   line to reach rather than as a second needle. */
+.uv-tuner__centre {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--tuner-target);
+  border-radius: var(--radius-pill);
+}
+.uv-tuner__needle {
+  position: absolute;
+  top: var(--space-1);
+  bottom: var(--space-1);
+  width: 6px;
+  transform: translateX(-50%);
+  background: currentColor;
+  border-radius: var(--radius-pill);
+  /* Linear, not eased: the needle is reporting a measurement and an ease-out
+     reads as the string settling when it is only the animation settling. */
+  transition: left var(--dur-fast) linear;
+}
+
+.uv-tuner__cents {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  /* Interface text — a measurement, not notation. See the note at __note. */
+  font-family: var(--font-body);
+  font-size: var(--size-h2);
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-strong);
+}
+.uv-tuner__unit {
+  font-size: var(--size-micro);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.uv-tuner__verdict {
+  font-family: var(--font-body);
+  font-size: var(--size-body-lg);
+  font-weight: var(--weight-semibold);
+  color: currentColor;
+}
+.uv-tuner__advice {
+  font-size: var(--size-body-sm);
+  color: var(--text-muted);
+}
+.uv-tuner__waiting {
+  font-size: var(--size-body-lg);
+  color: var(--text-muted);
+}
+
+.uv-tuner__action {
+  margin-top: var(--space-6);
+}
+.uv-tuner__note-block {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-1);
+}
+
+/* The states that are not a reading: no permission, no microphone, no browser
+   support. Each one says what happened and what can be done about it — a button
+   that silently does nothing is the failure this exists to prevent. */
+.uv-tuner__notice {
+  margin-top: var(--space-4);
+  max-width: 52ch;
+  color: var(--text-muted);
+  font-size: var(--size-body-sm);
+}
+
+/* Two columns on a phone and four on a laptop, from one rule: wrapped as a flex
+   row the four chips came out three-and-one at 390px, which reads as a mistake
+   rather than as a layout. */
+.uv-tuner__strings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+.uv-tuner__chip {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-hairline) solid var(--line-soft);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  font-family: var(--font-mono);
+  font-size: var(--size-body);
+  color: var(--text-strong);
+}
+.uv-tuner__chip[data-active="true"] {
+  border-color: var(--action-primary);
+  box-shadow: inset 0 0 0 1px var(--action-primary);
+}
+.uv-tuner__chip-hz {
+  font-family: var(--font-body);
+  font-size: var(--size-micro);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
 }
 
 /* ==========================================================================

@@ -116,7 +116,12 @@ const BUILD_DIR = path.join(REPO_ROOT, ".next", "server", "app");
 function renderedPages() {
   if (!fs.existsSync(BUILD_DIR)) return null;
   const pages = [];
-  for (const name of ["index.html", "list.html"]) {
+  // Named one by one, and that is the weakness of this half: the song routes
+  // below are walked, so a third one is covered for free, but a new top-level
+  // route is invisible here until somebody remembers to add it. `afinador.html`
+  // is the first one that had to be — the count going 555 → 556 is how you know
+  // it is actually being read.
+  for (const name of ["index.html", "list.html", "afinador.html"]) {
     const file = path.join(BUILD_DIR, name);
     if (fs.existsSync(file)) pages.push({ file, needs: [AUTHOR, ORIGIN] });
   }

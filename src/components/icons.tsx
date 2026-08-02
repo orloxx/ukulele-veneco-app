@@ -132,6 +132,22 @@ export function IconPause({ size = 20, className }: IconProps) {
 }
 
 /**
+ * gauge — the afinador.
+ *
+ * A substitution, like the capo below: Phosphor has no tuning fork. The gauge is
+ * a needle on a dial, which is literally what the screen behind this button is,
+ * and it promises a *meter* rather than a recording — which the microphone glyph
+ * would, and this app records nothing.
+ */
+export function IconTuner({ size = 20, className }: IconProps) {
+  return (
+    <svg {...svgProps(size, className)}>
+      <path d="M207.06 72.67A111.24 111.24 0 00128 40h-.4C66.07 40.21 16 91 16 153.13V176a16 16 0 0016 16h192a16 16 0 0016-16v-24a111.25 111.25 0 00-32.94-79.33zM224 176H119.71l54.76-75.3a8 8 0 00-12.94-9.42L99.92 176H32v-22.87c0-3.08.15-6.12.43-9.13H56a8 8 0 000-16H35.27c10.32-38.86 44-68.24 84.73-71.66V80a8 8 0 0016 0V56.33A96.14 96.14 0 01221 128h-21a8 8 0 000 16h23.67c.21 2.65.33 5.31.33 8z" />
+    </svg>
+  );
+}
+
+/**
  * lock — the capo badge.
  *
  * A substitution: Phosphor has no capo glyph, and a capo is a clamp, so the lock

@@ -50,6 +50,47 @@ function supported(): boolean {
   return typeof window !== "undefined" && "caches" in window;
 }
 
+/** The tuner's own document. See `warmTunerPage`. */
+const TUNER_URL = "/afinador";
+
+/**
+ * Put `/afinador` in the cache before anybody asks for it.
+ *
+ * **The tuner is the one screen in this app whose purpose is a room with no
+ * signal**, and every other page here becomes available offline by being visited
+ * or by being saved. That rule leaves the tuner in the one place it must not be:
+ * a reader who installs the app, saves a set of songs and turns up to play has
+ * never opened it, so `runtimeCaching`'s `NetworkFirst` catch-all has nothing to
+ * fall back to and the screen they need is the one screen missing.
+ *
+ * So it is warmed once per visit, from the app shell, the moment the reader is
+ * anywhere inside the app. One document, a few KB, and it uses the same
+ * `cache.put()` idiom as `cacheSongPages` above for the same reason: the worker
+ * caches in its own `waitUntil` and writing here is done when it returns.
+ *
+ * **The alternative was a workbox precache entry, and it was rejected.**
+ * next-pwa builds `additionalManifestEntries` by globbing `public/` *unless the
+ * option is supplied*, in which case the array replaces the glob wholesale — so
+ * adding one URL means re-implementing next-pwa's own globbing and revision
+ * hashing in `next.config.ts`, and owning it forever. Vault `DECISIONS.md` 20.
+ *
+ * Every failure is swallowed. This is an optimisation for a trip that has not
+ * happened yet; nothing on screen depends on it.
+ */
+export async function warmTunerPage(): Promise<void> {
+  if (!supported()) return;
+  if (typeof navigator !== "undefined" && navigator.onLine === false) return;
+
+  try {
+    const response = await fetch(TUNER_URL, { credentials: "same-origin" });
+    if (!response.ok) return;
+    const cache = await caches.open(PAGES_CACHE);
+    await cache.put(TUNER_URL, response);
+  } catch {
+    // No tuner offline this time. It is warmed again on the next visit.
+  }
+}
+
 /**
  * Fetch a song's pages so the worker holds them.
  *

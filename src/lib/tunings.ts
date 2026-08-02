@@ -126,6 +126,46 @@ export const TUNINGS: readonly Tuning[] = [
 
 export const DEFAULT_TUNING_ID: TuningId = "standard";
 
+/** Sharps, because the app writes chord roots that way. */
+const NAMES_FROM_C = [
+  "C",
+  "C#",
+  "D",
+  "D#",
+  "E",
+  "F",
+  "F#",
+  "G",
+  "G#",
+  "A",
+  "A#",
+  "B",
+];
+
+/** A note name moved by a number of semitones. Wraps, and never changes octave. */
+export function transposeNoteName(name: string, semitones: number): string {
+  const from = SEMITONE_FROM_C[name];
+  if (from === undefined) return name;
+  return NAMES_FROM_C[(((from + semitones) % 12) + 12) % 12];
+}
+
+/**
+ * How far this tuning has moved the cancionero's chord names, in semitones.
+ *
+ * **Derived, not written down** — the same rule as the frequencies above, and
+ * for a sharper reason: this number is what the caveat on the tuner screen is
+ * built out of, so a hand-typed one would be a sentence confidently telling the
+ * reader the wrong chord. It comes off the 3rd string, which is the one every
+ * tuning has in the same place: standard's C4 against baritone's G3 is -5, and
+ * against D tuning's D4 is +2.
+ */
+export function songbookShiftSemitones(tuning: Tuning): number {
+  const standard = tuningById(DEFAULT_TUNING_ID);
+  return Math.round(
+    12 * Math.log2(tuning.strings[1].frequency / standard.strings[1].frequency),
+  );
+}
+
 /** The tuning for an id, or standard for one this version does not know. */
 export function tuningById(id: string): Tuning {
   return (

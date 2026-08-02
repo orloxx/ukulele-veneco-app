@@ -226,6 +226,18 @@ export function centsBetween(frequency: number, target: number): number {
   return 1200 * Math.log2(frequency / target);
 }
 
+/**
+ * How far off a string may be and still read as *in tune*, in cents.
+ *
+ * **It is a number, not a design**, and it is the number `M10 · 6` is most
+ * likely to send back: too tight and it is unreachable on a real instrument
+ * whose pitch bends as the note decays, too loose and the tuner lies. Five cents
+ * is where hardware tuners sit and it is about the smallest interval a good ear
+ * notices — but nothing on a desk can tell whether it is *reachable*, and
+ * reachable is half the specification.
+ */
+export const IN_TUNE_CENTS = 5;
+
 /** Anything with a frequency this can aim at — in practice, a tuning's string. */
 export interface PitchTarget {
   frequency: number;

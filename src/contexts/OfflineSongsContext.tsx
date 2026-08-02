@@ -25,6 +25,7 @@ import {
   cacheSongPages,
   uncacheManySongPages,
   uncacheSongPages,
+  warmTunerPage,
 } from "@/lib/offlinePages";
 import type { StoredSong } from "@/types/offline";
 import type { ParsedSong } from "@/types/song";
@@ -103,6 +104,18 @@ export function OfflineSongsProvider({ children }: { children: ReactNode }) {
     }
 
     loadSavedSlugs();
+  }, []);
+
+  /**
+   * Put the tuner in the cache before anybody asks for it.
+   *
+   * It rides here because this provider wraps every screen inside the app and
+   * its subject is exactly this — what is available with no network. See
+   * `warmTunerPage`, and vault `DECISIONS.md` 20 for why the tuner is the one
+   * page that does not wait to be visited.
+   */
+  useEffect(() => {
+    void warmTunerPage();
   }, []);
 
   /**
