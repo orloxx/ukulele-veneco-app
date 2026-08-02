@@ -1468,6 +1468,141 @@ samp {
   overflow-x: auto;
 }
 
+/* ---------------- Auto-scroll bar ----------------
+   A thin band that stays under the header while the sheet scrolls beneath it.
+
+   **It is not a full-bleed band, so it does not join the page-column selector
+   list.** It is a child of `.uv-page`, which has already applied the cap and the
+   inset, and it takes `--measure-sheet` from there — the same cap, from the same
+   token, as `.uv-sheet-paper` above. That is the point rather than a
+   convenience: the bar controls the sheet, so it is the width of the sheet, and
+   at desktop it leaves the chord panel beside it alone instead of hanging a
+   900px slider over a column it has nothing to do with. DECISIONS.md 16 governs
+   bands that span the *viewport*; this is a control capped to a measure, which
+   is what the sheet it sits on does. The vertical padding is `padding-block`
+   anyway, because the shorthand is the habit that brings BUG-009 back.
+
+   `z-index: 10` is deliberately below the header's 20 and above the sheet: the
+   bar passes under the header when the page is at the top and over the lyrics
+   once it sticks. */
+.uv-autoscroll {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: var(--measure-sheet);
+  margin-bottom: var(--space-5);
+  padding-block: var(--space-1);
+  padding-inline: var(--space-2) var(--space-4);
+  background: var(--surface-raised);
+  border: var(--border-hairline) solid var(--line-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Turquesa and filled: this is the one action on the bar, and an .uv-iconbtn's
+   ghost treatment would leave the sheet's most important control looking like
+   the link to the chord grid. */
+.uv-autoscroll__toggle {
+  flex: none;
+  background: var(--action-primary);
+  color: var(--text-on-accent);
+  border-radius: var(--radius-pill);
+}
+.uv-autoscroll__toggle:hover:not(:disabled) {
+  background: var(--action-primary-hover);
+  color: var(--text-on-accent);
+}
+.uv-autoscroll__toggle:active:not(:disabled) {
+  background: var(--action-primary-press);
+  color: var(--text-on-accent);
+}
+
+/* A native <input type="range">, per DECISIONS.md 17: the combobox was
+   hand-built because <select> was specifically inadequate at 181 options, and
+   nothing about a range is inadequate at eight steps. What is styled here is
+   the paint, never the mechanism. */
+.uv-autoscroll__speed {
+  flex: 1 1 auto;
+  min-width: 0;
+  /* The whole strip is the target's height, not the 8px track inside it. */
+  height: var(--touch-min);
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.uv-autoscroll__speed::-webkit-slider-runnable-track {
+  box-sizing: border-box;
+  height: 8px;
+  background: var(--surface-sunken);
+  border: var(--border-hairline) solid var(--line);
+  border-radius: var(--radius-pill);
+}
+.uv-autoscroll__speed::-moz-range-track {
+  box-sizing: border-box;
+  height: 8px;
+  background: var(--surface-sunken);
+  border: var(--border-hairline) solid var(--line);
+  border-radius: var(--radius-pill);
+}
+/* The thumb's box is --touch-min in both directions, because it is aimed at
+   with a thumb while the other hand is holding an instrument. The *painted*
+   disc is 20px, because a 44px dot is not a slider — the transparent border
+   shrinks the paint and `background-clip: content-box` is what lets the two be
+   different numbers. `box-sizing` is set explicitly: the reset at the top of
+   this file uses `*`, which never matches a shadow pseudo-element. */
+.uv-autoscroll__speed::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border: 12px solid transparent;
+  border-radius: var(--radius-pill);
+  background: var(--action-primary);
+  background-clip: content-box;
+  margin-top: calc((8px - var(--touch-min)) / 2);
+}
+.uv-autoscroll__speed::-moz-range-thumb {
+  box-sizing: border-box;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border: 12px solid transparent;
+  border-radius: var(--radius-pill);
+  background: var(--action-primary);
+  background-clip: content-box;
+}
+
+/* The pace, in the interface face and not in mono: a number of lines per minute
+   is not a tono, a compás or a chord, and the landing's counted figures are the
+   only exception the system sanctions (DECISIONS.md 12). */
+.uv-autoscroll__readout {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: var(--font-body);
+  font-size: var(--size-body-sm);
+  font-weight: var(--weight-semibold);
+  line-height: 1.15;
+  color: var(--text-strong);
+}
+.uv-autoscroll__unit {
+  font-size: var(--size-micro);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* No allowance for the auto-scroll bar, and that is what capping the bar at
+   --measure-sheet buys: it sits over the sheet's own column, so the panel
+   beside it is already clear of it. */
 .uv-chord-panel {
   position: sticky;
   top: calc(var(--header-height) + var(--space-4));
@@ -1852,6 +1987,11 @@ samp {
   }
   .uv-sheet-paper {
     padding: var(--space-5) var(--space-4);
+    max-width: none;
+  }
+  /* The bar loses its cap with the sheet it is the width of: below this
+     breakpoint the sheet is the whole column, so the control over it is too. */
+  .uv-autoscroll {
     max-width: none;
   }
 }

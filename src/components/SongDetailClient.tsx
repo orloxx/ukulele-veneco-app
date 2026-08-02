@@ -8,6 +8,8 @@
  */
 
 import Link from "next/link";
+import { useRef } from "react";
+import { AutoScrollBar } from "@/components/AutoScrollBar";
 import ChordDiagram from "@/components/ChordDiagram";
 import { IconCapo, IconGrid } from "@/components/icons";
 import LyricsDisplay from "@/components/LyricsDisplay";
@@ -20,6 +22,12 @@ interface SongDetailClientProps {
 
 export function SongDetailClient({ song }: SongDetailClientProps) {
   const { metadata } = song;
+
+  // The sheet, handed to the auto-scroll bar so the pace can be resolved
+  // against the lyrics' own line box rather than against a constant. It goes on
+  // the paper rather than inside LyricsDisplay: that component is the most
+  // sensitive code in the app and this feature has no business in it.
+  const sheetRef = useRef<HTMLDivElement>(null);
 
   return (
     <div>
@@ -63,8 +71,10 @@ export function SongDetailClient({ song }: SongDetailClientProps) {
         <SaveOfflineButton song={song as ParsedSong} />
       </div>
 
+      <AutoScrollBar slug={song.slug} sheetRef={sheetRef} />
+
       <div className="uv-song-body">
-        <div className="uv-card uv-sheet-paper">
+        <div className="uv-card uv-sheet-paper" ref={sheetRef}>
           <LyricsDisplay
             lyrics={song.lyrics}
             chordNames={song.chordDefinitions.map((chord) => chord.name)}

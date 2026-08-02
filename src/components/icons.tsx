@@ -113,6 +113,24 @@ export function IconWifiSlash({ size = 16, className }: IconProps) {
   );
 }
 
+/** play — start the sheet scrolling itself */
+export function IconPlay({ size = 20, className }: IconProps) {
+  return (
+    <svg {...svgProps(size, className)}>
+      <path d="M232.4 114.49L88.32 26.35a16 16 0 00-16.2-.3A15.86 15.86 0 0064 39.87v176.26A15.94 15.94 0 0080 232a16.07 16.07 0 008.36-2.35l144.04-88.14a15.81 15.81 0 000-27.02zM80 215.94V40.05l143.83 88z" />
+    </svg>
+  );
+}
+
+/** pause — stop it again */
+export function IconPause({ size = 20, className }: IconProps) {
+  return (
+    <svg {...svgProps(size, className)}>
+      <path d="M200 32h-32a16 16 0 00-16 16v160a16 16 0 0016 16h32a16 16 0 0016-16V48a16 16 0 00-16-16zm0 176h-32V48h32zM88 32H56a16 16 0 00-16 16v160a16 16 0 0016 16h32a16 16 0 0016-16V48a16 16 0 00-16-16zm0 176H56V48h32z" />
+    </svg>
+  );
+}
+
 /**
  * lock — the capo badge.
  *
