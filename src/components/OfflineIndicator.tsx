@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { IconWifiSlash } from "@/components/icons";
+import { useIsOffline } from "@/hooks/useIsOffline";
 
 /**
  * The bar that appears when the device drops off the network.
@@ -13,23 +13,7 @@ import { IconWifiSlash } from "@/components/icons";
  * (vault DECISIONS.md 12).
  */
 export function OfflineIndicator() {
-  const [isOffline, setIsOffline] = useState(false);
-
-  useEffect(() => {
-    const handleOnline = () => setIsOffline(false);
-    const handleOffline = () => setIsOffline(true);
-
-    // Set initial state
-    setIsOffline(!navigator.onLine);
-
-    window.addEventListener("online", handleOnline);
-    window.addEventListener("offline", handleOffline);
-
-    return () => {
-      window.removeEventListener("online", handleOnline);
-      window.removeEventListener("offline", handleOffline);
-    };
-  }, []);
+  const isOffline = useIsOffline();
 
   if (!isOffline) return null;
 

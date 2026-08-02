@@ -15,9 +15,10 @@ import { IconCapo, IconGrid } from "@/components/icons";
 import LyricsDisplay from "@/components/LyricsDisplay";
 import { SaveOfflineButton } from "@/components/SaveOfflineButton";
 import { TransposeControl } from "@/components/TransposeControl";
+import { VideoReference } from "@/components/VideoReference";
 import { useTransposition } from "@/hooks/useTransposition";
 import type { Transposition } from "@/lib/transpose";
-import type { ParsedSong } from "@/types/song";
+import type { ParsedSong, SongVideo } from "@/types/song";
 
 interface SongDetailClientProps {
   song: Omit<ParsedSong, "filePath">; // Exclude non-serializable filePath
@@ -29,11 +30,18 @@ interface SongDetailClientProps {
    * own answer, which is at most twelve short chord lists.
    */
   transpositions: Transposition[];
+  /**
+   * This song's reference recording, if the search found one it would stand
+   * behind. Resolved at build time by `getSongVideo`, and one entry rather than
+   * the map for the same reason `transpositions` is one song's keys.
+   */
+  video?: SongVideo;
 }
 
 export function SongDetailClient({
   song,
   transpositions,
+  video,
 }: SongDetailClientProps) {
   const { metadata } = song;
   const { current, printed, offered, moved, choose } = useTransposition(
@@ -109,6 +117,13 @@ export function SongDetailClient({
 
         <SaveOfflineButton song={song as ParsedSong} />
       </div>
+
+      {/* Above the sticky bar, and the order of these two lines is the whole of
+          why expanding a video does not throw the sheet somewhere: the frame
+          mounts after the toggle, so it grows below the thing the reader just
+          pressed. Measured at 0px of sheet movement in the worst case, which is
+          the only claim worth making here. See the component. */}
+      <VideoReference video={video} />
 
       <AutoScrollBar slug={song.slug} sheetRef={sheetRef} />
 

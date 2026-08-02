@@ -1679,6 +1679,111 @@ samp {
   outline-offset: 2px;
 }
 
+/* ---------------- The reference video ----------------
+   A disclosure over a YouTube embed, and the only cross-origin request this app
+   makes. Everything about it is arranged so that it is not made until somebody
+   asks: the `<iframe>` is mounted on expand and unmounted on collapse, and there
+   is no poster thumbnail, which would be the same property given away on every
+   song page load for a picture (vault DECISIONS.md 25).
+
+   **Not a full-bleed band, so it stays out of the page-column selector list.**
+   Like `.uv-autoscroll` below it, it is a child of `.uv-page` — the cap and the
+   inset are already applied — and it takes `--measure-sheet` from the same token
+   the sheet does, because it belongs to the sheet rather than to the page. Its
+   vertical spacing is `margin-bottom` and its padding is written out per axis:
+   the `padding` shorthand is the habit that brings BUG-009 back.
+
+   It sits above `.uv-autoscroll` in the document on purpose. See
+   `VideoReference.tsx`: expanding it changes the document height, and that is
+   indistinguishable to `useAutoScroll` from the reader taking the page over —
+   so the control is placed where it has scrolled out of reach before the sheet
+   can be moving. */
+.uv-video {
+  max-width: var(--measure-sheet);
+  margin-bottom: var(--space-5);
+}
+
+/* Two rows of text beside one icon: the label, and under it the evidence the
+   match was made on. The icon spans both rows rather than centring against the
+   pair, so it reads as belonging to the action rather than to the caption. */
+.uv-video__toggle {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0 var(--space-3);
+  width: 100%;
+  min-height: var(--touch-min);
+  padding-block: var(--space-3);
+  padding-inline: var(--space-4);
+  text-align: left;
+  background: var(--surface-raised);
+  color: var(--text-strong);
+  border: var(--border-hairline) solid var(--line-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+.uv-video__toggle:hover {
+  border-color: var(--action-primary);
+}
+.uv-video__toggle > svg {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  color: var(--action-primary);
+}
+.uv-video__label {
+  grid-column: 2;
+  font-size: var(--size-body-sm);
+  font-weight: var(--weight-semibold);
+}
+/* The video's own title, channel and duration, printed rather than kept for the
+   review file. It is what lets a reader see whose recording this is before the
+   request is made, and it is the only way a wrong match can be noticed without
+   playing it — there is no backend and no report button. Not mono: a channel
+   name is not musical notation. */
+.uv-video__meta {
+  grid-column: 2;
+  font-size: var(--size-micro);
+  color: var(--text-muted);
+}
+
+.uv-video__panel {
+  margin-top: var(--space-3);
+}
+/* The frame is sized by ratio rather than by height so it is the same shape at
+   every width without a script measuring anything. */
+.uv-video__frame {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface-inverse);
+}
+.uv-video__frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.uv-video__note {
+  margin-top: var(--space-2);
+  font-size: var(--size-micro);
+  color: var(--text-muted);
+}
+
+/* Offline, and not yet opened. A sentence rather than a disabled button, which
+   is the same call `.uv-transpose__none` makes: a greyed-out control says the
+   app is broken, and what is true is that a video needs signal and the rest of
+   this page does not. */
+.uv-video__offline {
+  max-width: var(--measure-sheet);
+  margin-bottom: var(--space-5);
+  color: var(--text-muted);
+  font-size: var(--size-body-sm);
+}
+
 .uv-song-body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 224px;
@@ -2485,8 +2590,13 @@ samp {
     max-width: none;
   }
   /* The bar loses its cap with the sheet it is the width of: below this
-     breakpoint the sheet is the whole column, so the control over it is too. */
-  .uv-autoscroll {
+     breakpoint the sheet is the whole column, so the control over it is too.
+     The video panel is capped from the same token for the same reason and
+     loses it here alongside — a 16:9 frame narrower than the sheet under it
+     would read as a thumbnail rather than as the video it is. */
+  .uv-autoscroll,
+  .uv-video,
+  .uv-video__offline {
     max-width: none;
   }
 }

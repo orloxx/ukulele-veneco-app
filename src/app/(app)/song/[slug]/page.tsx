@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { SongDetailClient } from "@/components/SongDetailClient";
 import { getAllSongSlugs, getSongBySlug, getTranspositions } from "@/lib/songs";
+import { getSongVideo } from "@/lib/videos";
 
 interface SongPageProps {
   params: Promise<{
@@ -41,13 +42,14 @@ export default async function SongPage({ params }: SongPageProps) {
   // biome-ignore lint/correctness/noUnusedVariables: destructured only to drop it
   const { filePath, ...serializableSong } = song;
 
-  // Resolved here rather than in the browser: the vocabulary index it comes
-  // from is most of the collection's chord data, and only this song's own
-  // answer should cross the boundary.
+  // Both resolved here rather than in the browser, and for the same reason: the
+  // vocabulary index behind the keys is most of the collection's chord data, and
+  // `data/videos.json` is 276 references. Only this song's own answer crosses.
   return (
     <SongDetailClient
       song={serializableSong}
       transpositions={getTranspositions(song)}
+      video={getSongVideo(slug)}
     />
   );
 }
