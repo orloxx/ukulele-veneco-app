@@ -2,6 +2,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { OfflineIndicator } from "@/components/OfflineIndicator";
 import { OfflineSongsProvider } from "@/contexts/OfflineSongsContext";
+import { SongFiltersProvider } from "@/contexts/SongFiltersContext";
 
 /**
  * The shell every screen inside the app wears: sticky header, the page column,
@@ -27,7 +28,15 @@ export default function AppLayout({
     <div className="uv-shell">
       <Header />
       <OfflineSongsProvider>
-        <main className="uv-page">{children}</main>
+        {/* The list's filters are held here, one level above the route that
+            draws them, and that is not tidiness — it is the fix for BUG-017.
+            This layout is what `/list` and `/song/<slug>` have in common, so
+            it is the nearest thing to them that navigating between them does
+            not unmount. Pushed back down into `SongList` the four values are
+            cleared by opening a song, which is the bug. See the provider. */}
+        <SongFiltersProvider>
+          <main className="uv-page">{children}</main>
+        </SongFiltersProvider>
       </OfflineSongsProvider>
       <Footer />
       <OfflineIndicator />

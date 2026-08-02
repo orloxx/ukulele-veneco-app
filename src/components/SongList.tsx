@@ -8,9 +8,9 @@ import {
   parsedSongToStoredSong,
   useOfflineSongs,
 } from "@/contexts/OfflineSongsContext";
+import { useSongFilters } from "@/contexts/SongFiltersContext";
 import {
   DIFFICULTY_BANDS,
-  type Difficulty,
   difficultyLabel,
   songDifficulty,
 } from "@/lib/difficulty";
@@ -64,12 +64,22 @@ function SongCell({
 }
 
 export default function SongList({ songs }: SongListProps) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [keyFilter, setKeyFilter] = useState<string>("");
-  const [artistFilter, setArtistFilter] = useState<string>("");
-  // The empty string is "no band chosen", the same shape the two comboboxes
-  // use, so `hasFilters` and `resetFilters` treat all four alike.
-  const [difficultyFilter, setDifficultyFilter] = useState<Difficulty | "">("");
+  // Not `useState`, and that is BUG-017: this component is inside `/list`, so
+  // opening a song unmounts it and four initialisers run again on the way back.
+  // The values live in a provider in `(app)/layout.tsx`, which navigating from
+  // the list to a song does not unmount — read that file before moving them.
+  const {
+    searchTerm,
+    setSearchTerm,
+    keyFilter,
+    setKeyFilter,
+    artistFilter,
+    setArtistFilter,
+    difficultyFilter,
+    setDifficultyFilter,
+    hasFilters,
+    clearFilters,
+  } = useSongFilters();
 
   const { offlineSongs, savingSlugs, saveSong, removeSong } = useOfflineSongs();
   // Which way the header checkbox is running, not just that it is: the two
@@ -121,19 +131,6 @@ export default function SongList({ songs }: SongListProps) {
       return matchesSearch && matchesKey && matchesArtist && matchesDifficulty;
     });
   }, [songs, searchTerm, keyFilter, artistFilter, difficultyFilter]);
-
-  const hasFilters =
-    searchTerm !== "" ||
-    keyFilter !== "" ||
-    artistFilter !== "" ||
-    difficultyFilter !== "";
-
-  const resetFilters = () => {
-    setSearchTerm("");
-    setKeyFilter("");
-    setArtistFilter("");
-    setDifficultyFilter("");
-  };
 
   // Check if all filtered songs are saved offline
   const allFilteredSongsOffline = useMemo(() => {
@@ -327,7 +324,7 @@ export default function SongList({ songs }: SongListProps) {
         {hasFilters && (
           <button
             type="button"
-            onClick={resetFilters}
+            onClick={clearFilters}
             className="uv-btn uv-btn--ghost"
           >
             <span>Limpiar filtros</span>
