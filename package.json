@@ -12,7 +12,8 @@
     "format": "biome format --write",
     "validate": "node scripts/validate-songs.mjs",
     "credits": "node scripts/check-credits.mjs",
-    "clean": "rm -rf .next node_modules"
+    "clean": "rm -rf .next node_modules",
+    "transpose": "node scripts/check-transpose.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
