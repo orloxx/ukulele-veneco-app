@@ -59,3 +59,10 @@ next-env.d.ts
 # IDE
 .idea/
 .vscode/
+
+# The raw yt-dlp results behind data/videos.json, kept so the acceptance rule in
+# scripts/find-videos.mjs can be re-applied without asking YouTube 276 more
+# questions. It is a cache of somebody else's data and it goes stale; the file
+# that is the record is data/videos.json, and it holds the four fields a person
+# reviewing a match needs rather than everything the search returned.
+/scripts/.videos-cache.json
