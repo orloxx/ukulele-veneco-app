@@ -25,7 +25,6 @@ import {
   cacheSongPages,
   uncacheManySongPages,
   uncacheSongPages,
-  warmTunerPage,
 } from "@/lib/offlinePages";
 import type { StoredSong } from "@/types/offline";
 import type { ParsedSong } from "@/types/song";
@@ -106,17 +105,12 @@ export function OfflineSongsProvider({ children }: { children: ReactNode }) {
     loadSavedSlugs();
   }, []);
 
-  /**
-   * Put the tuner in the cache before anybody asks for it.
-   *
-   * It rides here because this provider wraps every screen inside the app and
-   * its subject is exactly this — what is available with no network. See
-   * `warmTunerPage`, and vault `DECISIONS.md` 20 for why the tuner is the one
-   * page that does not wait to be visited.
+  /*
+   * A second effect here warmed `/afinador` into the cache on every visit, and
+   * M12 deleted it: the tuner is a Serwist precache entry now, so it is there
+   * before the app has been opened rather than after. See `serwist.config.js`
+   * and vault `DECISIONS.md` 28, which supersedes 20.
    */
-  useEffect(() => {
-    void warmTunerPage();
-  }, []);
 
   /**
    * Saving is two things, and it is only done when both have happened: the

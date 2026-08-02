@@ -3,28 +3,39 @@
 import { useEffect } from "react";
 
 /**
- * Registers `/sw.js`.
+ * Registers `/sw.js`. Nothing else does.
  *
- * This exists because `next-pwa` does not (BUG-007). It generates the worker and
- * its precache manifest correctly, but it wires the registration up by
- * prepending its own `register.js` to webpack's **`main.js`** entry — which is
- * the Pages Router entry, and this app is entirely App Router. Every page here
- * loads `main-app.js`, `main.js` is never requested, and so from December 2025
- * until this component landed nothing ever called `register()`: `/sw.js`
- * returned 200 to anyone who asked for it, and nobody ever asked.
+ * It was written because `next-pwa` did not (BUG-007): it generated the worker
+ * and its precache manifest correctly, then wired the registration up by
+ * prepending its own `register.js` to webpack's **`main.js`** entry — the Pages
+ * Router entry, in an app that is entirely App Router. Every page here loads
+ * `main-app.js`, `main.js` was never requested, and from December 2025 until
+ * this component landed nothing ever called `register()`: `/sw.js` returned 200
+ * to anyone who asked for it, and nobody ever asked.
  *
- * **Do not delete this on the grounds that `register: true` is set in
- * `next.config.ts`.** That setting is what is broken. The registration goes when
- * the app moves to Serwist, which does it through the App Router properly — and
- * not before.
+ * **This comment used to say the file goes when the app moves to Serwist. The
+ * app has moved, and it stays** — vault `DECISIONS.md` 28. The prediction was
+ * about the `withSerwist()` webpack-plugin mode, which does inject its own
+ * registration; M12 chose the CLI mode, where `serwist build` writes a worker
+ * and generates nothing on the page side at all. `iker.io` and `cg-autonomo`
+ * both run that mode and both carry a register component of their own, so this
+ * is the house pattern rather than a leftover.
+ *
+ * **What did go is the reason to be suspicious of it.** There is no
+ * `register: true` anywhere claiming to do this job any more, so the file is
+ * the plain answer to *what registers the worker* rather than a workaround for
+ * a setting that lied.
  *
  * `load` rather than an immediate call: the worker is for the *next* visit, and
  * fetching it while the first one is still painting only competes with the page.
  */
 export function ServiceWorker() {
   useEffect(() => {
-    // `next.config.ts` disables the worker in development, so there is no
-    // `/sw.js` to register there and asking for one only logs a 404 per reload.
+    // Only `pnpm build` runs `serwist build`, so `next dev` serves no `/sw.js`
+    // and asking for one only logs a 404 per reload. The guard is not redundant
+    // with that: `public/sw.js` is a real file left behind by the last
+    // `pnpm build`, and the dev server would hand a stale worker straight to
+    // whatever is being worked on.
     if (process.env.NODE_ENV !== "production") return;
     if (!("serviceWorker" in navigator)) return;
 

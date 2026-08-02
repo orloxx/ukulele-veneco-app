@@ -12,22 +12,23 @@
  * worker reads from.
  *
  * **It writes them itself rather than leaving it to the worker, and that is not
- * belt-and-braces.** The fetch does pass through the worker, and workbox's
- * `NetworkFirst` rule does cache it — but it does so in the worker's own
+ * belt-and-braces.** The fetch does pass through the worker, and the
+ * `NetworkFirst` catch-all does cache it — but it does so in the worker's own
  * `waitUntil`, *after* the response has reached this code. Checking for the
  * entry straight after the fetch is a race, and it loses: the first version of
  * this rolled every save back because the worker had not written yet. A
  * `cache.put()` here is done when it returns, which is the only way this
- * function can honestly report success.
+ * function can honestly report success. **A migration is exactly when somebody
+ * deletes this as redundant with the worker; it is not, and the check that would
+ * catch the mistake is a save on a slow connection rather than a build.**
  *
  * Removing goes direct too, because there is no way to ask the worker to forget
- * something. Workbox's expiration plugin may be left believing an entry is
- * still there, which is harmless: it only ever evicts, and evicting something
- * already gone is a no-op.
+ * something. The expiration plugin may be left believing an entry is still
+ * there, which is harmless: it only ever evicts, and evicting something already
+ * gone is a no-op.
  */
 
-/** The cache the `cachePages` rule in `next.config.ts` writes to. */
-const PAGES_CACHE = "pages";
+import { PAGES_CACHE } from "./cacheNames";
 
 /**
  * How many songs may be in flight at once when saving a lot of them.
@@ -50,46 +51,22 @@ function supported(): boolean {
   return typeof window !== "undefined" && "caches" in window;
 }
 
-/** The tuner's own document. See `warmTunerPage`. */
-const TUNER_URL = "/afinador";
-
-/**
- * Put `/afinador` in the cache before anybody asks for it.
+/*
+ * `warmTunerPage()` was here, and M12 deleted it.
  *
- * **The tuner is the one screen in this app whose purpose is a room with no
- * signal**, and every other page here becomes available offline by being visited
- * or by being saved. That rule leaves the tuner in the one place it must not be:
- * a reader who installs the app, saves a set of songs and turns up to play has
- * never opened it, so `runtimeCaching`'s `NetworkFirst` catch-all has nothing to
- * fall back to and the screen they need is the one screen missing.
+ * It fetched `/afinador` once per visit from `OfflineSongsProvider`, because the
+ * tuner is the one screen whose purpose is a room with no signal and every other
+ * page here goes offline by being visited or by being saved. Vault
+ * `DECISIONS.md` 20 wrote that down and said in as many words that a precache
+ * entry was the right shape, rejected for a mechanical reason: `next-pwa` made
+ * `additionalManifestEntries` replace its own `public/` glob wholesale, so one
+ * URL cost a copy of its globbing and revision hashing.
  *
- * So it is warmed once per visit, from the app shell, the moment the reader is
- * anywhere inside the app. One document, a few KB, and it uses the same
- * `cache.put()` idiom as `cacheSongPages` above for the same reason: the worker
- * caches in its own `waitUntil` and writing here is done when it returns.
- *
- * **The alternative was a workbox precache entry, and it was rejected.**
- * next-pwa builds `additionalManifestEntries` by globbing `public/` *unless the
- * option is supplied*, in which case the array replaces the glob wholesale — so
- * adding one URL means re-implementing next-pwa's own globbing and revision
- * hashing in `next.config.ts`, and owning it forever. Vault `DECISIONS.md` 20.
- *
- * Every failure is swallowed. This is an optimisation for a trip that has not
- * happened yet; nothing on screen depends on it.
+ * Serwist adds entries instead of replacing them, so the tuner is a precache
+ * entry now — one line in `serwist.config.js` — and it is in the cache before
+ * the first launch rather than after it. `DECISIONS.md` 28 is the reversal that
+ * clause asked for.
  */
-export async function warmTunerPage(): Promise<void> {
-  if (!supported()) return;
-  if (typeof navigator !== "undefined" && navigator.onLine === false) return;
-
-  try {
-    const response = await fetch(TUNER_URL, { credentials: "same-origin" });
-    if (!response.ok) return;
-    const cache = await caches.open(PAGES_CACHE);
-    await cache.put(TUNER_URL, response);
-  } catch {
-    // No tuner offline this time. It is warmed again on the next visit.
-  }
-}
 
 /**
  * Fetch a song's pages so the worker holds them.
