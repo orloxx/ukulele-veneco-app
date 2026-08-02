@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ChordDiagram from "@/components/ChordDiagram";
-import { getAllSongSlugs, getSongBySlug } from "@/lib/songs";
+import { ChordsViewClient } from "@/components/ChordsViewClient";
+import { getAllSongSlugs, getSongBySlug, getTranspositions } from "@/lib/songs";
 
 interface ChordsPageProps {
   params: Promise<{
@@ -59,24 +59,11 @@ export default async function ChordsPage({ params }: ChordsPageProps) {
         empieza la cuadrícula.
       </p>
 
-      <div className="uv-chords-view__grid">
-        {song.chordDefinitions.map((chord) => (
-          <div key={chord.name} className="uv-diagram uv-chords-view__card">
-            <div className="uv-diagram__name uv-chords-view__name">
-              {chord.name}
-            </div>
-            <ChordDiagram
-              chord={chord}
-              size={132}
-              showName={false}
-              frame={false}
-            />
-            {/* The fingering as it is written in `songs/`, for anyone reading
-                the diagram back against the file. */}
-            <div className="uv-chords-view__positions">{chord.positions}</div>
-          </div>
-        ))}
-      </div>
+      {/* The grid is a client component so it can follow the key the reader
+          picked on the sheet — the two screens share one stored choice, and a
+          panel naming different chords from the sheet beside it is worse than
+          no transposition at all. */}
+      <ChordsViewClient slug={slug} transpositions={getTranspositions(song)} />
 
       <p className="uv-chords-view__back">
         <Link href={`/song/${slug}`} className="uv-btn uv-btn--secondary">

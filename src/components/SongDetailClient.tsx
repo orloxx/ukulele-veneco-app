@@ -14,14 +14,32 @@ import ChordDiagram from "@/components/ChordDiagram";
 import { IconCapo, IconGrid } from "@/components/icons";
 import LyricsDisplay from "@/components/LyricsDisplay";
 import { SaveOfflineButton } from "@/components/SaveOfflineButton";
+import { TransposeControl } from "@/components/TransposeControl";
+import { useTransposition } from "@/hooks/useTransposition";
+import type { Transposition } from "@/lib/transpose";
 import type { ParsedSong } from "@/types/song";
 
 interface SongDetailClientProps {
   song: Omit<ParsedSong, "filePath">; // Exclude non-serializable filePath
+  /**
+   * Every key this song can be played in, resolved at build time.
+   *
+   * The vocabulary index this is derived from is most of the collection's chord
+   * data and never reaches the browser (`M11 · 1`); what arrives is this song's
+   * own answer, which is at most twelve short chord lists.
+   */
+  transpositions: Transposition[];
 }
 
-export function SongDetailClient({ song }: SongDetailClientProps) {
+export function SongDetailClient({
+  song,
+  transpositions,
+}: SongDetailClientProps) {
   const { metadata } = song;
+  const { current, printed, offered, moved, choose } = useTransposition(
+    song.slug,
+    transpositions,
+  );
 
   // The sheet, handed to the auto-scroll bar so the pace can be resolved
   // against the lyrics' own line box rather than against a constant. It goes on
@@ -40,10 +58,18 @@ export function SongDetailClient({ song }: SongDetailClientProps) {
           </p>
 
           <div className="uv-song-chips">
-            {/* Mono, because a tono and a compás are musical notation. */}
-            {metadata.key && (
-              <span className="uv-tag uv-tag--teal uv-tag--mono">
-                {metadata.key}
+            {/* Mono, because a tono and a compás are musical notation.
+
+                The chip carries the key the sheet is *in*, not the one the file
+                holds: a sheet whose chords moved and whose tono did not is the
+                app contradicting itself. `data-moved` is what stops it passing
+                for the book's own page — see the marker under the control. */}
+            {current.key && (
+              <span
+                className="uv-tag uv-tag--teal uv-tag--mono"
+                data-moved={moved ? "" : undefined}
+              >
+                {current.key}
               </span>
             )}
             <span className="uv-tag uv-tag--outline uv-tag--mono">
@@ -66,6 +92,19 @@ export function SongDetailClient({ song }: SongDetailClientProps) {
               {note}
             </p>
           ))}
+
+          {/* The capo is untouched by all of this, and that is the decision
+              rather than an omission: `key` is the *written* key, so the badge
+              above and the shapes below are independent. Leave the capo where
+              the book put it, move the shapes, and the sounding key moves by
+              the same amount — see `transpose.ts`. */}
+          <TransposeControl
+            id={`transpose-${song.slug}`}
+            offered={offered}
+            current={current}
+            printed={printed}
+            onChoose={choose}
+          />
         </div>
 
         <SaveOfflineButton song={song as ParsedSong} />
@@ -78,6 +117,7 @@ export function SongDetailClient({ song }: SongDetailClientProps) {
           <LyricsDisplay
             lyrics={song.lyrics}
             chordNames={song.chordDefinitions.map((chord) => chord.name)}
+            chordNameMap={current.names}
           />
         </div>
 
@@ -93,7 +133,7 @@ export function SongDetailClient({ song }: SongDetailClientProps) {
             </Link>
           </div>
           <div className="uv-chord-panel__grid">
-            {song.chordDefinitions.map((chord) => (
+            {current.chords.map((chord) => (
               <ChordDiagram key={chord.name} chord={chord} size={88} />
             ))}
           </div>

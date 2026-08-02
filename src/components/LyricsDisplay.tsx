@@ -10,6 +10,20 @@ interface LyricsDisplayProps {
    * `(Cuidado, mucho cuidado)` in colgando-en-tus-manos must stay as words.
    */
   chordNames: string[];
+  /**
+   * The song's own chord names to the ones the reader's key needs.
+   *
+   * **The lyric is never re-parsed and never rewritten.** It holds the names
+   * the book printed, those are what `chordNames` recognises, and a chord is
+   * still found and still attached to its syllable by exactly the code that
+   * did it before M11 — only what is *printed* in the span is looked up here.
+   * That is deliberate: this component is the most sensitive in the app, and
+   * transposition has no business anywhere near the part that decides which
+   * syllable a chord belongs to.
+   *
+   * Absent, or missing an entry, means the chord is printed as written.
+   */
+  chordNameMap?: Record<string, string>;
 }
 
 interface LinePart {
@@ -53,8 +67,12 @@ interface LinePart {
 export default function LyricsDisplay({
   lyrics,
   chordNames,
+  chordNameMap,
 }: LyricsDisplayProps) {
   const defined = new Set(chordNames);
+
+  /** What this chord is called in the key the reader is in. */
+  const printed = (chord: string) => chordNameMap?.[chord] ?? chord;
 
   const parseLine = (line: string) => {
     const parts: LinePart[] = [];
@@ -132,7 +150,9 @@ export default function LyricsDisplay({
                     : "uv-chord"
                 }
               >
-                {part.anticipated ? `(${part.chord})` : part.chord}
+                {part.anticipated
+                  ? `(${printed(part.chord)})`
+                  : printed(part.chord)}
               </span>
             )}
             {part.text}

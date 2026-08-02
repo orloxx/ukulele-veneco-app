@@ -1484,6 +1484,71 @@ samp {
   max-width: var(--measure-prose);
 }
 
+/* ---------------- Transpose ----------------
+   The control that moves a song to a key the reader can sing.
+
+   **In the song head, and deliberately not a second sticky bar.** The
+   auto-scroll bar already spends about fifty pixels of phone screen under the
+   header, permanently; a second band would double that for a control you use
+   once before you start rather than while the sheet is moving.
+
+   The select is a `.uv-select`, so it inherits the 16px-under-`pointer: coarse`
+   rule up at *Fields* — which is BUG-014's fix and the reason focusing this
+   does not zoom the page on iOS. It is sized to its content rather than the
+   100% that class gives a filter row: this one sits beside a tono chip, not in
+   a column of its own. */
+.uv-transpose {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-4);
+}
+.uv-transpose__label {
+  font-size: var(--size-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.uv-transpose__select {
+  width: auto;
+  min-width: 9rem;
+  /* Mono, on the same licence the tono chip has: the options are chord names,
+     and a chord name is musical notation wherever it appears. */
+  font-family: var(--font-mono);
+}
+/* The failure this exists to prevent is a reader who forgot they moved the song
+   and is playing beside somebody reading the book. So it names the printed key
+   in words rather than only tinting something — the design system's own rule
+   that colour is never the only signal, which the afinador states at its
+   tokens. It takes the whole row so it sits under the control on a phone. */
+.uv-transpose__moved {
+  flex-basis: 100%;
+  color: var(--text-muted);
+  font-size: var(--size-body-sm);
+}
+.uv-transpose__printed {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-semibold);
+  color: var(--text-strong);
+}
+/* The 18 songs the cancionero cannot supply another key for. A sentence rather
+   than a disabled select: a greyed-out control says the app is broken, and what
+   is true is that the book does not print the chords this song would need. */
+.uv-transpose__none {
+  margin-top: var(--space-4);
+  color: var(--text-muted);
+  font-size: var(--size-body-sm);
+  max-width: var(--measure-prose);
+}
+/* The tono chip while the sheet is not in the book's key. The dashed ring is
+   the secondary cue; `.uv-transpose__moved` above is the one that says what
+   happened. */
+.uv-tag--teal[data-moved] {
+  outline: 1px dashed currentColor;
+  outline-offset: 2px;
+}
+
 .uv-song-body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 224px;

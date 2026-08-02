@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { SongDetailClient } from "@/components/SongDetailClient";
-import { getAllSongSlugs, getSongBySlug } from "@/lib/songs";
+import { getAllSongSlugs, getSongBySlug, getTranspositions } from "@/lib/songs";
 
 interface SongPageProps {
   params: Promise<{
@@ -41,5 +41,13 @@ export default async function SongPage({ params }: SongPageProps) {
   // biome-ignore lint/correctness/noUnusedVariables: destructured only to drop it
   const { filePath, ...serializableSong } = song;
 
-  return <SongDetailClient song={serializableSong} />;
+  // Resolved here rather than in the browser: the vocabulary index it comes
+  // from is most of the collection's chord data, and only this song's own
+  // answer should cross the boundary.
+  return (
+    <SongDetailClient
+      song={serializableSong}
+      transpositions={getTranspositions(song)}
+    />
+  );
 }
