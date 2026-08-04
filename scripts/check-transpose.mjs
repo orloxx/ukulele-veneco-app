@@ -188,7 +188,6 @@ const SOUNDS_UNLIKE_ITS_NAME = new Set([
   "canto-al-avila C#m 4407",
   "cuchi-cuchi B7 3210",
   "el-lado-prohibido Db7 3433",
-  "en-carne-viva B7aug9 2325",
   "estoy-afuera-sal G# 4232",
   "libera-tu-mente Ab7 6757",
   "mi-cura-mi-enfermedad E² 3402",
@@ -234,7 +233,10 @@ const QUALITY_INTERVALS = {
   b5: [0, 4, 6],
   "+": [0, 4, 8],
   "7+": [0, 4, 8, 10],
-  "7aug9": [0, 2, 4, 8, 10],
+  // `B7aug9` is a dominant 7th with an *augmented ninth* — the ♯9, not a ♯5 with a 9.
+  // en-carne-viva draws 2325, which is A-D♯-F♯-D: the 7th, 3rd, 5th and ♯9 of B, root
+  // omitted. Reading "aug" as the fifth instead makes the book look wrong when it is not.
+  "7aug9": [0, 3, 4, 7, 10],
   add9: [0, 2, 4, 7],
   sus2: [0, 2, 7],
   sus4: [0, 5, 7],
