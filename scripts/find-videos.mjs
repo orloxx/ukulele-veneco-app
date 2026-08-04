@@ -392,6 +392,21 @@ function judge(song, candidate) {
   // type. Without it `muera-el-amor` went to a devoted fan channel — a correct
   // match, and beating Mirla Castellanos's own audio only because the fan had
   // put her name in the video's title and the official upload had not.
+  // **`inTitle` is the term BUG-018 landed on, and it is left as it is on
+  // purpose.** Once `onChannel` holds, the artist is already established, so the
+  // +100 is the same evidence counted twice — and because views are capped at
+  // +40 it *decides* between candidates on the artist's own channel. Both bugs
+  // are that: the band's own upload titled `CDC - Las Estrellas` scores 1084 and
+  // loses to a later re-upload titled `Caramelos de Cianuro - Las Estrellas` at
+  // 1175, which spells the name out and has 62× fewer views.
+  //
+  // Making it `inTitle && !onChannel` was measured against the cache rather than
+  // argued: it re-picks exactly the two videos Iker corrected by hand, **and
+  // seven others nobody has reviewed** — trading `Noche de Copas (Official Video
+  // 1984)` for an untitled upload a quarter-minute longer, among others. Two
+  // fixed and seven gambled is the wrong trade in a project where only a person
+  // can tell a right video from a plausible one, so the entries were corrected
+  // and the rule was not. If this is ever reopened, the seven are the work.
   let score = 0;
   if (onChannel) score += 1000;
   if (isTopicChannel(candidate.channel)) score += 500;
@@ -461,7 +476,31 @@ const verbose = flag("--verbose");
 const only = value("--only");
 const isPilot = flag("--pilot");
 const rescore = flag("--rescore");
+const overwrite = flag("--overwrite");
 const writes = !only && !isPilot;
+
+// BUG-018. This script wrote `data/videos.json` once, and since then the file
+// has been corrected by hand — the reader is the whole verification mechanism
+// (`data/README.md`), so a hand edit is the *better* record and this script's
+// output is the weaker one. A bare re-run rewrites all 261 entries from the
+// rule, silently reverting every correction, and nothing on any screen would
+// say so: the panel would go back to naming a plausible video with the right
+// title on the right channel. Measured after BUG-018 — a re-run reproduces both
+// wrong matches exactly.
+//
+// So writing over an existing map is the one thing that needs saying out loud
+// rather than the default. Regenerating from scratch is still one word.
+if (writes && !overwrite && fs.existsSync(OUTPUT)) {
+  console.error(
+    "\ndata/videos.json already exists, and this would rewrite all of it.\n\n" +
+      "  That file has been corrected by hand since it was generated (BUG-018),\n" +
+      "  and the rule that wrote it cannot see those corrections — it would pick\n" +
+      "  the same wrong videos again.\n\n" +
+      "  To look up one song without writing:  --only <slug> --verbose\n" +
+      "  To regenerate the whole map anyway:   --overwrite\n",
+  );
+  process.exit(1);
+}
 
 const allSongs = loadSongs();
 const songs = only

@@ -96,6 +96,18 @@ than one with no evidence at all, because it reads as reviewed.
 Run `pnpm videos` afterwards. To find a replacement, `node scripts/find-videos.mjs
 --only <slug>` searches one song and prints its candidates without writing anything.
 
+**A hand correction is the better record, and a bare re-run of the finder would revert
+it.** That script wrote this file once from a rule that cannot see corrections, so
+re-running it rewrites all 261 entries and puts the wrong videos back — measured at
+BUG-018, which is why it now refuses to write over an existing map without
+`--overwrite`. If you ever pass that flag, the corrections below are what you are
+throwing away, and they have to be re-applied by hand afterwards:
+
+| Slug | Corrected to | By, when |
+|---|---|---|
+| `las-estrellas` | `Cv3hKgswvqU` | Iker, 2026-08-02 (BUG-018) |
+| `veronica` | `pof0BGR2Wv0` | Iker, 2026-08-02 (BUG-018) |
+
 ### How the file was written
 
 `scripts/find-videos.mjs`, over `yt-dlp`. The acceptance rule is at the top of that file
