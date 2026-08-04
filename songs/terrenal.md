@@ -14,7 +14,7 @@ chords:
   - name: F
     positions: "2010"
   - name: Em7^
-    positions: "7007"
+    positions: "7777"
   - name: Cmaj7
     positions: "0002"
   - name: Am7

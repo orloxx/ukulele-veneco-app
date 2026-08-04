@@ -8,7 +8,7 @@ chords:
   - name: "F#m"
     positions: "2120"
   - name: "C#m"
-    positions: "6404"
+    positions: "6444"
   - name: Bm
     positions: "4222"
   - name: D

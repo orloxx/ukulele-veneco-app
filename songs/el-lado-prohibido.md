@@ -18,9 +18,9 @@ chords:
   - name: Gb
     positions: "3121"
   - name: Db7
-    positions: "3403"
+    positions: "3433"
   - name: B7
-    positions: "2302"
+    positions: "2322"
 ---
 
 [Ab7]·   · · · | [Ab7]·   · [A7]·  · | [Ab7]·   · · · | [Ab7]·   · [A7]·  ·

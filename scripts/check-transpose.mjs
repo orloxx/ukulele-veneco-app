@@ -141,7 +141,7 @@ check("the measured numbers have not moved", () => {
     pairs: pairs.size,
     associations,
   };
-  const expected = { songs: 276, names: 143, pairs: 127, associations: 171 };
+  const expected = { songs: 276, names: 143, pairs: 127, associations: 163 };
 
   assert(
     JSON.stringify(measured) === JSON.stringify(expected),
@@ -159,6 +159,139 @@ check("every chord name in songs/ parses", () => {
     for (const chord of song.chordDefinitions) names.add(chord.name);
   for (const name of names) parseChordName(name);
   return `${names.size} names, none unreadable`;
+});
+
+/**
+ * Every fingering sounds the chord its own name claims — BUG-019's guard.
+ *
+ * The book is gone (M6), so `--verify` cannot be re-run and `songs/` is the
+ * record rather than a copy of one. This is what is left that can still say a
+ * fingering is wrong: the four strings sound four pitches, and the name says
+ * which pitches those may be. It is not a transcription check and cannot be —
+ * it never sees the book. It is a check that the data is *possible*.
+ *
+ * BUG-019 was twenty fingerings whose barre had been read as open strings, and
+ * fifteen of them sound a note their name excludes, so this would have caught
+ * them at transcription time. The other five landed on a chord tone anyway
+ * (`C#m` 6404 is C#-E-E-C#, all of them in C#m) and nothing but the book could
+ * ever have caught those.
+ *
+ * **The allowlist is the book's own, and that is the point of listing it by
+ * value.** Eighteen printed diagrams do not sound their printed name — page 70
+ * draws three chords a semitone below their labels, page 22's `Ab7` a semitone
+ * above — and vault `DECISIONS.md` 6 says fingerings follow the book, so they
+ * stay exactly as drawn. Keying the allowlist on song, name *and* fingering is
+ * what keeps it from becoming a blanket exemption: change one of these values
+ * and the check fails again, because the new value is not the book's either.
+ */
+const SOUNDS_UNLIKE_ITS_NAME = new Set([
+  "canto-al-avila C#m 4407",
+  "cuchi-cuchi B7 3210",
+  "el-lado-prohibido Db7 3433",
+  "en-carne-viva B7aug9 2325",
+  "estoy-afuera-sal G# 4232",
+  "libera-tu-mente Ab7 6757",
+  "mi-cura-mi-enfermedad E² 3402",
+  "muera-el-amor C#b5 1134",
+  "muera-el-amor D#6 5346",
+  "papua-retroespas B² 4522",
+  "papua-retroespas C#m² 6744",
+  "sin-sombra-no-hay-luz-gm Ab 6454",
+  "tan-enamorados Ebsus4 0341",
+  "un-poquito-mas Ab7 6757",
+  "un-poquito-mas Cmmaj7 3222",
+  "un-poquito-mas Dbmmaj7 4333",
+  "un-poquito-mas Ebmaj7 2224",
+  "volare G5 0124",
+]);
+
+/**
+ * What each quality is made of, in semitones above the root.
+ *
+ * `src/lib/chords.ts` deliberately never asks what a quality *means* — that is
+ * why it is right about all 143 of the book's names, five of which are not
+ * standard notation. So this table cannot be imported from the app: the app
+ * does not have one, and should not.
+ */
+const QUALITY_INTERVALS = {
+  "": [0, 4, 7],
+  m: [0, 3, 7],
+  5: [0, 7],
+  6: [0, 4, 7, 9],
+  7: [0, 4, 7, 10],
+  m6: [0, 3, 7, 9],
+  m7: [0, 3, 7, 10],
+  m9: [0, 2, 3, 7, 10],
+  maj7: [0, 4, 7, 11],
+  mmaj7: [0, 3, 7, 11],
+  m7M: [0, 3, 7, 11],
+  // `Em7^` is the book's own notation and it is not a m(maj7): terrenal draws
+  // it as 7777, which is D-G-B-E, an ordinary Em7 taken up the neck. The caret
+  // marks the position, not the quality.
+  "m7^": [0, 3, 7, 10],
+  dim7: [0, 3, 6, 9],
+  m7b5: [0, 3, 6, 10],
+  b5: [0, 4, 6],
+  "+": [0, 4, 8],
+  "7+": [0, 4, 8, 10],
+  "7aug9": [0, 2, 4, 8, 10],
+  add9: [0, 2, 4, 7],
+  sus2: [0, 2, 7],
+  sus4: [0, 5, 7],
+  "7sus2": [0, 2, 7, 10],
+  "7sus4": [0, 5, 7, 10],
+  "7sus4²": [0, 5, 7, 10],
+};
+
+/** Open strings, as pitch classes: G C E A. */
+const OPEN_STRINGS = [7, 0, 4, 9];
+
+check("every fingering sounds the chord its name claims", () => {
+  const unexpected = [];
+  let checked = 0;
+  let allowed = 0;
+
+  for (const song of songs) {
+    for (const chord of song.chordDefinitions) {
+      if (!/^\d{4}$/.test(chord.positions)) continue;
+      const { pitchClass, quality } = parseChordName(chord.name);
+      // A trailing superscript 2 marks a second shape for the same chord, not
+      // a different chord — BUG-016 is about what that costs elsewhere.
+      const intervals = QUALITY_INTERVALS[quality.replace(/²$/, "")];
+      if (intervals === undefined) continue; // no opinion is better than a wrong one
+      checked++;
+
+      const permitted = new Set(intervals.map((i) => (pitchClass + i) % 12));
+      const sounded = [...chord.positions].map(
+        (fret, string) => (OPEN_STRINGS[string] + Number(fret)) % 12,
+      );
+      if (sounded.every((pc) => permitted.has(pc))) continue;
+
+      const key = `${song.slug} ${chord.name} ${chord.positions}`;
+      if (SOUNDS_UNLIKE_ITS_NAME.has(key)) allowed++;
+      else unexpected.push(key);
+    }
+  }
+
+  assert(
+    unexpected.length === 0,
+    `${unexpected.length} fingering(s) sound a note their name excludes:\n` +
+      `${unexpected.join("\n")}\n` +
+      `If the book really draws it that way, add it to SOUNDS_UNLIKE_ITS_NAME.`,
+  );
+  return `${checked} fingerings, ${allowed} of them the book's own oddities`;
+});
+
+check("the allowlist has no entry the collection no longer holds", () => {
+  // An allowlist that outlives what it excuses is how a check quietly stops
+  // checking. Every entry must still be in songs/, spelt exactly this way.
+  const held = new Set();
+  for (const song of songs)
+    for (const chord of song.chordDefinitions)
+      held.add(`${song.slug} ${chord.name} ${chord.positions}`);
+  const stale = [...SOUNDS_UNLIKE_ITS_NAME].filter((key) => !held.has(key));
+  assert(stale.length === 0, `stale allowlist entries:\n${stale.join("\n")}`);
+  return `${SOUNDS_UNLIKE_ITS_NAME.size} entries, all still printed`;
 });
 
 check("enharmonics fold — the index is keyed by pitch class", () => {

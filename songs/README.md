@@ -68,6 +68,22 @@ disagreeing**. Both the book and the tool that read it are gone, so nothing can 
 that number: **a fingering already in a file is the record**, and changing one is changing
 the source, not correcting it.
 
+**That last sentence stands, and BUG-019 is the exception that shows what it costs.** The
+zero was worth less than it read: these files were written *by* the reader, and the check
+compared them against the same reader looking at the same pages, so it could only ever find
+a hand-edit. It could not find a page the reader misread the same way twice — and there was
+one. The book draws a **barre** as a dot at each end joined by a line; the reader counted
+dots and not the line, so it kept the two ends and dropped every string the bar covered in
+between. Twenty diagrams over thirteen songs lost an interior string, and `cancion-suave`'s
+`Db` went in as `1014` where the page plainly draws `1114` — the shape the note above calls
+"the usual" one.
+
+So the rule to apply is narrower than "never change a fingering". **Do not change one
+because it is unfamiliar** — that is what the `6544` note above is for, and it is still the
+common case. **Do change one that is not the chord it is named after**, because no page in
+the cancionero draws a `Db` with no D♭ in it. `pnpm transpose` now asserts exactly that, and
+carries the eighteen the book really does draw against their names.
+
 **The book coins a new name rather than reuse one.** Where a song needs two fingerings of
 the same chord, the cancionero gives the second shape a second name — `Edim7` beside
 `Edim7²` in `criollisima.md`, `C#m²` and `B²` in `papua-retroespas.md`, `Em7^` beside a

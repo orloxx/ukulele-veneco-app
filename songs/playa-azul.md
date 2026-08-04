@@ -8,11 +8,11 @@ chords:
   - name: Db
     positions: "6544"
   - name: Eb7
-    positions: "3034"
+    positions: "3334"
   - name: Fmaj7
     positions: "5500"
   - name: Eb6
-    positions: "3003"
+    positions: "3333"
   - name: Bb
     positions: "3211"
   - name: Gdim7
@@ -20,7 +20,7 @@ chords:
   - name: B
     positions: "4322"
   - name: Bbm7
-    positions: "1001"
+    positions: "1111"
   - name: C7
     positions: "0001"
   - name: Fm
@@ -32,7 +32,7 @@ chords:
   - name: F7
     positions: "2310"
   - name: Dbm7
-    positions: "4004"
+    positions: "4444"
 ---
 
 ## Intro

@@ -10,7 +10,7 @@ chords:
   - name: "G#m"
     positions: "4342"
   - name: "C#m"
-    positions: "6404"
+    positions: "6444"
   - name: A
     positions: "2100"
   - name: "F#m"

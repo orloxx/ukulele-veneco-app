@@ -12,7 +12,7 @@ chords:
   - name: "D#m"
     positions: "3321"
   - name: "C#7"
-    positions: "1012"
+    positions: "1112"
   - name: "F#m"
     positions: "2120"
   - name: Bm

@@ -6,7 +6,7 @@ key: C#m
 timeSignature: 4/4
 chords:
   - name: "C#m"
-    positions: "6404"
+    positions: "6444"
   - name: B
     positions: "4322"
   - name: "F#"
@@ -14,7 +14,7 @@ chords:
   - name: Emaj7
     positions: "1302"
   - name: Dmaj7
-    positions: "2024"
+    positions: "2224"
   - name: Cmaj7
     positions: "0002"
   - name: "C#m²"

@@ -6,7 +6,7 @@ key: Cm
 timeSignature: 4/4
 chords:
   - name: "C#"
-    positions: "1014"
+    positions: "1114"
   - name: Cm
     positions: "0333"
   - name: Fm7

@@ -10,7 +10,7 @@ chords:
   - name: Cm
     positions: "0333"
   - name: Db
-    positions: "1014"
+    positions: "1114"
   - name: Bb
     positions: "3211"
   - name: Ab

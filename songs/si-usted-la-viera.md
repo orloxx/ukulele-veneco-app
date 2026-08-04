@@ -6,7 +6,7 @@ key: Bb
 timeSignature: 4/4
 chords:
   - name: Bb7sus4
-    positions: "1301"
+    positions: "1311"
   - name: Bb
     positions: "3211"
   - name: F

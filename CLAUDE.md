@@ -267,8 +267,27 @@ from [elukulelevene.co](https://elukulelevene.co) and keep it outside the workin
 rule, the anticipation mark, the notes above a song, the conventions the cancionero used
 that the files still carry. Moving it there was the point of the milestone. The last run
 of the check that could compare the two, taken immediately before the PDF was deleted,
-read **276 songs checked against the book, 0 disagreeing**. That number cannot be produced
-again, so the spec is now what the collection is measured against.
+read **276 songs checked against the book, 0 disagreeing** — and **that number did not
+mean what it looks like it means, which is BUG-019**. `songs/` was written *by* the
+extractor, and `--verify` compared it against the extractor reading the same pages again,
+so the two agreed on everything the reader was consistently wrong about. It was a check
+that nobody had hand-edited a fingering, presented as a check that the fingerings were
+the book's.
+
+**What it was consistently wrong about was barres.** The book draws one as a dot at each
+end of the bar joined by a line — and the line is a stroke where the reader only counted
+filled dots, so it kept both ends and silently dropped every string in between. Twenty
+diagrams across thirteen songs came out with an interior string open: `Db` as `1014` where
+the page draws `1114`, `C#m7` as `4004` where it draws `4444`. Iker found the first one by
+playing `cancion-suave` on 2026-08-04, twenty-three of them later than the check that was
+supposed to catch it.
+
+**So the lesson is about the shape of the check, not the arithmetic.** A verification whose
+two sides come from one implementation cannot see that implementation's blind spot, and
+will report zero for ever. The guard that replaced it is in `scripts/check-transpose.mjs`
+and deliberately does not resemble it: it holds each fingering against **its own name**
+rather than against a re-reading of the source, so it shares nothing with whatever produced
+the data. It would have caught fifteen of the twenty on the day they were written.
 
 **The credit is not optional and does not come out.** The cancionero is Ciro Durán's work,
 used with his permission on the single condition that he is credited — vault

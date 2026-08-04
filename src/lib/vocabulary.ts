@@ -10,8 +10,13 @@
  *
  * Measured across `songs/` today: **143 distinct chord names**, which collapse
  * to **127 distinct (pitch class, quality) pairs** once enharmonics fold,
- * carrying **171 pair-and-fingering associations** over 146 distinct position
+ * carrying **163 pair-and-fingering associations** over 137 distinct position
  * strings. `scripts/check-transpose.mjs` asserts all four numbers.
+ *
+ * Those last two numbers were 171 and 146 until BUG-019, and the eight that
+ * went were not real voicings: they were barred chords whose covered strings
+ * had been read as open, so `Db` carried a `1014` that no page ever drew
+ * alongside the `1114` that every page did.
  *
  * **The index is keyed by pitch class, not by written root, and that is
  * load-bearing.** The collection writes both spellings — 53 `C#` against 14

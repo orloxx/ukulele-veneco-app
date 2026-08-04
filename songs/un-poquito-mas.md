@@ -10,7 +10,7 @@ chords:
   - name: Eb
     positions: "0331"
   - name: Ebmaj7
-    positions: "2024"
+    positions: "2224"
   - name: Dm7
     positions: "2213"
   - name: G7
@@ -18,7 +18,7 @@ chords:
   - name: Cm
     positions: "0333"
   - name: Cmmaj7
-    positions: "3202"
+    positions: "3222"
   - name: Cm7
     positions: "3333"
   - name: F7
@@ -38,7 +38,7 @@ chords:
   - name: Dbm
     positions: "1104"
   - name: Dbmmaj7
-    positions: "4303"
+    positions: "4333"
   - name: Dbm7
     positions: "4444"
   - name: Gb7
