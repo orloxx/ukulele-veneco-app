@@ -2062,12 +2062,17 @@ samp {
   max-width: 52ch;
 }
 
+/* What the tuner is listening for. **A statement since 2.8.0, not a control** —
+   each instrument has exactly one tuning, so there is nothing to pick. It is
+   still here rather than deleted because it is the sentence that says which
+   instrument the four numbers below belong to, and the picker was the only
+   thing on this screen that ever said so. */
 .uv-tuner__tuning {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
   margin-top: var(--space-6);
-  max-width: 24rem;
 }
 .uv-tuner__tuning-label {
   font-size: var(--size-label);
@@ -2075,24 +2080,9 @@ samp {
   text-transform: uppercase;
   color: var(--text-muted);
 }
-
-/* A native <select>, and that is DECISIONS.md 17 answered the other way on
-   purpose: the combobox was hand-built because <select> was *specifically*
-   inadequate at 181 options, and nothing about it is inadequate at four. */
-/* Two paragraphs since 2.7.0 rather than one: the first says the chord names
-   have moved, the second says which toggle moves them back. Separate sentences
-   because they are separate acts — a warning and a way out — and the second is
-   only rendered when there is one. */
-.uv-tuner__caveat {
-  margin-top: var(--space-4);
-  padding: var(--space-3) var(--space-4);
-  background: var(--status-offline-bg);
-  color: var(--status-offline-text);
-  border-radius: var(--radius-md);
-  font-size: var(--size-body-sm);
-}
-.uv-tuner__caveat p + p {
-  margin-top: var(--space-2);
+.uv-tuner__tuning-name {
+  color: var(--text-strong);
+  font-weight: var(--weight-medium);
 }
 
 /* The card the needle lives in. Its height is fixed rather than fitted, so the

@@ -79,11 +79,12 @@ const { buildChordVocabulary, lookupChord } = await import(
 const { buildTranspositions, transposeSong, transposeKeyField } = await import(
   pathToFileURL(path.join(REPO_ROOT, "src/lib/transpose.ts")).href
 );
-const { INSTRUMENTS, instrumentById, instrumentTunedLike } = await import(
+const { INSTRUMENTS, instrumentById } = await import(
   pathToFileURL(path.join(REPO_ROOT, "src/lib/instrument.ts")).href
 );
-const { namesMatchSongbook, samePitchClasses, songbookShiftSemitones } =
-  await import(pathToFileURL(path.join(REPO_ROOT, "src/lib/tunings.ts")).href);
+const { songbookShiftSemitones } = await import(
+  pathToFileURL(path.join(REPO_ROOT, "src/lib/tunings.ts")).href
+);
 
 /** The instrument every check below section 6 is about, unless it says otherwise. */
 const UKULELE = instrumentById("ukulele");
@@ -1081,168 +1082,105 @@ check("the difficulty band does not move with the instrument", () => {
 
 /* -------------------------------------------------------- 7. the afinador */
 
-console.log("\nThe afinador, per instrument");
+console.log("\nThe afinador");
 
-check("each instrument offers its own tunings and only its own", () => {
-  assert(
-    UKULELE.tunings.length === 4,
-    `the ukulele offers ${UKULELE.tunings.length}`,
-  );
-  // One, and that is `M15 · 4`'s decision rather than a gap: nobody here knows
-  // a second worth offering and there is no cuatro chart in the repo to
-  // arbitrate one.
-  assert(
-    CUATRO.tunings.length === 1,
-    `the cuatro offers ${CUATRO.tunings.length}`,
-  );
-  assert(
-    CUATRO.tunings[0].id === "cambur-pinton",
-    `the cuatro's tuning is ${CUATRO.tunings[0].id}`,
-  );
-  const shared = UKULELE.tunings.filter((tuning) =>
-    CUATRO.tunings.some((other) => other.id === tuning.id),
-  );
-  assert(shared.length === 0, `${shared.length} tuning is in both lists`);
-  return `4 for the ukulele, 1 for the cuatro, none shared`;
-});
-
-check(
-  "the cuatro's tuning is A4 D4 F#4 B3 and not the ukulele's D tuning",
-  () => {
-    // A4 D4 F♯4 B4 will be re-proposed, because it would let the verification's
-    // substitute ukulele be tuned without leaving cuatro mode. It is the
-    // ukulele's `d`, it is not a cuatro tuning, and a list that carries one to
-    // make a test convenient has stopped describing the instrument.
-    const cambur = CUATRO.tunings[0].strings;
-    const octaves = cambur.map((s) => s.octave).join("");
-    assert(octaves === "4443", `cambur pintón sits at octaves ${octaves}`);
-    const d = UKULELE.tunings.find((t) => t.id === "d");
-    assert(
-      d.strings.map((s) => s.octave).join("") === "4444",
-      "the ukulele's d tuning is not A4 D4 F#4 B4",
-    );
-    // Same notes, different octave on the 1st string — which is exactly why they
-    // would have read as duplicates in one list, and why they are never in one.
-    assert(
-      d.strings.map((s) => s.name).join(" ") ===
-        cambur.map((s) => s.name).join(" "),
-      "the two should differ only in the 1st string's octave",
-    );
-    // **246.94 Hz, and `M15 · 4` said 123.47.** That is B2, an octave under the
-    // note it names, and the paragraph built on it — that the cuatro's bottom
-    // string falls below the D3 `ANALYSIS_WINDOW` is sized for — is therefore
-    // about an instrument nobody plays. B3 is a fifth *above* baritone's D3, so
-    // the cuatro adds nothing at the bottom of the detector's range and the
-    // window is untouched for a stronger reason than the milestone expected.
-    const b3 = cambur[3].frequency;
-    const d3 = UKULELE.tunings.find((t) => t.id === "baritone").strings[0]
-      .frequency;
-    assert(
-      Math.abs(b3 - 246.9417) < 0.001,
-      `the cuatro's 1st string is ${b3.toFixed(4)} Hz, expected 246.9417`,
-    );
-    assert(
-      b3 > d3,
-      `B3 at ${b3.toFixed(2)} is below baritone's D3 at ${d3.toFixed(2)} — ` +
-        `the detector's window is sized from the lowest note any tuning offers`,
-    );
-    return `A4 D4 F#4 B3, 1st string ${b3.toFixed(2)} Hz — above baritone's ${d3.toFixed(2)}, and an octave under the ukulele's d`;
-  },
-);
-
-check("the chord-name caveat fires on the right tunings and no others", () => {
-  // It is measured against the instrument's *own* reference since M15. Against
-  // standard ukulele the cuatro would report +2 and the caveat would fire on
-  // the one tuning it must never fire on — the tuning M15 moved the diagrams to
-  // meet.
-  const expected = {
-    standard: 0,
-    "low-g": 0,
-    d: 2,
-    baritone: -5,
-    "cambur-pinton": 0,
-  };
+check("each instrument has exactly one tuning", () => {
+  // **The picker went at `2.8.0` and so did four ukulele tunings** — vault
+  // `DECISIONS.md` 33. What is asserted here is the property that replaced
+  // them: every tuning the app knows is one its own chord names are true of, so
+  // there is no state on this screen and nothing for it to warn about.
   for (const item of INSTRUMENTS) {
-    for (const tuning of item.tunings) {
-      const shift = songbookShiftSemitones(tuning, item.reference);
-      assert(
-        shift === expected[tuning.id],
-        `${item.id}/${tuning.id}: shift ${shift}, expected ${expected[tuning.id]}`,
-      );
-      assert(
-        namesMatchSongbook(tuning, item.reference) === (shift === 0),
-        `${item.id}/${tuning.id}: the caveat disagrees with the shift`,
-      );
-    }
+    assert(
+      item.tuning !== undefined && item.tuning.strings.length === 4,
+      `${item.id} has no tuning, or not four strings`,
+    );
+    assert(
+      songbookShiftSemitones(item.tuning, item.tuning) === 0,
+      `${item.id} is somehow shifted against itself`,
+    );
   }
   assert(
-    namesMatchSongbook(CUATRO.tunings[0], CUATRO.reference),
-    "the caveat fires on cambur pintón, which is the one tuning it must not",
+    INSTRUMENTS.length === 2,
+    `expected 2 instruments, got ${INSTRUMENTS.length}`,
   );
-  return `5 tunings — d +2, baritone −5, the other three exempt`;
+  return `${INSTRUMENTS.map((item) => `${item.id}: ${item.tuning.label}`).join(", ")}`;
 });
 
-check(
-  "the one tuning that is already the other instrument is found, derived",
-  () => {
-    // The ukulele's `d` is A D F♯ B and so is the cuatro's *cambur pintón*: the
-    // same four pitch classes, differing only in the octave of the 1st string.
-    // `M15 · Verification` stands on that — a ukulele re-tuned to `d` is the
-    // pitch-class-exact substitute for a cuatro — and since 2.7.0 the tuner says
-    // so, because a reader on `d` is one toggle from a sheet whose chord names
-    // are the ones their instrument is sounding.
-    //
-    // What is asserted is that the app *finds* the pair rather than naming it.
-    const pairs = [];
-    for (const item of INSTRUMENTS) {
-      for (const tuning of item.tunings) {
-        const twin = instrumentTunedLike(tuning, item);
-        if (twin) pairs.push(`${item.id}/${tuning.id} → ${twin.id}`);
-      }
-    }
-    assert(
-      pairs.length === 1 && pairs[0] === "ukulele/d → cuatro",
-      `expected only ukulele/d → cuatro, got ${pairs.length}: ${pairs}`,
-    );
+check("the cuatro is A3 D4 F#4 B3, and the 4th string is the low one", () => {
+  // **A3 and not A4**, corrected by Iker against the instrument on 2026-08-05
+  // after the milestone carried the wrong octave from scoping to `2.7.1`. The
+  // octaves are asserted rather than the frequencies alone, because that is the
+  // thing that was wrong and nothing in the app reads them.
+  const strings = CUATRO.tuning.strings;
+  assert(
+    strings.map((item) => `${item.name}${item.octave}`).join(" ") ===
+      "A3 D4 F#4 B3",
+    `cambur pintón is ${strings.map((i) => `${i.name}${i.octave}`).join(" ")}`,
+  );
+  assert(
+    Math.abs(strings[0].frequency - 220) < 0.001,
+    `the 4th string is ${strings[0].frequency.toFixed(2)} Hz, expected 220`,
+  );
+  // Re-entrant: the 1st string is not the highest, and the 4th is the lowest.
+  const lowest = Math.min(...strings.map((item) => item.frequency));
+  assert(
+    strings[0].frequency === lowest,
+    "the 4th string should be the lowest of the four",
+  );
+  assert(
+    strings[3].frequency < strings[2].frequency,
+    "the 1st string should not be the highest — the tuning is re-entrant",
+  );
+  return `A3 220,00 · D4 293,66 · F#4 369,99 · B3 246,94 — re-entrant, 4th string lowest`;
+});
 
-    // **And it is deliberately one-way, which asserting symmetry got wrong.** The
-    // question is not "are these two tunings alike" but "is there an instrument
-    // whose *reference* tuning this is" — because that is the instrument whose
-    // diagrams the app would draw, and the reference is what its chord names are
-    // true of. Cambur pintón does not find the ukulele, whose reference is
-    // standard and not `d`; and it does not need to, because in cuatro mode the
-    // caveat this sentence lives inside never renders at all.
-    assert(
-      instrumentTunedLike(CUATRO.tunings[0], CUATRO) === undefined,
-      "cambur pintón should find nothing: the ukulele's reference is standard",
-    );
+check("the octave the strings sit in changes nothing M15 asserts", () => {
+  // **The claim the A3 correction tested without meaning to.** Every number in
+  // this milestone is a pitch class, so moving a string by an octave must move
+  // nothing at all. Build a cuatro an octave up on every string and check the
+  // shift is the same — if this ever fails, something started reading
+  // frequencies where it should be reading pitch classes.
+  const octaveUp = {
+    label: CUATRO.tuning.label,
+    strings: CUATRO.tuning.strings.map((item) => ({
+      ...item,
+      octave: item.octave + 1,
+      frequency: item.frequency * 2,
+    })),
+  };
+  assert(
+    songbookShiftSemitones(UKULELE.tuning, octaveUp) ===
+      songbookShiftSemitones(UKULELE.tuning, CUATRO.tuning) - 12,
+    "an octave should move the raw shift by exactly twelve",
+  );
+  const wrap = (n) => ((n % 12) + 12) % 12;
+  assert(
+    wrap(songbookShiftSemitones(UKULELE.tuning, octaveUp)) ===
+      wrap(CUATRO.shapeShift),
+    "an octave changed the shape shift, which is a pitch-class quantity",
+  );
+  return `a cuatro an octave up borrows the same diagrams`;
+});
 
-    // And the sentence it prints has to be true: the reader is on a tuning whose
-    // names have moved, and the twin is an instrument where they have not.
-    const d = UKULELE.tunings.find((tuning) => tuning.id === "d");
-    assert(
-      !namesMatchSongbook(d, UKULELE.reference),
-      "the caveat would not be on screen for d, so the way out has nothing to fix",
-    );
-    const twin = instrumentTunedLike(d, UKULELE);
-    assert(
-      namesMatchSongbook(twin.reference, twin.reference),
-      "switching to the twin should make the names true, and it does not",
-    );
-
-    // Pitch classes and not frequencies: the 1st strings are an octave apart, and
-    // comparing Hz here would miss the one pair the app is built on.
-    assert(
-      !samePitchClasses(d, UKULELE.reference),
-      "d should not match standard — the check is not comparing anything",
-    );
-    assert(
-      d.strings[3].frequency !== twin.reference.strings[3].frequency,
-      "the pair should differ on the 1st string, or there is nothing octave-blind here",
-    );
-    return `ukulele/d ⇄ cuatro/cambur-pintón, B4 against B3, found by pitch class`;
-  },
-);
+check("every string of the app's range is one the detector covers", () => {
+  // The range shrank at `2.8.0` — baritone's D3 went with the picker — so the
+  // window in `pitch.ts` is now larger than it has to be. That is deliberate
+  // and documented there; what has to stay true is that nothing is *outside*
+  // the band the detector will report.
+  const all = INSTRUMENTS.flatMap((item) => item.tuning.strings);
+  const low = Math.min(...all.map((item) => item.frequency));
+  const high = Math.max(...all.map((item) => item.frequency));
+  assert(low > 70, `${low.toFixed(2)} Hz is under MIN_FREQUENCY`);
+  assert(high < 1200, `${high.toFixed(2)} Hz is over MAX_FREQUENCY`);
+  // Two octaves of headroom either side of the band, because a string is
+  // pointed at a tuner exactly when it is a long way out.
+  assert(low / 2 > 70, "a string an octave flat would fall out of the band");
+  assert(
+    high * 2 < 1200,
+    "a string an octave sharp would fall out of the band",
+  );
+  return `${low.toFixed(2)} Hz to ${high.toFixed(2)} Hz, an octave, inside 70–1200 with room either side`;
+});
 
 /* -------------------------------------------------------------- the tail */
 

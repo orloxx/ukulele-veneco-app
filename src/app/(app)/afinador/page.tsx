@@ -16,11 +16,11 @@ import { TunerScreen } from "@/components/TunerScreen";
  * The page column belongs to the app shell, not to this route.
  */
 /**
- * **The description names no tuning since M15, and that is not vagueness.**
- * Metadata is resolved at build time and the instrument is a browser
- * preference, so a list here would be the ukulele's four printed on a page that
- * may well be showing the cuatro's one. Naming both instruments is the largest
- * true thing this string can say.
+ * **The description names no tuning, and that is not vagueness.** Metadata is
+ * resolved at build time and the instrument is a browser preference, so a
+ * tuning here would be the ukulele's printed on a page that may well be showing
+ * the cuatro's. Naming both instruments is the largest true thing this string
+ * can say.
  */
 export const metadata: Metadata = {
   title: "Afinador · El Ukulele Veneco App",

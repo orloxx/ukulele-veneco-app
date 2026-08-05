@@ -36,25 +36,33 @@
  * The analysis window, in samples, and the `fftSize` the microphone's analyser
  * is set to.
  *
- * **Sized from the lowest note any tuning offers, not from the common one.**
- * Baritone's D3 is 146.83 Hz — a period of 6.8ms — and autocorrelation needs at
- * least two periods in the window and wants several. 2048 samples is 42.7ms at
- * 48kHz, about six periods of D3, and still short enough that the needle answers
- * a plucked string rather than lagging behind it. A window sized from standard
- * tuning's 261–440 Hz would look fine on every desk and fall apart on the one
- * instrument nobody testing it owns.
+ * **It was sized from the lowest note any tuning offered, and that note is gone
+ * — so this is now bigger than it has to be, deliberately.** Until `2.8.0` the
+ * ukulele had a baritone tuning whose bottom string is D3 at 146.83 Hz, a period
+ * of 6.8ms, and autocorrelation needs at least two periods in the window and
+ * wants several: 2048 samples is 42.7ms at 48kHz, about six periods of D3. The
+ * app's whole range is now **A3 at 220 Hz to A4 at 440** — the cuatro's 4th
+ * string to the ukulele's 1st — which 2048 covers nine times over.
+ *
+ * **Shrinking it is a change to the one number in this file that decides whether
+ * the tuner works, made for no reason anybody has felt.** What a smaller window
+ * buys is latency the needle does not need; what it risks is the failure this
+ * whole file is shaped around. It stays. If a tuning is ever added back below
+ * A3, nothing here has to move — which is the other half of the argument.
  */
 export const ANALYSIS_WINDOW = 2048;
 
 /**
  * The band a reported frequency has to fall in.
  *
- * The four tunings span 146.83 Hz to 493.88 Hz, and this is deliberately wider
- * at both ends: a string is pointed at this thing precisely when it is *out* of
- * tune, sometimes by a great deal, and a tuner that goes silent on the string it
- * is most needed for is worse than one that reads a couple of semitones off.
- * What the band is for is throwing out the octave-below and octave-above
- * answers that survive everything else.
+ * The two tunings span 220 Hz to 440 Hz — an octave, since `2.8.0` — and this is
+ * deliberately far wider at both ends: a string is pointed at this thing
+ * precisely when it is *out* of tune, sometimes by a great deal, and a tuner
+ * that goes silent on the string it is most needed for is worse than one that
+ * reads a couple of semitones off. What the band is for is throwing out the
+ * octave-below and octave-above answers that survive everything else, and
+ * narrowing it to the tunings would defeat that: a string a full octave flat is
+ * a thing that happens to a restrung ukulele, and it has to be *readable*.
  */
 const MIN_FREQUENCY = 70;
 const MAX_FREQUENCY = 1200;

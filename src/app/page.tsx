@@ -183,8 +183,8 @@ export default function Home() {
               <h2 className="uv-tuner-pitch__title">Antes de tocar, afina.</h2>
               <p className="uv-tuner-pitch__body">
                 El micrófono oye la cuerda, te dice qué nota es y cuánto le
-                falta pa' llegar. Estándar, sol grave, en re y barítono en el
-                ukulele; cambur pintón en el cuatro — y sin señal también.
+                falta pa' llegar. Afinación estándar si andas con el ukulele,
+                cambur pintón si agarraste el cuatro — y sin señal también.
               </p>
             </div>
             <Link

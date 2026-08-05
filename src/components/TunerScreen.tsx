@@ -23,23 +23,11 @@ import { useInstrument } from "@/contexts/InstrumentContext";
 import { useMicrophone } from "@/hooks/useMicrophone";
 import { useWakeLock } from "@/hooks/useWakeLock";
 import {
-  instrumentTunedLike,
-  readTuningId,
-  writeTuningId,
-} from "@/lib/instrument";
-import {
   ANALYSIS_WINDOW,
   detectPitch,
   IN_TUNE_CENTS,
   nearestTarget,
 } from "@/lib/pitch";
-import {
-  namesMatchSongbook,
-  songbookShiftSemitones,
-  type TuningId,
-  transposeNoteName,
-  tuningById,
-} from "@/lib/tunings";
 
 /**
  * How often the detector runs, in ms.
@@ -100,34 +88,22 @@ function formatHz(frequency: number): string {
 }
 
 export function TunerScreen() {
-  // **The tuner offers this instrument's tunings and no others** (`M15 · 4`).
-  // A flat list would put a cuatro tuning under a ukulele, and it would print
-  // two entries nobody can tell apart: the ukulele's `En Re — La Re Fa♯ Si` and
-  // the cuatro's *cambur pintón* differ only in the octave of the 1st string.
+  // **The tuner listens for the instrument the app is set to, and there is
+  // nothing to pick** — vault `DECISIONS.md` 33. Each instrument has exactly
+  // one tuning, so the screen states it rather than offering it, and there is
+  // no stored choice, no effect to read it and no caveat to explain a tuning
+  // the cancionero is not written for.
   const { instrument } = useInstrument();
-  const [tuningId, setTuningId] = useState<TuningId>(instrument.reference.id);
+  const tuning = instrument.tuning;
   const [reading, setReading] = useState<Reading | null>(null);
   /** The note on screen stopped sounding — see `NEW_PLUCK_GAP_MS`. */
   const [held, setHeld] = useState(false);
   const { status, start, stop, read, sampleRate } = useMicrophone();
 
-  // Read on mount and not in the initial state: this component is prerendered,
-  // and seeding from localStorage would make the first client render disagree
-  // with the markup it is hydrating. AutoScrollBar does the same for the pace.
-  //
-  // It re-runs when the instrument changes, which is the whole reason the
-  // stored tuning is per instrument: a toggle has to land on a tuning that is
-  // in the list on screen, and it lands on the one that instrument was last
-  // left in rather than on its reference.
-  useEffect(() => {
-    setTuningId(readTuningId(instrument));
-  }, [instrument]);
-
-  const tuning = tuningById(instrument.tunings, tuningId);
   const strings = tuning.strings;
 
   // `strings` is the identity React re-runs the loop on, and it is stable for as
-  // long as the tuning is: the tuning tables are module constants.
+  // long as the instrument is: the two tunings are module constants.
   const stringsRef = useRef(strings);
   stringsRef.current = strings;
 
@@ -209,14 +185,6 @@ export function TunerScreen() {
     return () => cancelAnimationFrame(frame);
   }, [listening, sampleRate, read]);
 
-  const handleTuningChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const next = tuningById(instrument.tunings, event.target.value).id;
-    setTuningId(next);
-    writeTuningId(instrument, next);
-    setReading(null);
-    setHeld(false);
-  };
-
   /**
    * The figure on screen, and **the figure the verdict is judged on** — BUG-015.
    *
@@ -258,21 +226,13 @@ export function TunerScreen() {
         ? "Aflojar la cuerda"
         : "Lista";
 
-  // The caveat, built out of the derived shift so the chord it names cannot be
-  // wrong, and measured against **this instrument's** reference tuning rather
-  // than against standard ukulele — otherwise the cuatro reports +2 against its
-  // own only tuning and the caveat fires on the one tuning it must never fire
-  // on. Shown for D and baritone; standard and low-G share every shape *and*
-  // every name, which is what makes them the exempt pair. In cuatro mode it is
-  // structurally unreachable, because *cambur pintón* is the reference and the
-  // cuatro has no second tuning (`M15 · 4`) — the diagrams have moved to meet
-  // the names, which is the whole of M15.
-  const shift = songbookShiftSemitones(tuning, instrument.reference);
-
-  // The other instrument this tuning already is, if there is one — see
-  // `instrumentTunedLike`. Today that is only `d` → the cuatro, and the app
-  // never says so by hand.
-  const twin = instrumentTunedLike(tuning, instrument);
+  // Changing instrument changes what the tuner is listening for, so a reading
+  // taken against the other one is no longer an answer to anything.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: the instrument is the trigger
+  useEffect(() => {
+    setReading(null);
+    setHeld(false);
+  }, [instrument]);
 
   return (
     <div className="uv-tuner">
@@ -284,65 +244,15 @@ export function TunerScreen() {
         descarta.
       </p>
 
-      <div className="uv-tuner__tuning">
-        <label className="uv-tuner__tuning-label" htmlFor="uv-tuning">
-          Afinación
-        </label>
-        {/* Native, per DECISIONS.md 17 read the other way: the filters were
-            hand-built because a <select> was specifically inadequate at 181
-            options, and nothing about one is inadequate at four — or, on the
-            cuatro, at one. It stays a select at one option rather than becoming
-            a line of text: the control is where a reader looks to find out what
-            the tuner is listening for, and it disappearing would read as the
-            app having lost the setting rather than as the instrument having one
-            tuning. */}
-        <select
-          id="uv-tuning"
-          className="uv-select"
-          value={tuningId}
-          onChange={handleTuningChange}
-        >
-          {instrument.tunings.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {namesMatchSongbook(tuning, instrument.reference) ? null : (
-        <div className="uv-tuner__caveat">
-          <p>
-            El cancionero está escrito para la afinación estándar. Las formas de
-            los acordes siguen sirviendo en esta afinación, pero los nombres no:
-            lo que el cancionero llama{" "}
-            <strong>{transposeNoteName("C", 0)}</strong> aquí suena{" "}
-            <strong>{transposeNoteName("C", shift)}</strong>.
-          </p>
-
-          {/* **And the way out, when there is one.** Before `2.7.0` the caveat
-              above was the whole truth and the reader's only option was to live
-              with it. Now the app can draw the other instrument, and this
-              tuning *is* that instrument's — so the sentence that stops at "the
-              names have moved" is telling somebody to put up with something one
-              press away from being fixed. Iker found it on the first line of
-              `M15 · Verification`'s own checklist, tuning the substitute
-              ukulele the milestone asked him to tune.
-
-              The pair is never named here: `instrumentTunedLike` compares pitch
-              classes, so this appears exactly when it is true and says nothing
-              when it is not. */}
-          {twin ? (
-            <p>
-              Es la misma afinación del {twin.label.toLowerCase()}, salvo la
-              octava de la 1.ª cuerda. Con el instrumento en{" "}
-              <strong>{twin.label}</strong>, ahí arriba, la app dibuja los
-              acordes para esta afinación y los nombres del cancionero vuelven a
-              ser los que suenan.
-            </p>
-          ) : null}
-        </div>
-      )}
+      {/* A statement, not a control. It used to be a `<select>` over four
+          ukulele tunings, and what it costs to lose is real — a baritone player
+          has no tuner here any more. What it buys is an app that cannot
+          contradict itself: every tuning it knows is one its own chord names
+          are true of. Vault `DECISIONS.md` 33. */}
+      <p className="uv-tuner__tuning">
+        <span className="uv-tuner__tuning-label">Afinación</span>
+        <span className="uv-tuner__tuning-name">{tuning.label}</span>
+      </p>
 
       {/* `data-held` dims the block a little when the note has stopped
           sounding. The reading stays — that is the point of it — but a held one
