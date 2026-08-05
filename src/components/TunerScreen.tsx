@@ -22,7 +22,11 @@ import { useEffect, useRef, useState } from "react";
 import { useInstrument } from "@/contexts/InstrumentContext";
 import { useMicrophone } from "@/hooks/useMicrophone";
 import { useWakeLock } from "@/hooks/useWakeLock";
-import { readTuningId, writeTuningId } from "@/lib/instrument";
+import {
+  instrumentTunedLike,
+  readTuningId,
+  writeTuningId,
+} from "@/lib/instrument";
 import {
   ANALYSIS_WINDOW,
   detectPitch,
@@ -265,6 +269,11 @@ export function TunerScreen() {
   // the names, which is the whole of M15.
   const shift = songbookShiftSemitones(tuning, instrument.reference);
 
+  // The other instrument this tuning already is, if there is one — see
+  // `instrumentTunedLike`. Today that is only `d` → the cuatro, and the app
+  // never says so by hand.
+  const twin = instrumentTunedLike(tuning, instrument);
+
   return (
     <div className="uv-tuner">
       <p className="uv-eyebrow">El Ukulele Veneco</p>
@@ -302,13 +311,37 @@ export function TunerScreen() {
       </div>
 
       {namesMatchSongbook(tuning, instrument.reference) ? null : (
-        <p className="uv-tuner__caveat">
-          El cancionero está escrito para la afinación estándar. Las formas de
-          los acordes siguen sirviendo en esta afinación, pero los nombres no:
-          lo que el cancionero llama{" "}
-          <strong>{transposeNoteName("C", 0)}</strong> aquí suena{" "}
-          <strong>{transposeNoteName("C", shift)}</strong>.
-        </p>
+        <div className="uv-tuner__caveat">
+          <p>
+            El cancionero está escrito para la afinación estándar. Las formas de
+            los acordes siguen sirviendo en esta afinación, pero los nombres no:
+            lo que el cancionero llama{" "}
+            <strong>{transposeNoteName("C", 0)}</strong> aquí suena{" "}
+            <strong>{transposeNoteName("C", shift)}</strong>.
+          </p>
+
+          {/* **And the way out, when there is one.** Before `2.7.0` the caveat
+              above was the whole truth and the reader's only option was to live
+              with it. Now the app can draw the other instrument, and this
+              tuning *is* that instrument's — so the sentence that stops at "the
+              names have moved" is telling somebody to put up with something one
+              press away from being fixed. Iker found it on the first line of
+              `M15 · Verification`'s own checklist, tuning the substitute
+              ukulele the milestone asked him to tune.
+
+              The pair is never named here: `instrumentTunedLike` compares pitch
+              classes, so this appears exactly when it is true and says nothing
+              when it is not. */}
+          {twin ? (
+            <p>
+              Es la misma afinación del {twin.label.toLowerCase()}, salvo la
+              octava de la 1.ª cuerda. Con el instrumento en{" "}
+              <strong>{twin.label}</strong>, ahí arriba, la app dibuja los
+              acordes para esta afinación y los nombres del cancionero vuelven a
+              ser los que suenan.
+            </p>
+          ) : null}
+        </div>
       )}
 
       {/* `data-held` dims the block a little when the note has stopped

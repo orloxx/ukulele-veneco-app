@@ -234,6 +234,27 @@ export function namesMatchSongbook(tuning: Tuning, reference: Tuning): boolean {
   return songbookShiftSemitones(tuning, reference) === 0;
 }
 
+/**
+ * Whether two tunings sound the same four pitch classes.
+ *
+ * **Octave-blind, which is the whole point of it.** The ukulele's `d` and the
+ * cuatro's *cambur pintón* are A D F♯ B and A D F♯ B, differing only in whether
+ * the 1st string sits at B4 or B3 — and every claim M15 makes is about pitch
+ * classes, because that is what decides whether a fingering sounds the chord it
+ * is named after. Two tunings this returns true for are the same instrument as
+ * far as a chord diagram is concerned.
+ *
+ * It is what lets the tuner tell a reader on `d` that they are one toggle away
+ * from a sheet whose chord names are the ones coming out of their instrument,
+ * without anything in the app naming that pair by hand.
+ */
+export function samePitchClasses(a: Tuning, b: Tuning): boolean {
+  return a.strings.every(
+    (string, index) =>
+      SEMITONE_FROM_C[string.name] === SEMITONE_FROM_C[b.strings[index].name],
+  );
+}
+
 /** The tuning for an id, or the set's reference for one it does not hold. */
 export function tuningById(tunings: readonly Tuning[], id: string): Tuning {
   return tunings.find((tuning) => tuning.id === id) ?? tunings[0];

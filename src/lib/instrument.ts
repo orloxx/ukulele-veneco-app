@@ -28,6 +28,7 @@
 
 import {
   CUATRO_TUNINGS,
+  samePitchClasses,
   songbookShiftSemitones,
   type Tuning,
   type TuningId,
@@ -113,6 +114,36 @@ export function instrumentById(id: string): Instrument {
     (INSTRUMENTS.find(
       (item) => item.id === DEFAULT_INSTRUMENT_ID,
     ) as Instrument)
+  );
+}
+
+/**
+ * The other instrument that is tuned like this, if there is one.
+ *
+ * **There is exactly one such pair today and it is not a coincidence**: the
+ * ukulele's `d` tuning is A D F♯ B and so is the cuatro's *cambur pintón*,
+ * differing only in the octave of the 1st string. `M15 · Verification` is built
+ * on that — a ukulele re-tuned to `d` is the pitch-class-exact substitute for a
+ * cuatro nobody here can get.
+ *
+ * What it is *for* is the sentence the tuner prints. A reader on `d` is told
+ * that the cancionero's chord names are not the ones their instrument is
+ * sounding, which is true and, since `2.7.0`, incomplete: they are one toggle
+ * away from an app that redraws every diagram for exactly that tuning and makes
+ * the names true again. Iker found that on the first line of `M15 ·
+ * Verification`'s own checklist.
+ *
+ * **Derived, and it has to stay derived.** Naming the pair by hand would be a
+ * fact about two tunings written in a third place, wrong the first time either
+ * of them moves — and it is the sort of wrong that reads as confident advice.
+ */
+export function instrumentTunedLike(
+  tuning: Tuning,
+  exclude: Instrument,
+): Instrument | undefined {
+  return INSTRUMENTS.find(
+    (item) =>
+      item.id !== exclude.id && samePitchClasses(item.reference, tuning),
   );
 }
 

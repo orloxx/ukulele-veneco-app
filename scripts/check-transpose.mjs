@@ -79,12 +79,11 @@ const { buildChordVocabulary, lookupChord } = await import(
 const { buildTranspositions, transposeSong, transposeKeyField } = await import(
   pathToFileURL(path.join(REPO_ROOT, "src/lib/transpose.ts")).href
 );
-const { INSTRUMENTS, instrumentById } = await import(
+const { INSTRUMENTS, instrumentById, instrumentTunedLike } = await import(
   pathToFileURL(path.join(REPO_ROOT, "src/lib/instrument.ts")).href
 );
-const { namesMatchSongbook, songbookShiftSemitones } = await import(
-  pathToFileURL(path.join(REPO_ROOT, "src/lib/tunings.ts")).href
-);
+const { namesMatchSongbook, samePitchClasses, songbookShiftSemitones } =
+  await import(pathToFileURL(path.join(REPO_ROOT, "src/lib/tunings.ts")).href);
 
 /** The instrument every check below section 6 is about, unless it says otherwise. */
 const UKULELE = instrumentById("ukulele");
@@ -1182,6 +1181,68 @@ check("the chord-name caveat fires on the right tunings and no others", () => {
   );
   return `5 tunings — d +2, baritone −5, the other three exempt`;
 });
+
+check(
+  "the one tuning that is already the other instrument is found, derived",
+  () => {
+    // The ukulele's `d` is A D F♯ B and so is the cuatro's *cambur pintón*: the
+    // same four pitch classes, differing only in the octave of the 1st string.
+    // `M15 · Verification` stands on that — a ukulele re-tuned to `d` is the
+    // pitch-class-exact substitute for a cuatro — and since 2.7.0 the tuner says
+    // so, because a reader on `d` is one toggle from a sheet whose chord names
+    // are the ones their instrument is sounding.
+    //
+    // What is asserted is that the app *finds* the pair rather than naming it.
+    const pairs = [];
+    for (const item of INSTRUMENTS) {
+      for (const tuning of item.tunings) {
+        const twin = instrumentTunedLike(tuning, item);
+        if (twin) pairs.push(`${item.id}/${tuning.id} → ${twin.id}`);
+      }
+    }
+    assert(
+      pairs.length === 1 && pairs[0] === "ukulele/d → cuatro",
+      `expected only ukulele/d → cuatro, got ${pairs.length}: ${pairs}`,
+    );
+
+    // **And it is deliberately one-way, which asserting symmetry got wrong.** The
+    // question is not "are these two tunings alike" but "is there an instrument
+    // whose *reference* tuning this is" — because that is the instrument whose
+    // diagrams the app would draw, and the reference is what its chord names are
+    // true of. Cambur pintón does not find the ukulele, whose reference is
+    // standard and not `d`; and it does not need to, because in cuatro mode the
+    // caveat this sentence lives inside never renders at all.
+    assert(
+      instrumentTunedLike(CUATRO.tunings[0], CUATRO) === undefined,
+      "cambur pintón should find nothing: the ukulele's reference is standard",
+    );
+
+    // And the sentence it prints has to be true: the reader is on a tuning whose
+    // names have moved, and the twin is an instrument where they have not.
+    const d = UKULELE.tunings.find((tuning) => tuning.id === "d");
+    assert(
+      !namesMatchSongbook(d, UKULELE.reference),
+      "the caveat would not be on screen for d, so the way out has nothing to fix",
+    );
+    const twin = instrumentTunedLike(d, UKULELE);
+    assert(
+      namesMatchSongbook(twin.reference, twin.reference),
+      "switching to the twin should make the names true, and it does not",
+    );
+
+    // Pitch classes and not frequencies: the 1st strings are an octave apart, and
+    // comparing Hz here would miss the one pair the app is built on.
+    assert(
+      !samePitchClasses(d, UKULELE.reference),
+      "d should not match standard — the check is not comparing anything",
+    );
+    assert(
+      d.strings[3].frequency !== twin.reference.strings[3].frequency,
+      "the pair should differ on the 1st string, or there is nothing octave-blind here",
+    );
+    return `ukulele/d ⇄ cuatro/cambur-pintón, B4 against B3, found by pitch class`;
+  },
+);
 
 /* -------------------------------------------------------------- the tail */
 
