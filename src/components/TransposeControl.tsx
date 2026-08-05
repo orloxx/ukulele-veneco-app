@@ -21,22 +21,33 @@
  *
  * **The way back is the first option, not a second control.** `M11 · 3` asked
  * for one press back to the printed key through the same control, so the key
- * the book printed is always offered, always first, and always marked.
+ * the book printed is offered, marked, and first — **except on the cuatro,
+ * where for 40 songs of 276 it is not offered at all.** That case gets its own
+ * sentence rather than a silently different starting point.
  *
- * **The 18 songs that can offer nothing get a sentence, not a disabled
- * select.** What is true is that the cancionero does not print the chords the
- * song would need in any other key — not that the app cannot transpose, and not
- * that something has gone wrong. A greyed-out control says the second thing.
+ * **The songs that can offer nothing get a sentence, not a disabled select.**
+ * What is true is that the cancionero does not print the chords the song would
+ * need in another key — not that the app cannot transpose, and not that
+ * something has gone wrong. A greyed-out control says the second thing.
+ *
+ * **Every one of those sentences names the instrument since M15**, and that is
+ * not decoration: the offered set is a fact about the cancionero *and* the
+ * instrument, so a reader who finds a key missing has to be able to tell which
+ * of the two took it away.
  */
 
+import { useInstrument } from "@/contexts/InstrumentContext";
 import type { Transposition } from "@/lib/transpose";
 import { PRINTED_KEY } from "@/lib/transposeChoice";
 
 interface TransposeControlProps {
-  /** Every key this song can be played in, printed first. */
+  /** Every key this song can be played in on the current instrument. */
   offered: Transposition[];
   current: Transposition;
-  printed: Transposition;
+  /** The written key the book printed, offered or not. */
+  printedKey: string;
+  /** True when the book's own key is not one this instrument can draw. */
+  printedKeyUnavailable: boolean;
   onChoose: (semitones: number) => void;
   /**
    * Distinguishes the two `<select>`s the app can render for one song — the
@@ -48,18 +59,35 @@ interface TransposeControlProps {
 export function TransposeControl({
   offered,
   current,
-  printed,
+  printedKey,
+  printedKeyUnavailable,
   onChoose,
   id,
 }: TransposeControlProps) {
+  const { instrument } = useInstrument();
+  const shapes = `Formas para ${instrument.label.toLowerCase()}`;
+
   // The book prints this song and nothing else can be built from it. 18 songs
-  // of 276, and the copy has to be about the cancionero rather than about the
-  // app: this is a limit of the source, honestly reported.
+  // of 276 on either instrument, and the copy has to be about the cancionero
+  // rather than about the app: this is a limit of the source, honestly
+  // reported. On the cuatro that single key is printed+2 rather than the
+  // book's own, so "se toca como está escrita" would be false.
   if (offered.length === 1) {
     return (
       <p className="uv-transpose__none">
         El cancionero no imprime los acordes que esta canción necesitaría en
-        otro tono, así que se toca como está escrita.
+        otro tono.{" "}
+        {printedKeyUnavailable ? (
+          <>
+            En {instrument.label.toLowerCase()} sale en{" "}
+            <span className="uv-transpose__printed">{current.key}</span>, un
+            tono por encima del{" "}
+            <span className="uv-transpose__printed">{printedKey}</span> que trae
+            el cancionero.
+          </>
+        ) : (
+          "Así que se toca como está escrita."
+        )}
       </p>
     );
   }
@@ -86,6 +114,13 @@ export function TransposeControl({
         ))}
       </select>
 
+      {/* Which instrument the diagrams below are drawn for. It is shown on both
+          instruments rather than only on the cuatro: the toggle is in the
+          header, two screens away from the shapes it governs, and a caption
+          that only ever appears in the non-default state is one a reader learns
+          to stop looking for. */}
+      <p className="uv-transpose__shapes">{shapes}</p>
+
       {/* The failure this guards against is a reader who forgot they moved the
           song and is playing next to somebody reading the book. So the marker
           names the printed key rather than merely saying "transposed" — the
@@ -93,10 +128,17 @@ export function TransposeControl({
           `aria-live`: the select's own value already announces the change, and
           a second announcement on every arrow-key press through twelve options
           would be noise. */}
-      {moved ? (
+      {printedKeyUnavailable ? (
         <p className="uv-transpose__moved">
           El cancionero la trae en{" "}
-          <span className="uv-transpose__printed">{printed.key}</span>
+          <span className="uv-transpose__printed">{printedKey}</span>, y en{" "}
+          {instrument.label.toLowerCase()} ese tono necesita un acorde que el
+          cancionero no dibuja. Estos son los que sí salen.
+        </p>
+      ) : moved ? (
+        <p className="uv-transpose__moved">
+          El cancionero la trae en{" "}
+          <span className="uv-transpose__printed">{printedKey}</span>
         </p>
       ) : null}
     </div>

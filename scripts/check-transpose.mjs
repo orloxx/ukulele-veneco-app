@@ -45,6 +45,12 @@ const REPO_ROOT = path.resolve(
  * milestone where that would matter, because the arithmetic is easy to get
  * consistently wrong. Node strips the types; this hook is only here to resolve
  * the `@/` alias that `tsconfig.json` sets and Node does not read.
+ *
+ * **It deliberately does not answer `format`.** Saying `"module"` tells Node
+ * the file is plain ESM and turns type stripping off, so any `@/` import that
+ * is not already loaded by one of the direct file-URL imports below dies on the
+ * first type annotation it meets. Every module happened to be pre-loaded that
+ * way until M15 added one that is not.
  */
 registerHooks({
   resolve(specifier, context, nextResolve) {
@@ -52,7 +58,6 @@ registerHooks({
       const target = path.join(REPO_ROOT, "src", specifier.slice(2));
       return {
         url: `${pathToFileURL(target).href}.ts`,
-        format: "module",
         shortCircuit: true,
       };
     }
@@ -60,14 +65,30 @@ registerHooks({
   },
 });
 
-const { parseChordName, parseKey, spellKey, spellingForKey, transposeKey } =
-  await import(pathToFileURL(path.join(REPO_ROOT, "src/lib/chords.ts")).href);
+const {
+  parseChordName,
+  parseKey,
+  spellKey,
+  spellingForKey,
+  transposeChordName,
+  transposeKey,
+} = await import(pathToFileURL(path.join(REPO_ROOT, "src/lib/chords.ts")).href);
 const { buildChordVocabulary, lookupChord } = await import(
   pathToFileURL(path.join(REPO_ROOT, "src/lib/vocabulary.ts")).href
 );
 const { buildTranspositions, transposeSong, transposeKeyField } = await import(
   pathToFileURL(path.join(REPO_ROOT, "src/lib/transpose.ts")).href
 );
+const { INSTRUMENTS, instrumentById } = await import(
+  pathToFileURL(path.join(REPO_ROOT, "src/lib/instrument.ts")).href
+);
+const { namesMatchSongbook, songbookShiftSemitones } = await import(
+  pathToFileURL(path.join(REPO_ROOT, "src/lib/tunings.ts")).href
+);
+
+/** The instrument every check below section 6 is about, unless it says otherwise. */
+const UKULELE = instrumentById("ukulele");
+const CUATRO = instrumentById("cuatro");
 
 /* ------------------------------------------------------------------ songs */
 
@@ -323,7 +344,10 @@ check("enharmonics fold — the index is keyed by pitch class", () => {
 console.log("\nEvery song, in every key it offers");
 
 const plans = new Map(
-  songs.map((song) => [song.slug, buildTranspositions(song, vocabulary)]),
+  songs.map((song) => [
+    song.slug,
+    buildTranspositions(song, vocabulary, UKULELE.shapeShift),
+  ]),
 );
 
 check(
@@ -409,7 +433,7 @@ check("a key that is not offered is genuinely unplayable", () => {
         `${song.slug} +${semitones} was withheld but every chord resolves`,
       );
       assert(
-        transposeSong(song, semitones, vocabulary) === null,
+        transposeSong(song, semitones, vocabulary, UKULELE.shapeShift) === null,
         `${song.slug} +${semitones} is unplayable but transposeSong returned a sheet`,
       );
     }
@@ -434,6 +458,7 @@ check("the target key decides, not a global preference for sharps", () => {
     },
     1,
     vocabulary,
+    UKULELE.shapeShift,
   );
   assert(
     flatward.chords[0].name === "Db",
@@ -446,6 +471,7 @@ check("the target key decides, not a global preference for sharps", () => {
     },
     2,
     vocabulary,
+    UKULELE.shapeShift,
   );
   assert(
     sharpward.chords[0].name === "D",
@@ -458,6 +484,7 @@ check("the target key decides, not a global preference for sharps", () => {
     },
     4,
     vocabulary,
+    UKULELE.shapeShift,
   );
   assert(
     intoE.chords[0].name === "F#",
@@ -630,7 +657,12 @@ check("the round trip — the weak check, and it is labelled weak", () => {
         metadata: { key: plan.key },
         chordDefinitions: plan.chords,
       };
-      const back = transposeSong(moved, 12 - plan.semitones, vocabulary);
+      const back = transposeSong(
+        moved,
+        12 - plan.semitones,
+        vocabulary,
+        UKULELE.shapeShift,
+      );
       if (!back) continue;
       trips++;
       for (const chord of song.chordDefinitions) {
@@ -689,6 +721,466 @@ check("a capo song transposes its shapes and keeps its capo", () => {
     "a transposition should have no opinion about the capo",
   );
   return `${song.slug} (capo ${song.capo}) +${plan.semitones}: ${song.metadata.key} -> ${plan.key}, capo untouched`;
+});
+
+/* -------------------------------------------------- 6. the other instrument */
+
+/**
+ * M15 — the cuatro, and the one check nothing else can do.
+ *
+ * **It is a section of this command rather than a seventh command**, which is
+ * `M15 · 6`'s judgement made against the vault's own six-commands-six-subjects
+ * test. The cuatro's key sets *are* this transposer's output at a shift, over
+ * this vocabulary; the numbers below go stale for exactly the reason the numbers
+ * above do, on the same day, when a song is added to `songs/`. Two commands
+ * failing together for one reason is the noise `pnpm difficulty` was
+ * deliberately written not to add. It inherits the answer to the other question
+ * too: this can fail without a defect, so it stays out of `pnpm build`.
+ *
+ * **The pitch-class identity is asserted from two independently written string
+ * tables, and that is the whole design of this section.** Deriving the cuatro's
+ * strings as the ukulele's plus two and then asserting the cuatro is the
+ * ukulele plus two is BUG-019's circularity arriving for the third time — it
+ * would pass for ever on a wrong tuning, the way `--verify` reported 276 songs
+ * and 0 disagreeing over twenty fingerings that were wrong. So the four notes
+ * of each instrument are written out here as note names, checked against the
+ * app's own tunings by *name*, converted to pitch classes through this file's
+ * own table, and only then compared.
+ */
+
+console.log("\nThe cuatro");
+
+/** Note names to pitch classes. This script's own, not the app's. */
+const PITCH_CLASS_OF = {
+  C: 0,
+  "C#": 1,
+  D: 2,
+  "D#": 3,
+  E: 4,
+  F: 5,
+  "F#": 6,
+  G: 7,
+  "G#": 8,
+  A: 9,
+  "A#": 10,
+  B: 11,
+};
+
+/**
+ * The two instruments' open strings, 4th to 1st, written independently.
+ *
+ * `UKULELE_STRINGS` restates `OPEN_STRINGS` above in note names on purpose:
+ * that one is a table of pitch classes and this is a table of letters, and the
+ * check below needs both halves stated separately or it proves nothing.
+ */
+const UKULELE_STRINGS = ["G", "C", "E", "A"];
+const CUATRO_STRINGS = ["A", "D", "F#", "B"];
+
+/** The tone the whole milestone stands on, written as a number exactly once. */
+const CUATRO_ABOVE_UKULELE = 2;
+
+check("the app's strings are the notes this file names", () => {
+  // The bridge between the two tables and the app. By *name*, so nothing here
+  // is derived from anything below it.
+  assert(
+    UKULELE.stringNames.join(" ") === UKULELE_STRINGS.join(" "),
+    `the ukulele is ${UKULELE.stringNames.join(" ")}, not ${UKULELE_STRINGS.join(" ")}`,
+  );
+  assert(
+    CUATRO.stringNames.join(" ") === CUATRO_STRINGS.join(" "),
+    `the cuatro is ${CUATRO.stringNames.join(" ")}, not ${CUATRO_STRINGS.join(" ")}`,
+  );
+  return `${UKULELE_STRINGS.join(" ")} and ${CUATRO_STRINGS.join(" ")}`;
+});
+
+check("every string of the cuatro is a ukulele string up a tone", () => {
+  // Pitch classes only. The cuatro's 1st string is B3 against the ukulele's A4
+  // — down ten semitones, not up two — and −10 ≡ +2 (mod 12) is precisely the
+  // fact that makes a borrowed shape sound the right chord. Comparing
+  // frequencies here would fail on the one string the milestone is about.
+  for (let i = 0; i < 4; i++) {
+    const uke = PITCH_CLASS_OF[UKULELE_STRINGS[i]];
+    const cuatro = PITCH_CLASS_OF[CUATRO_STRINGS[i]];
+    assert(
+      cuatro === (uke + CUATRO_ABOVE_UKULELE) % 12,
+      `string ${4 - i}: ${CUATRO_STRINGS[i]} is not ${UKULELE_STRINGS[i]} up a tone`,
+    );
+  }
+  return `4 strings, each +${CUATRO_ABOVE_UKULELE} in pitch class`;
+});
+
+check("the shape shift the app applies is that tone, backwards", () => {
+  // A cuatro chord X is drawn as the book's diagram for X−2, which is the only
+  // number in `instrument.ts` that could silently be wrong — and it is derived
+  // there, off the 3rd string, rather than typed.
+  assert(UKULELE.shapeShift === 0, `the ukulele shifts ${UKULELE.shapeShift}`);
+  assert(
+    CUATRO.shapeShift === -CUATRO_ABOVE_UKULELE,
+    `the cuatro shifts ${CUATRO.shapeShift}, expected ${-CUATRO_ABOVE_UKULELE}`,
+  );
+  return `ukulele 0, cuatro ${CUATRO.shapeShift}`;
+});
+
+check(
+  "every fingering sounds, on the cuatro, its ukulele chord up a tone",
+  () => {
+    // The claim the whole milestone rests on, over every fingering the book
+    // draws: hold this shape on a cuatro and what comes out is the pitch classes
+    // of the ukulele chord a tone below. It is what makes the borrowed diagram
+    // correct rather than merely plausible.
+    let checked = 0;
+    for (const [key, entry] of vocabulary) {
+      const pitchClass = Number(key.split("|")[0]);
+      for (const fingering of entry.fingerings) {
+        if (!/^\d{4}$/.test(fingering.positions)) continue;
+        checked++;
+        const onUkulele = [...fingering.positions].map(
+          (fret, i) => (PITCH_CLASS_OF[UKULELE_STRINGS[i]] + Number(fret)) % 12,
+        );
+        const onCuatro = [...fingering.positions].map(
+          (fret, i) => (PITCH_CLASS_OF[CUATRO_STRINGS[i]] + Number(fret)) % 12,
+        );
+        for (let i = 0; i < 4; i++) {
+          assert(
+            onCuatro[i] === (onUkulele[i] + CUATRO_ABOVE_UKULELE) % 12,
+            `${fingering.positions} (pitch class ${pitchClass}), string ${4 - i}: ` +
+              `${onCuatro[i]} is not ${onUkulele[i]} up a tone`,
+          );
+        }
+      }
+    }
+    assert(checked === 163, `expected 163 fingerings, checked ${checked}`);
+    return `${checked} fingerings, ${checked * 4} strings`;
+  },
+);
+
+const cuatroPlans = new Map(
+  songs.map((song) => [
+    song.slug,
+    buildTranspositions(song, vocabulary, CUATRO.shapeShift),
+  ]),
+);
+
+const offeredSet = (plans) => new Set(plans.map((plan) => plan.semitones));
+
+check("the cuatro offers s exactly when the ukulele offers s − 2", () => {
+  // The identity the milestone was scoped on, over all 276 songs rather than
+  // over the handful it was measured on.
+  for (const song of songs) {
+    const uke = offeredSet(plans.get(song.slug));
+    const cuatro = offeredSet(cuatroPlans.get(song.slug));
+    const expected = new Set(
+      [...uke].map((s) => (s + CUATRO_ABOVE_UKULELE) % 12),
+    );
+    assert(
+      cuatro.size === expected.size &&
+        [...expected].every((s) => cuatro.has(s)),
+      `${song.slug}: cuatro offers ${[...cuatro].sort((a, b) => a - b)}, ` +
+        `expected ${[...expected].sort((a, b) => a - b)}`,
+    );
+  }
+  const pairs = [...cuatroPlans.values()].reduce((n, p) => n + p.length, 0);
+  return `${songs.length} songs, ${pairs} song-key pairs, the ukulele's set shifted by two`;
+});
+
+check("every song offers printed+2, which is the book's page unchanged", () => {
+  // The floor, and the promise the screen makes: the list is never empty, so
+  // there is always something for `useTransposition` to fall back to. It holds
+  // because the ukulele always offers the printed key, which is what the book
+  // drew — so at printed+2 the cuatro reads that same page.
+  let ownPage = 0;
+  for (const song of songs) {
+    const plan = cuatroPlans
+      .get(song.slug)
+      .find((p) => p.semitones === CUATRO_ABOVE_UKULELE);
+    assert(plan !== undefined, `${song.slug} does not offer printed+2`);
+    // Not merely offered — drawn from this song's own page, through rung 1 of
+    // the fingering ladder. Anything else would mean a reader at printed+2 is
+    // holding a shape from some other song for no reason.
+    for (const chord of song.chordDefinitions) {
+      const moved = plan.chords.find((c) => c.name === plan.names[chord.name]);
+      assert(
+        moved !== undefined && moved.positions === chord.positions,
+        `${song.slug}: ${chord.name} at printed+2 is ${moved?.positions}, ` +
+          `not the page's own ${chord.positions}`,
+      );
+      ownPage++;
+    }
+  }
+  return `${songs.length} songs, ${ownPage} chords, every one the book's own diagram`;
+});
+
+check("the reach matches what the milestone measured", () => {
+  const drawable = songs.filter((song) =>
+    offeredSet(cuatroPlans.get(song.slug)).has(0),
+  );
+  const blocked = songs.filter(
+    (song) => !offeredSet(cuatroPlans.get(song.slug)).has(0),
+  );
+
+  // What stops a song being drawn in its printed key: a chord the book never
+  // draws a tone below. Counted by name, because one chord appearing twice in a
+  // song is one chord missing.
+  const blockers = new Map();
+  const byOne = blocked.filter((song) => {
+    const missing = new Set();
+    for (const chord of song.chordDefinitions) {
+      const { pitchClass, quality } = parseChordName(chord.name);
+      if (!lookupChord(vocabulary, (pitchClass + 10) % 12, quality))
+        missing.add(chord.name);
+    }
+    for (const name of missing)
+      blockers.set(name, (blockers.get(name) ?? 0) + 1);
+    return missing.size === 1;
+  });
+
+  const measured = {
+    drawable: drawable.length,
+    blocked: blocked.length,
+    blockedByOne: byOne.length,
+  };
+  const expected = { drawable: 236, blocked: 40, blockedByOne: 29 };
+  assert(
+    JSON.stringify(measured) === JSON.stringify(expected),
+    `the cuatro's reach changed.\n` +
+      `expected ${JSON.stringify(expected)}\n` +
+      `measured ${JSON.stringify(measured)}\n` +
+      `If songs/ was edited on purpose, update these numbers here.`,
+  );
+
+  // Printed, not asserted — `pnpm difficulty`'s rule: one tripwire per fact.
+  // Four of the 40 are BUG-016 rather than the cancionero.
+  const top = [...blockers]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, 5)
+    .map(([name, n]) => `${name} (${n})`)
+    .join(", ");
+  return `236 in their printed key, 40 blocked, 29 of those by one chord — most wanted ${top}`;
+});
+
+check("a cuatro sheet only ever draws a fingering the book prints", () => {
+  // Vault `DECISIONS.md` 6, held for the instrument nobody here owns. Nothing
+  // is invented: every diagram is traceable to a page, and this proves it for
+  // the whole cuatro plan set rather than for the printed key alone.
+  let chords = 0;
+  let borrowed = null;
+  for (const song of songs) {
+    for (const plan of cuatroPlans.get(song.slug)) {
+      for (const chord of plan.chords) {
+        chords++;
+        const { pitchClass, quality } = parseChordName(chord.name);
+        const drawn = (pitchClass + 12 + CUATRO.shapeShift) % 12;
+        const entry = lookupChord(vocabulary, drawn, quality);
+        assert(
+          entry !== undefined,
+          `${song.slug} +${plan.semitones}: nothing in the book draws ${chord.name} for a cuatro`,
+        );
+        const printed = entry.fingerings.find(
+          (f) => f.positions === chord.positions,
+        );
+        assert(
+          printed !== undefined,
+          `${song.slug} +${plan.semitones}: ${chord.name} = ${chord.positions} is not a fingering the book prints`,
+        );
+        if (!borrowed && plan.semitones === 0)
+          borrowed = `${song.slug} plays ${chord.name} = ${chord.positions}, which the book draws in ${printed.sources[0]}`;
+      }
+    }
+  }
+  return `${chords} chords, every one a diagram the book prints — e.g. ${borrowed}`;
+});
+
+check("every cuatro shape still fits the four-fret window", () => {
+  // BUG-001's guard, which `pnpm validate` and `ChordDiagram` have to agree
+  // about. It holds trivially — these are the same 163 fingerings — and it is
+  // asserted rather than argued because "the same fingerings" is the claim.
+  let widest = 0;
+  for (const song of songs) {
+    for (const plan of cuatroPlans.get(song.slug)) {
+      for (const chord of plan.chords) {
+        const stopped = [...chord.positions]
+          .map(Number)
+          .filter((fret) => fret > 0);
+        if (stopped.length === 0) continue;
+        const span = Math.max(...stopped) - Math.min(...stopped) + 1;
+        widest = Math.max(widest, span);
+        assert(
+          span <= 4,
+          `${song.slug} +${plan.semitones}: ${chord.name} = ${chord.positions} spans ${span} frets`,
+        );
+      }
+    }
+  }
+  return `widest span ${widest} frets, against a window of 4`;
+});
+
+check("where the book names no chord, the key signature does", () => {
+  // **The rung the cuatro added, and the reason it had to exist.** On the
+  // ukulele a name and a fingering come out of one vocabulary entry, so "the
+  // book draws this" and "the book names this" are one statement. On the cuatro
+  // the shape is asked of the entry two semitones below and the name of the
+  // entry at the chord itself, and the second can be missing while the first is
+  // not — 196 of the 2629 offered keys, across 112 songs.
+  //
+  // What is asserted is not the fallback's existence but its *shape*: where the
+  // book has no usage to defer to, the name is exactly the target key's
+  // signature name and never something invented.
+  let pairs = 0;
+  const affected = new Set();
+  for (const song of songs) {
+    const key = parseKey(song.metadata.key);
+    for (const plan of cuatroPlans.get(song.slug)) {
+      let usedFallback = false;
+      for (const chord of song.chordDefinitions) {
+        const { pitchClass, quality } = parseChordName(chord.name);
+        const target = (pitchClass + plan.semitones) % 12;
+        if (target === pitchClass) continue; // the song's own name, rung 1
+        if (lookupChord(vocabulary, target, quality)) continue; // the book names it
+        usedFallback = true;
+        const spelling = key
+          ? spellingForKey(transposeKey(key, plan.semitones))
+          : "flat";
+        assert(
+          plan.names[chord.name] ===
+            transposeChordName(chord.name, plan.semitones, spelling),
+          `${song.slug} +${plan.semitones}: ${chord.name} became ` +
+            `${plan.names[chord.name]}, not the ${spelling} name its key wants`,
+        );
+      }
+      if (usedFallback) {
+        pairs++;
+        affected.add(song.slug);
+      }
+    }
+  }
+  const measured = { pairs, songs: affected.size };
+  const expected = { pairs: 196, songs: 112 };
+  assert(
+    JSON.stringify(measured) === JSON.stringify(expected),
+    `expected ${JSON.stringify(expected)}, measured ${JSON.stringify(measured)}`,
+  );
+  return `${pairs} song-key pairs across ${affected.size} songs name a chord the book never writes`;
+});
+
+check("the difficulty band does not move with the instrument", () => {
+  // Vault `DECISIONS.md` 23's argument, one step over: transposing maps
+  // distinct chords to distinct chords, and so does changing instrument — the
+  // chords are the same chords. A band that moved would be reporting a change
+  // that did not happen.
+  for (const song of songs) {
+    const counts = new Set(
+      cuatroPlans.get(song.slug).map((plan) => plan.chords.length),
+    );
+    for (const plan of plans.get(song.slug)) counts.add(plan.chords.length);
+    assert(
+      counts.size === 1,
+      `${song.slug}: chord count varies across keys and instruments (${[...counts]})`,
+    );
+  }
+  return `${songs.length} songs, one chord count each across both instruments and every key`;
+});
+
+/* -------------------------------------------------------- 7. the afinador */
+
+console.log("\nThe afinador, per instrument");
+
+check("each instrument offers its own tunings and only its own", () => {
+  assert(
+    UKULELE.tunings.length === 4,
+    `the ukulele offers ${UKULELE.tunings.length}`,
+  );
+  // One, and that is `M15 · 4`'s decision rather than a gap: nobody here knows
+  // a second worth offering and there is no cuatro chart in the repo to
+  // arbitrate one.
+  assert(
+    CUATRO.tunings.length === 1,
+    `the cuatro offers ${CUATRO.tunings.length}`,
+  );
+  assert(
+    CUATRO.tunings[0].id === "cambur-pinton",
+    `the cuatro's tuning is ${CUATRO.tunings[0].id}`,
+  );
+  const shared = UKULELE.tunings.filter((tuning) =>
+    CUATRO.tunings.some((other) => other.id === tuning.id),
+  );
+  assert(shared.length === 0, `${shared.length} tuning is in both lists`);
+  return `4 for the ukulele, 1 for the cuatro, none shared`;
+});
+
+check(
+  "the cuatro's tuning is A4 D4 F#4 B3 and not the ukulele's D tuning",
+  () => {
+    // A4 D4 F♯4 B4 will be re-proposed, because it would let the verification's
+    // substitute ukulele be tuned without leaving cuatro mode. It is the
+    // ukulele's `d`, it is not a cuatro tuning, and a list that carries one to
+    // make a test convenient has stopped describing the instrument.
+    const cambur = CUATRO.tunings[0].strings;
+    const octaves = cambur.map((s) => s.octave).join("");
+    assert(octaves === "4443", `cambur pintón sits at octaves ${octaves}`);
+    const d = UKULELE.tunings.find((t) => t.id === "d");
+    assert(
+      d.strings.map((s) => s.octave).join("") === "4444",
+      "the ukulele's d tuning is not A4 D4 F#4 B4",
+    );
+    // Same notes, different octave on the 1st string — which is exactly why they
+    // would have read as duplicates in one list, and why they are never in one.
+    assert(
+      d.strings.map((s) => s.name).join(" ") ===
+        cambur.map((s) => s.name).join(" "),
+      "the two should differ only in the 1st string's octave",
+    );
+    // **246.94 Hz, and `M15 · 4` said 123.47.** That is B2, an octave under the
+    // note it names, and the paragraph built on it — that the cuatro's bottom
+    // string falls below the D3 `ANALYSIS_WINDOW` is sized for — is therefore
+    // about an instrument nobody plays. B3 is a fifth *above* baritone's D3, so
+    // the cuatro adds nothing at the bottom of the detector's range and the
+    // window is untouched for a stronger reason than the milestone expected.
+    const b3 = cambur[3].frequency;
+    const d3 = UKULELE.tunings.find((t) => t.id === "baritone").strings[0]
+      .frequency;
+    assert(
+      Math.abs(b3 - 246.9417) < 0.001,
+      `the cuatro's 1st string is ${b3.toFixed(4)} Hz, expected 246.9417`,
+    );
+    assert(
+      b3 > d3,
+      `B3 at ${b3.toFixed(2)} is below baritone's D3 at ${d3.toFixed(2)} — ` +
+        `the detector's window is sized from the lowest note any tuning offers`,
+    );
+    return `A4 D4 F#4 B3, 1st string ${b3.toFixed(2)} Hz — above baritone's ${d3.toFixed(2)}, and an octave under the ukulele's d`;
+  },
+);
+
+check("the chord-name caveat fires on the right tunings and no others", () => {
+  // It is measured against the instrument's *own* reference since M15. Against
+  // standard ukulele the cuatro would report +2 and the caveat would fire on
+  // the one tuning it must never fire on — the tuning M15 moved the diagrams to
+  // meet.
+  const expected = {
+    standard: 0,
+    "low-g": 0,
+    d: 2,
+    baritone: -5,
+    "cambur-pinton": 0,
+  };
+  for (const item of INSTRUMENTS) {
+    for (const tuning of item.tunings) {
+      const shift = songbookShiftSemitones(tuning, item.reference);
+      assert(
+        shift === expected[tuning.id],
+        `${item.id}/${tuning.id}: shift ${shift}, expected ${expected[tuning.id]}`,
+      );
+      assert(
+        namesMatchSongbook(tuning, item.reference) === (shift === 0),
+        `${item.id}/${tuning.id}: the caveat disagrees with the shift`,
+      );
+    }
+  }
+  assert(
+    namesMatchSongbook(CUATRO.tunings[0], CUATRO.reference),
+    "the caveat fires on cambur pintón, which is the one tuning it must not",
+  );
+  return `5 tunings — d +2, baritone −5, the other three exempt`;
 });
 
 /* -------------------------------------------------------------- the tail */

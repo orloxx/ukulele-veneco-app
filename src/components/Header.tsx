@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { InstrumentToggle } from "@/components/InstrumentToggle";
 import { IconBack, IconTuner } from "@/components/icons";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { UkeMark } from "@/components/UkeMark";
@@ -46,6 +47,13 @@ export function Header() {
         </Link>
 
         <div className="uv-header__spacer" />
+
+        {/* Application level, the way the theme is switched — Iker's shape when
+            he asked for M15. It comes before the tuner because the tuner is a
+            place to go and this is what the app *is*, and because it is the one
+            of the three that hides on no screen: the instrument governs
+            `/afinador` too. */}
+        <InstrumentToggle />
 
         {onTuner ? null : (
           <Link

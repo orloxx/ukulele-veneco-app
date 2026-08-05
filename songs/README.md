@@ -53,6 +53,14 @@ cancionero draws on that song's page** — not the shape you would find on a cho
 The book draws `Em` as `0402` where every chart prints `0432`, and the book wins. See
 `DECISIONS.md` 6 in the vault for why.
 
+**Since M15 the app can draw these for a cuatro as well, and it changes nothing here.**
+Every string in this folder is still GCEA and still the book's own diagram. A cuatro is
+A-D-F♯-B, which is the ukulele up a tone in every pitch class, so the app draws a cuatro
+chord by looking up the book's diagram for the chord *a tone below* — the same four digits,
+found on a different page. Nothing is transcribed twice and nothing is invented, which is
+why the sentence below needs no second half: **there is still exactly one record, and it is
+the cancionero.**
+
 Two things follow from that, and both catch people out:
 
 - **It is per song, not per chord.** The same name can have different fingerings in

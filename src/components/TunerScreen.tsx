@@ -19,8 +19,10 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import { useInstrument } from "@/contexts/InstrumentContext";
 import { useMicrophone } from "@/hooks/useMicrophone";
 import { useWakeLock } from "@/hooks/useWakeLock";
+import { readTuningId, writeTuningId } from "@/lib/instrument";
 import {
   ANALYSIS_WINDOW,
   detectPitch,
@@ -28,14 +30,11 @@ import {
   nearestTarget,
 } from "@/lib/pitch";
 import {
-  DEFAULT_TUNING_ID,
-  readTuningId,
+  namesMatchSongbook,
   songbookShiftSemitones,
-  TUNINGS,
   type TuningId,
   transposeNoteName,
   tuningById,
-  writeTuningId,
 } from "@/lib/tunings";
 
 /**
@@ -97,7 +96,12 @@ function formatHz(frequency: number): string {
 }
 
 export function TunerScreen() {
-  const [tuningId, setTuningId] = useState<TuningId>(DEFAULT_TUNING_ID);
+  // **The tuner offers this instrument's tunings and no others** (`M15 · 4`).
+  // A flat list would put a cuatro tuning under a ukulele, and it would print
+  // two entries nobody can tell apart: the ukulele's `En Re — La Re Fa♯ Si` and
+  // the cuatro's *cambur pintón* differ only in the octave of the 1st string.
+  const { instrument } = useInstrument();
+  const [tuningId, setTuningId] = useState<TuningId>(instrument.reference.id);
   const [reading, setReading] = useState<Reading | null>(null);
   /** The note on screen stopped sounding — see `NEW_PLUCK_GAP_MS`. */
   const [held, setHeld] = useState(false);
@@ -106,15 +110,20 @@ export function TunerScreen() {
   // Read on mount and not in the initial state: this component is prerendered,
   // and seeding from localStorage would make the first client render disagree
   // with the markup it is hydrating. AutoScrollBar does the same for the pace.
+  //
+  // It re-runs when the instrument changes, which is the whole reason the
+  // stored tuning is per instrument: a toggle has to land on a tuning that is
+  // in the list on screen, and it lands on the one that instrument was last
+  // left in rather than on its reference.
   useEffect(() => {
-    setTuningId(readTuningId());
-  }, []);
+    setTuningId(readTuningId(instrument));
+  }, [instrument]);
 
-  const tuning = tuningById(tuningId);
+  const tuning = tuningById(instrument.tunings, tuningId);
   const strings = tuning.strings;
 
   // `strings` is the identity React re-runs the loop on, and it is stable for as
-  // long as the tuning is: TUNINGS is a module constant.
+  // long as the tuning is: the tuning tables are module constants.
   const stringsRef = useRef(strings);
   stringsRef.current = strings;
 
@@ -197,9 +206,9 @@ export function TunerScreen() {
   }, [listening, sampleRate, read]);
 
   const handleTuningChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const next = tuningById(event.target.value).id;
+    const next = tuningById(instrument.tunings, event.target.value).id;
     setTuningId(next);
-    writeTuningId(next);
+    writeTuningId(instrument, next);
     setReading(null);
     setHeld(false);
   };
@@ -246,9 +255,15 @@ export function TunerScreen() {
         : "Lista";
 
   // The caveat, built out of the derived shift so the chord it names cannot be
-  // wrong. Shown for D and baritone; standard and low-G share every shape *and*
-  // every name, which is what makes them the exempt pair.
-  const shift = songbookShiftSemitones(tuning);
+  // wrong, and measured against **this instrument's** reference tuning rather
+  // than against standard ukulele — otherwise the cuatro reports +2 against its
+  // own only tuning and the caveat fires on the one tuning it must never fire
+  // on. Shown for D and baritone; standard and low-G share every shape *and*
+  // every name, which is what makes them the exempt pair. In cuatro mode it is
+  // structurally unreachable, because *cambur pintón* is the reference and the
+  // cuatro has no second tuning (`M15 · 4`) — the diagrams have moved to meet
+  // the names, which is the whole of M15.
+  const shift = songbookShiftSemitones(tuning, instrument.reference);
 
   return (
     <div className="uv-tuner">
@@ -266,14 +281,19 @@ export function TunerScreen() {
         </label>
         {/* Native, per DECISIONS.md 17 read the other way: the filters were
             hand-built because a <select> was specifically inadequate at 181
-            options, and nothing about one is inadequate at four. */}
+            options, and nothing about one is inadequate at four — or, on the
+            cuatro, at one. It stays a select at one option rather than becoming
+            a line of text: the control is where a reader looks to find out what
+            the tuner is listening for, and it disappearing would read as the
+            app having lost the setting rather than as the instrument having one
+            tuning. */}
         <select
           id="uv-tuning"
           className="uv-select"
           value={tuningId}
           onChange={handleTuningChange}
         >
-          {TUNINGS.map((option) => (
+          {instrument.tunings.map((option) => (
             <option key={option.id} value={option.id}>
               {option.label}
             </option>
@@ -281,7 +301,7 @@ export function TunerScreen() {
         </select>
       </div>
 
-      {tuning.namesMatchSongbook ? null : (
+      {namesMatchSongbook(tuning, instrument.reference) ? null : (
         <p className="uv-tuner__caveat">
           El cancionero está escrito para la afinación estándar. Las formas de
           los acordes siguen sirviendo en esta afinación, pero los nombres no:

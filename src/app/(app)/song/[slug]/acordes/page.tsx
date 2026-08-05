@@ -52,18 +52,17 @@ export default async function ChordsPage({ params }: ChordsPageProps) {
     <div>
       <p className="uv-eyebrow">{song.metadata.title}</p>
       <h1 className="uv-song-title">Acordes de la canción</h1>
-      {/* The only place in the app that says how the notation works. */}
-      <p className="uv-chords-view__lede">
-        Cuerdas de arriba abajo: <span className="uv-mono">G C E A</span>. El
-        círculo arriba es cuerda al aire; el número al lado dice en qué traste
-        empieza la cuadrícula.
-      </p>
-
       {/* The grid is a client component so it can follow the key the reader
           picked on the sheet — the two screens share one stored choice, and a
           panel naming different chords from the sheet beside it is worse than
-          no transposition at all. */}
-      <ChordsViewClient slug={slug} transpositions={getTranspositions(song)} />
+          no transposition at all. Since M15 it also carries the lede that names
+          the four strings, which is a fact about the instrument the reader
+          picked and so cannot be written here. */}
+      <ChordsViewClient
+        slug={slug}
+        printedKey={song.metadata.key}
+        transpositions={getTranspositions(song)}
+      />
 
       <p className="uv-chords-view__back">
         <Link href={`/song/${slug}`} className="uv-btn uv-btn--secondary">

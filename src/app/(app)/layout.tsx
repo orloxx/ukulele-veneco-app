@@ -1,6 +1,7 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { OfflineIndicator } from "@/components/OfflineIndicator";
+import { InstrumentProvider } from "@/contexts/InstrumentContext";
 import { OfflineSongsProvider } from "@/contexts/OfflineSongsContext";
 import { SongFiltersProvider } from "@/contexts/SongFiltersContext";
 
@@ -25,21 +26,28 @@ export default function AppLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="uv-shell">
-      <Header />
-      <OfflineSongsProvider>
-        {/* The list's filters are held here, one level above the route that
-            draws them, and that is not tidiness — it is the fix for BUG-017.
-            This layout is what `/list` and `/song/<slug>` have in common, so
-            it is the nearest thing to them that navigating between them does
-            not unmount. Pushed back down into `SongList` the four values are
-            cleared by opening a song, which is the bug. See the provider. */}
-        <SongFiltersProvider>
-          <main className="uv-page">{children}</main>
-        </SongFiltersProvider>
-      </OfflineSongsProvider>
-      <Footer />
-      <OfflineIndicator />
-    </div>
+    // The instrument wraps the header as well as the page, and that is the
+    // difference between it and the filters below: the toggle is *in* the
+    // header, and `/afinador` — which draws no chord diagram at all — is in
+    // scope too, because the toggle switches the whole app rather than the
+    // diagrams. See `InstrumentContext`.
+    <InstrumentProvider>
+      <div className="uv-shell">
+        <Header />
+        <OfflineSongsProvider>
+          {/* The list's filters are held here, one level above the route that
+              draws them, and that is not tidiness — it is the fix for BUG-017.
+              This layout is what `/list` and `/song/<slug>` have in common, so
+              it is the nearest thing to them that navigating between them does
+              not unmount. Pushed back down into `SongList` the four values are
+              cleared by opening a song, which is the bug. See the provider. */}
+          <SongFiltersProvider>
+            <main className="uv-page">{children}</main>
+          </SongFiltersProvider>
+        </OfflineSongsProvider>
+        <Footer />
+        <OfflineIndicator />
+      </div>
+    </InstrumentProvider>
   );
 }

@@ -50,6 +50,24 @@
  * from 18% of the book for a problem that does not exist. What the screen owes
  * the reader instead is clarity about which key is which, and it says the tono
  * is the written one — see `TransposeControl`.
+ *
+ * ## The instrument is a shape shift, and nothing else here moves
+ *
+ * Since M15 every function here takes a `shapeShift`: 0 for the ukulele, −2 for
+ * the cuatro, from `Instrument.shapeShift`. It moves **where the fingering is
+ * looked up** and nothing else — a cuatro plays the book's diagram for X−2 and
+ * calls it X, so the name, the tono and the written key are the ukulele's at
+ * the same shift. `LyricsDisplay` is not in this milestone at all.
+ *
+ * **That makes the name and the fingering come apart, which they never did
+ * before**, and it is the one genuinely new thing in M15. On the ukulele both
+ * come out of one `VocabularyEntry`, so "the book draws this chord" and "the
+ * book names this chord" are the same statement. On the cuatro the shape is
+ * asked of the entry at `target + shapeShift` and the name of the entry at
+ * `target`, and the second can be missing while the first is not. Measured over
+ * all 276 songs: **196 of the 2629 offered cuatro keys, across 112 songs, need
+ * at least one name the cancionero never prints** — `F#m7` 28 times, `Bmaj7` 24.
+ * `resolveChord` grows a fourth rung for exactly that case and no other.
  */
 
 import {
@@ -172,14 +190,34 @@ export function transposeKeyField(field: string, semitones: number): string {
  * 2. **The book's most frequent voicing** — the collection's own vote, rather
  *    than an opinion about which shape is easier.
  *
+ * 4. **The target key's signature, when the book says nothing at all.** Only
+ *    reachable with a shape shift — see the note at the top of the file. Where
+ *    the cancionero prints no name for this pitch class and quality there is no
+ *    usage to defer to, and the chord still has to be called something: the
+ *    reader is holding it. Rungs 2 and 3 exist to stop the app *re-spelling*
+ *    the book; neither has an opinion about a chord the book never writes.
+ *
+ * **The fingering:**
+ *
+ * 1. **The song's own page**, for any chord it already prints at that pitch
+ *    class and quality. A song in C with a G in it, moved up two, produces an A
+ *    and also the G the reader was already playing; drawing them a different G
+ *    because the collection prefers another voicing elsewhere would be the app
+ *    disagreeing with the page in front of it. **With a shape shift this rung is
+ *    what makes printed+2 on the cuatro the book's page unchanged** — measured,
+ *    all 2140 chords in the collection.
+ * 2. **The book's most frequent voicing** — the collection's own vote, rather
+ *    than an opinion about which shape is easier.
+ *
  * **Rung 1 of each is why a shift of zero needs no special case.** At zero
- * every chord lands on itself, so both ladders stop at their first rung and the
- * song comes back exactly as the book printed it — by the general rule, not by
- * a branch that skips the work. It is also why rung 1 of the *name* ladder is
- * about this chord landing on itself rather than about the song merely owning
- * something at the target slot: at four semitones a song with an `Eb` in it has
- * a different chord arriving on that pitch class, and lending it the `Eb` name
- * would print a flat in the middle of F# major.
+ * every chord lands on itself, so the *name* ladder stops at its first rung and
+ * the song comes back named exactly as the book printed it — by the general
+ * rule, not by a branch that skips the work. (On the cuatro the shapes still
+ * move, which is the point of the whole milestone.) It is also why rung 1 of the
+ * name ladder is about this chord landing on itself rather than about the song
+ * merely owning something at the target slot: at four semitones a song with an
+ * `Eb` in it has a different chord arriving on that pitch class, and lending it
+ * the `Eb` name would print a flat in the middle of F# major.
  */
 function resolveChord(
   ownChords: Map<string, Chord>,
@@ -187,25 +225,34 @@ function resolveChord(
   chord: Chord,
   semitones: number,
   spelling: Spelling,
+  shapeShift: number,
 ): Chord | null {
   const { quality, pitchClass } = parseChordName(chord.name);
-  const target =
-    (((pitchClass + semitones) % SEMITONES) + SEMITONES) % SEMITONES;
+  const wrap = (value: number) => ((value % SEMITONES) + SEMITONES) % SEMITONES;
+  const target = wrap(pitchClass + semitones);
+  const drawn = wrap(target + shapeShift);
+
+  // The fingering is the constraint — vault `DECISIONS.md` 6 — and it is the
+  // only one. A key is offered when the book draws every chord it needs; what
+  // the book *calls* that chord is a question the name ladder answers below,
+  // and on the cuatro it sometimes answers without the book's help.
+  const shapes = lookupChord(vocabulary, drawn, quality);
+  if (!shapes || shapes.fingerings.length === 0) return null;
 
   const entry = lookupChord(vocabulary, target, quality);
-  if (!entry || entry.fingerings.length === 0) return null;
-
   const bySignature = transposeChordName(chord.name, semitones, spelling);
   const name =
     target === pitchClass
       ? chord.name
-      : entry.names.includes(bySignature)
+      : !entry
         ? bySignature
-        : entry.names[0];
+        : entry.names.includes(bySignature)
+          ? bySignature
+          : entry.names[0];
 
-  const own = ownChords.get(vocabularyKey(target, quality));
+  const own = ownChords.get(vocabularyKey(drawn, quality));
 
-  return { name, positions: (own ?? entry.fingerings[0]).positions };
+  return { name, positions: (own ?? shapes.fingerings[0]).positions };
 }
 
 /**
@@ -219,6 +266,7 @@ export function transposeSong(
   song: TransposableSong,
   semitones: number,
   vocabulary: ChordVocabulary,
+  shapeShift: number,
 ): Transposition | null {
   const key = parseKey(song.metadata.key);
   const spelling = spellingFor(key, semitones);
@@ -242,6 +290,7 @@ export function transposeSong(
       chord,
       semitones,
       spelling,
+      shapeShift,
     );
 
     if (!resolved) return null;
@@ -261,20 +310,36 @@ export function transposeSong(
 }
 
 /**
- * Every key this song can be played in, printed key first.
+ * Every key this song can be played in on one instrument, lowest shift first.
  *
  * The list the control renders, and it is computed rather than guessed: 164
- * songs come back with all twelve entries, 18 come back with only the one they
- * were printed in, and the screen has to say something true about the second
- * case rather than offering a key it cannot draw.
+ * songs come back with all twelve entries, 18 come back with only one, and the
+ * screen has to say something true about the second case rather than offering a
+ * key it cannot draw. **The distribution is the same on both instruments** —
+ * the sets are the ukulele's shifted by two, which is the shape shift arriving
+ * as a property rather than as a coincidence.
+ *
+ * **On the ukulele the first entry is always the printed key. On the cuatro it
+ * is not**, and that is the one place a caller cannot keep its old assumption:
+ * 40 songs of 276 cannot be drawn for the cuatro in the key the book printed,
+ * because some chord of theirs is one the book never draws a tone below. All
+ * 276 offer printed+2, which is the book's page unchanged, so the list is never
+ * empty. `useTransposition` is where that is handled and it takes the printed
+ * key as a string rather than reading it off index 0.
  */
 export function buildTranspositions(
   song: TransposableSong,
   vocabulary: ChordVocabulary,
+  shapeShift: number,
 ): Transposition[] {
   const out: Transposition[] = [];
   for (let semitones = 0; semitones < SEMITONES; semitones++) {
-    const transposition = transposeSong(song, semitones, vocabulary);
+    const transposition = transposeSong(
+      song,
+      semitones,
+      vocabulary,
+      shapeShift,
+    );
     if (transposition) out.push(transposition);
   }
   return out;

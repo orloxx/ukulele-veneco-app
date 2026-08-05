@@ -1,3 +1,22 @@
+"use client";
+
+/**
+ * One chord, drawn.
+ *
+ * **It reads the instrument rather than being told it**, which is the whole of
+ * `M15 · 3` on this side: `STRING_NAMES` used to be a module constant, and the
+ * failure a prop would allow is a caller that forgets to pass it — a grid
+ * labelled G C E A while the reader holds a cuatro, which is a diagram that is
+ * wrong in a way nothing on the page shows. There are only two callers and both
+ * are client components already.
+ *
+ * The **fingering itself never moves**. A cuatro diagram is the book's ukulele
+ * diagram for the chord a tone below, chosen in `transpose.ts` before it gets
+ * here; what changes in this file is only the four letters the strings are
+ * called, which is what the `aria-label` is built out of.
+ */
+
+import { useInstrument } from "@/contexts/InstrumentContext";
 import type { Chord } from "@/types/song";
 
 interface ChordDiagramProps {
@@ -16,9 +35,6 @@ interface ChordDiagramProps {
   frame?: boolean;
   className?: string;
 }
-
-/** Strings low to high — the order a `positions` string is written in. */
-const STRING_NAMES = ["G", "C", "E", "A"];
 
 /**
  * How many frets the grid shows at once.
@@ -61,8 +77,11 @@ export default function ChordDiagram({
   className,
 }: ChordDiagramProps) {
   const { name, positions } = chord;
+  const { instrument } = useInstrument();
+  const stringNames = instrument.stringNames;
 
-  // Parse the positions string (e.g., "0003" means strings G=0, C=0, E=0, A=3)
+  // Parse the positions string: "0003" is the 4th, 3rd and 2nd strings open
+  // and the 1st at the 3rd fret, whichever four notes those strings are tuned to.
   const strings = positions.split("").map((pos) => parseInt(pos, 10));
   const base = windowBase(strings);
 
@@ -87,13 +106,13 @@ export default function ChordDiagram({
           aria-label={`${name}: ${strings
             .map((fret, i) =>
               fret === 0
-                ? `${STRING_NAMES[i]} open`
-                : `${STRING_NAMES[i]} fret ${fret}`,
+                ? `${stringNames[i]} open`
+                : `${stringNames[i]} fret ${fret}`,
             )
             .join(", ")}`}
         >
-          {/* Vertical strings (4 strings for ukulele: G C E A) */}
-          {STRING_NAMES.map((stringName, stringIndex) => (
+          {/* Vertical strings — G C E A on the ukulele, A D F♯ B on the cuatro */}
+          {stringNames.map((stringName, stringIndex) => (
             <line
               key={`string-${stringName}`}
               x1={FIRST_STRING_X + stringIndex * STRING_GAP}
@@ -112,7 +131,7 @@ export default function ChordDiagram({
               key={`fret-${fretIndex}`}
               x1={FIRST_STRING_X}
               y1={NUT_Y + fretIndex * FRET_HEIGHT}
-              x2={FIRST_STRING_X + (STRING_NAMES.length - 1) * STRING_GAP}
+              x2={FIRST_STRING_X + (stringNames.length - 1) * STRING_GAP}
               y2={NUT_Y + fretIndex * FRET_HEIGHT}
               stroke={
                 fretIndex === 0 && base === 0
@@ -141,7 +160,7 @@ export default function ChordDiagram({
 
           {/* Finger positions */}
           {strings.map((fret, stringIndex) => {
-            const stringName = STRING_NAMES[stringIndex];
+            const stringName = stringNames[stringIndex];
             const cx = FIRST_STRING_X + stringIndex * STRING_GAP;
 
             if (fret === 0) {

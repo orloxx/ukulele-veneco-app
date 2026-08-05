@@ -19,30 +19,49 @@
 
 import ChordDiagram from "@/components/ChordDiagram";
 import { TransposeControl } from "@/components/TransposeControl";
+import { useInstrument } from "@/contexts/InstrumentContext";
 import { useTransposition } from "@/hooks/useTransposition";
+import type { InstrumentId } from "@/lib/instrument";
 import type { Transposition } from "@/lib/transpose";
 
 interface ChordsViewClientProps {
   slug: string;
-  transpositions: Transposition[];
+  /** The written key the book printed — see `useTransposition`. */
+  printedKey: string;
+  transpositions: Record<InstrumentId, Transposition[]>;
 }
 
 export function ChordsViewClient({
   slug,
+  printedKey,
   transpositions,
 }: ChordsViewClientProps) {
-  const { current, printed, offered, choose } = useTransposition(
+  const { instrument } = useInstrument();
+  const { current, offered, printedKeyUnavailable, choose } = useTransposition(
     slug,
-    transpositions,
+    transpositions[instrument.id],
+    printedKey,
   );
 
   return (
     <>
+      {/* The only place in the app that says how the notation works, and since
+          M15 it says it for the instrument on screen. It is here rather than on
+          the page around it because the page is a server component and cannot
+          know which instrument the reader picked. */}
+      <p className="uv-chords-view__lede">
+        Cuerdas de arriba abajo:{" "}
+        <span className="uv-mono">{instrument.stringNames.join(" ")}</span>. El
+        círculo arriba es cuerda al aire; el número al lado dice en qué traste
+        empieza la cuadrícula.
+      </p>
+
       <TransposeControl
         id={`transpose-acordes-${slug}`}
         offered={offered}
         current={current}
-        printed={printed}
+        printedKey={printedKey}
+        printedKeyUnavailable={printedKeyUnavailable}
         onChoose={choose}
       />
 

@@ -21,7 +21,7 @@ const FEATURES = [
   {
     n: "02",
     title: "Acordes de verdad, no capturas",
-    body: "Cada acorde se dibuja en su cuadrícula de cuatro cuerdas: G C E A, el círculo arriba es cuerda al aire y el número dice en qué traste empieza.",
+    body: "Cada acorde se dibuja en su cuadrícula de cuatro cuerdas — G C E A si andas con el ukulele, A D F♯ B si agarraste el cuatro. El círculo arriba es cuerda al aire y el número dice en qué traste empieza.",
   },
   {
     n: "03",
@@ -87,12 +87,21 @@ export default function Home() {
                 across every genre (BUG-011). The cuatro belongs in the
                 sentence as the instrument you reach for at home and cannot get
                 hold of abroad, which is the reason the ukulele is here at all.
-                Wording is Iker's, 2026-07-31. */}
+                Wording is Iker's, 2026-07-31.
+
+                M15 added the last clause and nothing else. Iker's sentence is
+                still exactly true — it is the reason the *arrangement* exists —
+                but on an app that now draws cuatro diagrams it stops being the
+                whole story, and a reader with a cuatro in the room would read
+                the old lede as this app not being for them. That is `M15 · 5`:
+                every word was reviewed for tone at M7 and none for truth, which
+                is how BUG-011 got in. */}
             <p className="uv-hero__lede">
               Canciones venezolanas de todas las épocas y de todo tipo. En casa
               uno agarra el cuatro, pero el cuatro no se consigue en todas
               partes y el ukulele sí — así que aquí están, con sus acordes, pa'
-              los que andamos lejos.
+              los que andamos lejos. Y si tienes el cuatro a mano, cambias el
+              instrumento arriba y los acordes se dibujan pa' el cuatro.
             </p>
             {/* The credit belongs here and not only in the footer: the
                 cancionero is Ciro Durán's, and naming him is the condition it
@@ -174,8 +183,8 @@ export default function Home() {
               <h2 className="uv-tuner-pitch__title">Antes de tocar, afina.</h2>
               <p className="uv-tuner-pitch__body">
                 El micrófono oye la cuerda, te dice qué nota es y cuánto le
-                falta pa' llegar. Estándar, sol grave, en re y barítono — y sin
-                señal también.
+                falta pa' llegar. Estándar, sol grave, en re y barítono en el
+                ukulele; cambur pintón en el cuatro — y sin señal también.
               </p>
             </div>
             <Link

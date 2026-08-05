@@ -2,6 +2,8 @@
 
 A Next.js application for displaying Venezuelan ukulele songs with chord diagrams and lyrics.
 
+Since `2.7.0` the reader picks the instrument once, at application level: **ukulele or cuatro**. Nothing in `songs/` is transcribed twice and no fingering is invented — the cuatro is a tone above the ukulele in every pitch class, so the cuatro diagram for a chord is the book's own ukulele diagram for the chord a tone below. The whole of it is `src/lib/instrument.ts`.
+
 ## Credits
 
 The song collection is based on the work of **Ciro Durán** from [El Ukulele Veneco](https://elukulelevene.co). Special thanks for compiling and sharing these Venezuelan songs adapted for ukulele.
@@ -23,7 +25,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 Songs are written in Markdown files with YAML Frontmatter, stored in the `songs/` directory. Each song includes:
 
 - Metadata (title, artist, year, key, time signature)
-- Chord definitions with ukulele positions
+- Chord definitions as four-digit fret strings, read as GCEA (the ukulele) or A-D-F♯-B (the cuatro)
 - Lyrics with chord placement markers
 
 For detailed information about the song file format and how to add new songs, see [songs/README.md](./songs/README.md).

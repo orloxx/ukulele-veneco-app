@@ -1117,6 +1117,21 @@ samp {
   align-items: center;
   gap: var(--space-3);
 }
+/* **The actions never shrink; the wordmark does.** They are flex items with an
+   intrinsic width, so before M15 added a fourth one there was slack and nobody
+   noticed the default. With the instrument pill in the row, a 320px screen took
+   the difference out of the two icon buttons and left 19px tap targets — a
+   `--touch-min` square that is no longer either. The mark is a link to a page
+   the reader can reach by other means; a tap target under 44px is not a smaller
+   control, it is one that misses. */
+.uv-header__inner > .uv-iconbtn,
+.uv-header__inner > .uv-instrument-toggle,
+.uv-header__inner > .uv-btn--back {
+  flex-shrink: 0;
+}
+.uv-logo {
+  min-width: 0;
+}
 .uv-header__spacer {
   flex: 1;
 }
@@ -1150,6 +1165,44 @@ samp {
 [data-theme="light"] .uv-theme-toggle__light,
 [data-theme="dark"] .uv-theme-toggle__dark {
   display: block;
+}
+
+/* ---------------- Instrument toggle ----------------
+   Ukulele ⇄ cuatro, beside the theme toggle. It carries a **word** where its
+   neighbour carries an icon, and it names the state the app is in where its
+   neighbour names the state it would move to — both departures, both for the
+   same reason: a theme announces itself off the screen and an instrument does
+   not. See InstrumentToggle.tsx.
+
+   Not a `.uv-iconbtn`: that class is a `--touch-min` square, and a square is
+   the wrong shape for a word. The height is still `--touch-min`, which is the
+   part that has to hold at a phone's arm's length. */
+.uv-instrument-toggle {
+  display: inline-flex;
+  align-items: center;
+  height: var(--touch-min);
+  padding-inline: var(--space-3);
+  background: transparent;
+  border: var(--border-hairline) solid var(--line-soft);
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: var(--size-body-sm);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+.uv-instrument-toggle:hover {
+  background: var(--surface-hover);
+  border-color: var(--line-strong);
+  color: var(--text-strong);
+}
+.uv-instrument-toggle:active {
+  background: var(--surface-press);
 }
 
 /* ---------------- Offline bar ---------------- */
@@ -1661,6 +1714,13 @@ samp {
   font-family: var(--font-mono);
   font-weight: var(--weight-semibold);
   color: var(--text-strong);
+}
+/* Which instrument the diagrams under this control are drawn for. Quieter than
+   `__moved`, and on the select's own row where there is room: it is a standing
+   fact rather than something that has just happened. */
+.uv-transpose__shapes {
+  color: var(--text-muted);
+  font-size: var(--size-body-sm);
 }
 /* The 18 songs the cancionero cannot supply another key for. A sentence rather
    than a disabled select: a greyed-out control says the app is broken, and what

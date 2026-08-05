@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { INSTRUMENTS, type InstrumentId } from "@/lib/instrument";
 import { buildTranspositions, type Transposition } from "@/lib/transpose";
 import { buildChordVocabulary, type ChordVocabulary } from "@/lib/vocabulary";
 import type { Chord, ParsedSong, SongMetadata } from "@/types/song";
@@ -207,14 +208,32 @@ export function getChordVocabulary(): ChordVocabulary {
 }
 
 /**
- * The keys one song can actually be played in, printed key first.
+ * The keys one song can actually be played in, on each instrument.
  *
- * Derived rather than guessed, and the derivation is the milestone: a key is
- * offered only when the cancionero prints a fingering for every chord the song
- * would need in it (vault `DECISIONS.md` 6). 164 songs come back with all
- * twelve entries; 18 come back with only the one they were printed in, and the
- * screen says so rather than offering a key it cannot draw.
+ * Derived rather than guessed, and the derivation is M11: a key is offered only
+ * when the cancionero prints a fingering for every chord the song would need in
+ * it (vault `DECISIONS.md` 6). 164 songs come back with all twelve entries; 18
+ * come back with only one, and the screen says so rather than offering a key it
+ * cannot draw.
+ *
+ * **Both instruments are resolved here and both cross to the browser, which is
+ * the one thing M15 is not free about.** The shapes are already in the page —
+ * the cuatro's are the ukulele's, two semitones over — but the *names* are not:
+ * a cuatro key `s` names its chords at `s` and draws them from `s − 2`, and the
+ * ukulele array holds the names at `s` only when it offers `s` too, which it
+ * often does not. So the second array is names rather than shapes, and it is
+ * still at most twelve short chord lists. What does *not* change is anything
+ * bigger: no new prerendered page, no service-worker rule, nothing new in the
+ * cache — which matters, because a saved song is a cached document.
  */
-export function getTranspositions(song: ParsedSong): Transposition[] {
-  return buildTranspositions(song, getChordVocabulary());
+export function getTranspositions(
+  song: ParsedSong,
+): Record<InstrumentId, Transposition[]> {
+  const vocabulary = getChordVocabulary();
+  return Object.fromEntries(
+    INSTRUMENTS.map((instrument) => [
+      instrument.id,
+      buildTranspositions(song, vocabulary, instrument.shapeShift),
+    ]),
+  ) as Record<InstrumentId, Transposition[]>;
 }

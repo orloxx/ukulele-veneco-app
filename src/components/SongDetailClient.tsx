@@ -16,20 +16,25 @@ import LyricsDisplay from "@/components/LyricsDisplay";
 import { SaveOfflineButton } from "@/components/SaveOfflineButton";
 import { TransposeControl } from "@/components/TransposeControl";
 import { VideoReference } from "@/components/VideoReference";
+import { useInstrument } from "@/contexts/InstrumentContext";
 import { useTransposition } from "@/hooks/useTransposition";
+import type { InstrumentId } from "@/lib/instrument";
 import type { Transposition } from "@/lib/transpose";
 import type { ParsedSong, SongVideo } from "@/types/song";
 
 interface SongDetailClientProps {
   song: Omit<ParsedSong, "filePath">; // Exclude non-serializable filePath
   /**
-   * Every key this song can be played in, resolved at build time.
+   * Every key this song can be played in on each instrument, resolved at build
+   * time.
    *
    * The vocabulary index this is derived from is most of the collection's chord
    * data and never reaches the browser (`M11 · 1`); what arrives is this song's
-   * own answer, which is at most twelve short chord lists.
+   * own answer, which is at most twelve short chord lists per instrument. The
+   * second array is here because the *names* differ, not the shapes — see
+   * `getTranspositions`.
    */
-  transpositions: Transposition[];
+  transpositions: Record<InstrumentId, Transposition[]>;
   /**
    * This song's reference recording, if the search found one it would stand
    * behind. Resolved at build time by `getSongVideo`, and one entry rather than
@@ -44,10 +49,9 @@ export function SongDetailClient({
   video,
 }: SongDetailClientProps) {
   const { metadata } = song;
-  const { current, printed, offered, moved, choose } = useTransposition(
-    song.slug,
-    transpositions,
-  );
+  const { instrument } = useInstrument();
+  const { current, printedKey, offered, moved, printedKeyUnavailable, choose } =
+    useTransposition(song.slug, transpositions[instrument.id], metadata.key);
 
   // The sheet, handed to the auto-scroll bar so the pace can be resolved
   // against the lyrics' own line box rather than against a constant. It goes on
@@ -110,7 +114,8 @@ export function SongDetailClient({
             id={`transpose-${song.slug}`}
             offered={offered}
             current={current}
-            printed={printed}
+            printedKey={printedKey}
+            printedKeyUnavailable={printedKeyUnavailable}
             onChoose={choose}
           />
         </div>

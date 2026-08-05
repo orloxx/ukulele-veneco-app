@@ -1,28 +1,45 @@
 /**
- * The four tunings the afinador offers, and the one sentence that keeps the app
+ * The tunings the afinador offers, and the one sentence that keeps the app
  * honest about two of them.
  *
- * Iker chose all four (2026-08-02) over the two that are safe. They are not the
- * same instrument: baritone's bottom string is D3 at 146.83 Hz and D tuning's
- * top is B4 at 493.88, so the span the detector has to cover is more than an
- * octave and a half — see `ANALYSIS_WINDOW` in `pitch.ts`, which is sized from
- * the bottom of it.
+ * **They are grouped by instrument since M15, and that is not tidiness.** The
+ * toggle switches the whole app (Iker, 2026-08-05), so one instrument is on
+ * screen at a time and the picker shows that instrument's tunings and no
+ * others. A single flat array would put a cuatro tuning in a ukulele's list —
+ * and it would also print two entries a reader cannot tell apart, because the
+ * ukulele's `En Re — La Re Fa♯ Si` and the cuatro's *cambur pintón* differ only
+ * in the octave of the 1st string. They are never in the same list.
  *
- * **All four are the same relative tuning**, so a fingering is a fingering:
- * every diagram `ChordDiagram` draws stays a valid drawing under all of them.
- * What moves is the **name**. A shape that is `C` in standard is `D` in D tuning
- * (up a tone) and `G` in baritone (down a fourth) — and this app prints chord
- * names in the `chords:` block of all 276 songs, in every bracketed chord in
- * every lyric, in the tono chip and across `/song/<slug>/acordes`, none of which
- * knows what the reader tuned to.
+ * Iker chose the ukulele's four (2026-08-02) over the two that are safe. They
+ * are not the same instrument: baritone's bottom string is D3 at 146.83 Hz and
+ * D tuning's top is B4 at 493.88, so the span the detector has to cover is more
+ * than an octave and a half — see `ANALYSIS_WINDOW` in `pitch.ts`, which is
+ * sized from the bottom of it.
  *
- * That is not a reason to drop the tunings and it is not a reason to transpose
- * the cancionero. It is a reason for `NAMES_MATCH_SONGBOOK` below, and for the
- * line the tuner screen prints when it is false. Unsaid, it would be the app
- * contradicting itself, which by this vault's own test is a bug rather than a
- * gap. **Transposing the collection to the reader's tuning is a different
- * milestone** — the backlog's *a transpose control* — and this is a second
- * argument for it rather than a part of it.
+ * **The cuatro adds nothing to that span, and `M15 · 4` expected it to.** The
+ * issue called the cuatro's 1st string "B3 at 123.47 Hz" and named the detector
+ * the one thing that could genuinely not work. 123.47 Hz is **B2**; B3 is
+ * 246.94, a fifth *above* baritone's D3 and the second-highest thing in this
+ * file's whole range. Measured anyway, because the paragraph was right that the
+ * claim had to be measured rather than assumed: 10.54 periods in the window at
+ * 48kHz against D3's 6.26, and every cuatro string read to within 0.04 cents on
+ * a synthesised pluck at both common sample rates, including 70 cents out
+ * either way. `ANALYSIS_WINDOW` is unchanged, and the reason is stronger than
+ * the milestone's — there is no new bottom to the range.
+ *
+ * **Every tuning here is the same relative tuning as its instrument's
+ * reference**, so a fingering is a fingering: every diagram `ChordDiagram`
+ * draws stays a valid drawing under all of them. What moves is the **name**. A
+ * shape that is `C` in standard is `D` in D tuning (up a tone) and `G` in
+ * baritone (down a fourth) — and this app prints chord names in the `chords:`
+ * block of all 276 songs, in every bracketed chord in every lyric, in the tono
+ * chip and across `/song/<slug>/acordes`, none of which knows what the reader
+ * tuned to.
+ *
+ * That is not a reason to drop the tunings. It is the reason for
+ * `namesMatchSongbook` below, and for the line the tuner screen prints when it
+ * is false. Unsaid, it would be the app contradicting itself, which by this
+ * vault's own test is a bug rather than a gap.
  */
 
 /** Concert pitch. Every frequency in this file is derived from it. */
@@ -75,21 +92,14 @@ export interface Tuning {
   label: string;
   /** The strings, 4th to 1st — the order they sit under the fingers. */
   strings: TuningString[];
-  /**
-   * Whether the cancionero's chord names are true of this tuning.
-   *
-   * **Standard and low-G are the exempt pair, and it is not because they are the
-   * popular ones.** They share every shape *and* every name: low-G moves the 4th
-   * string down an octave, which changes the voicing and not one chord symbol.
-   * D and baritone keep the shapes and move every name — a tone up and a fourth
-   * down respectively — so a reader tuned to either is reading a songbook whose
-   * chord names do not describe the sound coming out of their instrument. That
-   * is what the tuner screen says out loud when this is false.
-   */
-  namesMatchSongbook: boolean;
 }
 
-export type TuningId = "standard" | "low-g" | "d" | "baritone";
+export type TuningId =
+  | "standard"
+  | "low-g"
+  | "d"
+  | "baritone"
+  | "cambur-pinton";
 
 const string = (name: string, octave: number): TuningString => ({
   name,
@@ -97,34 +107,60 @@ const string = (name: string, octave: number): TuningString => ({
   frequency: frequencyOf(name, octave),
 });
 
-export const TUNINGS: readonly Tuning[] = [
+/**
+ * The ukulele's four. The first is its reference: the tuning the cancionero is
+ * written for, and the one a reader who has chosen nothing gets.
+ */
+export const UKULELE_TUNINGS: readonly Tuning[] = [
   {
     id: "standard",
     label: "Estándar — Sol Do Mi La",
     strings: [string("G", 4), string("C", 4), string("E", 4), string("A", 4)],
-    namesMatchSongbook: true,
   },
   {
     id: "low-g",
     label: "Sol grave — Sol Do Mi La",
     strings: [string("G", 3), string("C", 4), string("E", 4), string("A", 4)],
-    namesMatchSongbook: true,
   },
   {
     id: "d",
     label: "En Re — La Re Fa♯ Si",
     strings: [string("A", 4), string("D", 4), string("F#", 4), string("B", 4)],
-    namesMatchSongbook: false,
   },
   {
     id: "baritone",
     label: "Barítono — Re Sol Si Mi",
     strings: [string("D", 3), string("G", 3), string("B", 3), string("E", 4)],
-    namesMatchSongbook: false,
   },
 ];
 
-export const DEFAULT_TUNING_ID: TuningId = "standard";
+/**
+ * The cuatro's one, and **one is a decision rather than a gap** (`M15 · 4`).
+ *
+ * *Cambur pintón*, the traditional re-entrant A4 D4 F♯4 B3. Neither Iker nor
+ * the session that scoped M15 knows a second worth offering, and there is no
+ * cuatro chart in this repo to arbitrate one — so a longer list would be the
+ * app asserting something about the instrument that nobody has checked, which
+ * is vault `DECISIONS.md` 27's failure in a new place.
+ *
+ * **A4 D4 F♯4 B4 will be re-proposed and was rejected.** It is the ukulele's
+ * `d` tuning, and putting it here would let `M15 · Verification`'s substitute
+ * ukulele be tuned without leaving cuatro mode. It is still not a cuatro
+ * tuning, and a list that carries one to make a test convenient has stopped
+ * describing the instrument. That pass toggles to ukulele, tunes with `d`, and
+ * toggles back.
+ *
+ * A variant added later needs no new machinery: one that keeps the relative
+ * tuning changes no diagram, and one that does not is already described by
+ * `songbookShiftSemitones` and `namesMatchSongbook`.
+ */
+export const CUATRO_TUNINGS: readonly Tuning[] = [
+  {
+    id: "cambur-pinton",
+    label: "Cambur pintón — La Re Fa♯ Si",
+    strings: [string("A", 4), string("D", 4), string("F#", 4), string("B", 3)],
+  },
+];
 
 /** Sharps, because the app writes chord roots that way. */
 const NAMES_FROM_C = [
@@ -150,7 +186,8 @@ export function transposeNoteName(name: string, semitones: number): string {
 }
 
 /**
- * How far this tuning has moved the cancionero's chord names, in semitones.
+ * How far this tuning has moved the chord names its reference is written for,
+ * in semitones.
  *
  * **Derived, not written down** — the same rule as the frequencies above, and
  * for a sharper reason: this number is what the caveat on the tuner screen is
@@ -158,54 +195,46 @@ export function transposeNoteName(name: string, semitones: number): string {
  * reader the wrong chord. It comes off the 3rd string, which is the one every
  * tuning has in the same place: standard's C4 against baritone's G3 is -5, and
  * against D tuning's D4 is +2.
+ *
+ * **The reference is an argument since M15, and that is `M15 · 4`'s point.** It
+ * used to be standard ukulele, full stop, which would have the cuatro reporting
+ * +2 against its own only tuning and firing the caveat on the one tuning it
+ * must never fire on. What a tuning has moved is a fact about the *pair*.
  */
-export function songbookShiftSemitones(tuning: Tuning): number {
-  const standard = tuningById(DEFAULT_TUNING_ID);
+export function songbookShiftSemitones(
+  tuning: Tuning,
+  reference: Tuning,
+): number {
   return Math.round(
-    12 * Math.log2(tuning.strings[1].frequency / standard.strings[1].frequency),
-  );
-}
-
-/** The tuning for an id, or standard for one this version does not know. */
-export function tuningById(id: string): Tuning {
-  return (
-    TUNINGS.find((tuning) => tuning.id === id) ??
-    (TUNINGS.find((tuning) => tuning.id === DEFAULT_TUNING_ID) as Tuning)
+    12 *
+      Math.log2(tuning.strings[1].frequency / reference.strings[1].frequency),
   );
 }
 
 /**
- * Where the reader's choice lives.
+ * Whether the chord names the app prints are true of this tuning.
  *
- * `localStorage`, for the reason vault `DECISIONS.md` 18 already gave about the
- * scroll pace: it is a reader preference, not song data, and the IndexedDB store
- * holds *saved* songs — a tuning kept there could only exist for a song somebody
- * had saved, which has nothing to do with the instrument in front of them.
+ * **Derived from the shift rather than carried as a flag**, which is what
+ * `M15 · 4` asked for: it is a fact about a tuning *and* the instrument it
+ * belongs to, and two statements of one fact are how a tuner ends up confidently
+ * disagreeing with itself.
  *
- * **One key, not one per song.** That is where it differs from the pace: a pace
- * belongs to a song, because a merengue and a gaita do not scroll alike, and a
- * tuning belongs to the ukulele in the room. `src/lib/theme.ts` is the pattern.
+ * **Standard and low-G are the ukulele's exempt pair, and it is not because they
+ * are the popular ones.** They share every shape *and* every name: low-G moves
+ * the 4th string down an octave, which changes the voicing and not one chord
+ * symbol. D and baritone keep the shapes and move every name — a tone up and a
+ * fourth down respectively — so a reader tuned to either is reading a songbook
+ * whose chord names do not describe the sound coming out of their instrument.
+ * That is what the tuner screen says out loud when this is false.
+ *
+ * In cuatro mode it is true of *cambur pintón*, and that is the whole of M15
+ * arriving here: the diagrams have moved to meet the names.
  */
-const STORAGE_KEY = "uv-tuning";
-
-/** The stored tuning, or standard. Every path returns a usable id. */
-export function readTuningId(): TuningId {
-  try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === null) return DEFAULT_TUNING_ID;
-    return tuningById(stored).id;
-  } catch {
-    // Private mode throws outright on some browsers. Standard tuning is a fine
-    // answer, and it is the one four readers in five want anyway.
-    return DEFAULT_TUNING_ID;
-  }
+export function namesMatchSongbook(tuning: Tuning, reference: Tuning): boolean {
+  return songbookShiftSemitones(tuning, reference) === 0;
 }
 
-/** Remember it. A full quota or private mode means it is simply not remembered. */
-export function writeTuningId(id: TuningId): void {
-  try {
-    window.localStorage.setItem(STORAGE_KEY, id);
-  } catch {
-    // Not remembered. The tuner still works, on the tuning that is on screen.
-  }
+/** The tuning for an id, or the set's reference for one it does not hold. */
+export function tuningById(tunings: readonly Tuning[], id: string): Tuning {
+  return tunings.find((tuning) => tuning.id === id) ?? tunings[0];
 }
