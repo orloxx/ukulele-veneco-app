@@ -83,6 +83,12 @@ const { buildChordVocabulary } = await import(
 const { buildTranspositions } = await import(
   pathToFileURL(path.join(REPO_ROOT, "src/lib/transpose.ts")).href
 );
+const { stripVoicingMarker } = await import(
+  pathToFileURL(path.join(REPO_ROOT, "src/lib/chords.ts")).href
+);
+const { INSTRUMENTS } = await import(
+  pathToFileURL(path.join(REPO_ROOT, "src/lib/instrument.ts")).href
+);
 
 /* ------------------------------------------------------------------ songs */
 
@@ -239,25 +245,58 @@ check("difficulty does not move when the key does", () => {
   // offers. If this ever fails, the chip has to stop being derived from the
   // printed chord list, or transposition has started collapsing two chords into
   // one. Both are worth failing a build over.
+  //
+  // **Every instrument, because `buildTranspositions` takes a shape shift and
+  // silently offered nothing without one.** This ran green over zero pairs from
+  // M15 until BUG-016, which is why it did not notice the collapse below.
+  //
+  // **Two names for one chord are the one collapse there is, and it is
+  // deliberate.** Where the book coined a second name for a second voicing —
+  // `E²` beside `E` — the two are one chord anywhere but the page that drew
+  // them (BUG-016), so a moved sheet holds one of it. `mi-cura-mi-enfermedad`
+  // goes 10 to 9 and would cross a boundary if anything read that number, which
+  // is why the band assertion below is scoped to the songs the collapse cannot
+  // touch: the chip is `metadata.chords.length` in `SongList`, the printed
+  // count, and no screen derives a band from a transposition at all.
   const vocabulary = buildChordVocabulary(songs);
   let pairs = 0;
+  const collapsed = [];
   for (const song of songs) {
-    const printed = songDifficulty(song.chordDefinitions.length);
-    for (const plan of buildTranspositions(song, vocabulary)) {
-      // `plan.chords` is every chord the song defines, moved — so its length is
-      // exactly what the chip would read on a transposed sheet.
-      assert(
-        plan.chords.length === song.chordDefinitions.length,
-        `${song.slug} has ${song.chordDefinitions.length} chords as printed and ${plan.chords.length} in ${plan.key}`,
-      );
-      assert(
-        songDifficulty(plan.chords.length) === printed,
-        `${song.slug} is ${printed} as printed and ${songDifficulty(plan.chords.length)} in ${plan.key}`,
-      );
-      pairs++;
+    const count = song.chordDefinitions.length;
+    const printed = songDifficulty(count);
+    const markers = song.chordDefinitions.filter(
+      (chord) => stripVoicingMarker(chord.name) !== chord.name,
+    ).length;
+
+    for (const instrument of INSTRUMENTS) {
+      for (const plan of buildTranspositions(
+        song,
+        vocabulary,
+        instrument.shapeShift,
+      )) {
+        // `plan.chords` is every chord the song defines, moved — so its length
+        // is what a sheet holds, and for a song with no second voicing it is
+        // also exactly the printed count.
+        assert(
+          plan.chords.length === count ||
+            (markers > 0 && plan.chords.length >= count - markers),
+          `${song.slug} has ${count} chords as printed and ${plan.chords.length} in ${plan.key}`,
+        );
+        if (plan.chords.length !== count) collapsed.push(song.slug);
+        else
+          assert(
+            songDifficulty(plan.chords.length) === printed,
+            `${song.slug} is ${printed} as printed and ${songDifficulty(plan.chords.length)} in ${plan.key}`,
+          );
+        pairs++;
+      }
     }
   }
-  return `${pairs} song-and-key pairs, none changed band`;
+  return (
+    `${pairs} song-and-key pairs across ${INSTRUMENTS.length} instruments, ` +
+    `none changed band — ${new Set(collapsed).size} songs fold a second ` +
+    `voicing into its own chord away from their printed page`
+  );
 });
 
 /* ---------------------------------------------- 3. the distribution, shown */

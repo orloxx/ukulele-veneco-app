@@ -18,10 +18,16 @@
  * draws, some of which are not standard notation at all. A parser that tried to
  * understand them would have to be wrong about at least five chords; one that
  * carries them through as a string is right about all of them, because
- * transposing a chord never changes its quality. It also means the vocabulary
- * index in `vocabulary.ts` is exact rather than approximate: `Em7^` transposes
- * to `F#m7^` and the index is asked whether the book prints *that*, which it
- * does not, and the honest answer is the one the reader gets.
+ * transposing a chord never changes its quality.
+ *
+ * **The one thing in a name that is not the chord is the voicing marker**, and
+ * it is the exception that proves the rule rather than a hole in it. `^` and
+ * `²` say "the second shape on this page", which is a fact about the page and
+ * not about the chord — so the parser still carries them opaquely and
+ * `stripVoicingMarker` takes them off at every point where the collection is
+ * *asked* something. That distinction was BUG-016: an index that let `Em7^`
+ * transpose to `F#m7^` was asking the book for a chord nobody ever meant, and
+ * answering "no" very precisely.
  */
 
 /**
@@ -131,6 +137,30 @@ export function parseChordName(name: string): ParsedChordName {
     bass: match[3],
     pitchClass,
   };
+}
+
+/**
+ * A chord name or quality with its voicing marker taken off.
+ *
+ * **The book coins a second *name* when a song needs a second *voicing***
+ * (`songs/README.md`) — `Em7^` beside `Em`, `E²`, `C#m²`, `B²`, `Edim7²`. The
+ * caret and the superscript are a label about one page, not a property of the
+ * chord: `terrenal`'s `Em7^` is an ordinary Em7 taken up the neck, and
+ * `scripts/check-transpose.mjs` sounds it to prove that.
+ *
+ * The parser keeps the marker, because a name is what the file holds and the
+ * printed page has to come back untouched. **Every question asked of the
+ * collection strips it**, because a marker that reaches `vocabularyKey` invents
+ * a quality that exists at one pitch class in the whole book and makes the
+ * chord unreachable everywhere else — BUG-016, which cost three songs every key
+ * they could otherwise have been played in.
+ *
+ * Two voicings therefore collapse into one as soon as the song moves, and that
+ * is the honest answer: the book has one shape to offer at the new pitch, so
+ * the sheet draws it for both markers. Only the printed key can show two.
+ */
+export function stripVoicingMarker(value: string): string {
+  return value.replace(/[\^²]/g, "");
 }
 
 /** Write a pitch class out, with sharps or with flats. */

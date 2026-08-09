@@ -67,6 +67,7 @@ registerHooks({
 
 const {
   parseChordName,
+  stripVoicingMarker,
   parseKey,
   spellKey,
   spellingForKey,
@@ -162,7 +163,7 @@ check("the measured numbers have not moved", () => {
     pairs: pairs.size,
     associations,
   };
-  const expected = { songs: 276, names: 143, pairs: 127, associations: 163 };
+  const expected = { songs: 276, names: 143, pairs: 122, associations: 162 };
 
   assert(
     JSON.stringify(measured) === JSON.stringify(expected),
@@ -245,10 +246,6 @@ const QUALITY_INTERVALS = {
   maj7: [0, 4, 7, 11],
   mmaj7: [0, 3, 7, 11],
   m7M: [0, 3, 7, 11],
-  // `Em7^` is the book's own notation and it is not a m(maj7): terrenal draws
-  // it as 7777, which is D-G-B-E, an ordinary Em7 taken up the neck. The caret
-  // marks the position, not the quality.
-  "m7^": [0, 3, 7, 10],
   dim7: [0, 3, 6, 9],
   m7b5: [0, 3, 6, 10],
   b5: [0, 4, 6],
@@ -263,7 +260,6 @@ const QUALITY_INTERVALS = {
   sus4: [0, 5, 7],
   "7sus2": [0, 2, 7, 10],
   "7sus4": [0, 5, 7, 10],
-  "7sus4²": [0, 5, 7, 10],
 };
 
 /** Open strings, as pitch classes: G C E A. */
@@ -278,9 +274,11 @@ check("every fingering sounds the chord its name claims", () => {
     for (const chord of song.chordDefinitions) {
       if (!/^\d{4}$/.test(chord.positions)) continue;
       const { pitchClass, quality } = parseChordName(chord.name);
-      // A trailing superscript 2 marks a second shape for the same chord, not
-      // a different chord — BUG-016 is about what that costs elsewhere.
-      const intervals = QUALITY_INTERVALS[quality.replace(/²$/, "")];
+      // A caret or a superscript marks a second shape for the same chord, not a
+      // different chord — so `Em7^` is an ordinary Em7 taken up the neck, and
+      // this table needs no row for it. The app folds them the same way, which
+      // it did not before BUG-016.
+      const intervals = QUALITY_INTERVALS[stripVoicingMarker(quality)];
       if (intervals === undefined) continue; // no opinion is better than a wrong one
       checked++;
 
@@ -363,13 +361,14 @@ check(
         for (const chord of plan.chords) {
           chordsChecked++;
           const { pitchClass, quality } = parseChordName(chord.name);
-          const entry = lookupChord(vocabulary, pitchClass, quality);
+          const base = stripVoicingMarker(quality);
+          const entry = lookupChord(vocabulary, pitchClass, base);
           assert(
             entry !== undefined,
             `${song.slug} +${plan.semitones}: ${chord.name} is in the sheet and nowhere in the book`,
           );
           assert(
-            entry.names.includes(chord.name),
+            entry.names.includes(stripVoicingMarker(chord.name)),
             `${song.slug} +${plan.semitones}: the book never writes the name ${chord.name} (it writes ${entry.names.join("/")})`,
           );
           const printed = entry.fingerings.find(
@@ -410,23 +409,24 @@ check("the offered count matches what the milestone measured", () => {
     `expected 164 songs offering all eleven, got ${distribution.get(11)}`,
   );
   assert(
-    distribution.get(0) === 18,
-    `expected 18 songs offering none, got ${distribution.get(0)}`,
+    distribution.get(0) === 15,
+    `expected 15 songs offering none, got ${distribution.get(0)}`,
   );
-  return `164 songs offer all eleven, 18 offer none`;
+  return `164 songs offer all eleven, 15 offer none`;
 });
 
 check("a key that is not offered is genuinely unplayable", () => {
-  // The 18 are the case to check, not the 164. For each, prove every one of the
+  // The 15 are the case to check, not the 164. For each, prove every one of the
   // eleven shifts really does need a chord the book never prints.
   const zero = songs.filter((song) => plans.get(song.slug).length === 1);
-  assert(zero.length === 18, `expected 18 songs, got ${zero.length}`);
+  assert(zero.length === 15, `expected 15 songs, got ${zero.length}`);
 
   for (const song of zero) {
     for (let semitones = 1; semitones <= 11; semitones++) {
       const missing = song.chordDefinitions.filter((chord) => {
         const { pitchClass, quality } = parseChordName(chord.name);
-        return !lookupChord(vocabulary, (pitchClass + semitones) % 12, quality);
+        const base = stripVoicingMarker(quality);
+        return !lookupChord(vocabulary, (pitchClass + semitones) % 12, base);
       });
       assert(
         missing.length > 0,
@@ -527,9 +527,10 @@ check("the app never writes a name the cancionero does not", () => {
     for (const plan of plans.get(song.slug)) {
       for (const chord of plan.chords) {
         const { pitchClass, quality } = parseChordName(chord.name);
+        const base = stripVoicingMarker(quality);
         assert(
-          lookupChord(vocabulary, pitchClass, quality).names.includes(
-            chord.name,
+          lookupChord(vocabulary, pitchClass, base).names.includes(
+            stripVoicingMarker(chord.name),
           ),
           `${song.slug} +${plan.semitones}: ${chord.name} is not a name the book uses`,
         );
@@ -562,7 +563,8 @@ check("where the book gives a choice, the key signature takes it", () => {
       const spelling = spellingForKey(transposeKey(key, plan.semitones));
       for (const chord of plan.chords) {
         const { root, quality, pitchClass } = parseChordName(chord.name);
-        const { names } = lookupChord(vocabulary, pitchClass, quality);
+        const base = stripVoicingMarker(quality);
+        const { names } = lookupChord(vocabulary, pitchClass, base);
         // Only a chord the book spells both ways is a decision at all.
         const bothWays =
           names.some((name) => name[1] === "#") &&
@@ -849,7 +851,7 @@ check(
         }
       }
     }
-    assert(checked === 163, `expected 163 fingerings, checked ${checked}`);
+    assert(checked === 162, `expected 162 fingerings, checked ${checked}`);
     return `${checked} fingerings, ${checked * 4} strings`;
   },
 );
@@ -926,7 +928,8 @@ check("the reach matches what the milestone measured", () => {
     const missing = new Set();
     for (const chord of song.chordDefinitions) {
       const { pitchClass, quality } = parseChordName(chord.name);
-      if (!lookupChord(vocabulary, (pitchClass + 10) % 12, quality))
+      const base = stripVoicingMarker(quality);
+      if (!lookupChord(vocabulary, (pitchClass + 10) % 12, base))
         missing.add(chord.name);
     }
     for (const name of missing)
@@ -939,7 +942,7 @@ check("the reach matches what the milestone measured", () => {
     blocked: blocked.length,
     blockedByOne: byOne.length,
   };
-  const expected = { drawable: 236, blocked: 40, blockedByOne: 29 };
+  const expected = { drawable: 239, blocked: 37, blockedByOne: 28 };
   assert(
     JSON.stringify(measured) === JSON.stringify(expected),
     `the cuatro's reach changed.\n` +
@@ -955,7 +958,7 @@ check("the reach matches what the milestone measured", () => {
     .slice(0, 5)
     .map(([name, n]) => `${name} (${n})`)
     .join(", ");
-  return `236 in their printed key, 40 blocked, 29 of those by one chord — most wanted ${top}`;
+  return `239 in their printed key, 37 blocked, 28 of those by one chord — most wanted ${top}`;
 });
 
 check("a cuatro sheet only ever draws a fingering the book prints", () => {
@@ -969,8 +972,9 @@ check("a cuatro sheet only ever draws a fingering the book prints", () => {
       for (const chord of plan.chords) {
         chords++;
         const { pitchClass, quality } = parseChordName(chord.name);
+        const base = stripVoicingMarker(quality);
         const drawn = (pitchClass + 12 + CUATRO.shapeShift) % 12;
-        const entry = lookupChord(vocabulary, drawn, quality);
+        const entry = lookupChord(vocabulary, drawn, base);
         assert(
           entry !== undefined,
           `${song.slug} +${plan.semitones}: nothing in the book draws ${chord.name} for a cuatro`,
@@ -992,7 +996,7 @@ check("a cuatro sheet only ever draws a fingering the book prints", () => {
 
 check("every cuatro shape still fits the four-fret window", () => {
   // BUG-001's guard, which `pnpm validate` and `ChordDiagram` have to agree
-  // about. It holds trivially — these are the same 163 fingerings — and it is
+  // about. It holds trivially — these are the same 162 fingerings — and it is
   // asserted rather than argued because "the same fingerings" is the claim.
   let widest = 0;
   for (const song of songs) {
@@ -1020,7 +1024,7 @@ check("where the book names no chord, the key signature does", () => {
   // book draws this" and "the book names this" are one statement. On the cuatro
   // the shape is asked of the entry two semitones below and the name of the
   // entry at the chord itself, and the second can be missing while the first is
-  // not — 196 of the 2629 offered keys, across 112 songs.
+  // not — 199 of the 2646 offered keys, across 112 songs.
   //
   // What is asserted is not the fallback's existence but its *shape*: where the
   // book has no usage to defer to, the name is exactly the target key's
@@ -1033,16 +1037,24 @@ check("where the book names no chord, the key signature does", () => {
       let usedFallback = false;
       for (const chord of song.chordDefinitions) {
         const { pitchClass, quality } = parseChordName(chord.name);
+        const base = stripVoicingMarker(quality);
         const target = (pitchClass + plan.semitones) % 12;
         if (target === pitchClass) continue; // the song's own name, rung 1
-        if (lookupChord(vocabulary, target, quality)) continue; // the book names it
+        if (lookupChord(vocabulary, target, base)) continue; // the book names it
         usedFallback = true;
         const spelling = key
           ? spellingForKey(transposeKey(key, plan.semitones))
           : "flat";
+        // Either form of the signature name is the signature name: a voicing
+        // marker travels only where the song's own diagram travels with it —
+        // printed+2 on the cuatro, the book's page unchanged — and is dropped
+        // everywhere else. Which of the two happens is asserted above, by the
+        // printed+2 check; what is asserted here is that nothing else was
+        // invented.
+        const wanted = transposeChordName(chord.name, plan.semitones, spelling);
         assert(
-          plan.names[chord.name] ===
-            transposeChordName(chord.name, plan.semitones, spelling),
+          plan.names[chord.name] === wanted ||
+            plan.names[chord.name] === stripVoicingMarker(wanted),
           `${song.slug} +${plan.semitones}: ${chord.name} became ` +
             `${plan.names[chord.name]}, not the ${spelling} name its key wants`,
         );
@@ -1054,7 +1066,7 @@ check("where the book names no chord, the key signature does", () => {
     }
   }
   const measured = { pairs, songs: affected.size };
-  const expected = { pairs: 196, songs: 112 };
+  const expected = { pairs: 199, songs: 112 };
   assert(
     JSON.stringify(measured) === JSON.stringify(expected),
     `expected ${JSON.stringify(expected)}, measured ${JSON.stringify(measured)}`,
@@ -1067,17 +1079,35 @@ check("the difficulty band does not move with the instrument", () => {
   // distinct chords to distinct chords, and so does changing instrument — the
   // chords are the same chords. A band that moved would be reporting a change
   // that did not happen.
+  //
+  // **Two names for one chord are the exception, and they cost the band
+  // nothing.** Where the book coined a second name for a second voicing —
+  // `Edim7²` beside `Edim7` — the two are one chord anywhere but the page that
+  // drew them, so a moved sheet holds one of it (BUG-016). The band cannot
+  // follow either way: `SongList` reads `metadata.chords.length`, the
+  // frontmatter's own count, and never a plan's.
+  const folded = [];
   for (const song of songs) {
+    const printed = song.chordDefinitions.length;
+    const markers = song.chordDefinitions.filter(
+      (chord) => stripVoicingMarker(chord.name) !== chord.name,
+    ).length;
     const counts = new Set(
       cuatroPlans.get(song.slug).map((plan) => plan.chords.length),
     );
     for (const plan of plans.get(song.slug)) counts.add(plan.chords.length);
-    assert(
-      counts.size === 1,
-      `${song.slug}: chord count varies across keys and instruments (${[...counts]})`,
-    );
+    for (const count of counts)
+      assert(
+        count === printed || (markers > 0 && count >= printed - markers),
+        `${song.slug}: chord count varies across keys and instruments (${[...counts]})`,
+      );
+    if (counts.size > 1) folded.push(song.slug);
   }
-  return `${songs.length} songs, one chord count each across both instruments and every key`;
+  return (
+    `${songs.length} songs, one chord count each across both instruments and ` +
+    `every key — bar ${folded.length} the book gave a second name to a second ` +
+    `voicing: ${folded.join(", ")}`
+  );
 });
 
 /* -------------------------------------------------------- 7. the afinador */

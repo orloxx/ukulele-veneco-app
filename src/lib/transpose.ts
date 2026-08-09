@@ -11,7 +11,7 @@
  * or it does not exist — so every chord this produces has to be one the
  * cancionero already prints, and `vocabulary.ts` is what knows. The result is
  * that a song can be offered *some* keys and not others: measured across the
- * collection, 164 songs can offer all eleven and 18 can offer none.
+ * collection, 164 songs can offer all eleven and 15 can offer none.
  *
  * **You cannot compute your way out of that gap**, and the escape that suggests
  * itself does not work: 93 of the book's 171 fingerings use at least one open
@@ -65,7 +65,7 @@
  * book names this chord" are the same statement. On the cuatro the shape is
  * asked of the entry at `target + shapeShift` and the name of the entry at
  * `target`, and the second can be missing while the first is not. Measured over
- * all 276 songs: **196 of the 2629 offered cuatro keys, across 112 songs, need
+ * all 276 songs: **199 of the 2646 offered cuatro keys, across 112 songs, need
  * at least one name the cancionero never prints** — `F#m7` 28 times, `Bmaj7` 24.
  * `resolveChord` grows a fourth rung for exactly that case and no other.
  */
@@ -78,6 +78,7 @@ import {
   type Spelling,
   spellingForKey,
   spellKey,
+  stripVoicingMarker,
   transposeChordName,
   transposeKey,
 } from "@/lib/chords";
@@ -228,6 +229,9 @@ function resolveChord(
   shapeShift: number,
 ): Chord | null {
   const { quality, pitchClass } = parseChordName(chord.name);
+  // Everything asked of the collection is asked without the voicing marker —
+  // `chords.ts`, `stripVoicingMarker`, and BUG-016 for what keeping it cost.
+  const base = stripVoicingMarker(quality);
   const wrap = (value: number) => ((value % SEMITONES) + SEMITONES) % SEMITONES;
   const target = wrap(pitchClass + semitones);
   const drawn = wrap(target + shapeShift);
@@ -236,21 +240,29 @@ function resolveChord(
   // only one. A key is offered when the book draws every chord it needs; what
   // the book *calls* that chord is a question the name ladder answers below,
   // and on the cuatro it sometimes answers without the book's help.
-  const shapes = lookupChord(vocabulary, drawn, quality);
+  const shapes = lookupChord(vocabulary, drawn, base);
   if (!shapes || shapes.fingerings.length === 0) return null;
 
-  const entry = lookupChord(vocabulary, target, quality);
-  const bySignature = transposeChordName(chord.name, semitones, spelling);
+  // `ownChords` is keyed by the name the file wrote, so a marked chord finds
+  // its own shape rather than colliding with the plain one beside it —
+  // `mi-cura-mi-enfermedad` prints both `E` and `E²`. Only the fallback looks
+  // outward, and there the two are one chord.
+  const marked = ownChords.get(vocabularyKey(drawn, quality));
+  const own = marked ?? ownChords.get(vocabularyKey(drawn, base));
+
+  const entry = lookupChord(vocabulary, target, base);
+  const moved = transposeChordName(chord.name, semitones, spelling);
+  const bySignature = stripVoicingMarker(moved);
   const name =
     target === pitchClass
       ? chord.name
-      : !entry
-        ? bySignature
-        : entry.names.includes(bySignature)
+      : marked && quality !== base
+        ? moved
+        : !entry
           ? bySignature
-          : entry.names[0];
-
-  const own = ownChords.get(vocabularyKey(drawn, quality));
+          : entry.names.includes(bySignature)
+            ? bySignature
+            : entry.names[0];
 
   return { name, positions: (own ?? shapes.fingerings[0]).positions };
 }
@@ -313,7 +325,7 @@ export function transposeSong(
  * Every key this song can be played in on one instrument, lowest shift first.
  *
  * The list the control renders, and it is computed rather than guessed: 164
- * songs come back with all twelve entries, 18 come back with only one, and the
+ * songs come back with all twelve entries, 15 come back with only one, and the
  * screen has to say something true about the second case rather than offering a
  * key it cannot draw. **The distribution is the same on both instruments** —
  * the sets are the ukulele's shifted by two, which is the shape shift arriving

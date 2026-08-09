@@ -9,9 +9,10 @@
  * about a fixed vocabulary, and this module is the thing that can answer it.
  *
  * Measured across `songs/` today: **143 distinct chord names**, which collapse
- * to **127 distinct (pitch class, quality) pairs** once enharmonics fold,
- * carrying **163 pair-and-fingering associations** over 137 distinct position
- * strings. `scripts/check-transpose.mjs` asserts all four numbers.
+ * to **122 distinct (pitch class, quality) pairs** once enharmonics and voicing
+ * markers fold, carrying **162 pair-and-fingering associations** over 137
+ * distinct position strings. `scripts/check-transpose.mjs` asserts all four
+ * numbers.
  *
  * Those last two numbers were 171 and 146 until BUG-019, and the eight that
  * went were not real voicings: they were barred chords whose covered strings
@@ -22,9 +23,17 @@
  * load-bearing.** The collection writes both spellings — 53 `C#` against 14
  * `Db`, 8 `D#` against 61 `Eb` — so an index keyed by name would look up `C#7`,
  * miss the `Db7` the book prints on another page, and report a chord
- * unavailable that the reader could have played. Folding them is what takes 143
- * names down to 127 pairs, and those sixteen are not a rounding error: they are
- * sixteen chords that would otherwise be invisible.
+ * unavailable that the reader could have played.
+ *
+ * **A voicing marker folds the same way and for the same reason.** `Em7^` is
+ * filed as `4|m7` and named `Em7`, because `^` and `²` mark a second shape on
+ * one page rather than a second chord (`chords.ts`, `stripVoicingMarker`). An
+ * index that kept them held five qualities that existed at one pitch class each
+ * and nowhere else, which is BUG-016: it withheld every key from three songs
+ * and, latently, stood ready to lend one song's page-local name to another's
+ * sheet. Sixteen of the twenty-one names the folding above absorbs are
+ * enharmonics and five are markers, and neither five is a rounding error: they
+ * are chords that would otherwise be invisible.
  *
  * **A name is deliberately not deduplicated to one fingering.** `DECISIONS.md`
  * 6 is per song rather than per chord name — the book draws `D7` as `2020` on
@@ -34,7 +43,7 @@
  * the choice explicitly.
  */
 
-import { parseChordName } from "@/lib/chords";
+import { parseChordName, stripVoicingMarker } from "@/lib/chords";
 import type { Chord } from "@/types/song";
 
 /** One fingering the book prints for a chord, and where it prints it. */
@@ -108,7 +117,7 @@ export function buildChordVocabulary(songs: VocabularySong[]): ChordVocabulary {
   for (const song of songs) {
     for (const chord of song.chordDefinitions) {
       const { pitchClass, quality } = parseChordName(chord.name);
-      const key = vocabularyKey(pitchClass, quality);
+      const key = vocabularyKey(pitchClass, stripVoicingMarker(quality));
 
       let fingerings = positionsByKey.get(key);
       if (!fingerings) {
@@ -124,7 +133,8 @@ export function buildChordVocabulary(songs: VocabularySong[]): ChordVocabulary {
         names = new Map();
         namesByKey.set(key, names);
       }
-      names.set(chord.name, (names.get(chord.name) ?? 0) + 1);
+      const name = stripVoicingMarker(chord.name);
+      names.set(name, (names.get(name) ?? 0) + 1);
     }
   }
 
