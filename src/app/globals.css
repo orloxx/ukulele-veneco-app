@@ -1035,6 +1035,47 @@ samp {
   white-space: nowrap;
 }
 
+/* ---------------- Confirm dialog ----------------
+   A native `<dialog>`, so the focus trap, Esc, the inert page behind it and the
+   top layer come for free and only the paint is written here. One caller: the
+   song table's header checkbox, which offers to save every visible song.
+
+   `margin: auto` is not decorative. A modal dialog is centred by the UA's
+   `position: fixed; inset: 0; margin: auto`, and Tailwind's preflight zeroes
+   margin on everything — without this line the box opens in the top-left
+   corner. */
+.uv-confirm {
+  margin: auto;
+  width: min(400px, calc(100vw - var(--space-8)));
+  padding: var(--space-6);
+  border: var(--border-hairline) solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  color: var(--text-body);
+  box-shadow: var(--shadow-lg);
+}
+.uv-confirm::backdrop {
+  background: rgb(0 0 0 / 0.45);
+}
+.uv-confirm__title {
+  font-size: var(--size-h2);
+}
+.uv-confirm__text {
+  margin-top: var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--size-body-sm);
+}
+/* Wraps rather than shrinks: both buttons keep --touch-min and their labels are
+   Spanish, so at 320px the row is allowed to become two rows instead of two
+   squeezed buttons. */
+.uv-confirm__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+
 /* ---------------- Card ---------------- */
 .uv-card {
   background: var(--surface-raised);
@@ -1236,10 +1277,11 @@ samp {
 .uv-table thead th {
   padding: var(--space-3) var(--space-4);
   text-align: left;
-  /* Top, not middle: the save column carries its checkbox under its heading,
-     and middle-aligned neighbours would sit half a control lower than it. All
-     six headings start on the same line and the box hangs below its own. */
-  vertical-align: top;
+  /* Middle, and it used to be top: the save column carried GUARDAR stacked over
+     its checkbox, so the heading was two lines tall and the other five had to
+     hang from the same first line to look level with it. With the word gone the
+     column is just the box, and the five titles centre on it. */
+  vertical-align: middle;
   background: var(--surface-sunken);
   border-bottom: var(--border-hairline) solid var(--line);
   color: var(--text-muted);
@@ -1593,19 +1635,15 @@ samp {
   width: 78px;
   text-align: center;
 }
-/* The save column is titled like the other five (BUG-012). The word goes above
-   the box rather than beside it — 78px holds one or the other, and beside it
-   the box would no longer sit over the boxes in the rows below. The cell gives
-   up its horizontal padding to fit GUARDAR at 67px in 78px, and keeps the same
-   top padding as its neighbours so all six headings start on one line. The box
-   keeps --touch-min. */
+/* No padding override and no `.uv-table__check-head` any more: the heading is
+   the checkbox, at the cell's own padding, over the boxes in the rows below.
+
+   The one thing it still needs is the centring back. `.uv-table thead th` sets
+   `text-align: left` and outweighs the bare `.uv-table__check` above, which the
+   grid inside the old caption stack was quietly overriding; without this the
+   header box sits 1px left of every box in its column. */
 .uv-table thead th.uv-table__check {
-  padding: var(--space-3) var(--space-1) var(--space-1);
-}
-.uv-table__check-head {
-  display: grid;
-  justify-items: center;
-  gap: var(--space-1);
+  text-align: center;
 }
 .uv-table__check-cell {
   display: grid;

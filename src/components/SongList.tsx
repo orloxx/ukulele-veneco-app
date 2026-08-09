@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { FilterCombobox, foldForSearch } from "@/components/FilterCombobox";
 import { IconCheck, IconSearch } from "@/components/icons";
 import {
@@ -20,6 +20,22 @@ import type { ParsedSong } from "@/types/song";
 interface SongListProps {
   songs: ParsedSong[];
 }
+
+/**
+ * Above this many songs, "guardar todas" asks first.
+ *
+ * The header checkbox sits directly above 276 rows of identical checkboxes and
+ * is the one that means *all of them* — a mis-tap starts a run of hundreds of
+ * fetches that cannot be called back. Below the threshold the run is over in a
+ * moment and the undo is pressing the box again, so a dialog there is only a
+ * second tap on every deliberate press.
+ *
+ * Written as its own number and deliberately not `OFFLINE_SAVE_CONCURRENCY`,
+ * which happens to be the same six: that one is how fast the pool runs, this
+ * one is how many songs are worth asking about, and tuning either should not
+ * move the other.
+ */
+const BULK_CONFIRM_MIN = 6;
 
 /**
  * The ring that says this row is working.
@@ -89,6 +105,12 @@ export default function SongList({ songs }: SongListProps) {
   // removing songs is the same lie the checkbox used to tell (BUG-012).
   const [bulkAction, setBulkAction] = useState<"save" | "remove" | null>(null);
   const isBulkRunning = bulkAction !== null;
+
+  // What the dialog is asking about, held between the press and the answer.
+  // The page behind a modal is inert, so the filters cannot move underneath it
+  // and this list cannot go stale while the question is on screen.
+  const confirmRef = useRef<HTMLDialogElement>(null);
+  const [pendingSaves, setPendingSaves] = useState<ParsedSong[]>([]);
 
   // Get unique values for filters
   const uniqueKeys = useMemo(() => {
@@ -201,15 +223,7 @@ export default function SongList({ songs }: SongListProps) {
    * cache, so a song that did not save is a box that did not tick and a count
    * that does not include it.
    */
-  const toggleAllOffline = async () => {
-    if (isBulkRunning) return;
-
-    const removing = allFilteredSongsOffline;
-    const targets = filteredSongs.filter((song) =>
-      removing ? offlineSongs.has(song.slug) : !offlineSongs.has(song.slug),
-    );
-    if (targets.length === 0) return;
-
+  const runBulk = async (removing: boolean, targets: ParsedSong[]) => {
     setBulkAction(removing ? "remove" : "save");
     const queue = [...targets];
     const worker = async () => {
@@ -236,6 +250,41 @@ export default function SongList({ songs }: SongListProps) {
     } finally {
       setBulkAction(null);
     }
+  };
+
+  /**
+   * The header checkbox, and the only control in the app that asks first.
+   *
+   * The question is asked about `targets` and not about `filteredSongs`: with
+   * 200 visible and 198 already on the phone the box is offering to save two,
+   * and "¿guardar 200 canciones?" over a two-song run is the wrong number and
+   * the wrong warning.
+   *
+   * **Only the saving direction is guarded.** Un-saving is the same mis-tap and
+   * deliberately still goes straight through — it is instant, it costs the
+   * reader nothing but a re-download, and `emptyMessage` below already exists
+   * to catch the one confusing thing it does.
+   */
+  const toggleAllOffline = () => {
+    if (isBulkRunning) return;
+
+    const removing = allFilteredSongsOffline;
+    const targets = filteredSongs.filter((song) =>
+      removing ? offlineSongs.has(song.slug) : !offlineSongs.has(song.slug),
+    );
+    if (targets.length === 0) return;
+
+    if (!removing && targets.length >= BULK_CONFIRM_MIN && confirmRef.current) {
+      setPendingSaves(targets);
+      // Reset by `showModal()` in current browsers, and set here anyway: the
+      // whole decision below hangs off this string, and a stale "save" from the
+      // last time round would start the run nobody confirmed.
+      confirmRef.current.returnValue = "";
+      confirmRef.current.showModal();
+      return;
+    }
+
+    void runBulk(removing, targets);
   };
 
   const savedCount = offlineSongs.size;
@@ -409,54 +458,54 @@ export default function SongList({ songs }: SongListProps) {
         <table className="uv-table">
           <thead>
             <tr>
-              {/* Titled like the other five columns. The word is the half a
-                  sighted reader was missing: the input has carried an
-                  aria-label since M7, so the column read fine to a screen
-                  reader and to nobody else (BUG-012).
+              {/* No caption over the box, reverting BUG-012's half of the fix.
+                  GUARDAR only fitted a 78px column stacked *above* the
+                  checkbox, and that stack is what made this heading a head
+                  taller than the five beside it — so the whole header row was
+                  sized by a word, and the titles sat on a different line from
+                  the control they were level with everywhere else.
 
-                  The name flips with the state, because a checked box is
-                  about to un-save and announcing "Guardar" on it says the
-                  opposite of what it does. */}
+                  What the word was for is not lost: the input's aria-label
+                  says the column out loud, and `.uv-list-saved` above the table
+                  is the sentence a sighted reader gets — including below 640px,
+                  where this row is not drawn at all and never carried it. */}
               <th className="uv-table__check">
-                <span className="uv-table__check-head">
-                  <span>Guardar</span>
-                  <label className="uv-check">
-                    {/* `aria-disabled` rather than `disabled` while the run is
-                        going: disabling an input blurs it, so a keyboard user
-                        who ticks this box is thrown back to the top of the
-                        document for as long as 276 songs take. The handler
-                        refuses the second press instead. `disabled` is still
-                        right for the empty table — there is nothing there to
-                        keep focus on. */}
-                    <input
-                      type="checkbox"
-                      checked={allFilteredSongsOffline}
-                      onChange={toggleAllOffline}
-                      disabled={filteredSongs.length === 0}
-                      aria-disabled={isBulkRunning || undefined}
-                      // Same as the rows: while its ring is up, this cell says
-                      // one thing (BUG-013). Here the two flags happen to
-                      // agree, and they are still written separately, because
-                      // one is "you cannot press this" and the other is "this
-                      // is working" — and in the rows below they diverge.
-                      data-busy={isBulkRunning || undefined}
-                      aria-label={
-                        allFilteredSongsOffline
-                          ? "Quitar del teléfono todas las visibles"
-                          : "Guardar en el teléfono todas las visibles"
+                <label className="uv-check">
+                  {/* `aria-disabled` rather than `disabled` while the run is
+                      going: disabling an input blurs it, so a keyboard user
+                      who ticks this box is thrown back to the top of the
+                      document for as long as 276 songs take. The handler
+                      refuses the second press instead. `disabled` is still
+                      right for the empty table — there is nothing there to
+                      keep focus on. */}
+                  <input
+                    type="checkbox"
+                    checked={allFilteredSongsOffline}
+                    onChange={toggleAllOffline}
+                    disabled={filteredSongs.length === 0}
+                    aria-disabled={isBulkRunning || undefined}
+                    // Same as the rows: while its ring is up, this cell says
+                    // one thing (BUG-013). Here the two flags happen to
+                    // agree, and they are still written separately, because
+                    // one is "you cannot press this" and the other is "this
+                    // is working" — and in the rows below they diverge.
+                    data-busy={isBulkRunning || undefined}
+                    aria-label={
+                      allFilteredSongsOffline
+                        ? "Quitar del teléfono todas las visibles"
+                        : "Guardar en el teléfono todas las visibles"
+                    }
+                  />
+                  {isBulkRunning && (
+                    <SavingRing
+                      label={
+                        bulkAction === "remove"
+                          ? "Quitando del teléfono las canciones visibles"
+                          : "Guardando en el teléfono las canciones visibles"
                       }
                     />
-                    {isBulkRunning && (
-                      <SavingRing
-                        label={
-                          bulkAction === "remove"
-                            ? "Quitando del teléfono las canciones visibles"
-                            : "Guardando en el teléfono las canciones visibles"
-                        }
-                      />
-                    )}
-                  </label>
-                </span>
+                  )}
+                </label>
               </th>
               <th>Título</th>
               <th>Artista</th>
@@ -579,6 +628,51 @@ export default function SongList({ songs }: SongListProps) {
           </tbody>
         </table>
       </div>
+
+      {/* A native `<dialog>`, so the focus trap, Esc, the inert page behind it
+          and the top layer are the platform's problem and not this file's —
+          which is the whole reason there is no modal component here.
+
+          `method="dialog"` means neither button needs a handler: submitting
+          closes with that button's value and `onClose` is the single place the
+          answer is read. Esc and a backdrop dismissal close with an empty
+          value, so they cancel through the same line rather than needing one
+          of their own. */}
+      <dialog
+        ref={confirmRef}
+        className="uv-confirm"
+        aria-labelledby="uv-confirm-title"
+        onClose={() => {
+          if (confirmRef.current?.returnValue === "guardar") {
+            void runBulk(false, pendingSaves);
+          }
+        }}
+      >
+        <form method="dialog">
+          <h2 id="uv-confirm-title" className="uv-confirm__title">
+            ¿Guardar {pendingSaves.length} canciones en el teléfono?
+          </h2>
+          <p className="uv-confirm__text">
+            Se descargan una por una y puede tardar un rato. Después las tienes
+            sin señal, y puedes quitarlas cuando quieras.
+          </p>
+          <div className="uv-confirm__actions">
+            {/* Cancelar first, and not only for the reading order: `showModal`
+                focuses the first focusable child, so the mis-tap this dialog
+                exists for lands on the way out. */}
+            <button type="submit" value="" className="uv-btn uv-btn--ghost">
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              value="guardar"
+              className="uv-btn uv-btn--primary"
+            >
+              Guardar todas
+            </button>
+          </div>
+        </form>
+      </dialog>
     </div>
   );
 }
