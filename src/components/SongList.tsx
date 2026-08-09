@@ -77,6 +77,8 @@ export default function SongList({ songs }: SongListProps) {
     setArtistFilter,
     difficultyFilter,
     setDifficultyFilter,
+    savedOnly,
+    setSavedOnly,
     hasFilters,
     clearFilters,
   } = useSongFilters();
@@ -128,9 +130,31 @@ export default function SongList({ songs }: SongListProps) {
         difficultyFilter === "" ||
         songDifficulty(song.metadata.chords.length) === difficultyFilter;
 
-      return matchesSearch && matchesKey && matchesArtist && matchesDifficulty;
+      // The fifth filter asks the set the checkbox column already writes to —
+      // no second copy of what "saved" means, and it narrows the same list the
+      // other four narrow rather than opening a second one (vault
+      // DECISIONS.md 34).
+      const matchesSaved = !savedOnly || offlineSongs.has(song.slug);
+
+      return (
+        matchesSearch &&
+        matchesKey &&
+        matchesArtist &&
+        matchesDifficulty &&
+        matchesSaved
+      );
     });
-  }, [songs, searchTerm, keyFilter, artistFilter, difficultyFilter]);
+  }, [
+    songs,
+    searchTerm,
+    keyFilter,
+    artistFilter,
+    difficultyFilter,
+    savedOnly,
+    // Not decorative: with the filter on, un-ticking a row has to drop it out
+    // of the table, and `offlineSongs` is a new Set on every save and remove.
+    offlineSongs,
+  ]);
 
   // Check if all filtered songs are saved offline
   const allFilteredSongsOffline = useMemo(() => {
@@ -216,6 +240,23 @@ export default function SongList({ songs }: SongListProps) {
 
   const savedCount = offlineSongs.size;
 
+  /**
+   * Why the table is empty, and it is three different reasons.
+   *
+   * *"Prueba con el nombre del artista"* is advice for a search that missed. It
+   * is the wrong thing to say to somebody who has simply never ticked a box —
+   * and it is the wrong thing to say to somebody who just pressed the header
+   * checkbox with the filter on, which un-saves every visible song and empties
+   * the table under them. That press is the control doing exactly what its
+   * label says, so it is not guarded; this is where it lands softly.
+   */
+  const emptyMessage =
+    savedOnly && savedCount === 0
+      ? "Todavía no has guardado ninguna. Marca la casilla de cualquier canción y la tendrás aquí, y en el teléfono sin señal."
+      : savedOnly
+        ? "Ninguna de tus canciones guardadas coincide con los otros filtros."
+        : "No encontramos esa canción. Prueba con el nombre del artista.";
+
   return (
     <div>
       <div className="uv-list-head">
@@ -235,7 +276,15 @@ export default function SongList({ songs }: SongListProps) {
             worked once — shown to readers who had never used the feature and
             taken away from everyone who had (BUG-012). Below 640px the table
             drops its header row, so on a phone this is the only place the
-            column is explained at all. */}
+            column is explained at all.
+
+            **The count above it is not this number and is left alone.** With
+            *Guardadas* on and nothing else, the two do read the same figure
+            twice — but they part company the moment a second filter joins
+            (3 canciones over 12 guardadas), and one of them is a live count of
+            the table while the other is a live count of the phone. Suppressing
+            either in the one state where they agree would hide a number
+            somebody is watching change. */}
         <p className="uv-list-saved">
           <IconCheck size={16} />
           <span>
@@ -321,6 +370,30 @@ export default function SongList({ songs }: SongListProps) {
           ))}
         </fieldset>
 
+        {/* One chip, borrowing the dificultad chips' own class rather than
+            growing a control of its own: this is a two-state filter over a set
+            of two, which is what those three already are one of.
+
+            It is not a fourth combobox — DECISIONS.md 17's answer was for 181
+            artists and does not generalise down to two — and it is not a
+            checkbox, because the row it stands in already says how a filter
+            looks here, and every other checkbox on this screen means *save
+            this song*.
+
+            The saved count in `.uv-list-head` stays prose and is deliberately
+            not this control. It is the only place the checkbox column is
+            explained below 640px (BUG-012), and a line that both explains a
+            column and toggles a filter gets pressed by people trying to read
+            it. */}
+        <button
+          type="button"
+          className="uv-segmented__option"
+          aria-pressed={savedOnly}
+          onClick={() => setSavedOnly((current) => !current)}
+        >
+          Guardadas
+        </button>
+
         {hasFilters && (
           <button
             type="button"
@@ -402,10 +475,7 @@ export default function SongList({ songs }: SongListProps) {
               // card grid and this one is a single full-width cell.
               <tr className="uv-table__empty-row">
                 <td colSpan={7}>
-                  <div className="uv-cell uv-table__empty">
-                    No encontramos esa canción. Prueba con el nombre del
-                    artista.
-                  </div>
+                  <div className="uv-cell uv-table__empty">{emptyMessage}</div>
                 </td>
               </tr>
             ) : (

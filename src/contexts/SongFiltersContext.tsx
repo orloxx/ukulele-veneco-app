@@ -59,6 +59,19 @@ interface SongFiltersContextType {
    */
   difficultyFilter: Difficulty | "";
   setDifficultyFilter: Dispatch<SetStateAction<Difficulty | "">>;
+  /**
+   * Show only the songs saved to the phone.
+   *
+   * A boolean where the other four are strings, because this one does not
+   * choose among values — the set it selects by is `offlineSongs`, which lives
+   * in `OfflineSongsContext` and is deliberately not copied here.
+   *
+   * **It must default to `false`.** That set fills from IndexedDB in an effect,
+   * so it is empty on the list's first render; a filter that started on would
+   * show an empty table until the read landed and then fill it in.
+   */
+  savedOnly: boolean;
+  setSavedOnly: Dispatch<SetStateAction<boolean>>;
   /** Whether anything is narrowing the list — what shows *Limpiar filtros*. */
   hasFilters: boolean;
   clearFilters: () => void;
@@ -73,16 +86,20 @@ export function SongFiltersProvider({ children }: { children: ReactNode }) {
   const [keyFilter, setKeyFilter] = useState<string>("");
   const [artistFilter, setArtistFilter] = useState<string>("");
   const [difficultyFilter, setDifficultyFilter] = useState<Difficulty | "">("");
+  const [savedOnly, setSavedOnly] = useState(false);
 
   // `hasFilters` and `clearFilters` live here rather than in the list because
   // this is where the cleared state is defined: a fifth filter is then one
   // edit, in the file that would have to change anyway, instead of three that
   // can be made separately and drift.
+  //
+  // M16 was that fifth filter, and it was that one edit.
   const clearFilters = useCallback(() => {
     setSearchTerm("");
     setKeyFilter("");
     setArtistFilter("");
     setDifficultyFilter("");
+    setSavedOnly(false);
   }, []);
 
   const value = useMemo(
@@ -95,14 +112,24 @@ export function SongFiltersProvider({ children }: { children: ReactNode }) {
       setArtistFilter,
       difficultyFilter,
       setDifficultyFilter,
+      savedOnly,
+      setSavedOnly,
       hasFilters:
         searchTerm !== "" ||
         keyFilter !== "" ||
         artistFilter !== "" ||
-        difficultyFilter !== "",
+        difficultyFilter !== "" ||
+        savedOnly,
       clearFilters,
     }),
-    [searchTerm, keyFilter, artistFilter, difficultyFilter, clearFilters],
+    [
+      searchTerm,
+      keyFilter,
+      artistFilter,
+      difficultyFilter,
+      savedOnly,
+      clearFilters,
+    ],
   );
 
   return (
