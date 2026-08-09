@@ -1625,7 +1625,10 @@ samp {
 .uv-table__difficulty {
   width: 130px;
 }
-.uv-table__empty {
+/* Written against `.uv-table td > .uv-cell` rather than as a bare class: that
+   rule is one class heavier, so a plain `.uv-table__empty` loses the padding
+   back to it and the empty state is one ordinary row tall (BUG-020). */
+.uv-table td > .uv-cell.uv-table__empty {
   padding: var(--space-12) var(--space-4);
   text-align: center;
   color: var(--text-muted);
@@ -2778,10 +2781,16 @@ samp {
   .uv-table__check-cell {
     justify-content: flex-end;
   }
-  .uv-table__empty-row {
+  /* Both carry the selector they have to beat, for the reason at the base rule:
+     `.uv-table tbody tr` is two elements heavier than the bare class, so the
+     empty row stayed a card grid and its single cell — `:nth-child(1)`, like
+     every row's checkbox — was placed into the `check` column. The four empty
+     columns collapse to zero and their column-gaps do not, which put the
+     centred message 33px right of centre (BUG-020). */
+  .uv-table tbody tr.uv-table__empty-row {
     display: block;
   }
-  .uv-table__empty {
+  .uv-table tbody td > .uv-cell.uv-table__empty {
     padding: var(--space-10) var(--space-4);
   }
 }
