@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import { FilterCombobox, foldForSearch } from "@/components/FilterCombobox";
-import { IconCheck, IconSearch } from "@/components/icons";
+import { IconCheck, IconDownload, IconSearch } from "@/components/icons";
 import {
   parsedSongToStoredSong,
   useOfflineSongs,
@@ -40,15 +40,15 @@ const BULK_CONFIRM_MIN = 6;
 /**
  * The ring that says this row is working.
  *
- * It is drawn *around* the checkbox rather than beside it, and the box is not
- * removed while it spins: a spinner in a 78px column that pushes the box aside
- * makes 276 rows jitter as they tick over one by one, and swapping the input
- * out drops keyboard focus to the top of the document mid-save.
+ * It is drawn *over* the icon rather than beside it, and the button is not
+ * removed while it spins: a spinner in a 78px column that pushes the control
+ * aside makes 276 rows jitter as they tick over one by one, and swapping the
+ * button out drops keyboard focus to the top of the document mid-save.
  */
 function SavingRing({ label }: { label: string }) {
   return (
     <>
-      <span className="uv-check__spinner" aria-hidden="true" />
+      <span className="uv-spinner" aria-hidden="true" />
       <span className="uv-sr-only">{label}</span>
     </>
   );
@@ -443,6 +443,59 @@ export default function SongList({ songs }: SongListProps) {
           Guardadas
         </button>
 
+        {/* *Guardar todas* lives here and not over the table, and that is the
+            whole reason it is a button (2026-08-10).
+
+            It used to be a checkbox in the table's header row, which below
+            640px is `display: none` — so the one control that saves a filtered
+            selection did not exist on a phone, which is the device the whole
+            app is for. Anything that lives in `thead` has that problem. This
+            row does not: it is the row that *decides* what "las visibles"
+            means, it already holds one action button, and it is drawn at every
+            width.
+
+            One control at every width rather than a phone copy of the header
+            one — `DECISIONS.md` 34's argument about a second table applies to a
+            second control, and the header checkbox is gone rather than hidden.
+            What the move buys on the way past is a visible name and a count:
+            the thing BUG-012 wanted for this action and could not fit in a
+            78px column.
+
+            Before *Limpiar filtros* rather than after, so that pressing this
+            button is not a moving target — *Limpiar* comes and goes with
+            `hasFilters` and would shove it sideways.
+
+            Hidden on an empty table instead of disabled: there is nothing to
+            act on and nothing there to keep focus on, which is what the
+            checkbox's own `disabled` used to say. */}
+        {filteredSongs.length > 0 && (
+          <button
+            type="button"
+            onClick={toggleAllOffline}
+            aria-disabled={isBulkRunning || undefined}
+            className={`uv-btn ${
+              allFilteredSongsOffline ? "uv-btn--saved" : "uv-btn--secondary"
+            }`}
+          >
+            {allFilteredSongsOffline ? (
+              <IconCheck size={17} />
+            ) : (
+              <IconDownload size={17} />
+            )}
+            <span>
+              {isBulkRunning
+                ? bulkAction === "remove"
+                  ? "Quitando..."
+                  : "Guardando..."
+                : `${allFilteredSongsOffline ? "Quitar" : "Guardar"} ${
+                    filteredSongs.length === 1
+                      ? "la canción"
+                      : `las ${filteredSongs.length}`
+                  }`}
+            </span>
+          </button>
+        )}
+
         {hasFilters && (
           <button
             type="button"
@@ -458,55 +511,19 @@ export default function SongList({ songs }: SongListProps) {
         <table className="uv-table">
           <thead>
             <tr>
-              {/* No caption over the box, reverting BUG-012's half of the fix.
-                  GUARDAR only fitted a 78px column stacked *above* the
-                  checkbox, and that stack is what made this heading a head
-                  taller than the five beside it — so the whole header row was
-                  sized by a word, and the titles sat on a different line from
-                  the control they were level with everywhere else.
+              {/* Empty, and it is the second thing this cell has lost.
 
-                  What the word was for is not lost: the input's aria-label
-                  says the column out loud, and `.uv-list-saved` above the table
-                  is the sentence a sighted reader gets — including below 640px,
-                  where this row is not drawn at all and never carried it. */}
-              <th className="uv-table__check">
-                <label className="uv-check">
-                  {/* `aria-disabled` rather than `disabled` while the run is
-                      going: disabling an input blurs it, so a keyboard user
-                      who ticks this box is thrown back to the top of the
-                      document for as long as 276 songs take. The handler
-                      refuses the second press instead. `disabled` is still
-                      right for the empty table — there is nothing there to
-                      keep focus on. */}
-                  <input
-                    type="checkbox"
-                    checked={allFilteredSongsOffline}
-                    onChange={toggleAllOffline}
-                    disabled={filteredSongs.length === 0}
-                    aria-disabled={isBulkRunning || undefined}
-                    // Same as the rows: while its ring is up, this cell says
-                    // one thing (BUG-013). Here the two flags happen to
-                    // agree, and they are still written separately, because
-                    // one is "you cannot press this" and the other is "this
-                    // is working" — and in the rows below they diverge.
-                    data-busy={isBulkRunning || undefined}
-                    aria-label={
-                      allFilteredSongsOffline
-                        ? "Quitar del teléfono todas las visibles"
-                        : "Guardar en el teléfono todas las visibles"
-                    }
-                  />
-                  {isBulkRunning && (
-                    <SavingRing
-                      label={
-                        bulkAction === "remove"
-                          ? "Quitando del teléfono las canciones visibles"
-                          : "Guardando en el teléfono las canciones visibles"
-                      }
-                    />
-                  )}
-                </label>
-              </th>
+                  BUG-012 titled it GUARDAR; that came off because the word only
+                  fitted stacked above the box in 78px and a two-line heading in
+                  a row of one-line headings sized the whole header row. Then
+                  the box itself went to the filter row above, because a control
+                  in `thead` does not exist below 640px — see the comment there.
+
+                  What is left is a header for a column of controls, which is a
+                  column that names itself: every button in it carries the
+                  song's own title in its `aria-label`, and the sentence a
+                  sighted reader gets is `.uv-list-saved` above the table. */}
+              <th className="uv-table__check" />
               <th>Título</th>
               <th>Artista</th>
               <th className="uv-table__year">Año</th>
@@ -538,32 +555,53 @@ export default function SongList({ songs }: SongListProps) {
                   <tr key={song.slug} aria-busy={isSaving || undefined}>
                     <td className="uv-table__check">
                       <div className="uv-cell uv-table__check-cell">
-                        <label className="uv-check">
-                          <input
-                            type="checkbox"
-                            checked={isSaved}
-                            onChange={() => toggleOffline(song)}
-                            // Without this a tap on the box navigates: the cells
-                            // around it are all links to the song.
-                            onClick={(e) => e.stopPropagation()}
-                            // Every box in the table, not only the one in
-                            // flight: while "guardar todas" is running, a row
-                            // that has not come up yet is not a control the
-                            // reader can usefully press.
-                            aria-disabled={
-                              isBulkRunning || isSaving || undefined
-                            }
-                            // Per song, and deliberately not the line above:
-                            // this is what hides the box, and during a bulk
-                            // run every box is aria-disabled while only six
-                            // are actually working (BUG-013).
-                            data-busy={isSaving || undefined}
-                            aria-label={
-                              isSaved
-                                ? `Quitar ${song.metadata.title} del teléfono`
-                                : `Guardar ${song.metadata.title} en el teléfono`
-                            }
-                          />
+                        {/* The song sheet's own two icons, not a tick-box
+                            (2026-08-10). `SaveOfflineButton` has drawn this
+                            exact fact with a download arrow for the action and
+                            a tick for the state since M7 — turquesa is the one
+                            action colour, verde means saved — and the list was
+                            the only place in the app that said the same thing
+                            about the same song in a different vocabulary.
+
+                            A button and not an `<input>`: what this does is run
+                            two fetches and a write, which is an action, and a
+                            checkbox promises a form. The state it *reports* is
+                            the tick, and `aria-label` says what the press does
+                            rather than leaving it to a checked attribute. */}
+                        <button
+                          type="button"
+                          className="uv-save-toggle"
+                          onClick={(e) => {
+                            // Without this a tap on the control navigates: the
+                            // cells around it are all links to the song.
+                            e.stopPropagation();
+                            toggleOffline(song);
+                          }}
+                          // Every button in the table, not only the one in
+                          // flight: while "guardar todas" is running, a row
+                          // that has not come up yet is not a control the
+                          // reader can usefully press. `aria-disabled` and not
+                          // `disabled`, because disabling the focused one
+                          // throws a keyboard reader to the top of the
+                          // document; the handler refuses the press instead.
+                          aria-disabled={isBulkRunning || isSaving || undefined}
+                          data-saved={isSaved || undefined}
+                          // Per song, and deliberately not the line above:
+                          // this is what hides the icon, and during a bulk
+                          // run every button is aria-disabled while only six
+                          // are actually working (BUG-013).
+                          data-busy={isSaving || undefined}
+                          aria-label={
+                            isSaved
+                              ? `Quitar ${song.metadata.title} del teléfono`
+                              : `Guardar ${song.metadata.title} en el teléfono`
+                          }
+                        >
+                          {isSaved ? (
+                            <IconCheck size={19} />
+                          ) : (
+                            <IconDownload size={19} />
+                          )}
                           {isSaving && (
                             <SavingRing
                               label={
@@ -573,7 +611,7 @@ export default function SongList({ songs }: SongListProps) {
                               }
                             />
                           )}
-                        </label>
+                        </button>
                       </div>
                     </td>
                     <SongCell slug={song.slug} className="uv-td-title">

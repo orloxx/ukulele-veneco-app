@@ -923,81 +923,90 @@ samp {
   font-size: var(--size-body-sm);
 }
 
-/* Checkbox — the offline toggle in the song table lives on this. The 18px box is
-   under --touch-min; the label around it is not, which is what keeps the target
-   reachable in a dense row where the whole row is also a link. */
-.uv-check {
+/* The offline toggle in the song table — one per row, 276 of them.
+
+   It was a checkbox until 2026-08-10 and is now the song sheet's own pair of
+   icons: `IconDownload` for the action, `IconCheck` for the state, turquesa
+   because turquesa is the one action colour, verde because verde means saved
+   everywhere in this system. `SaveOfflineButton` has drawn the same fact about
+   the same song that way since M7, and the list was the only place saying it
+   in a second vocabulary.
+
+   **It paints its own box rather than borrowing `.uv-iconbtn`.** That primitive
+   is transparent and `--text-muted`, which is right in the header, where a bare
+   glyph among other bare glyphs reads as chrome. In a table row of plain text a
+   bare glyph reads as decoration, and this one has to read as pressable at a
+   glance — on a phone, where there is no hover to discover it with. The box is
+   what does that; the colour is what says which state it is in.
+
+   --touch-min in both directions: the app is played standing up with a ukulele
+   in the other hand, and the row around this is no longer a fallback target the
+   way it was when the paint was 18px. */
+.uv-save-toggle {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  min-width: var(--touch-min);
-  min-height: var(--touch-min);
-  cursor: pointer;
-}
-.uv-check input {
-  appearance: none;
-  margin: 0;
-  width: 18px;
-  height: 18px;
-  flex: none;
-  background: var(--surface-raised);
-  border: var(--border-thick) solid var(--line);
-  border-radius: var(--radius-xs);
+  display: inline-grid;
+  place-items: center;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  padding: 0;
+  border: var(--border-hairline) solid var(--line-soft);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  color: var(--action-primary);
   cursor: pointer;
   transition:
     background var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out);
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
 }
-.uv-check input:hover {
+.uv-save-toggle:hover {
   border-color: var(--action-primary);
+  background: var(--action-primary-tint);
 }
-.uv-check input:checked {
-  background: var(--action-primary);
-  border-color: var(--action-primary);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5 6.5 11.5 12.5 4.5'/%3E%3C/svg%3E");
-  background-size: 100%;
+/* The same recipe as `.uv-btn--saved`, deliberately: the two are the same
+   statement about the same song, one in the list and one on its page. */
+.uv-save-toggle[data-saved="true"] {
+  background: var(--status-saved-bg);
+  color: var(--status-saved-text);
+  border-color: currentColor;
 }
-.uv-check input:disabled,
-.uv-check input[aria-disabled="true"] {
+.uv-save-toggle[aria-disabled="true"] {
   opacity: 0.4;
   cursor: not-allowed;
 }
-/* While *this* song is in flight the box is not drawn at all: the ring is the
-   whole of what that cell says, and a faded checkbox inside a spinner is two
+/* While *this* song is in flight the icon is not drawn at all: the ring is the
+   whole of what that cell says, and a faded glyph inside a spinner is two
    indicators for one state (BUG-013).
 
-   `opacity: 0` and not `visibility: hidden` or `display: none`. The input has
-   to stay focusable — that is the entire reason the boxes go `aria-disabled`
-   rather than `disabled`, since disabling one blurs it and throws a keyboard
-   user to the top of the document — and both of those make it unfocusable, so
-   either would reintroduce the thing the markup was shaped to avoid. Painted
-   or not, it stays in the tab order and keeps the cell's geometry.
+   The glyph goes and the button stays. It is still focusable and still holds
+   the cell's geometry — which is the entire reason these carry `aria-disabled`
+   rather than `disabled`, since disabling the focused one throws a keyboard
+   reader to the top of the document mid-run.
 
    Keyed off `data-busy`, which is per song, and not off `aria-disabled`, which
-   during "guardar todas" is every box in the table. */
-.uv-check input[data-busy="true"] {
+   during "guardar todas" is every button in the table. */
+.uv-save-toggle[data-busy="true"] svg {
   opacity: 0;
 }
 
-/* Saving is a write to IndexedDB and two network fetches (BUG-008), so the box
-   cannot tick until the song really is on the phone — and until M8 nothing said
-   so, which read as a dead control for as long as the fetch took.
+/* Saving is a write to IndexedDB and two network fetches (BUG-008), so the row
+   cannot report the song as saved until it really is on the phone — and until
+   M8 nothing said so, which read as a dead control for as long as the fetch
+   took.
 
-   The ring is drawn *around* the box rather than beside it. Beside it, adding a
-   sibling to a centred flex label shifts the box sideways, and "guardar todas"
-   is 276 rows doing that one after another. Around it, nothing moves. */
-/* 22px, not the 28 it was: at 28 it was a ring drawn *around* an 18px box, and
-   since BUG-013 hid the box it is the only thing in the cell, so it sits where
-   the box sat rather than around where the box was.
+   The ring is drawn *over* the control, never beside it. Beside it, adding a
+   sibling shifts the icon sideways, and "guardar todas" is 276 rows doing that
+   one after another. Over it, nothing moves.
+
+   22px inside a 44px button, and it is the only thing drawn there while it
+   spins — BUG-013 hides the glyph underneath rather than fading it.
 
    The track is the other half of that. A bare arc on transparent was legible
    as the moving part of a two-part control; alone it is a hairline crescent
    that reads as a rendering artefact. A faint full ring with one bright
    quarter is a spinner at any single frame — which is what a screenshot, and a
    glance, both are. */
-.uv-check__spinner {
+.uv-spinner {
   position: absolute;
   width: 22px;
   height: 22px;
@@ -1018,7 +1027,7 @@ samp {
    motion tokens above cannot do this — they zero a duration, and an infinite
    animation with a 0ms duration is not a still frame. */
 @media (prefers-reduced-motion: reduce) {
-  .uv-check__spinner {
+  .uv-spinner {
     animation: none;
     border-color: var(--action-primary);
   }
@@ -1279,8 +1288,9 @@ samp {
   text-align: left;
   /* Middle, and it used to be top: the save column carried GUARDAR stacked over
      its checkbox, so the heading was two lines tall and the other five had to
-     hang from the same first line to look level with it. With the word gone the
-     column is just the box, and the five titles centre on it. */
+     hang from the same first line to look level with it. Both are gone — the
+     word, then the box that followed it to the filter row — so this row is six
+     one-line headings and nothing has to hang from anything. */
   vertical-align: middle;
   background: var(--surface-sunken);
   border-bottom: var(--border-hairline) solid var(--line);
@@ -1635,16 +1645,9 @@ samp {
   width: 78px;
   text-align: center;
 }
-/* No padding override and no `.uv-table__check-head` any more: the heading is
-   the checkbox, at the cell's own padding, over the boxes in the rows below.
-
-   The one thing it still needs is the centring back. `.uv-table thead th` sets
-   `text-align: left` and outweighs the bare `.uv-table__check` above, which the
-   grid inside the old caption stack was quietly overriding; without this the
-   header box sits 1px left of every box in its column. */
-.uv-table thead th.uv-table__check {
-  text-align: center;
-}
+/* The header cell is empty and carries no rule of its own: the column's caption
+   and then its control both left, and a column of buttons whose labels each name
+   their own song does not need a title. The 78px width above is all it wants. */
 .uv-table__check-cell {
   display: grid;
   place-items: center;
