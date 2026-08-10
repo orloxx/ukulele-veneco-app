@@ -20,8 +20,9 @@ interface SaveOfflineButtonProps {
 
 export function SaveOfflineButton({ song, className }: SaveOfflineButtonProps) {
   // `isSaving` comes from the context rather than a local flag: the list's
-  // checkbox shows the same state for the same song, and one source is what
-  // keeps the two saying the same thing.
+  // toggle shows the same state for the same song, and one source is what
+  // keeps the two saying the same thing. Since 2026-08-10 it draws it with
+  // these same two icons as well.
   const { isOffline, isSaving, toggleOffline } = useSaveOffline(song);
 
   const handleClick = async () => {

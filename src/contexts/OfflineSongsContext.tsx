@@ -36,7 +36,7 @@ interface OfflineSongsContextType {
    *
    * It lives here rather than in a component because *being saved* is a
    * property of the operation, not of the screen watching it: the song page's
-   * button and the list's checkbox are the same state, and holding it twice is
+   * button and the list's toggle are the same state, and holding it twice is
    * how the two grow separate vocabularies for one thing.
    */
   savingSlugs: Set<string>;
@@ -159,7 +159,7 @@ export function OfflineSongsProvider({ children }: { children: ReactNode }) {
         const result = await removeSongFromDB(slug);
         if (result.success) {
           // Unsaving has to take the pages with it, or a song stays readable
-          // after being removed and the checkbox is lying in the other
+          // after being removed and the row is lying in the other
           // direction.
           await uncacheSongPages(slug);
           setOfflineSongs((prev) => {

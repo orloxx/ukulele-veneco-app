@@ -10,7 +10,7 @@
  * **What breaks if they disagree is invisible.** `cacheSongPages()` opens the
  * name it knows and writes there; the worker serves from the name *it* knows.
  * Point them at two different buckets and saving still reports success, the
- * checkbox still ticks, IndexedDB still says *Guardada* — and the song does not
+ * row still ticks, IndexedDB still says *Guardada* — and the song does not
  * open with the network off. That is BUG-008 exactly, arrived at from the other
  * direction, and no build step and no type can see it. Only opening a saved song
  * on a phone in aeroplane mode can.

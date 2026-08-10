@@ -151,7 +151,7 @@
 
      **Verde is deliberately not here**, and it is the colour a traffic light
      would have reached for first. Verde means *saved offline* in this app, and
-     the difficulty chip's own row carries the save checkbox — a green chip
+     the difficulty chip's own row carries the save toggle — a green chip
      beside a green tick is one colour saying two things. Turquesa is the calm
      end of the scale instead, and it means nothing else in the song table. */
   --difficulty-facil: var(--turquesa-700);
@@ -1047,7 +1047,7 @@ samp {
 /* ---------------- Confirm dialog ----------------
    A native `<dialog>`, so the focus trap, Esc, the inert page behind it and the
    top layer come for free and only the paint is written here. One caller: the
-   song table's header checkbox, which offers to save every visible song.
+   the filter row's *Guardar las N*, which saves every visible song.
 
    `margin: auto` is not decorative. A modal dialog is centred by the UA's
    `position: fixed; inset: 0; margin: auto`, and Tailwind's preflight zeroes
@@ -2610,9 +2610,10 @@ samp {
    - 640px — the song table stops having room for six columns.
 
    Touch is a token, not a judgement call: nothing tappable goes below
-   --touch-min, because the app is used standing up holding an instrument. The
-   list's 18px checkbox is the single exception, and it sits inside a 44px label
-   in a row that is itself a link.
+   --touch-min, because the app is used standing up holding an instrument. There
+   is no exception any more: the list's 18px checkbox was one, reachable through
+   the 44px label around it, and the button that replaced it on 2026-08-10 is
+   --touch-min in both directions on its own.
    ========================================================================== */
 
 @media (max-width: 900px) {
@@ -2817,15 +2818,15 @@ samp {
     font-size: var(--size-micro);
     margin-top: var(--space-1);
   }
-  /* The save box stays reachable at 44px and stays out of the way: the card's
-     primary action is opening the song, and the whole card is that. */
+  /* The save toggle stays reachable at 44px and stays out of the way: the
+     card's primary action is opening the song, and the whole card is that. */
   .uv-table__check-cell {
     justify-content: flex-end;
   }
   /* Both carry the selector they have to beat, for the reason at the base rule:
      `.uv-table tbody tr` is two elements heavier than the bare class, so the
      empty row stayed a card grid and its single cell — `:nth-child(1)`, like
-     every row's checkbox — was placed into the `check` column. The four empty
+     every row's save toggle — was placed into the `check` column. The four empty
      columns collapse to zero and their column-gaps do not, which put the
      centred message 33px right of centre (BUG-020). */
   .uv-table tbody tr.uv-table__empty-row {
