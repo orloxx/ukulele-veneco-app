@@ -943,7 +943,13 @@ samp {
    in the other hand, and the row around this is no longer a fallback target the
    way it was when the paint was 18px. */
 .uv-save-toggle {
+  /* The one thing in the row that is not the song: the título's link is
+     stretched over the whole row (BUG-021), and both are positioned, so
+     without the z-index the later one in tree order wins and this stops being
+     pressable. It is the button that is lifted and not the 78px cell around
+     it — lifting the cell hands 34px of the row's left edge back to nothing. */
   position: relative;
+  z-index: 1;
   display: inline-grid;
   place-items: center;
   width: var(--touch-min);
@@ -1302,7 +1308,15 @@ samp {
   text-transform: uppercase;
   white-space: nowrap;
 }
+/* The whole row is the target, and it is the `<tr>` that has to make it so.
+   At every width the row is taller than the links inside it — the 44px save
+   button is what sets its height, and below 640px the card's own padding and
+   row-gaps add 24px more — and all of that space belongs to the row, which
+   cannot be a link. So the título's link is stretched over the row from here
+   (BUG-021); before that, half of a card and a third of a row did nothing.
+   What it costs is selecting text in a row, which nobody does to a list. */
 .uv-table tbody tr {
+  position: relative;
   border-bottom: var(--border-hairline) solid var(--line-soft);
 }
 .uv-table tbody tr:last-child {
@@ -1325,6 +1339,14 @@ samp {
 .uv-table .uv-td-title {
   font-weight: var(--weight-semibold);
   color: var(--text-strong);
+}
+/* The row's tap target. It covers the five sibling links too, so a press
+   anywhere but the save button opens the song and there is one hit target per
+   row instead of six sized to their own text. */
+.uv-table .uv-td-title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 .uv-table .uv-td-muted {
   color: var(--text-muted);
@@ -2799,7 +2821,8 @@ samp {
      Column 7 is excluded because it is already a chip at every width — it draws
      its own tinted `.uv-difficulty` inside the link, and letting this rule paint
      the link too puts a sunken box around a tinted box. The link there stays a
-     plain padded block, which is what keeps the whole card a tap target. */
+     plain padded block. What makes the card a tap target is not any of these
+     links but the título's stretched one, at `.uv-td-title::after`. */
   .uv-table tbody td:nth-child(n + 4):not(:nth-child(7)) > a {
     display: inline-flex;
     align-items: center;

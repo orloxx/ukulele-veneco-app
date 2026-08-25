@@ -57,9 +57,12 @@ function SavingRing({ label }: { label: string }) {
 /**
  * One cell of the table.
  *
- * Every cell except the checkbox is a link to the song, so the whole row is a
- * target — which is the only reason the 18px checkbox is allowed to be under
- * `--touch-min`.
+ * Every cell except the save button is a link to the song, but none of them is
+ * what makes the row tappable: the row is taller than its text at every width,
+ * and the space that is left over belongs to the `<tr>`. What paves it is the
+ * título's stretched pseudo-element in `globals.css` (BUG-021), so the five
+ * links below it are read by a pointer as one target and by a keyboard as
+ * five — hence `uv-td-title` is the one that carries it.
  */
 function SongCell({
   slug,
