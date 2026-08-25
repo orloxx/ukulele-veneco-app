@@ -61,7 +61,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "El Ukulele Veneco App",
   description:
-    "Canciones venezolanas adaptadas al ukulele. Basado en el cancionero de Ciro Durán.",
+    "Canciones venezolanas con sus acordes para ukulele y cuatro. El cancionero de Ciro Durán, en el teléfono y sin conexión.",
 
   manifest: "/manifest.json",
 
@@ -108,13 +108,13 @@ export const metadata: Metadata = {
     locale: "es_VE",
     siteName: "El Ukulele Veneco App",
     title: "El Ukulele Veneco App",
-    description: "Canciones venezolanas adaptadas al ukulele",
+    description: "Canciones venezolanas con sus acordes para ukulele y cuatro",
   },
 
   twitter: {
     card: "summary",
     title: "El Ukulele Veneco App",
-    description: "Canciones venezolanas adaptadas al ukulele",
+    description: "Canciones venezolanas con sus acordes para ukulele y cuatro",
   },
 };
 

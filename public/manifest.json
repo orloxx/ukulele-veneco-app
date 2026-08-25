@@ -1,7 +1,7 @@
 {
   "name": "El Ukulele Veneco App",
   "short_name": "Ukulele Veneco",
-  "description": "Canciones venezolanas adaptadas al ukulele",
+  "description": "Canciones venezolanas con sus acordes para ukulele y cuatro",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#faf6ee",

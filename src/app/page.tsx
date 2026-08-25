@@ -8,25 +8,37 @@ import { EXTERNAL_URLS, SITE_INFO } from "@/lib/constants";
  * The landing page — the only screen in the app that is marketing rather than
  * tool, and the only one with display type, a full-colour band and an image.
  *
- * The voice is Venezuelan and spoken: *tú* never *usted*, elisions written the
- * way they are said, buttons as short imperatives.
+ * The voice is Venezuelan and spoken: *tú* never *usted*, buttons as short
+ * imperatives.
+ *
+ * **Written elisions are not part of it, and that is M17.** `pa'` for *para*
+ * was on this page six times, and spelling a word the way it sounds is what
+ * made the copy read as costume instead of as somebody talking — the note came
+ * from Ciro Durán, who wrote the cancionero, and Iker agreed with it. So does
+ * inventing a scene: a page that reaches for a fiesta in a back patio to say
+ * *works offline* is describing an idea of Venezuela rather than the app.
+ *
+ * The vocabulary stays wherever it is the actual word for the thing — cuatro,
+ * cambur pintón, cancionero, tono, traste, cuerda al aire — and so does one
+ * spoken button, because the alternative to *Dale pues* is *Empezar*, which is
+ * a different kind of wrong.
  */
 
 const FEATURES = [
   {
     n: "01",
     title: "Se guarda en el teléfono",
-    body: "Marca las canciones que vas a tocar y quedan en el dispositivo. Sin señal, sin datos, sin excusas — la fiesta sigue en el patio de atrás.",
+    body: "Guarda las canciones que vayas a tocar y se quedan en el teléfono. Sin señal y sin datos siguen ahí, con su letra y sus acordes.",
   },
   {
     n: "02",
     title: "Acordes de verdad, no capturas",
-    body: "Cada acorde se dibuja en su cuadrícula de cuatro cuerdas — G C E A si andas con el ukulele, A D F♯ B si agarraste el cuatro. El círculo arriba es cuerda al aire y el número dice en qué traste empieza.",
+    body: "Cada acorde se dibuja en su cuadrícula de cuatro cuerdas — G C E A en el ukulele, A D F♯ B en el cuatro. El círculo de arriba es cuerda al aire y el número dice en qué traste empieza.",
   },
   {
     n: "03",
     title: "Búscala como te acuerdes",
-    body: "Por título, por artista, por tonalidad. Doscientas y pico de canciones y ninguna a más de dos toques de distancia.",
+    body: "Por título, por artista, por tono o por lo difícil que sea. Doscientas y pico de canciones y ninguna a más de dos toques.",
   },
 ];
 
@@ -72,7 +84,7 @@ export default function Home() {
       <main>
         <section className="uv-landing-section uv-hero">
           <div>
-            <p className="uv-eyebrow">Cancionero criollo · offline</p>
+            <p className="uv-eyebrow">Cancionero venezolano · sin internet</p>
             {/* 276, said out loud. "Doscientas" understates it by a quarter and
                 the exact figure does not belong in display type, so the hero
                 rounds up and the stat row below carries the number. */}
@@ -99,9 +111,9 @@ export default function Home() {
             <p className="uv-hero__lede">
               Canciones venezolanas de todas las épocas y de todo tipo. En casa
               uno agarra el cuatro, pero el cuatro no se consigue en todas
-              partes y el ukulele sí — así que aquí están, con sus acordes, pa'
+              partes y el ukulele sí — así que aquí están, con sus acordes, para
               los que andamos lejos. Y si tienes el cuatro a mano, cambias el
-              instrumento arriba y los acordes se dibujan pa' el cuatro.
+              instrumento arriba y los acordes se dibujan para el cuatro.
             </p>
             {/* The credit belongs here and not only in the footer: the
                 cancionero is Ciro Durán's, and naming him is the condition it
@@ -115,7 +127,7 @@ export default function Home() {
               >
                 elukulelevene.co
               </a>
-              . Esto es el mismo, cortado pa' que quepa en un teléfono.
+              . Esto es el mismo, cortado para que quepa en un teléfono.
             </p>
             <div className="uv-hero__actions">
               <Link className="uv-btn uv-btn--primary uv-btn--lg" href="/list">
@@ -155,7 +167,7 @@ export default function Home() {
 
         <section id="como" className="uv-landing-section">
           <h2 className="uv-features__title">
-            Hecha pa' tocar, no pa' navegar.
+            Hecha para tocar, no para navegar.
           </h2>
           <div className="uv-features__list">
             {FEATURES.map((feature) => (
@@ -183,8 +195,8 @@ export default function Home() {
               <h2 className="uv-tuner-pitch__title">Antes de tocar, afina.</h2>
               <p className="uv-tuner-pitch__body">
                 El micrófono oye la cuerda, te dice qué nota es y cuánto le
-                falta pa' llegar. Afinación estándar si andas con el ukulele,
-                cambur pintón si agarraste el cuatro — y sin señal también.
+                falta. Afinación estándar para el ukulele, cambur pintón para el
+                cuatro, y sin señal también.
               </p>
             </div>
             <Link
@@ -250,10 +262,8 @@ export default function Home() {
           <div className="uv-poster__inner">
             <div>
               <p className="uv-poster__eyebrow">Se toca donde sea</p>
-              {/* "Échale bola" is the idiom and the whole of it: échale on
-                  its own reads as a word that fell out (BUG-010). */}
               <h2 className="uv-poster__title">
-                Échale bola. El cancionero ya está en tu bolsillo.
+                El cancionero ya está en tu bolsillo.
               </h2>
             </div>
             <Link className="uv-btn uv-btn--lg uv-btn--poster" href="/list">

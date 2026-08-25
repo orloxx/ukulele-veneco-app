@@ -25,7 +25,7 @@ import { TunerScreen } from "@/components/TunerScreen";
 export const metadata: Metadata = {
   title: "Afinador · El Ukulele Veneco App",
   description:
-    "Afiná el ukulele o el cuatro con el micrófono del teléfono. Nada se graba.",
+    "Afina el ukulele o el cuatro con el micrófono del teléfono. Nada se graba.",
 };
 
 export default function TunerPage() {
