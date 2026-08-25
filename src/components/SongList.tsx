@@ -24,11 +24,10 @@ interface SongListProps {
 /**
  * Above this many songs, "guardar todas" asks first.
  *
- * The header checkbox sits directly above 276 rows of identical checkboxes and
- * is the one that means *all of them* — a mis-tap starts a run of hundreds of
- * fetches that cannot be called back. Below the threshold the run is over in a
- * moment and the undo is pressing the box again, so a dialog there is only a
- * second tap on every deliberate press.
+ * *Guardar las 276* is one press that means all of them — a mis-tap starts a
+ * run of hundreds of fetches that cannot be called back. Below the threshold
+ * the run is over in a moment and the undo is pressing the button again, so a
+ * dialog there is only a second tap on every deliberate press.
  *
  * Written as its own number and deliberately not `OFFLINE_SAVE_CONCURRENCY`,
  * which happens to be the same six: that one is how fast the pool runs, this
@@ -103,9 +102,9 @@ export default function SongList({ songs }: SongListProps) {
   } = useSongFilters();
 
   const { offlineSongs, savingSlugs, saveSong, removeSong } = useOfflineSongs();
-  // Which way the header checkbox is running, not just that it is: the two
-  // read differently to a screen reader, and "guardando" over a run that is
-  // removing songs is the same lie the checkbox used to tell (BUG-012).
+  // Which way the bulk control is running, not just that it is: the two read
+  // differently to a screen reader, and "guardando" over a run that is
+  // removing songs is the same lie the header checkbox told (BUG-012).
   const [bulkAction, setBulkAction] = useState<"save" | "remove" | null>(null);
   const isBulkRunning = bulkAction !== null;
 
@@ -155,7 +154,7 @@ export default function SongList({ songs }: SongListProps) {
         difficultyFilter === "" ||
         songDifficulty(song.metadata.chords.length) === difficultyFilter;
 
-      // The fifth filter asks the set the checkbox column already writes to —
+      // The fifth filter asks the set the save column already writes to —
       // no second copy of what "saved" means, and it narrows the same list the
       // other four narrow rather than opening a second one (vault
       // DECISIONS.md 34).
@@ -256,10 +255,10 @@ export default function SongList({ songs }: SongListProps) {
   };
 
   /**
-   * The header checkbox, and the only control in the app that asks first.
+   * *Guardar las 200*, and the only control in the app that asks first.
    *
    * The question is asked about `targets` and not about `filteredSongs`: with
-   * 200 visible and 198 already on the phone the box is offering to save two,
+   * 200 visible and 198 already on the phone the button is offering to save two,
    * and "¿guardar 200 canciones?" over a two-song run is the wrong number and
    * the wrong warning.
    *
@@ -296,15 +295,19 @@ export default function SongList({ songs }: SongListProps) {
    * Why the table is empty, and it is three different reasons.
    *
    * *"Prueba con el nombre del artista"* is advice for a search that missed. It
-   * is the wrong thing to say to somebody who has simply never ticked a box —
-   * and it is the wrong thing to say to somebody who just pressed the header
-   * checkbox with the filter on, which un-saves every visible song and empties
-   * the table under them. That press is the control doing exactly what its
-   * label says, so it is not guarded; this is where it lands softly.
+   * is the wrong thing to say to somebody who has simply never saved a song —
+   * and it is the wrong thing to say to somebody who just pressed *Quitar las
+   * 12* with a filter on, which un-saves every visible song and empties the
+   * table under them. That press is the control doing exactly what its label
+   * says, so it is not guarded; this is where it lands softly.
+   *
+   * **Both branches say *guardar*, because that is what the control says.**
+   * They said *marca la casilla* until BUG-022, a release after the last
+   * checkbox in this list became a button.
    */
   const emptyMessage =
     savedOnly && savedCount === 0
-      ? "Todavía no has guardado ninguna. Marca la casilla de cualquier canción y la tendrás aquí, y en el teléfono sin señal."
+      ? "Todavía no has guardado ninguna. Guarda cualquier canción y la tendrás aquí, y en el teléfono sin señal."
       : savedOnly
         ? "Ninguna de tus canciones guardadas coincide con los otros filtros."
         : "No encontramos esa canción. Prueba con el nombre del artista.";
@@ -324,7 +327,7 @@ export default function SongList({ songs }: SongListProps) {
 
             The count changes and the instruction does not. The instruction
             used to be the other half of the empty state, so the one line
-            connecting the checkbox to saving disappeared the moment it had
+            connecting the save column to saving disappeared the moment it had
             worked once — shown to readers who had never used the feature and
             taken away from everyone who had (BUG-012). Below 640px the table
             drops its header row, so on a phone this is the only place the
@@ -343,7 +346,7 @@ export default function SongList({ songs }: SongListProps) {
             {savedCount === 0
               ? "Ninguna guardada todavía."
               : `${savedCount} ${savedCount === 1 ? "guardada" : "guardadas"} en el teléfono.`}{" "}
-            Marca las que vayas a tocar.
+            Guarda las que vayas a tocar.
           </span>
         </p>
       </div>
@@ -429,11 +432,11 @@ export default function SongList({ songs }: SongListProps) {
             It is not a fourth combobox — DECISIONS.md 17's answer was for 181
             artists and does not generalise down to two — and it is not a
             checkbox, because the row it stands in already says how a filter
-            looks here, and every other checkbox on this screen means *save
-            this song*.
+            looks here. There is no checkbox left on this screen to confuse it
+            with either: saving a song has been a button since 2.11.0.
 
             The saved count in `.uv-list-head` stays prose and is deliberately
-            not this control. It is the only place the checkbox column is
+            not this control. It is the only place the save column is
             explained below 640px (BUG-012), and a line that both explains a
             column and toggles a filter gets pressed by people trying to read
             it. */}
