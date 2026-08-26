@@ -1,0 +1,66 @@
+{title: Pantaletas negras (Suave suave)}
+{artist: Zapato3}
+{year: 1991}
+{key: Am}
+{time: 4/4}
+
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Em base-fret 1 frets 0 4 0 2}
+
+[Am]↓  [C]↓ | [Dm]·  · · · | [Dm]·  · · · | [Dm]·  · · · | [Dm]·  · [Am]↓  [C]↓
+[Dm]·  · · · | [Dm]·  · · · | [Dm]·  · · · | [Am]·  · [C]· ·
+
+[Dm]Ponte el ves[F]tido rojo
+[Dm]Yo aquí te es[F]pero
+[G] Porque esta [F]noche
+Te [Em]vas de este[Dm] infierno [Am]↓  [C]↓
+[Dm]Pantaletas ne[F]gras
+[Dm]Baila, baila, baila, yo te [F]veo
+[G] Desvístete [F]suavemen[Em]te [Dm]
+Acariciando [G]tu cuerpo-[F]-oo-[Em]-oo-[Dm]-oo [Dm]   [G]  [F]
+
+{start_of_chorus: Coro}
+[Am]Suave, suave, suave, bien suave[F] donde tú sabes [C]↓ [C]↓
+[Am]Suave, suave, suave, bien suave[F] donde tú sabes
+
+[Am]↓  [C]↓ | [Dm]·  · · · | [Dm]·  · · · | [Dm]·  · · · | [Dm]·  · [Am]↓  [C]↓
+
+[Dm]Junto al dolor hay pla[F]cer
+Con [Dm]esta flor te consu[F]elo · · · | · · (!)
+[G] No llores más,[F]  [Em]   [Dm] no más dudas
+[G] Se nos va[F] aca[Em]bando el [Dm]tiempo [Am]↓  [C]↓
+
+A[Dm]túrdeme con tus be[F]sos
+Pa[Dm]ra pensar que no es cier[F]to
+[G] Hoy te [F]vas bus[Em]cando el [Dm]cielo
+[G] Tú me a[F]mas, [Em]tienes [Dm]miedo
+[Dm]·  · · · | [G]· · · · | [F]· · · · | [Dm]·  · · · | [Dm]·  · · · | [G]· · · · | [F]· · · ·
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Am]Suave, suave, suave, bien suave[F] donde tú sabes [C]↓ [C]↓
+[Am]Suave, suave, suave, bien suave[F] donde tú sabes [C]↓ [C]↓
+[Am]Suave, suave, suave, bien suave[F] donde tú sabes [C]↓ [C]↓
+[Am]Suave, suave, suave, dulcemen[F]te a tus pies [C]↓ [C]↓
+{end_of_chorus}
+
+{start_of_verse: Solo guitarra}
+[Dm]·  · · · | [Dm]·  · · · | [Dm]·  · · · | [Dm]·  · · ·
+[Dm]·  · · · | [Dm]·  · · · | [Dm]·  · · · | [Dm]·  · · ·
+[Dm]·  · · · | [Dm]·  · · · | [Dm]·  · · · | [Dm]·  · · ·
+[Dm]·  · · · | [Dm]·  · · · | [Dm]·  · · · | [Dm]·  · · ·
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Am]Suave, suave, suave, bien suave[F] donde tú sabes [C]↓ [C]↓
+[Am]Suave, suave, suave, bien suave[F] donde tú sabes [C]↓ [C]↓
+[Am]·  · · · | [Am]·  · · ·
+[Am]Suave, suave, suave, bien suave[F] donde tú sabes [C]↓ [C]↓
+[Am]Suave, suave, suave, dulcemen[F]te a tus pies [C]↓ [C]↓
+
+[Am]↓
+{end_of_chorus}

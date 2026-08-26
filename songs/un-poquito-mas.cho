@@ -1,0 +1,62 @@
+{title: Un poquito más}
+{artist: Delia Dorta}
+{year: 1980}
+{key: Eb}
+{time: 4/4}
+
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Ebmaj7 base-fret 1 frets 2 2 2 4}
+{define: Dm7 base-fret 1 frets 2 2 1 3}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: Cmmaj7 base-fret 1 frets 3 2 2 2}
+{define: Cm7 base-fret 1 frets 3 3 3 3}
+{define: F7 base-fret 1 frets 2 3 1 0}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: Bb7 base-fret 1 frets 1 2 1 1}
+{define: E base-fret 1 frets 4 4 4 2}
+{define: Emaj7 base-fret 1 frets 1 3 0 2}
+{define: Ebm7 base-fret 1 frets 3 3 2 4}
+{define: Ab7 base-fret 5 frets 2 3 1 3}
+{define: Dbm base-fret 1 frets 1 1 0 4}
+{define: Dbmmaj7 base-fret 1 frets 4 3 3 3}
+{define: Dbm7 base-fret 1 frets 4 4 4 4}
+{define: Gb7 base-fret 1 frets 3 4 2 4}
+{define: Gbm base-fret 1 frets 2 1 2 0}
+{define: B7 base-fret 1 frets 4 3 2 0}
+
+{start_of_verse: Intro}
+[Bb]   [Eb]
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[Eb]Vive intensa[Ebmaj7]mente, [Dm7] un poquito [G7]más
+[Cm]Llena tu exis[Cmmaj7]tencia, [Cm7] un poquito [F7]más
+[Fm]Ama tierna[Bb7]mente, [Bb7]↓ un poquito [Eb]más
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[E]Besa suave[Emaj7]mente, [Ebm7] un poquito [Ab7]más
+[Dbm]Sueña lo impo[Dbmmaj7]sible, [Dbm7] un poquito [Gb7]más
+[Gbm]Ama ciega[B7]mente, [B7]↓ un poquito [E]más [E]
+{end_of_verse}
+
+{start_of_verse: Interludio}
+[E]· · · · | [Emaj7]·     · · · | [Ebm7]·    · [Ab7]·   ·
+[Dbm] · [Gbm] · | [B7] · [B7]↓ Un poquito más
+{end_of_verse}
+
+{start_of_verse: Verso 3}
+[E]Besa suave[Emaj7]mente, [Ebm7] un poquito [Ab7]más
+[Dbm]Sueña lo impo[Dbmmaj7]sible, [Dbm7] un poquito [Gb7]más
+[Gbm]Ama ciega[B7]mente, [B7]↓ un poquito [E]más
+{end_of_verse}
+
+{start_of_verse: Outro}
+Un po[E]quito más
+Un po[E]quito más
+Un po[E]quito más
+Un po[E]quito más
+[E]↓
+{end_of_verse}

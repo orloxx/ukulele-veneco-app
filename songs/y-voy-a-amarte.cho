@@ -1,0 +1,74 @@
+{title: Y voy a amarte}
+{artist: Tecupae}
+{year: 2010}
+{key: A}
+{time: 4/4}
+
+{define: A base-fret 1 frets 2 1 0 0}
+{define: E6 base-fret 1 frets 1 1 0 2}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: A5 base-fret 1 frets 2 4 0 0}
+{define: Asus4 base-fret 1 frets 2 2 0 0}
+{define: Asus2 base-fret 1 frets 2 4 0 2}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: C#7 base-fret 1 frets 1 1 1 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Dm base-fret 1 frets 2 2 1 0}
+
+{start_of_verse: Intro}
+[A]· · [E6]·  · | [F#m]·   · [A5]·  · | [Asus4]·     · [A]· · | [Asus2]·     · [E7]·  ·
+[A]· · [E6]·  · | [F#m]·   · [A5]·  · | [Asus4]·     · [A]· · | [Asus2]·     · [E7]·  ·
+
+[A] Voy a [E6]buscar una [F#m]noche y hacer [A5]contigo un de[Asus4]rroche
+En [A]un nichito [Asus2]de paz [E7]
+[A] Voy a [E6]robarle a la [F#m]luna un pe[A5]dacito de [Asus4]bruma
+Y a[A]sí poderte arro[Asus2]paar [E7]
+[F#m] Voy a [E6]darte las es[B7]trellas
+Con mi beso, una [Bm]huella en tu [A]tierno cora[E7]zón
+
+Y voy a amar[A]te, amarte has[D]ta que amanez[E7]ca
+Tu boca y [C#7]la mía cer[F#m]ca hasta per[B7]der la razón[E7]
+Y voy a amar[A]te, amarte sen[D]tir tu piel fres[E7]ca
+Voy a te[C#7]nerte despier[F#m]ta y a derra[B7]mar mi pasión[E7]   [E7]
+
+Y mi a[A]mor · [Asus4] · | [A5] · [F#m] · | [D] · [Bm] · | [Asus2] · [E7] ·
+
+[A] Deja[E6]ré la puerta a[F#m]bierta para [A5]que las aves [Asus4]vengan
+Y can[A]ten esta can[Asus2]ción [E7]
+[A] Voy a [E6]tenerte des[F#m]pierta siempre a[A5]mada, siempre a[Asus4]lerta
+Has[A]ta perder la[Asus2] razón [E7]
+[F#m] Voy a [E6]darte las es[B7]trellas
+Con mi beso, una [Bm]huella en tu [A]tierno cora[E7]zón
+
+Y voy a amar[A]te, amarte has[D]ta que amanez[E7]ca
+Tu boca y [C#7]la mía cer[F#m]ca hasta per[B7]der la razón[E7]
+Y voy a amar[A]te, amarte sen[D]tir tu piel fres[E7]ca
+Voy a te[C#7]nerte despier[F#m]ta y a derra[B7]mar mi pasión[E7]
+Y voy a amar[A]te, amarte has[D]ta que amanez[E7]ca
+Tu boca y [C#7]la mía cer[F#m]ca hasta per[B7]der la razón[E7]
+Y voy a amar[A]te, amarte sen[D]tir tu piel fres[E7]ca
+Voy a te[C#7]nerte despier[F#m]ta y a derra[B7]mar mi pasión[E7]
+
+Y mi a[A]mor · [D] · | [E7] · [D] · | [A] · [D] · | [E7] · [D] ·
+[A]· · [D]· · | [E7]·  · [D]· · | [A]· · [D]· · | [E7]·  ·
+
+[D]Y voy a amar[A]te, amarte has[D]ta que amanez[E7]ca
+Tu boca y [C#7]la mía cer[F#m]ca hasta per[B7]der la razón[E7]
+Y voy a amar[A]te, amarte sen[D]tir tu piel fres[E7]ca
+Voy a te[C#7]nerte despier[F#m]ta y a derra[B7]mar mi pasión[E7]
+
+Y mi a[A]mor · [D] · | [E7] · [D] · | [A] · [D] · | [E7] · [D] ·
+[A]· · [D]· · | [E7]·  · [D]· · | [A]· · [D]· · | [E7]·  ·
+
+[D]Y voy a amar[A]te, amarte has[D]ta que amanez[E7]ca
+Tu boca y [C#7]la mía cer[F#m]ca hasta per[B7]der la razón[E7]
+Y voy a amar[A]te, amarte sen[D]tir tu piel fres[E7]ca
+Quiero que es[C#7]tés aquí despier[F#m]ta y que reci[B7]bas mi pasión[E7] y mi amor
+
+[A]· · [D]· · | [E7]·  · [D]· · | [A]· · [D]· · | [E7]·  · [D]· ·
+[A]· · [G]· · | [D]· · [Dm]·  · | [A]· · [G]· · | [D]· · [Dm]·  ·
+[A]↓
+{end_of_verse}

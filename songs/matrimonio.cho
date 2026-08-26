@@ -1,0 +1,66 @@
+{title: Matrimonio}
+{artist: Los Tres Tristes Tigres}
+{year: 1972}
+{key: C}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: C6 base-fret 1 frets 0 0 0 0}
+{define: Cmaj7 base-fret 1 frets 0 0 0 2}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: Ab base-fret 3 frets 3 1 2 1}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: G7 base-fret 1 frets 0 2 1 2}
+
+[C]· · [C6]·  · | [Cmaj7]·     · [C6]·  · | [C]· · [C6]·  · | [Cmaj7]·     · [C6]·  ·
+
+Qui[C]zás sea pron[C6]to pero yo me [Cmaj7]quiero casar[C6]
+Tú e[C]res la mujer[C6] que yo quiero lle[Dm]var al altar[G]
+Te [Dm]quiero y yo sé[G] que tú me [Dm]quieres a mí[G]
+Se[Dm]rás muy dicho[G]sa y yo se[C]ré muy feliz [C6] · | [Cmaj7] · [C6] ·
+
+{start_of_chorus: Coro}
+[C]Tú estarás siempre[C6] a mi lado [Cmaj7]y yo junto a ti[C6]
+[C]Y así nuestro ma[C6]trimonio se[F]rá muy feliz
+[Fm]Pasaran los años y nuestro a[C]mor crecerá
+Y yo te ama[G]ré... y tú me ama[C]rás · [C6] · | [Cmaj7] · [C6] ·
+
+[C]· · [C6]·  · | [Cmaj7]·     · [C6]·  ·
+
+Yo [C]quiero tener[C6]te en mis brazos y o[Cmaj7]írte cantar[C6]
+A[C]quellas cancio[C6]nes de amor que te hi[Dm]cieron soñar[G]
+Por [Dm]eso es que [G]siento que no [Dm]puedo esperar[G]
+El [Dm]dulce momen[G]to en que nos po[C]damos casar [C6] · | [Cmaj7] · [C6] ·
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[C]Tú estarás siempre[C6] a mi lado [Cmaj7]y yo junto a ti[C6]
+[C]Y así nuestro ma[C6]trimonio se[F]rá muy feliz
+[Fm]Pasaran los años y nuestro a[C]mor crecerá
+Y yo te ama[G]ré... y tú me ama[C]rás · [C6] · | [Cmaj7] · [C6] ·
+
+Y vivi[F]remos juntos esta [C]dicha eterna de fe[F]licidad [C]
+Un matri[F]monio igual al nues[C]tro no creo [F]yo que habrá [C]
+Los hijos [Ab]ya vendrán y siento [Eb]que serán como con[Fm]tinuación [C]
+De nuestro [Fm]ser y vence[G]rán... a[C]mooo-[G7]-ooo-[C]-oor [G7]
+
+[C]· · · · | [G7]·  · · · | [C]· · · · | [G7]·  · · ·
+Qui[C]zás sea pron[C6]to pero yo me [Cmaj7]quiero casar[C6]
+Tú e[C]res la mujer[C6] que yo quiero lle[Dm]var al altar[G]
+Te [Dm]quiero y yo sé[G] que tú me [Dm]quieres a mí[G]
+Se[Dm]rás muy dicho[G]sa y yo se[C]ré muy feliz [C6] · | [Cmaj7] · [C6] ·
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[C]Tú estarás siempre[C6] a mi lado [Cmaj7]y yo junto a ti[C6]
+[C]Y así nuestro ma[C6]trimonio se[F]rá muy feliz
+[Fm]Pasaran los años y nuestro a[C]mor crecerá
+Y yo te ama[G]ré... y tú me ama[C]rás · [C6] · | [Cmaj7] · [C6] ·
+
+[C]· · [C6]·  · | [Cmaj7]·     · [C6]·  ·
+[C]· · [C6]·  · | [Cmaj7]·     · [C6]·  ·
+[C]↓
+{end_of_chorus}

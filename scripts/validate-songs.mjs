@@ -5,23 +5,51 @@
  *   pnpm validate            check songs/
  *   pnpm validate --quiet    print only what is wrong
  *
- * The rules are the ones written down in songs/README.md and CLAUDE.md. They were
- * enforced by whoever was paying attention, which was fine for thirteen songs and is not
- * fine for two hundred and seventy-six. This turns the prose into a command.
+ * Since M18 the format is [ChordPro](https://www.chordpro.org) and most of it is
+ * somebody else's document. What is left here is the half the standard does not
+ * cover, and it is the half this collection cares about: a fingering is the
+ * book's own diagram, a coined name is a different chord from the name it is
+ * coined from, no Cyrillic ever, and a chord sits over the syllable it is played
+ * on. See songs/README.md.
  *
  * Exits non-zero when anything is an error. Warnings never fail the run: they mark
  * things worth a look that are not wrong on their own.
  */
 
 import fs from "node:fs";
+import { registerHooks } from "node:module";
 import path from "node:path";
 import process from "node:process";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const REPO_ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
 );
+
+/**
+ * Read songs/ with the app's own reader.
+ *
+ * A validator with its own parser proves the two agree and nothing about
+ * whether either is right — the same argument `check-transpose.mjs` makes, and
+ * the more pointed one here: this command's whole job is to fail on a file the
+ * app would then misread.
+ */
+registerHooks({
+  resolve(specifier, context, nextResolve) {
+    if (specifier.startsWith("@/")) {
+      const target = path.join(REPO_ROOT, "src", specifier.slice(2));
+      return { url: `${pathToFileURL(target).href}.ts`, shortCircuit: true };
+    }
+    return nextResolve(specifier, context);
+  },
+});
+
+const { parseChordPro, parseDefine, isDirectiveLine } = await import(
+  "@/lib/chordpro"
+);
+const { SONG_EXTENSION } = await import("@/lib/songs");
+
 const SONGS = path.join(REPO_ROOT, "songs");
 
 /** Chord markers the spacing rules treat as attached to the chord that precedes them. */
@@ -37,6 +65,35 @@ const MARKERS = "·◦↓↑";
  * error and not a warning. Keep it in step with `WINDOW` in ChordDiagram.tsx.
  */
 const WINDOW_FRETS = 4;
+
+/**
+ * Every directive this collection writes, and deliberately no more.
+ *
+ * ChordPro defines a great many and abbreviates most of them — `{t:}` for
+ * `{title:}`, `{soc}` for `{start_of_chorus}`. None of the short forms is in
+ * `songs/` and none is read by `src/lib/chordpro.ts`: one spelling per directive
+ * is what keeps a grep for `{key:}` honest across 276 files, and an unknown
+ * directive is far more often a typo than a feature. A file that wants one of
+ * the others adds it here first.
+ */
+const DIRECTIVES = new Set([
+  "title",
+  "artist",
+  "year",
+  "key",
+  "time",
+  "capo",
+  "subtitle",
+  "define",
+  "comment",
+  "start_of_verse",
+  "end_of_verse",
+  "start_of_chorus",
+  "end_of_chorus",
+]);
+
+/** The directives a song cannot be a song without. */
+const REQUIRED = ["title", "artist", "key", "time"];
 
 /**
  * The filename a song's title should produce.
@@ -60,52 +117,6 @@ const slugCandidates = (title) => [
   slugify(title.replace(/\s*\([^)]*\)\s*$/, "")),
 ];
 
-/** Split a song file into its frontmatter block and its body. */
-function split(source) {
-  const m = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/.exec(source);
-  return m ? { frontmatter: m[1], body: m[2] } : null;
-}
-
-/**
- * Read the frontmatter.
- *
- * This is not a YAML parser and does not want to be: the frontmatter is four scalars
- * and a list of chord pairs, and the point is to see the file the way a reader will,
- * with line numbers to report against.
- */
-function readFrontmatter(frontmatter) {
-  const scalars = {};
-  const chords = [];
-  let inChords = false;
-  const lines = frontmatter.split(/\r?\n/);
-  lines.forEach((line, i) => {
-    const lineNo = i + 2; // the opening `---` is line 1
-    if (/^chords:\s*$/.test(line)) {
-      inChords = true;
-      return;
-    }
-    if (inChords) {
-      const name = /^\s*-\s*name:\s*(.+?)\s*$/.exec(line);
-      if (name) {
-        chords.push({ name: name[1].replace(/^"(.*)"$/, "$1"), line: lineNo });
-        return;
-      }
-      const positions = /^\s*positions:\s*(.+?)\s*$/.exec(line);
-      if (positions && chords.length) {
-        chords[chords.length - 1].positions = positions[1].replace(
-          /^"(.*)"$/,
-          "$1",
-        );
-        return;
-      }
-      if (line.trim() !== "") inChords = false;
-    }
-    const scalar = /^([A-Za-z][\w]*):\s*(.*)$/.exec(line);
-    if (scalar) scalars[scalar[1]] = { value: scalar[2].trim(), line: lineNo };
-  });
-  return { scalars, chords };
-}
-
 /**
  * Check the spacing rules that keep a chord over the syllable it belongs to.
  *
@@ -120,7 +131,7 @@ function readFrontmatter(frontmatter) {
  * ("only applies when chords are close together"). Guessing at it would mean flagging
  * correct lines, so it is left to the eye.
  */
-function checkSpacing(body, report) {
+function checkSpacing(sheet, report) {
   // Kept as two patterns rather than one with an optional marker: an optional group
   // would happily match empty and let `[Dm]↓` be read as a bare chord followed by an
   // arrow, which is the same shape as a chord followed by a beat dot and is not.
@@ -130,7 +141,7 @@ function checkSpacing(body, report) {
     "g",
   );
 
-  body.split(/\r?\n/).forEach((line, index) => {
+  for (const { text, line } of sheet) {
     const complain = (whole, name, marker, spaces, want) => {
       if (spaces.length === want) return;
       report.warn(
@@ -139,16 +150,16 @@ function checkSpacing(body, report) {
         }, the rule for a ${name.length}-letter chord${
           marker ? ` after \`${marker}\`` : ""
         } is ${want}`,
-        index,
+        line,
       );
     };
-    for (const [whole, name, spaces] of line.matchAll(adjacent)) {
+    for (const [whole, name, spaces] of text.matchAll(adjacent)) {
       complain(whole, name, "", spaces, name.length + 1);
     }
-    for (const [whole, name, marker, spaces] of line.matchAll(afterMarker)) {
+    for (const [whole, name, marker, spaces] of text.matchAll(afterMarker)) {
       complain(whole, name, marker, spaces, name.length);
     }
-  });
+  }
 }
 
 /**
@@ -160,23 +171,19 @@ function checkSpacing(body, report) {
  * across the first 79 songs, without an exception. `DECISIONS.md` 9 in the vault.
  *
  * A mismatch is a **warning**, not an error. The rule is a pattern read off the book
- * rather than something the format imposes, and 38 pages carrying the mark are still
- * untranscribed — one of them is allowed to surprise us. What it catches meanwhile is
- * the likelier cause: an anticipation mistyped, or copied onto the wrong line.
+ * rather than something the format imposes. What it catches meanwhile is the likelier
+ * cause: an anticipation mistyped, or copied onto the wrong line.
  *
  * A parenthesis around anything that is not one of the song's own chords is left alone;
- * the book uses them for backing vocals and asides too, as `(Cuidado, mucho cuidado)`
- * in `colgando-en-tus-manos.md` does.
+ * the book uses them for backing vocals and asides too.
  */
-function checkAnticipations(body, defined, report) {
-  const lines = body.split(/\r?\n/);
-
-  lines.forEach((line, index) => {
-    for (const m of line.matchAll(/\(([^()\s]+)\)/g)) {
+function checkAnticipations(sheet, defined, report) {
+  sheet.forEach(({ text, line }, index) => {
+    for (const m of text.matchAll(/\(([^()\s]+)\)/g)) {
       if (!defined.has(m[1])) continue;
       const after = [
-        line.slice(m.index + m[0].length),
-        ...lines.slice(index + 1),
+        text.slice(m.index + m[0].length),
+        ...sheet.slice(index + 1).map((rest) => rest.text),
       ];
       const next = /\[([^\]]+)\]/.exec(after.join("\n"));
       if (next?.[1] === m[1]) continue;
@@ -184,7 +191,7 @@ function checkAnticipations(body, defined, report) {
         `\`(${m[1]})\` anticipates the chord after it, but the next one is ${
           next ? `\`[${next[1]}]\`` : "nothing"
         }`,
-        index,
+        line,
       );
     }
   });
@@ -193,11 +200,9 @@ function checkAnticipations(body, defined, report) {
 /**
  * Check for characters that look Latin and are not.
  *
- * Three pages of the cancionero — 68, 187 and 236 — decode with a Cyrillic е (U+0435)
- * inside an ordinary word, because the subset font maps that glyph to the wrong code
- * point and its `/ToUnicode` table repeats the mistake. The extractor is decoding the
- * table it is handed, so there is nothing to fix upstream: the character has to be
- * caught here, on the way in.
+ * Three pages of the cancionero — 68, 187 and 236 — decoded with a Cyrillic е (U+0435)
+ * inside an ordinary word, because the subset font mapped that glyph to the wrong code
+ * point and its `/ToUnicode` table repeated the mistake.
  *
  * It is an **error** rather than a warning because nothing about it is visible. `Amorе`
  * renders exactly like `Amore` and never matches a search for it, which is how one sat
@@ -218,6 +223,48 @@ function checkHomoglyphs(source, report) {
   });
 }
 
+/**
+ * Check that every environment opened is closed, in order.
+ *
+ * A `{start_of_verse}` with no `{end_of_verse}` renders here — this app draws the
+ * label and forgets the environment — and breaks in every other ChordPro tool,
+ * which is precisely the failure the migration exists to stop. So it is checked
+ * here rather than left to whoever compiles the file next.
+ */
+function checkEnvironments(directives, report) {
+  const open = [];
+  for (const { name, value, line } of directives) {
+    if (name.startsWith("start_of_")) {
+      if (open.length) {
+        report.fail(
+          `\`{${name}}\` opens inside \`{${open[open.length - 1].name}}\` — sections do not nest`,
+          line,
+        );
+      }
+      if (!value) {
+        report.fail(
+          `\`{${name}}\` has no label — the book prints a heading over every section`,
+          line,
+        );
+      }
+      open.push({ name, line });
+      continue;
+    }
+    if (!name.startsWith("end_of_")) continue;
+
+    const started = open.pop();
+    const expected = started?.name.replace("start_of_", "end_of_");
+    if (!started) {
+      report.fail(`\`{${name}}\` closes a section that never opened`, line);
+    } else if (expected !== name) {
+      report.fail(`\`{${name}}\` closes a \`{${started.name}}\``, line);
+    }
+  }
+  for (const { name, line } of open) {
+    report.fail(`\`{${name}}\` is never closed`, line);
+  }
+}
+
 /** Check one song file. Returns its errors and warnings. */
 function checkSong(file) {
   const errors = [];
@@ -227,65 +274,98 @@ function checkSong(file) {
 
   const source = fs.readFileSync(path.join(SONGS, file), "utf8");
   checkHomoglyphs(source, report);
-  const parts = split(source);
-  if (!parts) {
-    report.fail("no frontmatter — a song starts with a `---` block", 1);
-    return { errors, warnings };
+
+  const { directives } = parseChordPro(source);
+
+  /** The sheet, with the line number each line really has in the file. */
+  const sheet = source
+    .split(/\r?\n/)
+    .map((text, index) => ({ text, line: index + 1 }))
+    .filter(({ text }) => !isDirectiveLine(text));
+
+  for (const { name, line } of directives) {
+    if (!DIRECTIVES.has(name)) {
+      report.fail(
+        `\`{${name}}\` is not a directive this collection writes — see the list in scripts/validate-songs.mjs`,
+        line,
+      );
+    }
   }
 
-  const { scalars, chords } = readFrontmatter(parts.frontmatter);
-
-  for (const key of ["title", "artist", "key", "timeSignature"]) {
-    if (!scalars[key]?.value) report.fail(`\`${key}\` is missing or empty`, 1);
+  const first = (name) => directives.find((d) => d.name === name);
+  for (const name of REQUIRED) {
+    if (!first(name)?.value)
+      report.fail(`\`{${name}:}\` is missing or empty`, 1);
   }
-  if (scalars.year && !/^\d{4}$/.test(scalars.year.value)) {
+
+  const year = first("year");
+  if (year && !/^\d{4}$/.test(year.value)) {
     report.fail(
-      `\`year\` is \`${scalars.year.value}\`, which is not a four-digit year`,
-      scalars.year.line,
+      `\`{year:}\` is \`${year.value}\`, which is not a four-digit year`,
+      year.line,
     );
   }
-  if (
-    scalars.timeSignature &&
-    !/^\d+\/\d+$/.test(scalars.timeSignature.value)
-  ) {
+  const time = first("time");
+  if (time && !/^\d+\/\d+$/.test(time.value)) {
     report.fail(
-      `\`timeSignature\` is \`${scalars.timeSignature.value}\`, expected something like \`4/4\``,
-      scalars.timeSignature.line,
+      `\`{time:}\` is \`${time.value}\`, expected something like \`4/4\``,
+      time.line,
+    );
+  }
+  const capo = first("capo");
+  if (capo && !/^\d+$/.test(capo.value)) {
+    report.fail(
+      `\`{capo:}\` is \`${capo.value}\`, expected a fret number`,
+      capo.line,
     );
   }
 
-  const title = scalars.title?.value ?? "";
+  const title = first("title")?.value ?? "";
   const expected = slugCandidates(title);
-  if (title && !expected.includes(file.replace(/\.md$/, ""))) {
+  if (title && !expected.includes(file.slice(0, -SONG_EXTENSION.length))) {
     report.fail(
-      `filename does not match the title — \`${title}\` should be \`${expected[1]}.md\``,
-      scalars.title.line,
+      `filename does not match the title — \`${title}\` should be \`${expected[1]}${SONG_EXTENSION}\``,
+      first("title").line,
     );
   }
 
-  if (chords.length === 0)
-    report.fail("no chords defined in the frontmatter", 1);
+  checkEnvironments(directives, report);
+
+  // A brace in the sheet is a directive the parser did not recognise as one —
+  // a missing closing `}`, or a `{` inside a lyric. Nothing in the collection
+  // has ever contained one, and either shape silently loses a line.
+  for (const { text, line } of sheet) {
+    if (/[{}]/.test(text)) {
+      report.fail(
+        "a `{` or `}` outside a directive — a directive on its own line, or nothing",
+        line,
+      );
+    }
+  }
+
+  const defines = directives.filter((d) => d.name === "define");
+  if (defines.length === 0)
+    report.fail("no `{define:}` — a song draws its chords", 1);
+
   const seen = new Set();
-  for (const chord of chords) {
+  for (const directive of defines) {
+    const chord = parseDefine(directive);
+    if (!chord) {
+      report.fail(
+        `\`{define: ${directive.value}}\` is not \`<name> base-fret <n> frets <a> <b> <c> <d>\``,
+        directive.line,
+      );
+      continue;
+    }
     if (seen.has(chord.name)) {
       report.fail(`\`${chord.name}\` is defined twice`, chord.line);
     }
     seen.add(chord.name);
-    if (chord.positions === undefined) {
-      report.fail(`\`${chord.name}\` has no \`positions\``, chord.line);
-      continue;
-    }
-    if (!/^\d{4}$/.test(chord.positions)) {
-      report.fail(
-        `\`${chord.name}\` has positions \`${chord.positions}\` — it must be exactly four digits, one per string, GCEA`,
-        chord.line,
-      );
-      continue;
-    }
+
     const stopped = chord.positions
       .split("")
       .map(Number)
-      .filter((fret) => fret > 0);
+      .filter((f) => f > 0);
     if (stopped.length) {
       const span = Math.max(...stopped) - Math.min(...stopped) + 1;
       if (span > WINDOW_FRETS) {
@@ -297,35 +377,26 @@ function checkSong(file) {
     }
   }
 
-  // Body line 1 sits after the opening `---`, the frontmatter, and the closing `---`.
-  const bodyLine = (index) =>
-    parts.frontmatter.split(/\r?\n/).length + 3 + index;
   const used = new Map();
-  parts.body.split(/\r?\n/).forEach((line, i) => {
-    for (const m of line.matchAll(/\[([^\]]+)\]/g)) {
-      if (!used.has(m[1])) used.set(m[1], bodyLine(i));
-    }
-  });
-  for (const [name, line] of used) {
-    if (!seen.has(name)) {
-      report.fail(
-        `\`[${name}]\` is used in the lyrics but never defined`,
-        line,
-      );
+  for (const { text, line } of sheet) {
+    for (const m of text.matchAll(/\[([^\]]+)\]/g)) {
+      if (!used.has(m[1])) used.set(m[1], line);
     }
   }
-  for (const chord of chords) {
-    if (!used.has(chord.name)) {
+  for (const [name, line] of used) {
+    if (!seen.has(name)) {
+      report.fail(`\`[${name}]\` is used in the sheet but never defined`, line);
+    }
+  }
+  for (const directive of defines) {
+    const chord = parseDefine(directive);
+    if (chord && !used.has(chord.name)) {
       report.warn(`\`${chord.name}\` is defined but never used`, chord.line);
     }
   }
 
-  const relay = {
-    fail: (m, i) => report.fail(m, bodyLine(i)),
-    warn: (m, i) => report.warn(m, bodyLine(i)),
-  };
-  checkSpacing(parts.body, relay);
-  checkAnticipations(parts.body, seen, relay);
+  checkSpacing(sheet, report);
+  checkAnticipations(sheet, seen, report);
 
   return { errors, warnings };
 }
@@ -338,7 +409,7 @@ function main(argv) {
   }
   const files = fs
     .readdirSync(SONGS)
-    .filter((f) => f.endsWith(".md") && f !== "README.md")
+    .filter((f) => f.endsWith(SONG_EXTENSION))
     .sort();
 
   let errors = 0;

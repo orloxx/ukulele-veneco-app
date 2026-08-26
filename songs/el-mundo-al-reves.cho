@@ -1,0 +1,68 @@
+{title: El mundo al revés}
+{artist: Página}
+{year: 2016}
+{key: A}
+{time: 4/4}
+
+{define: A base-fret 1 frets 2 1 0 0}
+{define: C#m base-fret 4 frets 3 1 1 1}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: Gmaj7 base-fret 1 frets 0 2 2 2}
+{define: F base-fret 1 frets 2 0 1 0}
+
+[A]· · [C#m]·   · | [D]· · · · | [A]· · [C#m]·   · | [D]· · · ·
+[A]· · [C#m]·   · | [D]· · · · | [A]· · [C#m]·   · | [D]· · · ·
+
+[A]  [C#m] Sin luz[D] no puedo ver
+[A]  [C#m] Sin a[D]gua no puedo beber
+[A]  [C#m] Qué más[D] voy a hacer
+[A] Hay dine[C#m]ro   ca[D]yendo a tus pies
+
+{start_of_chorus: Coro}
+[A]  [G]  [C] El mundo[D] al revés
+[A]  [G]  [C] Ya no tie[D]ne pies
+[A]  [G]  [C] El mundo[D] al revés
+[A] Oh[G] no, oh[C] no, oh[D] no, oh[C] no, oh[D] no-
+
+La con[Bm]fiaaanza es ficción[E7]
+[A]Rápido préstame [A]a-ten-ción
+Con[Bm]fieeeso que soy[E7]
+[A]Más de lo que ves, es el [A]mundo al revés
+
+[A]  [C#m] A través de tu piee-[D]-el pue-do ver
+[A]  [C#m] La verdade[D]ra razón de tu ser
+[A]  [C#m] Mediocridad[D] es miseria
+La en[A]vidia se pin[C#m]ta de pez[D]
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[A]  [G]  [C] El mundo[D] al revés
+[A]  [G]  [C] Ya no tie[D]ne pies
+[A]  [G]  [C] El mundo[D] al revés
+[A] Oh[G] no, oh[C] no, oh[D] no, oh[C] no, oh[D] no-
+
+Qué [Bm]eees lo real[E7]
+Quién [A]eres tú para decir quién soy [A]yo
+Quién [Bm]dice que ellos no [E7]tienen la razón
+La ver[A]dad es mentira y el [A]tiempo no es una lí-(A)nea
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[A]  [G]  [C] El mundo[D] al revés
+[A]  [G]  [C] Ya no tie[D]ne pies
+[A]  [G]  [C] El mundo[D] al revés
+[A] Oh[G] no, oh[C] no, oh[D] no, oh[C] no, oh[D] no
+
+[Gmaj7] Si tienes algo [A]  que decir
+[Gmaj7] Ya no hay tiempo [A]  para ti
+[Gmaj7] Somos espectado[A]res otra vez
+[Gmaj7] De este mundo aa-[A]-aal   re-vés(D)
+
+[D]· · [A]· · | [F]· · [G]· [A]· | [D]· · [A]· · | [F]· · [G]· [A]·
+[D]· · [A]· · | [F]· · [G]· [A]· | [D]· · [A]· · | [F]· · · ·
+[G]· · · · | [A]↓
+{end_of_chorus}

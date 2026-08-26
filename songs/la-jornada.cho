@@ -1,0 +1,58 @@
+{title: La jornada (Din, din, din)}
+{artist: Schola Cantorum de Venezuela}
+{year: 1930}
+{key: C}
+{time: 6/8}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: C7 base-fret 1 frets 0 0 0 1}
+{define: Fm base-fret 1 frets 1 0 1 3}
+
+{start_of_chorus: Coro}
+[C]Din, din, ·din,  [G7]es hora de par·tir
+[C]Din, din, ·din,  [D7]camino de Be[G]lén
+[A7]Los esposos [Dm]van  [G7]desde Naza[C]ret
+[A7]Los esposos [Dm]van  [G7]desde Naza[C]ret    [Cm]
+
+[Cm]La Virgen Ma[G7]ría  ·modesta y sen[Cm]cilla
+[C7]Es la mara[Fm]villa [G7]del di[D7]choso E[G7]dén
+[Cm]La Virgen Ma[G7]ría  ·modesta y sen[Cm]cilla
+[C7]Es la mara[Fm]villa [G7]del dichoso E[C]dén
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[C]Din, din, ·din,  [G7]es hora de par·tir
+[C]Din, din, ·din,  [D7]camino de Be[G]lén
+[A7]Los esposos [Dm]van  [G7]desde Naza[C]ret
+[A7]Los esposos [Dm]van  [G7]desde Naza[C]ret    [Cm]
+
+[Cm]Sobre un jumen[G7]tillo   ·se sienta Ma[Cm]ría
+[C7]Y es experto [Fm]guía [G7]el cas[D7]to Jo[G7]sé
+[Cm]Sobre un jumen[G7]tillo   ·se sienta Ma[Cm]ría
+[C7]Y es experto [Fm]guía [G7]el casto Jo[C]sé
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[C]Din, din, ·din,  [G7]es hora de par·tir
+[C]Din, din, ·din,  [D7]camino de Be[G]lén
+[A7]Los esposos [Dm]van  [G7]desde Naza[C]ret
+[A7]Los esposos [Dm]van  [G7]desde Naza[C]ret    [Cm]
+
+[Cm]Los buenos a[G7]migos   ·de José y Ma[Cm]ría
+[C7]Llegan a por[Fm]fía [G7]a de[D7]cirle a[G7]diós
+[Cm]Los buenos a[G7]migos   ·de José y Ma[Cm]ría
+[C7]Llegan a por[Fm]fía [G7]a decirle a[C]diós
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[C]Din, din, ·din,  [G7]es hora de par·tir
+[C]Din, din, ·din,  [D7]camino de Be[G]lén
+[A7]Los esposos [Dm]van  [G7]desde Naza[C]ret
+[A7]Los esposos [Dm]van  [G7]desde Naza[C]↓ret
+{end_of_chorus}

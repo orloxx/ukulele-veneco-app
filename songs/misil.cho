@@ -1,0 +1,75 @@
+{title: Misil}
+{artist: Cerouno}
+{year: 2008}
+{key: Em}
+{time: 4/4}
+{capo: 1}
+
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: C base-fret 1 frets 0 0 0 3}
+
+{start_of_verse: Intro}
+[Em]   [G]  [D]  [D] (x3)
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+Lle[Em]gamos hasta aquí,[G] y no sabe[D]mos dónde va[D]mos a parar
+[Em] Dónde to[G]ca la razón[D] el corazón[D] mi corazón
+{end_of_verse}
+
+{start_of_verse: Pre-coro}
+[Em](Yo vivo en un misil)        [G](Vivo en un misil)
+[D](Vivo en un misil)       [D](Vivo en un misil)
+[Em](Vivo en un misil)       [G](Vivo en un misil)
+[D](Vivo en un misil)       [D]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[C] Sigo esperan[D]do, sigo esperan[G]do, sigo esperan[G]do aquí por ti
+[C] Sigo esperan[D]do, sigo esperan[G]do, sigo esperan[G]do aquí por ti
+[C] Y mi corazón[D] ya no puede más[G], está que explo[G]ta de tanto esperar
+[C] Y mi corazón[D] ya no puede más[G], siento que explo[G]ta de tanto esperar
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[Em]   [G]  [D]  [D]
+[Em]   [G]  [D]  [D]↓
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+Lle[Em]gamos hasta aquí,[G] y no sabe[D]mos dónde va[D]mos a parar
+[Em] Dónde to[G]ca tu razón[D] mi corazón[D] mi corazón
+{end_of_verse}
+
+{start_of_verse: Pre-coro 2}
+[Em](Yo vivo en un misil)        [G](Vivo en un misil)
+[D](Vivo en un misil)       [D](Vivo en un misil)
+[Em](Vivo en un misil)       [G](Vivo en un misil)
+[D](Vivo en un misil)       [D]
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[C] Sigo esperan[D]do, sigo esperan[G]do, sigo esperan[G]do aquí por ti
+[C] Sigo esperan[D]do, sigo esperan[G]do, sigo esperan[G]do aquí por ti
+[C] Y mi corazón[D] ya no puede más[G], siento que explo[G]ta de tanto esperar
+[C] Y mi corazón[D], ¡no!, ya no puede más[G], está que explo[G]ta de tanto esperar
+{end_of_chorus}
+
+{start_of_verse: Puente}
+[Em]   [G] De tanto espera-[D]-ar [D] Uh-oh-
+[Em]-oh Uh-oh-[G]-oh  Uh-oh-[D]-oh-oh-oh [D]
+{end_of_verse}
+
+{start_of_chorus: Coro 3}
+[C] Sigo esperan[D]do, sigo esperan[G]do, sigo esperan[G]do aquí por ti
+[C] Sigo esperan[D]do, sigo esperan[G]do, sigo esperan[G]do aquí por ti
+[C] Y mi corazón[D] ya no puede más[G], siento que explo[G]ta de tanto esperar
+[C] Y mi corazón[D] ya no puede más[G], está que explo[G]ta de tanto esperar
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Em]   [G]  [D]  [D]
+[Em]   [G]  [D]  [D]
+{end_of_verse}

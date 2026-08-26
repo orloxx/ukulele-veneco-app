@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A Next.js 16 application for displaying Venezuelan ukulele songs with chord diagrams. The app reads songs from markdown files in the `songs/` directory and displays them with interactive chord diagrams and lyrics with chord positioning.
+A Next.js 16 application for displaying Venezuelan ukulele songs with chord diagrams. The app reads songs from [ChordPro](https://www.chordpro.org) files in the `songs/` directory and displays them with interactive chord diagrams and lyrics with chord positioning.
 
 This project follows a **mobile-first** and **offline-first** approach, prioritizing mobile user experience and ensuring functionality without network connectivity.
 
@@ -61,12 +61,17 @@ and an outage in one the deploy runs.
 
 ### Song Data Flow
 
-1. **Source**: Songs are stored as markdown files in `songs/` directory
-2. **Parsing**: `src/lib/songs.ts` uses `gray-matter` to parse frontmatter and content,
-   then `parseLeadingNotes()` lifts a `Capo <n>` line and any leading instruction out
-   of the body into the metadata. Nothing in `songs/` is edited for it; the parse is
-   deliberately conservative and leaves anything that looks aligned in the sheet
+1. **Source**: Songs are ChordPro files — `songs/<slug>.cho` — since M18
+2. **Parsing**: `src/lib/chordpro.ts` splits a file into its directives and its sheet;
+   `src/lib/songs.ts` maps those directives onto `SongMetadata`. Every field had a
+   directive the standard already defines, which is what made M18 a copy rather than a
+   redesign
 3. **Rendering**: Components consume `ParsedSong` objects with metadata and chord definitions
+
+**`LyricsDisplay` never learned ChordPro, and that is deliberate.** A section directive
+becomes the `## <label>` line the sheet has drawn as a heading since M7, inside the
+parser — so the marker is an internal shape rather than a file format, and the most
+sensitive component in the app was not opened in order to change a file format.
 
 ### Key Components
 
@@ -76,7 +81,7 @@ and an outage in one the deploy runs.
 
 **`LyricsDisplay` is the most sensitive code in the app.** A chord moved one syllable
 to the left looks correct and plays wrong, and nothing automated catches it:
-`pnpm validate` reads the source Markdown and never looks at the screen, and since M6
+`pnpm validate` reads the source file and never looks at the screen, and since M6
 there is no second check at all — the one that held every fingering up against the
 printed book went with the book. Two things hold a chord in place and
 they are a pair: it is attached to the text that *follows* it and positioned at
@@ -101,7 +106,8 @@ first row's words.
 ### Type System
 
 Core types in `src/types/song.ts`:
-- `SongMetadata`: Frontmatter data (title, artist, year, key, timeSignature, chords)
+- `SongMetadata`: the masthead (title, artist, year, key, timeSignature, chords) plus
+  `capo` and `notes`, each from its own directive
 - `Chord`: Chord definition with name and 4-digit positions string (e.g., "0003" for C)
 - `ParsedSong`: Complete song data including slug, metadata, lyrics, and chordDefinitions
 - `SongVideo`: a reference recording, and **deliberately not a field on `SongMetadata`** —
@@ -123,109 +129,44 @@ own entry — as a prop.
 
 ## Song File Format
 
-Songs are markdown files with YAML frontmatter:
-
-```yaml
----
-title: Song Title
-artist: Artist Name
-year: 2020
-key: C
-timeSignature: 4/4
-chords:
-  - name: C
-    positions: "0003"
-  - name: G
-    positions: "0232"
----
-```
-
-### Chord Notation
-
-In lyrics, chords are marked with square brackets at the position they should be played:
+**Songs are [ChordPro](https://www.chordpro.org), and the format is not this project's.**
+`songs/README.md` is the reference for everything ChordPro does not say — the fingering
+rule, the coined names, the anticipation mark, the beat dots, the spacing that keeps a
+chord over its syllable — and it is the file to read before touching `songs/`.
 
 ```
-[C]Verse line starts here
-This is a line with a [G]chord in the [Am]middle
+{title: Barlovento}
+{artist: Aldemaro Romero}
+{year: 1950}
+{key: Dm}
+{time: 6/8}
+
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: C base-fret 1 frets 0 0 0 3}
+
+{start_of_verse: Intro}
+[Dm]· · · | [C]· · ·
+{end_of_verse}
 ```
 
-#### Spacing Between Consecutive Chords in Lyrics
+Thirteen directives, listed in `songs/README.md` and enforced by `pnpm validate`: an
+unrecognised one is an error, because it is far more often a typo than a feature. **No
+short forms** — `{t:}`, `{soc}` and the rest are legal ChordPro and are not written here.
 
-When two chords appear consecutively without enough natural spacing between them, additional spacing is required for visual alignment:
-
-**Rule 1: Two chords directly together (no characters between)**
-Add (N + 1) spaces between the chords, where N = number of letters in the first chord:
-
-```
-❌ Incorrect: sin ti[Em] [A7]
-✓ Correct:   sin ti[Em]   [A7]
-             (Em has 2 letters → 2+1 = 3 spaces total)
-```
-
-**Rule 2: Chord followed by character(s) then another chord**
-Add N spaces after the character(s), where N = number of letters in the first chord:
-
-```
-❌ Incorrect: dónd[Bm]e [A]fue
-✓ Correct:   dónd[Bm]e  [A]fue
-             (Bm has 2 letters, 1 char 'e' + 2 spaces)
-
-❌ Incorrect: Empezand[Gm7]o [A]seguro
-✓ Correct:   Empezand[Gm7]o    [A]seguro
-             (Gm7 has 3 letters, 1 char 'o' + 3 spaces)
-```
-
-**Note**: This rule only applies when chords are close together. If chords already have sufficient natural spacing from lyrics text, no additional spacing is needed.
-
-### Chord Position Format
-
-Positions are 4-digit strings representing fret positions for ukulele strings GCEA (low to high):
-- `"0003"` = G:open, C:open, E:open, A:3rd fret (C chord)
-- `"2210"` = G:2nd, C:2nd, E:1st, A:open (Dm chord)
-
-### Strumming Patterns (Instrumental Parts)
-
-For instrumental sections without lyrics, chords must be formatted with proper spacing for readability:
-
-**Rule 1: Simple chord sequences**
-When chords are written together, add a middle dot `·` after each chord followed by spaces equal to the number of letters in the chord name:
-
-```
-❌ Incorrect: [G] [F] [Am] [Cm]
-✓ Correct:   [G]· [F]· [Am]·  [Cm]·
-```
-
-**Rule 2: Strumming patterns with time signatures**
-When strumming patterns follow the song's time signature (separated by `|`), apply the same spacing rule:
-
-```
-❌ Incorrect: [D] · · · | [Bm] · · ·
-              [G] · [F#m] · | [Em] · [A]↓ ·
-
-✓ Correct:   [D]· · · · | [Bm]·  · · ·
-             [G]· · [F#m]·   · | [Em]·  · [A]↓ ·
-```
-
-**Exception**: If a chord already has a character immediately after it (like `↓`, `↑`, or other strumming indicators), do not add the middle dot. However, you still need to add the spacing (N spaces where N = number of letters in chord) after the strumming indicator.
-
-Examples with strumming indicators:
-- `[Dm]↓  ◦` (2 letters → 2 spaces after ↓)
-- `[Cmaj7]↓     ·` (5 letters → 5 spaces after ↓)
-- `[A]↓ ·` (1 letter → 1 space after ↓)
-
-This spacing ensures:
-- Visual alignment of beats in the strumming pattern
-- Readability when chords have different name lengths
-- Consistent formatting across all song files
+`{define:}` carries the same four GCEA frets `songs/` always held, written ChordPro's way:
+`base-fret` names the top fret of the diagram and `frets` counts from it, so a shape inside
+the first four frets sits at `base-fret 1` and its numbers are the absolute frets.
+`src/lib/chordpro.ts` converts between the two, and it is the only place that does.
 
 ### Checking a song
 
 `pnpm validate` reads every file in `songs/` and reports:
 
-- **errors** — frontmatter missing a required field, a `positions` string that is not
-  four digits, a `[Chord]` used but never defined, a filename that is not the title's
-  slug, a chord spanning more than four frets, a Cyrillic character anywhere in the file.
-  These break the app, and the command exits non-zero.
+- **errors** — a missing `{title:}`, `{artist:}`, `{key:}` or `{time:}`, a malformed
+  `{define:}`, a directive this collection does not write, a section that is never closed,
+  a `[Chord]` used but never defined, a filename that is not the title's slug, a chord
+  spanning more than four frets, a Cyrillic character anywhere in the file. These break the
+  app, and the command exits non-zero.
 - **warnings** — a chord defined but never used, spacing that does not match the rules in
   `songs/README.md`. These do not fail the run.
 

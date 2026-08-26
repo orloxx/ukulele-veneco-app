@@ -1,0 +1,47 @@
+{title: Miss Venezuela}
+{artist: Los Amigos Invisibles}
+{year: 1968}
+{key: D}
+{time: 4/4}
+
+{define: A base-fret 1 frets 2 1 0 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Dmaj7 base-fret 1 frets 2 2 2 4}
+{define: D6 base-fret 1 frets 2 2 2 2}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+
+{start_of_verse: Intro}
+[A]· · · · | [A]· · · ·
+[A]· · · · | [A]· · · ·
+[D]· · · · | [Dmaj7]·     · · ·
+[D6]·  · · · | [E7]·  · · ·
+[Em]·  · [A]· · | [D]· · [Bm]·  ·
+[G]· · · · | [A]· · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+En una [D]noche tan linda como [Dmaj7]esta
+Cual[D6]quiera de nosotras po[E7]dría triunfar
+[Em]Ser corona[A]da [D]Miss Venezue[Bm]la
+En una [G]noche tan linda como [A]esta
+Qué cer[D]tamen tan bello es [Dmaj7]este
+Las mu[D6]chachas son todas her[E7]mosas aquí
+Cual[Em]quiera de e[A]llas po[D]dría triunfar[Bm]
+Y por [G]fin su sue[A]ño reali[D]zar
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+En esta [G]noche llena de esplendor
+Yo es[D]toy que podría volar
+Con la emo[G]ción del certamen aquí
+Espe[A]↓rando, anhe[A]↓lando y pen[A]↓sando [A]↓en ga[A]↓nar
+En una [D]noche tan linda como [Dmaj7]esta
+Cual[D6]quiera de nosotras po[E7]dría triunfar
+[Em]Ser corona[A]da [D]Miss Venezue[Bm]la
+Y por [G]fin su sue[F#7]ño reali[Bm]zar
+En una [Em]noche... tan [A]linda... como [D]↓es[D]↓ta
+{end_of_verse}

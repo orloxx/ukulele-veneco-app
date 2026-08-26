@@ -1,0 +1,71 @@
+{title: Una mirada dice todo y dice nada}
+{artist: Sentimiento Muerto}
+{year: 1987}
+{key: Am}
+{time: 4/4}
+
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Em base-fret 1 frets 0 4 0 2}
+
+[Am]·  · · · | [F]· · · · (x4)
+
+[Am]Hace un tiempo que no te veo, me a[F]cuesto con tristeza de tenerte lejos
+[Am]Cuando hablabas te oía en estéreo, [F]solo una mirada dice todo y dice nada
+
+[Am]Hace algún tiempo te oía hablar, las [F]ganas vuelven si me pongo a recordar
+Un reen[Am]cuentro puede ser, por teléfono, [F] quiero otra forma no me gusta eso
+
+{start_of_chorus: Coro}
+[D]Cuando tú te acercas a mi lado, me [Bm]pongo extraño y muy descontrolado
+Me [D]sube, sube la temperatura, es[Bm]toy todo mojado, no te [C]pongas tan dura
+
+Nece[Am]sito tocarte, nece[F]sito tocarte
+Nece[Am]sito tocarte, con [F]todo este calor... estoy que sudo
+
+[D]· [D]·
+
+Ima[Am]gínate cuando no estas, [F]un tipo solo en una inmensa ciudad
+Te ima[Am]ginas solo un pez en el mar, mi[F]llones de kilómetros sin nadie para hablar
+
+[Am]Todo es cuestión de ponerse a pensar, [F]los sentimientos cuestan dominar
+Al[Am]gunos no, no me dejan en paz, con [F]toda esa música me voy a matar
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[D]Cuando tú te acercas a mi lado, me [Bm]pongo extraño y muy descontrolado
+Me [D]sube, sube la temperatura, es[Bm]toy todo mojado, no te [C]pongas tan dura
+
+Nece[Am]sito tocarte, nece[F]sito tocarte
+Nece[Am]sito tocarte, con [F]todo este calor... estoy que sudo
+
+[D]· [D]· [Am]·  [F]·
+
+Me hace [Am]falta tu boca, tu cara y tu cuerpo, me [F]sigo abrazando en tu timbre de voz
+Tus pe[Am]queñas caricias, tus pensamientos, nece[F]sito a ti y a tu aliento
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[D]Cuando tú te acercas a mi lado, me [Bm]pongo extraño y muy descontrolado
+Me [D]sube, sube la temperatura, es[Bm]toy todo mojado, no te [C]pongas tan dura
+
+Nece[Am]sito tocarte, nece[F]sito tocarte
+Nece[Am]sito tocarte, con [F]todo este calor... estoy que sudo
+
+[Em]·  [C]·  (x4)
+
+[D]Cuando tú te acercas a mi lado, me [Bm]pongo extraño y muy descontrolado
+Me [D]sube, sube la temperatura, es[Bm]toy todo mojado, no te [C]pongas tan dura
+
+Nece[Am]sito tocarte, nece[F]sito tocarte
+Nece[Am]sito tocarte, con [F]todo este calor estoy que sudo
+[Am]Una mirada, dice [F]todo y dice nada
+[Am]Una mirada, dice [F]todo y dice nada
+
+[Am]·  [F]·  (x2)
+
+[Am]
+{end_of_chorus}

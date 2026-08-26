@@ -1,0 +1,69 @@
+{title: Quinta Anauco}
+{artist: Aldemaro Romero}
+{year: 1966}
+{key: Gm}
+{time: 3/4}
+
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Gm6 base-fret 1 frets 0 2 0 1}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: Ebm base-fret 1 frets 3 3 2 1}
+{define: F7 base-fret 1 frets 2 3 1 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: Edim7 base-fret 1 frets 0 1 0 1}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Bbm base-fret 1 frets 3 1 1 1}
+{define: Eb7 base-fret 1 frets 3 3 3 4}
+{define: Ab base-fret 3 frets 3 1 2 1}
+
+{start_of_verse: Verso 1}
+Te descu[Cm]brí de frente al [D7]sol
+Con la mi[Gm]rada del a[Gm6]mor
+Eras la [Cm]luz, eras la [D7]paz
+Con la mi[Gm]rada del a[Gm6]mor
+
+Te enamo[Fm]ré, me enamo[G7]ré
+Con la mi[Cm]rada del a[Cm]mor
+Te di un co[Ebm]lor para tu [F7]piel
+Y un nuevo [Dm]modo de que[Gm]rer
+Todo empe[A7]zó con la mi[Edim7]rada del a[D7]mor
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+Tu prima[Cm]vera desper[D7]tó
+Con la mi[Gm]rada del a[Gm6]mor
+Todo mi [Cm]llanto se se[D7]có
+Con la mi[Gm]rada del a[Gm6]mor
+
+Nos apren[Fm]dimos a que[G7]rer
+Con la mi[Cm]rada del a[Cm]mor
+Y descu[Ebm]brimos la ver[F7]dad
+Que estaba o[Dm]culta entre los [Gm]dos
+Todo empe[A7]zó con la mi[D7]rada del a[Gm]mor
+{end_of_verse}
+
+{start_of_verse: Puente}
+Cuando mi a[Cm]mor te cono[F7]ció
+Se ilumi[Bb]nó tu juven[Bbm]tud
+Cuando mi a[Bbm]mor te enloque[Eb7]ció
+Tú comen[Ab]zaste a ser [Ab]tú
+
+Hoy que se a[Cm]paga tu lo[D7]cura consen[Gm]tida
+Yo te [Cm]cambio por mi [Gm]vida
+Lo que [D7]queda de tu a[Gm]mor
+{end_of_verse}
+
+{start_of_verse: Puente 2}
+Cuando mi a[Cm]mor te cono[F7]ció
+Se ilumi[Bb]nó tu juven[Bbm]tud
+Cuando mi a[Bbm]mor te enloque[Eb7]ció
+Tú comen[Ab]zaste a ser [Ab]tú
+
+Hoy que se a[Cm]paga tu lo[D7]cura consen[Gm]tida
+Yo te [Cm]cambio por mi [Gm]vida
+Lo que [D7]queda de tu a[Gm]mor
+{end_of_verse}

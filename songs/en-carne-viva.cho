@@ -1,0 +1,66 @@
+{title: En carne viva}
+{artist: Scarlett Linares}
+{year: 2003}
+{key: Em}
+{time: 6/8}
+
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: B7aug9 base-fret 2 frets 1 2 1 4}
+{define: Am6 base-fret 1 frets 2 0 2 0}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: C#dim7 base-fret 1 frets 0 1 0 1}
+
+[G]· · ·
+
+{start_of_verse: Intro}
+[Am]·  · · · · · | [B7]·  · · · · · | [Em]·  · · · · · | [Em]·  · · · · ·
+[C]· · · · · · | [D7]·  · · · · · | [G]↓ [B7] · · · · | [B7aug9]↓      [B7aug9]↓      [B7] · · ·
+[Em]·  · · · · · | [G]· · · · · · | [C]· · · · · · | [B7]·  · · · · · | [Em]·  · · · · ·
+{end_of_verse}
+
+{start_of_verse: Verso (x2)}
+[Em] Qué te has creído [Em]tú... que yo no [Am]valgo [Am]
+[D7] Si tengo el corazón en [G]carne viva [G]
+Co[Am6]barde fuiste [B7]tú, no apro[Em]vechaste [Em]
+[F#7] De los mejores años de mi [B7]vida [B7]
+{end_of_verse}
+
+{start_of_verse: Verso}
+Y [Em]vete... ya no quiero [B7]verte
+[B7] Machista insignifi[Em]cante
+Te [Am]crees más hombre que [Em]todos
+Por te[B7]ner muchas aman[Em]tes
+{end_of_verse}
+
+{start_of_verse: Verso}
+No[Em]  ...me seña[B7]les así
+[B7] Con tu dedo despia[Em]dado
+No me las[Am]times la he[Em]rida
+Que me a[B7]briste en el cos[Em]tado
+{end_of_verse}
+
+{start_of_verse: Verso (x2)}
+[E7] Olvídame si es[Am] que puedes
+[D7] Si es que puedes olvi[G]darme
+Yo también he cono[B7]cido
+Lo bueno de los aman[Em]tes
+No te lo había comen[D7]tado
+Porque no quería humillar[G]te
+Basta de tantas men[Am]tiras
+El también sintió mi [C]carne
+Lo que es i[C#dim7]gual nunca es tram[B7]pa
+Aprende a ser [Em]buen amante
+{end_of_verse}
+
+{comment: Cantar nuevamente desde Intro}
+
+{start_of_verse: Outro}
+[B7]·  · · · · | [B7aug9]↓      [B7aug9]↓      [B7] · · ·
+[Em]↓
+{end_of_verse}

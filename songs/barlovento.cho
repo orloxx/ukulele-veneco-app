@@ -1,0 +1,66 @@
+{title: Barlovento}
+{artist: Aldemaro Romero}
+{year: 1950}
+{key: Dm}
+{time: 6/8}
+
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: F+ base-fret 1 frets 2 1 1 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Asus4 base-fret 1 frets 2 2 0 0}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Gm base-fret 1 frets 0 2 3 1}
+
+{start_of_verse: Intro}
+La línea de la introducción también se puede tocar Dm↓ F+↓ F↓ F+↓ Dm↓ Asus4↓ Dm · · Dm↑
+
+[Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]·  · · [Dm]↑
+[Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]·  · · [Dm]↑
+[Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]·  · · [Dm]↑
+[Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]↓  [Dm]↓  | [Dm]·  · · [Dm]↑
+
+[A7]·  · · · · · | [Dm]·  · · · · ·
+[A7]·  · · · · · | [Dm]·  · · · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+Barlo[Dm]vento, Barlo[Dm]vento, tierra ar[A7]diente y del tam[Dm]bor,
+Barlo[Dm]vento, Barlo[Dm]vento, tierra ar[A7]diente y del tam[Dm]bor,
+
+[C]Tierra de las fu[C]lías y negras [F]finas,
+[Gm]Que llevan de [A7]fiesta [A7]su cintura [Dm]prieta
+Y al [Gm]son de la cur[Dm]beta y el taki-[A7]taki de la [Dm]mina
+Y al [Gm]son de la cur[Dm]beta y el taki-[A7]taki de la [Dm]mina
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+Sa[Dm]↓broso que [Dm]↓mueve el [Dm]↓cuerpo
+[Dm]↓la barloven[Dm]↓teña cuan[Dm]↓do ca[Dm]mina, [Dm]↑
+
+Sa[Dm]↓broso que [Dm]↓suena el [Dm]↓taki-
+[Dm]↓takitaki[Dm]↓taki so[Dm]↓bre la [Dm]mina [Dm]↑
+
+Que [C]vengan los conuque[F]ros para el bai[C]le de San [F]Juan,
+Que [C]vengan los conuque[F]ros para el bai[C]le de San [F]↓Juan,
+
+Que la [Dm]↓mina es[Dm]↓tá tem[Dm]↓plada
+pa'[Dm]↓ so[Dm]↓na' el ti[Dm]↓tiki-[Dm]taki [Dm]↑
+
+Que la [Dm]↓mina es[Dm]↓tá tem[Dm]↓plada
+pa'[Dm]↓ so[Dm]↓na' el ti[Dm]↓tiki
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Dm]Taki-ti-taki [A7] Tiki-tiki [Dm]Taki-ti-taki [A7] Tiki-tiki
+[Dm]Taki-ti-taki [A7] Tiki-tiki [Dm]Taki-ti-taki [A7] Tiki-tiki-[Dm]tá
+
+Repetir desde el inicio y luego al Outro
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Dm]↓  [Dm]↓  [Gm]↓  [A7]↓
+[Dm]↓  [Dm]↓  [Gm]↓  [A7]↓
+[Dm]↓  [Dm]↓  [Gm]↓  [A7]↓
+[Dm]↓
+{end_of_verse}

@@ -1,0 +1,48 @@
+{title: No soy una señora}
+{artist: Melissa}
+{year: 1984}
+{key: C}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Dm base-fret 1 frets 2 2 1 0}
+
+[C]· · · · | [Am]·  · · · | [Em]·  · · · | [F]· · [G]·
+
+La he·rida de un [C]hombre... No [Am]es una novedad
+La [Em]gente juzgará... Cru[F]zando opiniones [G]
+Empieza otro [C]día... En un [Am]par de kilómetros más
+[Em]Sin horizonte... Sin [F]nadie que le importe [G]↓
+
+Dejando mis [C]sueños... En el [Am]cuarto de cualquier motel
+Con la [Em]cara cubierta... Con la [F]vida revuelta[G]
+Marcaste mi [C]vida... De[Am]jándome olvidada aquí
+Sacri[Em]ficio absurdo... ¿Y [F]↓có·mo ·re·cor·dar·te a[G]↓hora?
+
+{start_of_chorus: Coro}
+No soy una se[F]ñora... de u[G]na conducta intacha[C]ble en la vida[F]
+No soy una se[Dm]ñora... Luchan[G]do y perdiendo una gue[C]rra que se hace infini[F]ta
+Oh no[C]... [C] Oh[G] no[Am]... [G]  [C]  [C]
+
+Yo cre[C]ía en tus sentimientos... Y vi[Am]vía solo para ti
+Prefe[Em]riste seguir al viento... Sin pen[F]sar en mi [G]↓
+Y que tristeza sen[C]tía... Me u[Am]saste como un maniquí
+Una ho[Em]rrible aventura... Una his[F]toria absurda [G]
+Dejé de ser [C]tuya... Fui de [Am]otro como fui de ti
+Y olvi[Em]dé cómo amarte... No [F]↓quie·ro ·re·cor·dar·te a[G]↓hora
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+No soy una se[F]ñora... de u[G]na conducta intacha[C]ble en la vida[F]
+No soy una se[Dm]ñora... Luchan[G]do y perdiendo una gue[C]rra que se hace infini[F]ta
+No soy una se[Dm]ñora... de u[G]na conducta intacha[C]ble en la vida[F]
+Oh no[C]... [C] Oh[G] no[Am]... [G]  [C]  [C]
+No soy una se[F]ñora... de u[G]na conducta intacha[C]ble en la vida[F]
+No soy una se[Dm]ñora... Luchan[G]do y perdiendo una gue[C]rra que se hace infini[F]ta
+No soy una se[Dm]ñora... de u[G]na conducta intacha[C]ble en la vida[F]
+Oh no[C]... [C] Oh[G] no[Am]... [G]  [C]  [C]↓
+{end_of_chorus}

@@ -1,0 +1,73 @@
+{title: Solo faltas tú}
+{artist: Ilan Chester}
+{year: 1985}
+{key: Am}
+{time: 4/4}
+
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: C#m7 base-fret 1 frets 4 4 4 4}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Ab7 base-fret 1 frets 1 3 2 3}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: Bbm base-fret 1 frets 3 1 1 1}
+{define: Ebm base-fret 1 frets 3 3 2 1}
+{define: Gb base-fret 1 frets 3 1 2 1}
+{define: Db base-fret 1 frets 1 1 1 4}
+
+[Am]·  · [Em]·  · | [F]· · [Dm]·  [E7]·
+[Am]·  · [Em]·  · | [F]· · [Dm]·  [E7]·
+
+[Am]Mírame, es[Em]cúchame, [F] con la prisa que lle[Dm]vas [E7]
+Ol[Am]vidas que e[Em]res mujer[F]  [F]
+La que [Dm]cuida mi hogue[G7]ra, mi [C]fiel compañe[F]ra
+La que [Bm]guarda el te [Bb]quiero y no está[Bm]
+
+{start_of_chorus: Coro}
+[D]↓So[E7]↓lo [C#m7]faltas tú,[F#m]   tu pre[Bm]sencia y nada más[D]↓
+[E7]↓ Solo [C#m7]falta que pongas un po[F#m]co de ti nada más[D]
+[D]↓So[E7]↓lo [C#m7]faltas tú,[F#m]   y [Bm]no te puedo hablar[D]↓
+[E7]↓ Cada [C#m7]sol, cada luna que pa[F#m]sa, el amor se nos [Dm]↓ va
+
+[Dm]↓  Por [E7]↓eso...
+[Am]Mírame, es[Em]cúchame, [F] con la vida que lle[Dm]vas [E7]
+Ol[Am]vidas que e[Em]res mujer[F]  [F]
+No es nin[Dm]guna sor[G7]presa, la [C]nota en la me[F]sa
+La que [Bm]guarda el te [Bb]quiero y no está[Bm]
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[D]↓So[E7]↓lo [C#m7]faltas tú,[F#m]   tu pre[Bm]sencia y nada más[D]↓
+[E7]↓ Solo [C#m7]falta que pongas un po[F#m]co de ti nada más[D]
+[D]↓So[E7]↓lo [C#m7]faltas tú,[F#m]   y [Bm]no te puedo hablar[C#m7]
+{end_of_chorus}
+
+{start_of_verse: Puente}
+Quizá maña[F#m]na sea tar[A]de, yo [B7]puse ya mi par[Ab7]te
+Y solo [C#m7]faaaltas [Ab7]túuu  [C#m7] · [Ab7] ·
+{end_of_verse}
+
+{comment: Cambio de clave}
+
+{start_of_chorus: Coro}
+Solo [Fm]faltas tú,[Bbm]  tu pre[Ebm]sencia y nada más[Ab7]↓
+[Gb]↓ Solo [Fm]falta que pongas un po[Bbm]co de ti nada mas[Ebm]
+[Ab7]↓So[Gb]↓lo [Fm]faltas tú,[Bbm]  y es [Ebm]solo natural[Ab7]↓
+[Gb]↓ Cada [Fm]sol, cada luna que pa[Bbm]sa, el amor se nos [Ebm]va
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Ab7]↓So[Gb]↓lo [Fm]faltas tú[Bbm]uu  ·   [Ebm]  ·
+[Ab7]↓   [Gb]↓  [Fm]·  · [Bbm]·   · [Ebm]·   ·
+[Ab7]·   · [Db]↓
+{end_of_verse}

@@ -1,0 +1,86 @@
+{title: La pequeña Venecia}
+{artist: Ricardo Montaner}
+{year: 1993}
+{key: Gm}
+{time: 4/4}
+
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Ab base-fret 3 frets 3 1 2 1}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: Edim7 base-fret 1 frets 0 1 0 1}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: Bbm base-fret 1 frets 3 1 1 1}
+
+[Gm]·  · · · | [Eb]·  · · · | [F]· · · · | [Dm]·  · · · | [Gm]·  · · · | [Eb]·  · · · | [F]· · · · | [Dm]·  · · ·
+
+[Gm]  Te daré[Eb] una casa ale[F]gre a los pies[Dm] del cerro aquel[Gm]
+   Y que ten[Eb]gas manan[F]tial y río, [Dm] va soñan[G]do Simón
+[Cm] Te daré[F] lo que me pi[Bb]das, un [Eb]país y una fami[Ab]lia   [Ab]
+[Fm]Frutas y un jardín[Fm]
+
+[Gm]  Te daré[Eb] el reverdecer[F] madurán[Dm]dote los a[Gm]ños
+   Te daré[Eb] naturale[F]za madre, [Dm] prometien[G]do Simón
+[Cm] Un café[F] por la maña[Bb]na, y u[Eb]nos hijos que te quie[Ab]ran  [Ab]
+En [Cm]↓ la peque[Dm]↓ ña Vene[Eb]↓ee[F]↓cia
+
+{start_of_chorus: Coro}
+Don[Bb]de mi queren[Dm]cia llega al bor[Fm]de
+Voy mo[G]jando tu vesti[Cm]do
+Como agüi[Ab]ta [F] de rocío
+Con el sol[Cm]↓  de atar[F]↓decer
+Don[Bb]de comenzó a[Dm] soñar Bolí[Fm]var
+Donde [G]nacen las or[Cm]quídeas
+Tras un ár[Ab]bol de prome[F]sas
+Yo te quie[Cm]↓ ro ena[F]↓mora[D7]aar, oh-[D7]oh
+
+[Gm] Te daré[Eb] un panal de abe[F]jas en la [Dm]copa del oli[Gm]vo
+   Y que ten[Eb]gas miel case[F]ra dulce [Dm] para dar[G]le a Simón
+[Cm] Un rosal[F] de maripo[Bb]sas perfu[Eb]mándote la vi[Ab]da    [Ab]
+En [Cm]↓ la peque[Dm]↓ ña Vene[Eb]↓ee[F]↓cia
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Don[Bb]de mi queren[Dm]cia llega al bor[Fm]de
+Voy mo[G]jando tu vesti[Cm]do
+Como agüi[Ab]ta [F] de rocío
+Con el sol[Cm]↓  de atar[F]↓decer
+Don[Bb]de comenzó a[Dm] soñar Bolí[Fm]var
+Donde [G]nacen las or[Cm]quídeas
+Tras un ár[Ab]bol de prome[F]sas
+Yo te quie[Cm]↓ ro ena[F]↓mora[D7]aar, oh-[D7]oh
+{end_of_chorus}
+
+{start_of_verse: Puente}
+Te [Gm]doy un porvenir[Bb] y el [Eb]último rin[Eb]↓cón de [Edim7]↓mi pa[Dm]ís  [Dm]
+[Ab] Mi hipoteca·do pensa[Cm]miento y mi poe·ma
+Mi can[Gm]ción de amor y mi buen[Am] humor
+Y una gón[Bbm]dola en Ve[Cm]↓ nee[F]↓cia
+{end_of_verse}
+
+{start_of_verse: Instrumental}
+[Bb]·  · · · | [Dm]·  · · · | [Fm]·  · · · | [G]· · · · | [Cm]·  · · · | [Ab]·  · · · | [F]· · · · | [Cm]·  · [F]· ·
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Don[Bb]de mi queren[Dm]cia llega al bor[Fm]de
+Voy mo[G]jando tu vesti[Cm]do
+Como agüi[Ab]ta [F] de rocío
+Con el sol[Cm]↓  de atar[F]↓decer
+Don[Bb]de comenzó a[Dm] soñar Bolí[Fm]var
+Donde [G]nacen las or[Cm]quídeas
+Tras un ár[Ab]bol de prome[F]sas
+Yo te quie[Cm]↓ ro ena[F]↓mora(Bb)aar
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Bb] · · · | [Dm] · · · | [Fm] Donde | [G]  Dooo-| [Cm]-ooon | [Ab] · · · | [F] · · · | [Cm] · [F] ·
+Don[Bb]de mi queren[Dm]cia llega al bor[Fm]de, voy mo[G]jando tu vesti[Cm]do
+[Ab]·  · · · | [F]· · · · | [Cm]·  · [F]· · | [Bb]↓
+{end_of_verse}

@@ -1,0 +1,76 @@
+{title: Amar es algo más}
+{artist: José Luis Rodríguez}
+{year: 1980}
+{key: Cm}
+{key: Dm}
+{time: 4/4}
+
+{define: Cm7 base-fret 1 frets 3 3 3 3}
+{define: Gm7 base-fret 1 frets 0 2 1 1}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: Bb7 base-fret 1 frets 1 2 1 1}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: Dm7 base-fret 1 frets 2 2 1 3}
+{define: Am7 base-fret 1 frets 0 0 0 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: C7 base-fret 1 frets 0 0 0 1}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+
+[Cm7]·   · · · | [Cm7]·   · · · | [Cm7]·   · · · | [Cm7]·   · [Gm7]·   [Gm7]·
+
+Sen[Cm]tado con tu re[Fm]trato en el sofá
+No [Bb7]dejo de pensar en [Eb]ti
+Y por te[G7]léfono te llamo inútil[Cm]mente
+Pero tú no me [Fm]quieres ni [D7]siquiera o[G7]ír
+
+Es[Cm]pera que estoy can[Fm]sado de llorar
+Que [Bb7]no puedo olvidar tu a[Eb]mor
+Y con mis [G7]lágrimas se mezclan los re[Cm]cuerdos
+De los días fe[Fm]lices que [G7]no volve[Cm]rán [Cm]↓
+
+{start_of_chorus: Coro}
+Amar es algo [Cm]más que verse y conver·sar, amar es [Fm]entregarse ·
+Es más que una ilu[G7]sión, es más que una pa·sión, amar es [Cm]perdonarse ·
+Amar es algo [Cm]más que dar una amis·tad, amar es ir [Fm]cantando ·
+Para aprender a a[G7]mar no basta con so·ñar, amar se apren[Cm]de amando
+Porque el a[Fm]mor te da cobijo y calor,
+[Cm] Enciende tu corazón,[G7] te da la vi[Cm]da
+Y en el a[Fm]diós queda un amargo dolor,
+[Cm] Y el aire deja un sa[G7]bor a despe(Cm7)dida
+
+[Cm7]·   · · · | [Cm7]·   · · ·
+{end_of_chorus}
+
+{start_of_verse: Cambio de clave}
+[Dm7]·   · · · | [Dm7]·   · · · | [Dm7]·   · · · | [Dm7]·   · [Am7]·   [Am7]·
+
+Qui[Dm]siera poder ha[Gm]blarte una vez más
+De[C7]cirte que no soy fe[F]liz
+Recono[A7]cer uno por uno mis e[Dm]rrores
+Pedir que me [Gm]perdones si es[E7] que te ofen[A7]dí
+
+A[Dm]hora voy rebus[Gm]cando en el ayer
+So[C7]ñando con volver a [F]ti
+Mientras en [A7]vano mi teléfono te [Dm]llama
+La tarde lenta[Gm]mente se vis[A7]tió de [Dm]gris [Dm]↓
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Amar es algo [Dm]más que verse y conver·sar, amar es [Gm]entregarse ·
+Es más que una ilu[A7]sión, es más que una pa·sión, amar es [Dm]perdonarse ·
+Amar es algo [Dm]más que dar una amis·tad, amar es ir [Gm]cantando ·
+Para aprender a a[A7]mar no basta con so·ñar, amar se apren[Dm]de amando
+Porque el a[Gm]mor te da cobijo y calor,[Dm] enciende tu corazón,[A7] te da la vi[Dm]da
+Y en el a[Gm]diós queda un amargo dolor,[Dm] y el aire deja un sa[A7]bor a despe[Dm]dida
+
+Porque el a[Gm]mor te da cobijo y calor,[Dm] enciende tu corazón,[A7] te da la vi[Dm]da
+Y en el a[Gm]diós queda un amargo dolor,[Dm] y el aire deja un sa[A7]bor a despe[Dm]dida
+
+[Dm]↓
+{end_of_chorus}

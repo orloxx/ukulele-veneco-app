@@ -33,7 +33,6 @@ import { registerHooks } from "node:module";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import matter from "gray-matter";
 
 const REPO_ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -89,6 +88,9 @@ const { stripVoicingMarker } = await import(
 const { INSTRUMENTS } = await import(
   pathToFileURL(path.join(REPO_ROOT, "src/lib/instrument.ts")).href
 );
+const { songFromChordPro } = await import(
+  pathToFileURL(path.join(REPO_ROOT, "src/lib/songs.ts")).href
+);
 
 /* ------------------------------------------------------------------ songs */
 
@@ -96,20 +98,14 @@ const SONGS = path.join(REPO_ROOT, "songs");
 
 const songs = fs
   .readdirSync(SONGS)
-  .filter((file) => file.endsWith(".md") && file !== "README.md")
+  .filter((file) => file.endsWith(".cho"))
   .sort()
-  .map((file) => {
-    const { data } = matter(fs.readFileSync(path.join(SONGS, file), "utf8"));
-    return {
-      slug: file.replace(/\.md$/, ""),
-      metadata: { key: String(data.key ?? "") },
-      chordDefinitions: (data.chords ?? []).map((chord) =>
-        typeof chord === "string"
-          ? { name: chord, positions: "" }
-          : { name: chord.name, positions: chord.positions ?? "" },
-      ),
-    };
-  });
+  .map((file) =>
+    songFromChordPro(
+      fs.readFileSync(path.join(SONGS, file), "utf8"),
+      file.replace(/\.cho$/, ""),
+    ),
+  );
 
 /* ----------------------------------------------------------------- runner */
 

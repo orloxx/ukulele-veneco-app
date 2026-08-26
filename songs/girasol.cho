@@ -1,0 +1,58 @@
+{title: Girasol}
+{artist: La Nave}
+{year: 1997}
+{key: G}
+{time: 4/4}
+
+{define: G base-fret 1 frets 0 2 3 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: C base-fret 1 frets 0 0 0 3}
+
+[G]· · · [G]↓ | [G]· · · [G]↓ | [G]· · · · | [G]· · · ·
+[G]· · · [G]↓ | [G]· · · [G]↓ | [G]· · · · | [G]· · · ·
+
+[G] Estoy cambiando, no [D]sé que hacer
+[Em] Estoy tan solo que sa[Bm]lí a beber
+Si me mue[Am]ro no te animas a robar[Bm]te un poco de este corazón[C]
+Y del perfu[D]me que se mo[G]ja en este cuerpo
+Solo un [D]flash
+De vanida[Em]des, de ilusio[Bm]nes
+Que puedo dar[Am]te más que un trago y esperar[Bm] pasarla bien [C]
+[D] Hasta mañana...[Am] · · [Am]↓  | [Am] · · [Am]↓  | [Am] · · [Am]↓  | [Am] · · [Am]↓
+
+{start_of_chorus: Coro}
+[G]Sol, en[C]tre tus pier[D]nas gi[Em]ra el sol
+En[C]tre las mí[G]as [Am] gira el sol
+[C] El girasol [D]
+Sol,[G] en[C]tre tus pier[D]nas gi[Em]ra el sol
+En[C]tre las mí[G]as [Am] la razón
+[C] De un girasol,[D] un girasol
+
+[G]· · · [G]↓ | [G]· · · [G]↓ | [G]· · · · | [G]· · · ·
+
+[G] Estoy cambiando, ya no sé que ha[D]cer
+Estoy tan solo que sa[Em]lí a beber
+Si me muero no te animas a robar[Bm]me
+Que puedo dar[Am]te más que un trago y esperar[Bm] pasarla bien [C]
+[D] Hasta mañana...[Am] · · [Am]↓  | [Am] · · [Am]↓  | [Am] · · [Am]↓  | [Am] · · [Am]↓
+[Am]·  · · [Am]↓  | [Am]·  · · [Am]↓  | [Am]·  · · [Am]↓  | [Am]·  · · [Am]↓
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[G]Sol, en[C]tre tus pier[D]nas gi[Em]ra el sol
+En[C]tre las mí[G]as [Am] gira el sol
+[C] El girasol [D]
+Sol,[G] en[C]tre tus pier[D]nas gi[Em]ra el sol
+En[C]tre las mí[G]as [Am] la razón
+[C] De un girasol,[D] un girasol
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[G]· · · [G]↓ | [G]· · · [G]↓ | [G]· · · · | [G]· · · ·
+[G]· · · · | [G]· · · · | [G]· · · · | [G]· · · ·
+[Am]·  · · [Am]↓  | [Am]·  · · [Am]↓  | [Am]·  · · [Am]↓  | [Am]·  · · [Am]↓
+[Am]↓
+{end_of_verse}

@@ -1,0 +1,61 @@
+{title: Dum dum}
+{artist: Los Tres Tristes Tigres}
+{year: 1974}
+{key: C}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: C# base-fret 4 frets 3 2 1 1}
+{define: G#7 base-fret 4 frets 2 3 1 3}
+{define: F# base-fret 1 frets 3 1 2 1}
+
+[C]· · · · | [C]· · · ·
+
+Dum [C]dum mira cómo baila
+Mi linda mucha[C]chita sobre la a[G7]rena
+El [G7]mar tiene que evitarla se mueve al mismo [G7]ritmo que una si[C]rena
+Dum [C]dum mueve su cintura
+Camino emocio[C]nado con embe[G7]leso
+El [G7]sol baña su figura la vuelvo a contem[G7]plar quiero darle un [C]beso
+
+{start_of_chorus: Coro}
+[F]Dum Dum la[C]la-lara [G7]Dum dum la[C]la-lara
+[F]Dum Dum la[C]la-lara [G7]Dum dum [C]la la la
+
+[C#]·  · · · | [C#]·  · · ·
+
+Dum [C#]dum todo se estremece
+El cielo se ilu[C#]mina con su son[G#7]risa
+Las [G#7]olas del mar se mecen y bañan sus ca[G#7]bellos la suave [C#]brisa
+Dum [C#]dum seguirá bailando
+Cuando llegue la [C#]noche y la luna [G#7]salga
+El [G#7]sol que se está ocultando se queda todo el [G#7]tiempo para mirar[C#]la
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[F#]Dum Dum la[C#]la-lara [G#7]Dum dum la[C#]la-lara
+[F#]Dum Dum la[C#]la-lara [G#7]Dum dum [C#]↓la [C#]↓la [C#]↓la
+
+Dum [C#]dum todo se estremece
+El cielo se ilu[C#]mina con su son[G#7]risa
+Las [G#7]olas del mar se mecen y bañan sus ca[G#7]bellos la suave [C#]brisa
+Dum [C#]dum seguirá bailando
+Cuando llegue la [C#]noche y la luna [G#7]salga
+El [G#7]sol que se está ocultando se queda todo el [G#7]tiempo para mirar[C#]↓la  [C#]↓  [C#]↓
+
+Dum [C#]dum mira cómo baila
+Mi linda mucha[C#]chita sobre la a[G#7]rena
+El [G#7]mar tiene que evitarla se mueve al mismo [G#7]ritmo que una si[C#]rena
+Dum [C#]dum mueve su cintura
+Camino emocio[C#]nado con embe[G#7]leso
+El [G#7]sol baña su figura la vuelvo a contem[G#7]plar quiero darle un [C#]beso
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[F#]Dum Dum la[C#]la-lara [G#7]Dum dum la[C#]la-lara
+[F#]Dum Dum la[C#]la-lara [G#7]Dum dum la[C#]la-lara
+[F#]Dum Dum la[C#]la-lara [G#7]Dum dum la[C#]la-lara
+[F#]Dum Dum la[C#]la-lara [G#7]Dum dum [C#]↓la [C#]↓la [C#]↓la
+{end_of_chorus}

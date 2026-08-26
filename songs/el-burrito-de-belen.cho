@@ -1,0 +1,48 @@
+{title: El burrito de Belén (El burrito sabanero)}
+{artist: La Rondallita}
+{year: 1972}
+{key: G}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: D base-fret 1 frets 2 2 2 0}
+
+[C]· · [G]· · | [D7]·  · [G]· · | [C]· · [G]· · | [D7]·  · [G]· ·
+
+{start_of_verse: Verso 1}
+Con mi burrito saba[C]nero voy ca[D7]mino de Belén[G]
+Con mi burrito saba[C]nero voy ca[D7]mino de Belén[G]
+Si me [C]ven, si me [G]ven, voy ca[D7]mino de Belén[G]
+Si me [C]ven, si me [G]ven, voy ca[D7]mino de Belén[G]
+
+El lucerito maña[C]nero, ilu[D7]mina mi sende[G]ro
+El lucerito maña[C]nero, ilu[D7]mina mi sende[G]ro
+Si me [C]ven, si me [G]ven, voy ca[D7]mino de Belén[G]
+Si me [C]ven, si me [G]ven, voy ca[D7]mino de Belén[G]
+
+Con mi cuatrico voy can[C]tando y mi bu[D7]rrito va trotan[G]do
+Con mi cuatrico voy can[C]tando y mi bu[D7]rrito va trotan[G]do
+Si me [C]ven, si me [G]ven, voy ca[D7]mino de Belén[G]
+Si me [C]ven, si me [G]ven, voy ca[D7]mino de Belén[G]
+
+[B7]Tuki tuki tuki [Em]tuki, [B7]tuki tuki tuki [Em]ta
+Apú[A7]rate mi bu[D]rrito que ya [A7]vamos a lle[D]gar
+[B7]Tuki tuki tuki [Em]tuki, [B7]tuki tuki tuki [Em]ta
+Apú[C]rate mi bu[G]rrito vamos [D7]a ver a Je[G]↓sús
+{end_of_verse}
+
+{comment: Cantar nuevamente desde verso 1}
+
+{start_of_verse: Outro}
+Con mi burrito saba[C]nero voy ca[D7]mino de Belén[G]
+Con mi burrito saba[C]nero voy ca[D7]mino de Belén[G]
+Si me [C]ven, si me [G]ven, voy ca[D7]mino de Belén[G]
+Si me [C]ven, si me [G]ven, voy ca[D7]mino de Belén[G]
+Si me [C]ven, si me [G]ven, voy ca[D7]mino de Belén[G]
+Si me [C]ven, si me [G]ven, voy ca[D7]mino de Belén[G]↓
+{end_of_verse}

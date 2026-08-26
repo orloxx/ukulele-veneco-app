@@ -1,0 +1,88 @@
+{title: Si tú te vas}
+{artist: Colina}
+{year: 1990}
+{key: C}
+{time: 4/4}
+
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: C7 base-fret 1 frets 0 0 0 1}
+
+{start_of_verse: Intro}
+[Bb]   [C]  [Bb]   [C]
+[Dm]   [Bb]-[Gm]   [C] (x2)
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+Si [F]tú te vas... ¿Qué [Bb]será de las noches de in[F]vierno?
+Dime ¿qué [Gm]voy a hacer... cuando [C]tú no estés?
+Si algún [Bb]día [C]tú te [F]vas
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+¿Con [Bb]quién miraré la te[F]levisión?
+¿Con [Gm]quién tomaré el café?
+¿Con [C]quién conversaré en las [Bb]noches?
+Si [C]tú te vas mi [C7]vida
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[F] ¿Qué voy a ha[Bb]cer con las pala[C]bras de amor
+que [Bb]me faltaron por de[F]cirte?
+¿Qué voy ha[Bb]cer sin tus [C]besos?
+si aún mis [Bb]labios están ham[F]brientos.
+{end_of_chorus}
+
+{start_of_verse: Post-coro}
+Ah-ah-ah, [Bb] ah-ah-ah [C]
+¿Qué voy a [Bb]ser si tú te [F]vas?
+Ah-ah-ah, [Bb] ah-ah-ah [C]
+¿Qué voy a [Bb]ser si tú te [F]vas?
+{end_of_verse}
+
+{start_of_verse: Interludio}
+[Dm]   [Bb]-[Gm]   [C] (x2)
+{end_of_verse}
+
+{start_of_verse: Verso 3}
+Si [F]tú te vas... El [Bb]sol ya no brilla[F]rá igual
+las [Gm]aves con su cantar... no [C]volverán
+nada [Bb]será igual si [C]tú te [F]vas
+{end_of_verse}
+
+{start_of_verse: Verso 4}
+¿Que se[Bb]rá de las noches de in[F]vierno?
+Dime ¿qué [Gm]voy a hacer...  ...cuando [C]tú no estés?
+Si algún [Bb]día...
+Si [C]tú te vas mi [C7]vida
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[F] ¿Qué voy a ha[Bb]cer con las pala[C]bras de amor
+que [Bb]me faltaron por de[F]cirte?
+¿Qué voy ha[Bb]cer sin tus [C]besos?
+si aún mis [Bb]labios están ham[F]brientos.
+{end_of_chorus}
+
+{start_of_verse: Post-coro 2}
+Ah-ah-ah, [Bb] ah-ah-ah [C]
+¿Qué voy a [Bb]ser si tú te [F]vas?
+Ah-ah-ah, [Bb] ah-ah-ah [C]
+¿Qué voy a [Bb]ser si tú te [F]vas?
+{end_of_verse}
+
+{start_of_verse: Outro}
+Si tú te vas[Bb] mi vida[C]
+¿Qué voy a [Bb]ser si tú te [F]vas?
+¿Qué será de las [Bb]noches cuando tú te [C]vayas?
+¿Qué voy a [Bb]ser si tú te [F]vas?
+Oye si tú te [Bb]vas, mi vida, [C]dime, dime,
+¿Qué voy a [Bb]ser si tú te [F]vas?
+Oh no, [Bb]   [C]oh no
+
+[Dm]   [Bb]-[Gm]   [C] (x2)
+[F]
+{end_of_verse}

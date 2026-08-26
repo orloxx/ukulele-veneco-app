@@ -1,0 +1,79 @@
+{title: Traicionera}
+{artist: Pastor López}
+{year: 1978}
+{key: Em}
+{time: 4/4}
+
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Cdim7 base-fret 1 frets 2 3 2 3}
+
+[Em]·  · · · | [Em]·  · [D]· · | [D]· · · · | [D]· · [Em]·  ·
+[Em]·  · · · | [Em]·  · [D]· · | [D]· · · · | [D]· · [Em]·  ·
+
+[Em] Cuando se quiere co[Em]mo te qui[D]se
+[D]Trata de cerrar la herida [D]que me abris[Em]te
+[Em] He vuelto a amarte y a [Em]recordar[D]te
+[D]Pero yo no puedo aho[D]ra olvi[Em]darte
+
+{start_of_chorus: Coro}
+[Em]Oye traicionera, aunque [Em]yo me mue[D]ra
+[D]Donde yo me encuentre roga[D]ré por tu al[Em]ma
+[Em]Oye traicionera, aunque [Em]yo me mue[D]ra
+[D]Donde yo me encuentre roga[D]ré por [Em]tu alma
+
+[Em]·  · · · | [Em]·  · [D]· · | [D]· · · · | [D]· · [Em]·  ·
+[Em]·  · · · | [Em]·  · [D]· · | [D]· · · · | [D]· · [Em]·  ·
+
+[Em]He vuelto a amarte y a recordar[D]te
+[D]Pero yo no puedo aho[D]ra olvidar[Em]te
+Tú eres la alegría que fue mi vida
+Camino en las noches y no encuentro nada
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Em]Oye traicionera, aunque [Em]yo me mue[D]ra
+[D]Donde yo me encuentre roga[D]ré por tu al[Em]ma
+[Em]Oye traicionera, aunque [Em]yo me mue[D]ra
+[D]Donde yo me encuentre roga[D]ré por [Em]tu alma
+
+[Em]·  · · · | [Em]·  · [D]· · | [D]· · · · | [D]· · [Em]·  ·
+[Em]·  · · · | [Em]·  · [D]· · | [D]· · · · | [D]· · [Em]·  ·
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Em]Oye traicionera, aunque [Em]yo me mue[D]ra
+[D]Donde yo me encuentre roga[D]ré por tu al[Em]ma
+[Em]Oye traicionera, aunque [Em]yo me mue[D]ra
+[D]Donde yo me encuentre roga[D]ré por [Em]tu alma
+
+[Em]·  · · · | [Em]·  · [D]· · | [D]· · · · | [D]· · [Em]·  ·
+[Em]·  · · · | [Em]·  · [D]· · | [D]· · · · | [D]· · [Em]·  ·
+
+[Em] Cuando se quiere co[Em]mo te qui[D]se
+[D]Trata de cerrar la herida [D]que me abris[Em]te
+[Em] He vuelto a amarte y a [Em]recordar[D]te
+[D]Pero yo no puedo aho[D]ra olvi[Em]darte
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Em]Oye traicionera, aunque [Em]yo me mue[D]ra
+[D]Donde yo me encuentre roga[D]ré por tu al[Em]ma
+[Em]Oye traicionera, aunque [Em]yo me mue[D]ra
+[D]Donde yo me encuentre roga[D]ré por [Em]tu alma
+
+[Em]·  · · · | [Em]·  · [D]· · | [D]· · · · | [D]· · [Em]·  ·
+[Em]·  · · · | [Em]·  · [D]· · | [D]· · · · | [D]· · [Em]·  ·
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Em]Oye traicionera, aunque [Em]yo me mue[D]ra
+[D]Donde yo me encuentre roga[D]ré por tu al[Em]ma
+[Em]Oye traicionera, aunque [Em]yo me mue[D]ra
+[D]Donde yo me encuentre roga[D]ré por [Em]tu alma
+
+[Em]·  · · · | [Em]·  · [D]· · | [D]· · · · | [D]· · [Em]·  ·
+[Em]·  · · · | [Em]·  · [D]· · | [D]· · · · | [D]· · [B7]·  [Cdim7]·
+[Em]·  · [Em]↓
+{end_of_chorus}

@@ -1,0 +1,62 @@
+{title: Brújula}
+{artist: Gaêlica}
+{year: 2013}
+{key: G}
+{time: 4/4}
+
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Bm7 base-fret 1 frets 2 2 2 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: D base-fret 1 frets 2 2 2 0}
+
+[G]· · · · | [G]· · · · | [G]· · · · | [G]· · · ·
+[G]· · · · | [G]· · · · | [G]· · · · | [G]· · · ·
+
+[G]La hora [Em]ya pasó, la [Bm7]noche está tranquila •
+[G]El viento [Am] está a nuestro fa[Em]vor •
+[G]No sé a [Em]dónde vamos, [Bm7]no sé dónde queda [Bm]
+[C]Sé... • que alguien nos es[G]pera •
+[G]Deja atrás, [Em]deja atrás, el [D]peso, el equipaje •
+[G]No hace falta, [Am] no necesitas[Em] más •
+[G]Camina, y [Em]ya verás que aun[Bm7]que el camino es largo [Bm]
+[C]No... • no hay que pa[G]rar •
+
+[C]Voy siguiendo [D] la brújula que [Em]llevo dentro [G]
+[C]Voy siguiendo [D] una sola dire[Em]cción [G]
+[C]Voy siguiendo [Am] la brújula que [Em]llevo dentro [G]
+[C]Voy siguiendo [D]mi corazón
+
+[G]· · · · | [G]· · · · | [G]· · · · | [G]· · · ·
+
+{start_of_verse: Instrumental}
+[G]· · · · | [Em]·  · · · | [Bm7]·   · · · | [Bm7]·   · · ·
+[G]· · · · | [Am]·  · · · | [Em]·  · · · | [Em]·  · · ·
+[C]· · · · | [D]· · · · | [Em]·  · · · | [G]· · · ·
+[C]· · · · | [D]· · · · | [Em]·  · · · | [Em]·  · · ·
+
+[G]Deja atrás, •deja atrás, el •peso el equipaje •
+[Em]No hace falta, [D] no necesitas más [C]   •
+[G]Camina, y [Em]ya verás que aun[Bm7]que el camino es largo [Bm]
+[C]No... • no hay que pa[G]rar •
+
+[C]Voy siguiendo [D] la brújula que [Em]llevo dentro [G]
+[C]Voy siguiendo [D] una sola dire[Em]cción [G]
+[C]Voy siguiendo [Am] la brújula que [Em]llevo dentro [G]
+[C]Voy siguiendo [D]mi corazón
+
+[G]· · · · | [G]· · · · | [G]· · · · | [G]· · · ·
+{end_of_verse}
+
+{start_of_verse: Outro}
+[G]· · · · | [Em]·  · · · | [Bm7]·   · · · | [Bm7]·   · · ·
+[G]· · · · | [Am]·  · · · | [Em]·  · · · | [Em]·  · · ·
+[C]Voy siguiendo [D] la brújula que [Em]llevo dentro [G]
+[C]Voy siguiendo [D]mi corazón [Em]   [G]
+[C]Voy siguiendo [D]mi cora(G)zón
+
+[G]· · · · | [G]· · · · | [G]· · · · | [G]· · · ·
+[G]↓
+{end_of_verse}

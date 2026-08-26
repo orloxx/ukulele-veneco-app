@@ -1,0 +1,62 @@
+{title: No hay}
+{artist: Nana Cadavieco}
+{year: 2009}
+{key: D}
+{time: 4/4}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: F# base-fret 1 frets 3 1 2 1}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: D+ base-fret 1 frets 3 2 2 1}
+{define: D6 base-fret 1 frets 2 2 2 2}
+{define: Gm base-fret 1 frets 0 2 3 1}
+
+No hay luz[D]
+Estamos cerra[F#]dos
+Piso moja[Bm]do
+Se acabó el vi[G]no
+Aquí no hay señal[D]
+Gracias por no fumar[F#]
+No hay café[Bm]
+No estacio[G]ne
+
+No hay pues[E7]to
+
+{start_of_chorus: Coro}
+Y todo es[D]to
+Puede[D+]
+Y sue[D6]le
+Arruinarme el dí[Bm]a
+[G]Pero... aún[Gm]... así... sonrí[D]o
+A pesar[E7] de todo sonrí[D]o
+
+No [D]sé
+No pa[F#]se
+En su talla no [Bm]queda
+Cancelado el show[G]
+Su vuelo está[D]
+Sobrevendi[F#]do
+No hay ascensor[Bm]
+No hay hie[G]lo
+
+No hay pues[E7]to
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Y todo es[D]to
+Pue[D+]de
+Y siempre sue[D6]le
+Arruinarme el dí[Bm]a
+[G]Pero... aún[Gm]... así... sonrí[D]o
+{end_of_chorus}
+
+{start_of_verse: Outro}
+Pue[D+]de
+Y sue[Bm]le...
+Suele arruinarme el dí[G]a
+[Gm]Pero... aún... sonrí[D]o
+Si hoy no llue[E7]ve...  Sonrí[D]o
+[D]↓
+{end_of_verse}

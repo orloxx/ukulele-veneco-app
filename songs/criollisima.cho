@@ -1,0 +1,75 @@
+{title: Criollísima}
+{artist: Las Cuatro Monedas}
+{year: 1978}
+{key: Dm}
+{time: 5/8}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Edim7 base-fret 1 frets 0 1 0 1}
+{define: Edim7² base-fret 1 frets 3 4 3 4}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: C7 base-fret 1 frets 0 0 0 1}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: A7sus4 base-fret 1 frets 0 2 0 0}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: Em7 base-fret 1 frets 0 2 0 2}
+{define: Em6 base-fret 1 frets 0 1 0 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: F+ base-fret 1 frets 2 1 1 0}
+
+{start_of_verse: Intro}
+[D]· · · · · | [C]· · · · · | [D]· · · · · | [C]· · · · ·
+[D]· · · · · | [C]· · · · · | [D]· · · · · | [Edim7]↑     [Edim7²]↑
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[Dm]Lucen [F] como dos pa[Gm]nales de [A7]miel
+Tus [Dm]labios [F] en tu piel mo[Gm]rena mu[A7]jer,
+[Cm]Fresca[D7] como una man[Bb]↑za[C7]↑na [F]↑vas
+Lu[E7]ciendo[Bb] tu elegante an[A7sus4]dar [A7]
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+Tu [Dm]pelo [F] libre como el [Gm]viento se [A7]ve,
+[Dm]Luce [F] igual al co[Gm]lor del ca[A7]fé,
+Tus [Cm]ojos[D7] son luna y lu[Bb]↑cer[C7]↑ro, [F]↑sí
+Del firma[E7]mento[Bb] de un amane[A7sus4]cer [A7]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[D]Dulce,[B7] alegre ma[Em]ñana,
+[F#7] Domingo tem[Bm]prano
+[Em7] Por la plaza [Em6]vienes [F#7]tú
+Las [D]flores [D7]se muestran a[G]legres
+[Gm]Capullos, bo[Bm]tones,[E7] brotan para [A]ti [F+]
+{end_of_chorus}
+
+{start_of_chorus: Coro 2}
+[D]Hueles[B7] a piña ma[Em]dura
+[F#7] Aroma exqui[Bm]sito
+[Em7] Que las frutas [Em6]nuestras [F#7]dan
+[D]Tienes [D7]toda la be[G]lleza
+[Gm]De un campo flo[Bm]rido
+[Em]↓ De un [A7]↓a-[Gm]taaa-[C7]-aaarde[F]cer
+[D7] uuh-[Gm]uuh [A7] uuh-[D]uuh [D7]
+[Gm]uu-[C7]uh uuh-[F]uuh [D7] uuh-[Gm]uuh [A7] uuh-(D)uuh
+{end_of_chorus}
+
+{comment: Repetir desde el principio y luego Outro}
+
+{start_of_verse: Outro}
+[D]· · · · · | [C]· · · · · | [D]· · · · · | [C]· · · · ·
+[D]· · · · · | [C]· · · · · | [D]· · · · · | [Edim7]↑     [Edim7²]↑
+[D]↓
+{end_of_verse}

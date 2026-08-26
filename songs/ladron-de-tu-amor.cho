@@ -1,0 +1,72 @@
+{title: Ladrón de tu amor}
+{artist: Gualberto Ibarreto}
+{year: 1984}
+{key: Am}
+{time: 4/4}
+{capo: 1}
+
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: Am7 base-fret 1 frets 0 0 0 0}
+{define: Am6 base-fret 1 frets 2 0 2 0}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: Cmaj7 base-fret 1 frets 0 0 0 2}
+{define: Gm6 base-fret 1 frets 0 2 0 1}
+{define: B7 base-fret 1 frets 4 3 2 0}
+
+[A7]·  · | [Dm]·  · [F]· · | [E7]·  · · · | [Am]·  · [Am7]·   · | [Am6]·   · · ·
+[Dm]·  · · · | [F]· · · · | [E7]·  · · · | [E7]↓  ◦ ◦ ◦
+
+[Am] Aquella noche un vaga[Dm]bundo
+[G7] Cambió tu risa en amar[Cmaj7]gura
+[Gm6] Y sin per[A7]miso entró en tu [Dm]mundo
+[B7] Para ro[F]barte la ter[E7]nura
+
+[Am] Y desde entonces me con[Dm]deno
+[G7] A que no vuelvas a ser[Cmaj7] mía
+[Gm6] A estar per[A7]dida entre mis [Dm]sueños
+[B7]A que me [F]niegues cada [E7]día
+
+{start_of_chorus: Coro}
+[A7]Soy el la[Dm]drón de tu a[G7]mor, tu mal re[Cmaj7]cuerdo
+Soy el [Gm6]nombre que no [A7]quieres mencio[Dm]nar
+Y al sa[E7]ber de tu desprecio siento [Am]miedo
+Que nunca, [B7]nunca me [F]puedas perdo[E7]nar
+
+[A7]Soy el la[Dm]drón de tu a[G7]mor y estoy con[Cmaj7]feso
+Yo sé [Gm6]bien que no esta[A7]rás cuando me [Dm]vaya
+Y aunque te [E7]duela más apréndete [Am]esto
+Que quien te hace llo[Dm]rar [E7] es quien te [Am]ama
+Que quien te hace llo[Dm]rar [E7] es quien te [Am]ama
+
+[Dm]·  · · · | [G7]·  · · · | [Cmaj7]·     · · · | [Gm6]·   · [A7]·  ·
+[F]· · · · | [Dm]·  · [E7]·  · | [Am]·  · [Am7]·   · | [Am6]·   · [F]· ·
+[E7]·  · · ·
+
+[Am]↓  Y aquí en mi soledad [Dm] te sueño
+[G7] Y por las noches [Cmaj7]yo te invento
+[Gm6] De tu cas[A7]tigo soy el [Dm]dueño
+[B7] Porque tu [F]odio es lo que en[E7]cuentro
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[A7]Soy el la[Dm]drón de tu a[G7]mor, tu mal re[Cmaj7]cuerdo
+Soy el [Gm6]nombre que no [A7]quieres mencio[Dm]nar
+Y al sa[E7]ber de tu desprecio siento [Am]miedo
+Que nunca, [B7]nunca me [F]puedas perdo[E7]nar
+
+[A7]Soy el la[Dm]drón de tu a[G7]mor y estoy con[Cmaj7]feso
+Yo sé [Gm6]bien que no esta[A7]rás cuando me [Dm]vaya
+Y aunque te [E7]duela más apréndete [Am]esto
+Que quien te hace llo[Dm]rar [E7] es quien te [Am]ama
+Que quien te hace llo[Dm]rar [E7]↓ es quien te
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Am]Ama · [Am7] · | [Am6] ·Es [F]quien · te
+[Am]Ama · [Am7] · | [Am6] · [F] ·
+[Am]↓
+{end_of_verse}

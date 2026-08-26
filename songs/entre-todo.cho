@@ -1,0 +1,67 @@
+{title: Entre todo}
+{artist: Billy Se Fue}
+{year: 2006}
+{key: Bm}
+{time: 4/4}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: A base-fret 1 frets 2 1 0 0}
+
+{start_of_verse: Intro}
+[D]· · · · | [F#7]·   · · · | [Bm]↓  ◦ ◦ ◦ | ◦ ◦ ◦ ◦
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[D] Todos sa[F#7]ben que no pue[Bm]do estar [G]junto a ti
+[D] Tú no sa[F#7]bes que es su[G]frir [A]
+[D] Estando le[F#7]jos ya no pue[Bm]do ver den[G]tro de ti
+[D] Estando le[F#7]jos es a[G]sí [A]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Y dime lo que [Bm]sueñas en las [A]noches
+Dime [G]lo que piensas, [F#7]todo lo que pue[Bm]des ver
+[A] Nanara-[G]naa-na-nara-[F#7]naa
+Y dime si en las [Bm]noches en tus [A]sueños
+Entre to[G]do, todo, [F#7]todo, tú me pue[Bm]des ver
+[A] Nanara-[G]naa-na-nara-[A]↓naa ◦ ◦ ◦
+{end_of_chorus}
+
+{start_of_verse: Verso 2}
+[D] Todos sa[F#7]ben que yo so[Bm]lo quiero es[G]tar aquí
+[D] Tú lo sa[F#7]bes, es a[G]sí [A]
+[D] Y cuando duer[F#7]mo solo sue[Bm]ño, solo pien[G]so en ti
+[D] Solo [F#7]quiero estar a[G]sí [A]
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+Y dime lo que [Bm]sueñas en las [A]noches
+Dime [G]lo que piensas, [F#7]todo lo que pue[Bm]des ver
+[A] Nanara-[G]naa-na-nara-[F#7]naa
+Y dime si en las [Bm]noches en tus [A]sueños
+Entre to[G]do, todo, [F#7]todo, tú me pue[Bm]des ver
+[A] Nanara-[G]naa-na-nara-[A]naa · · · | [A] · · ·
+{end_of_chorus}
+
+{start_of_verse: Instrumental}
+[G]· · · · | [F#7]·   · · · | [G]· · · · | [F#7]·   · · ·
+[G]· · · · | [F#7]·   · · · | [G]· · · · | [A]· · · · | [A]· ·
+{end_of_verse}
+
+{start_of_chorus: Coro 3}
+Y dime lo que [Bm]sueñas en las [A]noches
+Dime [G]lo que piensas, [F#7]todo lo que pue[Bm]des ver
+[A] Nanara-[G]naa-na-nara-[F#7]naa
+Y dime si en las [Bm]noches en tus [A]sueños
+Entre to[G]do, todo, [F#7]todo, tú me pue[Bm]des ver
+[A] Nanara-[G]naa-na-nara-[F#7]naa
+{end_of_chorus}
+
+{start_of_verse: Outro}
+Nana-[Bm]Naa Nanana-[A]naa Nanara-[G]naa na-nara-[F#7]naa na-nana-na
+[Bm]·  · · · | [A]· · · · | [G]· · · · | [F#7]↓   ◦ ◦ ◦ | ◦ ◦ ◦ ◦
+[Bm]·  · · · | [A]· · · · | [G]· · · · | [F#7]↓
+{end_of_verse}

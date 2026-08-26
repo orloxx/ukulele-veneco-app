@@ -1,0 +1,76 @@
+{title: Es que me faltas tú}
+{artist: Agni Mogollón}
+{year: 1988}
+{key: C}
+{time: 4/4}
+{capo: 1}
+
+{define: Ab base-fret 3 frets 3 1 2 1}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: Am7 base-fret 1 frets 0 0 0 0}
+{define: Am6 base-fret 1 frets 2 4 2 3}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G7 base-fret 1 frets 0 2 1 2}
+
+[Ab]·  [Bb]·  [Cm]·  [Cm]·
+[Ab]·  [Bb]·  [C]↓ ◦
+
+[G] Mientras tomo un ca[D]fé
+[Dm] Y trato de enten[C]der por qué
+[Am]Aquí to[Am7]do está igual[Am6]
+[G] Y en mí algo fun[C]ciona mal
+
+[G] Me escondí en otra [D]piel
+[Dm] Y nada pude[C] resolver
+[Am] En cada abra[Am7]zo tú esta[Am6]bas
+[G] Aunque abrazara a mi almoha[C]da
+
+{start_of_chorus: Coro}
+[Dm] Y el mundo se[Em] me hizo angos[F]to
+[Dm] Mi vida fue a [Em]dar a un fo[G]so
+
+Y es [G7]que me faltas [C]tú
+con tu sonri[G]sa
+con tu mira[Bb]da llena de [F]ganas
+y aquella es[Am]pecie de ex[G]traña ca[C]dencia
+que ha he[D]cho añicos mi intimidad[G]
+Y es [G7]que me faltas [C]tú
+con tus desplan[G]tes
+con lo irrita[Bb]ble de tu ca[F]rácter
+pe[Am]ro no puedo y es [G]incontro[C]lable
+y es[D] que me faltas [G]tú
+
+[Ab]·  [Bb]·  [Cm]·  [Cm]·
+[Ab]·  [Bb]·  [C]↓ ◦
+
+[G] Cómo iba a sa[D]berlo
+[Dm] Nunca me lo [C]imaginé
+[Am] A un paso es[Am7]tuve de lo[Am6]co
+[G] Y la respuesta en mi bol[C]so
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Dm] Y el mundo se[Em] me hizo angos[F]to
+[Dm] Mi vida fue a [Em]dar a un fo[G]so
+
+Y es [G7]que me faltas [C]tú
+con tu sonri[G]sa
+con tu mira[Bb]da llena de [F]ganas
+y aquella es[Am]pecie de ex[G]traña ca[C]dencia
+que ha he[D]cho añicos mi intimidad[G]
+Y es [G7]que me faltas [C]tú
+con tus desplan[G]tes
+con lo irrita[Bb]ble de tu ca[F]rácter
+pe[Am]ro no puedo y es [G]incontro[C]lable
+y es[D] que me faltas [G]tú
+
+[Ab]·  [Bb]·  [Cm]·  [Cm]·
+[Ab]·  [Bb]·  [C]↓
+{end_of_chorus}

@@ -1,0 +1,56 @@
+{title: El cocotero}
+{artist: Lila Morillo}
+{year: 1961}
+{key: A}
+{time: 6/8}
+
+{define: A base-fret 1 frets 2 1 0 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: A7 base-fret 1 frets 0 1 0 0}
+
+{start_of_verse: Estrofa (x2)}
+Una [A]piedra tiré a un coco[E7]tero, [D]... [A]...
+Una [A]piedra tiré a un coco[B7]tero, y enseguida un coquito ca[E7]yó
+Yo no [Dm]sé qué pasó por mi [Am]alma que al be[Dm]ber de esa agua tan [Am]dulce
+mi sed se apa[E7]gó, mi sed se apa[A]gó
+{end_of_verse}
+
+{start_of_chorus: Coro (x2)}
+[A]Coco loco apla[F#m]cando la sed que me a[Bm]braza
+[Bm]Coco [E7]loco que buen rato contigo se [A]pasa
+[A]Coco loco yo con[A7]tigo me hiciera un to[D]↓lú
+Ay coquito, co[Dm]quito, co[A]quito
+No hay [F#m]nada en el [Bm]mundo más [E7]dulce que [A]tú
+{end_of_chorus}
+
+{start_of_verse: Break}
+[A]Coco loco apla[F#m]cando la sed que me a[Bm]braza
+[Bm]Coco [E7]loco que buen rato contigo se [A]pasa
+[A]Coco loco yo con[A7]tigo me hiciera un to[D]lú
+Ay coquito, co[Dm]quito, co[A]quito
+No hay [F#m]nada en el [Bm]mundo más [E7]dulce que [A]tú
+{end_of_verse}
+
+{start_of_verse: Estrofa (x1)}
+Una [A]piedra tiré a un coco[E7]tero, [D]... [A]...
+Una [A]piedra tiré a un coco[B7]tero, y enseguida un coquito ca[E7]yó
+Yo no [Dm]sé qué pasó por mi [Am]alma que al be[Dm]ber de esa agua tan [Am]dulce
+mi sed se apa[E7]gó, mi sed se apa[A]gó
+{end_of_verse}
+
+{start_of_chorus: Coro (x2)}
+[A]Coco loco apla[F#m]cando la sed que me a[Bm]braza
+[Bm]Coco [E7]loco que buen rato contigo se [A]pasa
+[A]Coco loco yo con[A7]tigo me hiciera un to[D]↓lú
+Ay coquito, co[Dm]quito, co[A]quito
+No hay [F#m]nada en el [Bm]mundo más [E7]dulce que [A]tú
+
+No hay [F#m]nada en el [Bm]mundo más [E7]dulce que [A]tú (x4)
+[A]· [E7]↓  [A]↓
+{end_of_chorus}

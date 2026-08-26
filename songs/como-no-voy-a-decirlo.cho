@@ -1,0 +1,73 @@
+{title: Cómo no voy a decirlo}
+{artist: Luis Silva}
+{year: 1991}
+{key: Em}
+{time: 6/8}
+
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Edim7 base-fret 1 frets 0 1 0 1}
+
+{start_of_verse: Intro}
+[Em]·  · · · · · | [Em]·  · · · · · | [Bm]·  · · · · · | [C]· · · [D]· · ·
+[G]· · · · · · | [Am]·  · · · · · | [Em]·  · · · · · | [B7]·  · · · · · | [Em]·  · · · · ·
+[B7]·  · · · · · | [Em]·  · · · · · | [Bm]·  · · · · · | [C]· · · [D]· · ·
+[G]· · · · · · | [Am]·  · · · · · | | [Edim7]·     · · · · · | [B7]·  · · · · · | [Em]·  · · · · · | [B7]·  · ·
+{end_of_verse}
+
+{start_of_verse: Verso}
+Si en mi [Em]mente haya exis[B7]tido algún mo[Em]tivo
+Tan espe[Em]cial pa[D]ra hace[C]r una can[B7]ción
+Eres [B7]tú y a grito abierto lo [B7]digo
+Y si lo [B7]dudas pregúntale al cora[Em]zón [D]  [C]  [B7]
+
+Si en mi [Em]mente haya exis[B7]tido algún mo[Em]tivo
+Tan espe[Em]cial pa[D]ra hace[C]r una can[B7]ción
+Eres [B7]tú y a grito abierto lo [B7]digo
+Y si lo [B7]dudas pregúntale al cora[Em]zón
+{end_of_verse}
+
+{start_of_chorus: Coro (x2)}
+Cómo no voy a de[Em]↓ ciiir... que me [Am]gustas
+Cómo no voy a de[Am]cir que eres cen[D]tro de atra[G]cción
+[B7] Si por primera [Em]vez cuando a[C]quel día te mi[B7]ré
+Mi alma tran[B7]quila tuvo un síntoma de a[Em]mor
+{end_of_chorus}
+
+{start_of_verse: Intro}
+[Em]·  · · · · · | [Em]·  · · · · · | [Bm]·  · · · · · | [C]· · · [D]· · ·
+[G]· · · · · · | [Am]·  · · · · · | [Em]·  · · · · · | [B7]·  · · · · · | [Em]·  · · · · ·
+[B7]·  · · · · · | [Em]·  · · · · · | [Bm]·  · · · · · | [C]· · · [D]· · ·
+[G]· · · · · · | [Am]·  · · · · · | | [Edim7]·     · · · · · | [B7]·  · · · · · | [Em]·  · · · · · | [B7]·  · ·
+{end_of_verse}
+
+{start_of_verse: Verso}
+Hoy un [Em]ángel se ha cru[B7]zado en mi ca[Em]mino
+Tú tan bo[Em]nita [D]de fi[C]gura escultu[B7]ral
+Muy juve[B7]nil de mejillas sonro[B7]jadas
+Y de cas[B7]tigo una carita angeli[Em]cal [D]  [C]  [B7]
+
+Hoy un [Em]ángel se ha cru[B7]zado en mi ca[Em]mino
+Tú tan bo[Em]nita [D]de fi[C]gura escultu[B7]ral
+Muy juve[B7]nil de mejillas sonro[B7]jadas
+Y de cas[B7]tigo una carita angeli[Em]cal
+{end_of_verse}
+
+{start_of_chorus: Coro (x2)}
+Cómo no voy a de[Em]↓ ciiir... que me [Am]gustas
+Cómo no voy a de[Am]cir que a tu [D]lado quiero es[G]tar
+[B7] Dale una pri[Em]micia a mi [C]ser enamo[B7]rado
+Si entre mis [B7]brazos quieres dormir y so[Em]ñar
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Am] Si entre mis [B7]brazos quieres [B7]dormir y so[Em]ñar
+[Am] Si entre mis [B7]↓bra[B7]↑zos quieres [B7]dormir y
+so[Am]ñaaa-[Am]aaa-[Am]aaa-[B7]aaa-[Em]aaar
+[Em]·  · · · · · | [Em]↓
+{end_of_verse}

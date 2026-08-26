@@ -1,0 +1,82 @@
+{title: Di que tú}
+{artist: Carlos Mata}
+{year: 1988}
+{key: Bb}
+{time: 4/4}
+
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Ab base-fret 3 frets 3 1 2 1}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Gmmaj7 base-fret 1 frets 0 2 2 1}
+{define: Gm7 base-fret 1 frets 0 2 1 1}
+{define: Gm6 base-fret 1 frets 0 2 0 1}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: C base-fret 1 frets 0 0 0 3}
+
+{start_of_verse: Intro}
+[Bb]·  · [Ab]·  · | [Bb]·  · [Ab]·  · | [Bb]·  · [Ab]·  · | [Bb]·  · [Ab]·  ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+Esa [Bb]noche de lo[Bb]cura, me entre[Fm]gaste tu ter[Bb]nura
+Y des[Cm]pués yo sé que [F]nunca, se [Bb]te olvidó [Bb]
+Que esa [Gm]vez tú fuiste [Gmmaj7]mía
+Y en la en[Gm7]trega me de[Gm6]cías
+Que ese[Cm] fue tu primer [Cm]beso
+Y [F]te lo di yo
+{end_of_verse}
+
+{start_of_verse: Pre-coro}
+Hoy que es[Eb]tás...   en otros [F]brazos
+Dime, [Dm]dime, ¿en quién [Gm]piensas?
+Pero [Eb]por favor no [C]mientas
+Di que[F] tú
+{end_of_verse}
+
+{start_of_chorus: Coro}
+(Di que    [Bb]tú...)  con mi amor te hice señora
+Di que [Gm]tú... aquel odio me perdonas
+Porque [Eb]yo... llegué [C]tarde a tu cora[F]zón
+Di que [Bb]tú... Aunque tienes otro dueño
+Di que [Gm]tú... Nunca olvidas en tus sueños
+Que fui [Eb]yo... Quien te [C]hizo señora con [F]mi amor
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[Bb]·  · [Ab]·  · | [Bb]·  · [Ab]·  ·
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+Sigo [Bb]siendo el que te a[Bb]dora, y tú [Fm]siempre, la se[Bb]ñora
+Que a escon[Cm]didas me de[F]seas, porque [Bb]soy tu error [Bb]
+Ade[Gm]más piense [Gmmaj7]que cuando
+Otro [Gm7]te bese en la [Gm6]boca
+Aun[Cm]que es una idea [Cm]loca
+Sien[F]tes mi sabor
+{end_of_verse}
+
+{start_of_verse: Pre-coro 2}
+Hoy que es[Eb]tás...   en otros [F]brazos
+Dime, [Dm]dime, ¿en quién [Gm]piensas?
+Pero [Eb]por favor no [C]mientas
+Di que[F] tú
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+(Di que    [Bb]tú...)  con mi amor te hice señora
+Di que [Gm]tú... aquel odio me perdonas
+Porque [Eb]yo... llegué [C]tarde a tu cora[F]zón
+Di que [Bb]tú... Aunque tienes otro dueño
+Di que [Gm]tú... Nunca olvidas en tus sueños
+Que fui [Eb]yo... Quien te [C]hizo señora con [F]mi amor
+{end_of_chorus}
+
+{start_of_verse: Outro}
+(Di que    [Bb]·tú)  · · · | [Gm]·  · · · | [Eb]·  · [C]· · | [F]· · · ·
+(Di que    [Bb]·tú)  · · · (Di que    | [Gm]·tú)  · · · | [Eb]·  · [C]· · | [F]· · · ·
+(Di que    [Bb]↓tú)
+{end_of_verse}

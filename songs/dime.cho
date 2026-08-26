@@ -1,0 +1,51 @@
+{title: Dime}
+{artist: Grupo Bota}
+{year: 1974}
+{key: F#m}
+{time: 4/4}
+
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: B7 base-fret 1 frets 2 3 2 0}
+{define: A base-fret 4 frets 3 1 2 1}
+{define: G# base-fret 3 frets 3 1 2 1}
+{define: G base-fret 1 frets 4 2 3 2}
+
+[F#m]·   · · [B7]·  | [F#m]·   · · [B7]·
+[F#m]·   · · [B7]·  | [F#m]·   · · [B7]·
+
+[F#m]Dime, [B7]dime lo que [F#m]quieras [B7]
+[F#m]Dime, [B7]dime lo que [F#m]piensas [B7]
+[F#m]Sabes, [B7]sabes que te [F#m]quiero [B7]
+[F#m]Sabes, [B7]sabes lo que [F#m]siento [B7]
+
+{start_of_chorus: Coro}
+[A]Dime, [G#]   [G] dime lo que [F#m]quieras si [B7]   [F#m]    [B7]
+[A]Dime, [G#]   [G] dime lo que [F#m]quieras si [B7]   [F#m]    [B7]
+
+[F#m]Toma, [B7]tómame en tus[F#m] manos [B7]
+[F#m]Llora, [B7]llora entre mis[F#m] brazos [B7]
+[F#m]Sube, [B7]súbete a mi [F#m]lado [B7]
+[F#m]Llora, [B7]bésame en los [F#m]labios [B7]
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[A]Dime, [G#]   [G] dime lo que [F#m]quieras, sí [B7]   [F#m]    [B7]
+[A]Dime, [G#]   [G] dime lo que [F#m]quieras, sí [B7]   [F#m]    [B7]
+{end_of_chorus}
+
+{start_of_verse: Solo guitarra}
+[F#m]·   · · [B7]·  | [F#m]·   · · [B7]·  (x4)
+
+[F#m]Dime, [B7]dime lo que [F#m]quieras [B7]
+[F#m]Dime, [B7]dime lo que [F#m]piensas [B7]
+[F#m]Sabes, [B7]sabes que te [F#m]quiero [B7]
+[F#m]Sabes, [B7]sabes lo que [F#m]siento [B7]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[A]Dime, [G#]   [G] dime que me [F#m]quieres, sí [B7]   [F#m]    [B7]
+[A]Dime, [G#]   [G] dime que me [F#m]quieres, sí [B7]   [F#m]    [B7]
+
+[F#m]·   · · [B7]·  | [F#m]·   · · [B7]·  (x2)
+[F#m]↓
+{end_of_chorus}

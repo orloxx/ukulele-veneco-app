@@ -1,0 +1,94 @@
+{title: Cancion para ti}
+{artist: Frank Quintero}
+{year: 1980}
+{key: D}
+{time: 4/4}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Dsus4 base-fret 1 frets 2 2 3 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Bm7sus4 base-fret 1 frets 2 4 2 2}
+{define: Bm7 base-fret 1 frets 2 2 2 2}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: D+ base-fret 1 frets 3 2 2 1}
+{define: C#m7b5 base-fret 1 frets 4 4 3 4}
+
+[D]· · · · · · · · | [Dsus4]·     · · · · · · · (x2)
+
+{start_of_verse: Intro Riff}
+[D]· · [Em]·  · | [A]· · [F#7]·   · | [Bm]·  · [Bm]·  · | [Em]·  · [A]· · (x2)
+
+◦ ◦ ◦ ◦ ◦ ◦ ◦Cierra ◦los o[G]jos y con suavidad [A7]
+Deja descansar[Em] tu cabeza hacia atrás,[Bm]
+[F#m]Deja que el sue[G]ño... sea [A7]dueño de [Bm7sus4]ti [Bm7]
+
+Cuando la no[G]che con lentitud [A7]
+Cuidadosamen[Em]te apague la luz[Bm]
+[F#m]Deja que el vien[G]to... te tra[A7]iga hasta mi[Bm7sus4]        [B7]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Y si en sueños pudie[Em]ra volar [A7]
+Yo llegarí[D]a hasta ti [D+]
+Para entonces hacer[G]te escuchar[A7]
+Lo que nunca te pu[C#m7b5]de decir [F#7]
+
+Y siento la auro[G]ra a veces tocar [A7]
+Cuidadosamen[Em]te mi puerta al pasar[Bm]
+[F#m]Y sin hablar[G] me lle[A7]va hasta ti[Bm7sus4]        [Bm7]
+
+No encuentro pala[G]bras que puedan decir[A7]
+Lo maravillo[Em]so que es poder sentir[Bm]
+El calor[F#m] de un hogar[G]... que re[A7]fugias en ti[Bm7sus4]        [B7]
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Y si en sueños pudie[Em]ra volar [A7]
+Yo llegarí[D]a hasta ti [D+]
+Para entonces hacer[G]te escuchar[A7]
+Lo que nunca te pu[C#m7b5]de decir [F#7]
+{end_of_chorus}
+
+{start_of_verse: Puente}
+Ri[G]e sin la alegrí[F#m]a que te robé
+[Em]Llora por la triste[F#m]za que te entregué
+[G]Vive con la nostal[F#m]gia que te dejé
+[Em]Guárdame tu promesa[A7]
+Que tal [F#m]vez un [G]día estarás allí[F#m] ...que de vez en [G]cuando pensarás en mí[A7]
+{end_of_verse}
+
+{start_of_verse: Riff}
+[D]· · [Em]·  · | [A]· · [F#7]·   · | [Bm]·  · [Bm]·  · | [Em]·  · [A]· · (x2)
+
+[Bm7sus4]        [B7]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Y si a tus sueños pudie[Em]ra volar [A7]
+Yo llegarí[D]a hasta ti [D+]
+Para entonces hacer[G]te escuchar[A7]
+Lo que nunca te pu[C#m7b5]de decir [F#7]
+{end_of_chorus}
+
+{start_of_verse: Puente}
+Ri[G]e sin la alegrí[F#m]a que te robé
+[Em]Llora por la triste[F#m]za que te entregué
+[G]Vive con la nostal[F#m]gia que te dejé
+[Em]Guárdame tu promesa[A7]
+Que tal [F#m]vez un [G]día estarás allí[F#m] ...que de vez en [G]cuando pensarás en mí[A7]
+{end_of_verse}
+
+{start_of_verse: Outro}
+Que tal [F#m]vez un [G]día estarás allí[F#m]
+Que de vez en [G]cuando pensarás en mí[A7]
+{end_of_verse}
+
+{start_of_verse: Outro Riff}
+[D]· · [Em]·  · | [A]· · [F#7]·   · | [Bm]·  · [Bm]·  · | [Em]·  · [A]· · (x2)
+{end_of_verse}

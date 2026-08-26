@@ -1,0 +1,73 @@
+{title: Presagio}
+{artist: Gualberto Ibarreto}
+{year: 1975}
+{key: Cm}
+{time: 6/8}
+
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: Eb7 base-fret 1 frets 3 3 3 4}
+{define: Ab base-fret 3 frets 3 1 2 1}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: C7 base-fret 1 frets 0 0 0 1}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+
+[Fm]↓  ◦ [G7]↓  ◦ [Cm]↓  ◦ | ◦ [Cm]·  · · · ◦ | [Fm]↓  ◦ [G7]↓  ◦ [Cm]↓  ◦ | ◦ [Cm]·  · · · ◦
+[Fm]↓  ◦ [G7]↓  ◦ [Cm]↓  ◦ | ◦ [Cm]·  · · · ◦ | [Fm]↓  ◦ [G7]↓  ◦ [Cm]↓  ◦
+[Cm]·  · · · · · | [Cm]·  · · · · · | [Cm]·  · · · · · | [Cm]·  · · · · ·
+
+[Cm]El ave [Eb7]que ayer vo[Ab]ló
+[D7]Lamentando tu par[G]tida
+[G7]Era gaviota per[Cm]dida
+[Ab]Como per[D7]dido es tu a[G]mor
+
+[Cm]El ave [Eb7]que ayer vo[Ab]ló
+[D7]Presagiando tu par[G]tida
+[G7]Era gaviota per[Cm]dida
+[Ab]Como per[D7]dido es tu a[G]mor
+
+{start_of_chorus: Coro (x2)}
+[G7]Tu amor que [C]fue
+El a[E7]güita de mi ca[Am]lor
+El a[C7]zúcar de ca[F]fé
+El con[A7]suelo de mi do[Dm]lor
+[Dm] Tu amor que [F]fue
+La sa[Fm]lida del mismo [C]sol
+La fru[A7]tica de más dul[Dm]zor
+El jar[G7]dín de mi flore[C]cer
+
+[Fm]↓  ◦ [G7]↓  ◦ [Cm]↓  ◦ | ◦ [Cm]·  · · · ◦ | [Fm]↓  ◦ [G7]↓  ◦ [Cm]↓  ◦ | ◦ [Cm]·  · · · ◦
+[Fm]↓  ◦ [G7]↓  ◦ [Cm]↓  ◦ | [Cm]·  · · · · · | [Cm]·  · · · · · | [Cm]·  · · · · ·
+
+[Cm]El ave [Eb7]que ayer vo[Ab]ló
+[D7]Presagiando tu par[G]tida
+[G7]Era gaviota per[Cm]dida
+[Ab]Como per[D7]dido es tu a[G]mor
+
+[Cm]El ave [Eb7]que ayer vo[Ab]ló
+[D7]Lamentando de su he[G]rida
+[G7]Era gaviota per[Cm]dida
+[Ab]Como per[D7]dido es tu a[G]mor
+{end_of_chorus}
+
+{start_of_chorus: Coro (x2)}
+[G7]Tu amor que [C]fue
+El a[E7]güita de mi ca[Am]lor
+El a[C7]zúcar de ca[F]fé
+El con[A7]suelo de mi do[Dm]lor
+[Dm] Tu amor que [F]fue
+La sa[Fm]lida del mismo [C]sol
+La fru[A7]tica de más dul[Dm]zor
+El jar[G7]dín de mi flore[C]cer
+
+[Fm]↓  ◦ [G7]↓  ◦ [Cm]↓  ◦ | ◦ [Cm]·  · · · ◦
+[Fm]↓  ◦ [G7]↓  ◦ [Cm]↓  ◦ | ◦ [Cm]·  · · · ◦
+[Fm]↓  ◦ [G7]↓  ◦ [Cm]↓  ◦
+{end_of_chorus}

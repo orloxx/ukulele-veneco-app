@@ -1,0 +1,84 @@
+{title: De contento}
+{artist: Morella Muñoz}
+{key: D}
+{time: 6/8}
+{subtitle: s. XIX}
+
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: D base-fret 1 frets 2 2 2 0}
+
+{start_of_verse: Riff (opcional)}
+[E7]·  · · · · · | [A]· · · · · · | [F#7]·   · · · · · | [Bm]·  · · · · ·
+[G]· · · · · · | [D]· · · · · · | [A]· · · · · · | [D]· · · · · ·
+[G]· · · · · · | [D]· · · · · · | [A]· · · · · · | [D]· · · · · ·
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[D]De contento
+[A]Voy can[D]tando
+[D]Al Dios [A]Niño
+[E7]Cele[A]brando
+[D]De contento
+[A]Voy can[D]tando
+[D]Al Dios [A]Niño
+[E7]Cele[A]brando
+
+[D]Himnos, [D] himnos de ala[A]banza
+[A]Cantos, [A] cantos de ale[D]gría
+[G]En honor al [D]niño [A] que nos da Ma[D]ría
+[G]En honor al [D]niño [A] que nos da Ma[D]ría
+{end_of_chorus}
+
+{start_of_verse: Riff (opcional)}
+[E7]·  · · · · · | [A]· · · · · · | [F#7]·   · · · · · | [Bm]·  · · · · ·
+[G]· · · · · · | [D]· · · · · · | [A]· · · · · · | [D]· · · · · ·
+[G]· · · · · · | [D]· · · · · · | [A]· · · · · · | [D]· · · · · ·
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[D]De contento
+[A]Voy can[D]tando
+[D]Al Dios [A]Niño
+[E7]Cele[A]brando
+[D]De contento
+[A]Voy can[D]tando
+[D]Al Dios [A]Niño
+[E7]Cele[A]brando
+
+[D]Cantos, [D] cantos de ale[A]gría
+[A]Todos, [A] todos diri[D]jamos
+[G]Al que está na[D]cido, [A] al que tanto a[D]mamos
+[G]Al que está na[D]cido, [A] al que tanto a[D]mamos
+{end_of_chorus}
+
+{start_of_verse: Riff (opcional)}
+[E7]·  · · · · · | [A]· · · · · · | [F#7]·   · · · · · | [Bm]·  · · · · ·
+[G]· · · · · · | [D]· · · · · · | [A]· · · · · · | [D]· · · · · ·
+[G]· · · · · · | [D]· · · · · · | [A]· · · · · · | [D]· · · · · ·
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[D]De contento
+[A]Voy can[D]tando
+[D]Al Dios [A]Niño
+[E7]Cele[A]brando
+[D]De contento
+[A]Voy can[D]tando
+[D]Al Dios [A]Niño
+[E7]Cele[A]brando
+
+[D]Eres, [D] eres, oh, Je[A]sús
+[A]Vida, [A] vida y con[D]suelo
+[G]Verdad y ca[D]mino, [A] que nos lleva al [D]cielo
+[G]Verdad y ca[D]mino, [A] que nos lleva al [D]cielo
+{end_of_chorus}
+
+{start_of_verse: Riff (opcional)}
+[E7]·  · · · · · | [A]· · · · · · | [F#7]·   · · · · · | [Bm]·  · · · · ·
+[G]· · · · · · | [D]· · · · · · | [A]· · · · · · | [D]· · · · · ·
+[G]· · · · · · | [D]· · · · · · | [A]· · · · · · | [D]· · · · · ·
+{end_of_verse}

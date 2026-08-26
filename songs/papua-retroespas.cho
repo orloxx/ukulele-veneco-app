@@ -1,0 +1,63 @@
+{title: Papúa Retroespás}
+{artist: Dioslepague}
+{year: 1999}
+{key: C#m}
+{time: 4/4}
+
+{define: C#m base-fret 4 frets 3 1 1 1}
+{define: B base-fret 1 frets 4 3 2 2}
+{define: F# base-fret 1 frets 3 1 2 1}
+{define: Emaj7 base-fret 1 frets 1 3 0 2}
+{define: Dmaj7 base-fret 1 frets 2 2 2 4}
+{define: Cmaj7 base-fret 1 frets 0 0 0 2}
+{define: C#m² base-fret 4 frets 3 4 1 1}
+{define: B² base-fret 2 frets 3 4 1 1}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+
+{start_of_verse: Intro}
+[C#m]·   · · · | [B]· · [F#]·  · | [C#m]·   · · · | [B]· · [F#]·  ·
+[C#m]·   · · · | [B]· · [F#]·  · | [C#m]·   · · · | [B]· · [F#]·  ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[C#m]Son las sue[B]las, [F#] que me es[C#m]táaan sudan[B]do [F#]
+Y [C#m]nooo me encuen[B]tro en[F#]tre tan[C#m]to vortex [B]  [F#]
+Po[C#m]drías remover el mun[B]do ente[F#]ro si qui[C#m]sieras   [B]  [F#]
+En un [C#m]flashback-back-back[B]-back-back[F#] retroespás[C#m]    [B]  [F#]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Pa[Emaj7]púa retroespá·aas, Pa[Dmaj7]púa retroespá·aas
+Pa[Emaj7]púa retroespá·aas, Pa[Dmaj7]púa retroespá·aas
+[Cmaj7]·     · · [Dmaj7]·     | [Cmaj7]·     · · · | [Cmaj7]·     · · [Dmaj7]·     | [Cmaj7]·     · · ·
+[Cmaj7]·     · · [Dmaj7]·     | [Cmaj7]·     · · · | [Cmaj7]·     · · [Dmaj7]·     | [Cmaj7]↓     ◦ ◦ ◦
+{end_of_chorus}
+
+{start_of_verse: Verso 2}
+[C#m]Son tus dí·gitos
+[B]Una huella es u·na estrella
+[F#]  Y las estre·llas son vapor[C#m] (vapor, vapor     ·, vapor)
+[B]Es tu boca que· encandila
+[F#]       ·  Y me ciegaa[C#m]aa       ·
+Po[B]drías recorrer el mun·do entero
+En un [F#]flashback-back-back-·back-back retroespás
+{end_of_verse}
+
+{start_of_verse: Interludio}
+Este segmento se puede tocar también como C#m² · · · | B² · F#7 ·
+[C#m]·   · · · | [B]· · [F#]·  · | [C#m]·   · · · | [B]· · [F#]·  ·
+[C#m]·   · · · | [B]· · [F#]·  · | [C#m]·   · · · | [B]· · [F#]·  ·
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+Pa[C#m]púaaaa-[B]-aa-[F#]-aa  Pa[C#m]púaaaaaa-[B]-aa-[F#]-aa
+Pa[C#m]púaaaa-[B]-aa-[F#]-aa  Pa[C#m]púaaaaaa-[B]-aa-[F#]-aa
+Pa[C#m]púaaaa-[B]-aa-[F#]-aa  Pa[C#m]púaaaaaa-[B]-aa-[F#]-aa
+Pa[C#m]púaaaa-[B]-aa-[F#]-aa  Pa[C#m]púaaaaaa-[B]-aa-[F#]-aa
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[C#m]·   · · · | [B]· · [F#]·  · | [C#m]·   · · · | [B]· · [F#]·  ·
+[C#m]·   · · · | [B]· · [F#]·  · | [C#m]·   · · · | [B]· · [F#]·  ·
+[C#m]↓
+{end_of_verse}

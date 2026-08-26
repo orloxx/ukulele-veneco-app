@@ -1,0 +1,75 @@
+{title: Lágrima}
+{artist: Capitán Melao}
+{year: 2007}
+{key: E}
+{time: 4/4}
+
+{define: E base-fret 1 frets 4 4 4 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: B base-fret 1 frets 4 3 2 2}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: G#m base-fret 1 frets 4 3 4 2}
+
+{start_of_verse: Intro}
+[E]· · · · | [E]· · · · | [C]· · · · | [B]· · · ·
+[E]· · · · | [E]· · · · | [C]· · · · | [B]· · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[E] Limpio el polvo en mis pesta[C]ñas [B]
+[E] Hoy comienza la bata[C]lla [B]
+[E] Tu belleza sangra y cal[C]ma [B]
+[E] Los placeres de mi al[C]ma [B]
+{end_of_verse}
+
+{start_of_verse: Interludio}
+[E]· · · · | [E]· · · ·
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[A] Lágrima[B] que sabe des[G#m]pertar [A]
+[A] Lágrima[B] que me hace aca[G#m]riciarte [A]
+[A] Lágrima[B] que sabe des[G#m]pertar [A]
+[A] Lágrima[B] que me hace re[G#m]cordarte [A]
+{end_of_chorus}
+
+{start_of_verse: Interludio 2}
+[E]· · · · | [E]· · · · | [C]· · · · | [B]· · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[E] Entre cielos y tormen[C]tas [B]
+[E] Me pregunto dónde an[C]das [B]
+[E] Si he perdido ya a tu al[C]ma [B]
+[E] Que deriva por mis fa[C]llas [B]
+{end_of_verse}
+
+{start_of_verse: Interludio 3}
+[E]· · · · | [E]· · · ·
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[A] Lágrima[B] que sabe des[G#m]pertar [A]
+[A] Lágrima[B] que me hace aca[G#m]riciarte [A]
+[A] Lágrima[B] que sabe des[G#m]pertar [A]
+[A] Lágrima[B] que me hace re[G#m]cordarte [A]
+{end_of_chorus}
+
+{start_of_verse: Puente}
+[E] Su mirada cayó,[E] no supo ver[C]la
+Del dolor aprendió,[B] al fin de cuen[E]tas
+Ya se queda sin voz[E] y sin respues[C]tas
+Cuando ella lloró,[B] al fin de cuen(A)tas
+{end_of_verse}
+
+{start_of_chorus: Coro 3}
+[A] Lágrima[B] que sabe des[G#m]pertar [A]
+[A] Lágrima[B] que me hace aca[G#m]riciarte [A]
+[A] Lágrima[B] que sabe des[G#m]pertar [A]
+[A] Lágrima[B] que me hace re[G#m]cordarte [A]
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[A]· · · · | [B]· · · · | [G#m]·   · · · | [A]· · · ·
+[A]· · · · | [B]· · · · | [G#m]·   · · · | [A]↓
+{end_of_verse}

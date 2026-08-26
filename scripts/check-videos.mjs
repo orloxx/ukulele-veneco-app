@@ -108,8 +108,8 @@ function assertNone(offenders, describe) {
 const songSlugs = new Set(
   fs
     .readdirSync(SONGS)
-    .filter((file) => file.endsWith(".md") && file !== "README.md")
-    .map((file) => file.replace(/\.md$/, "")),
+    .filter((file) => file.endsWith(".cho"))
+    .map((file) => file.replace(/\.cho$/, "")),
 );
 
 assert(fs.existsSync(MAP), `data/videos.json is missing (looked in ${MAP})`);
@@ -138,7 +138,7 @@ check("every slug in the map is a song in songs/", () => {
   // it, so the reference would sit in the file looking reviewed for ever.
   assertNone(
     entries.filter(([slug]) => !songSlugs.has(slug)),
-    ([slug]) => `          ${slug} — no songs/${slug}.md`,
+    ([slug]) => `          ${slug} — no songs/${slug}.cho`,
   );
   return `${entries.length} slugs`;
 });

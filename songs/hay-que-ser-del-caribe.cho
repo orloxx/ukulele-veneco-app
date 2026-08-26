@@ -1,0 +1,102 @@
+{title: Hay que ser del Caribe}
+{artist: Soledad Bravo}
+{year: 1997}
+{key: B}
+{key: C}
+{key: D}
+{key: Eb}
+{time: 4/4}
+{subtitle: ¿5 cambios de clave, Soledad?}
+
+{define: B base-fret 1 frets 4 3 2 2}
+{define: C#m base-fret 4 frets 3 1 1 1}
+{define: D#m base-fret 6 frets 3 1 1 1}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+{define: E base-fret 1 frets 4 4 4 2}
+{define: Ab base-fret 3 frets 3 1 2 1}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: G+ base-fret 1 frets 0 3 3 2}
+{define: Cm6 base-fret 1 frets 0 3 3 0}
+
+[B]· · [C#m]·   · | [D#m]·   · [F#7]·   · | [B]· · [C#m]·   · | [D#m]·   · [F#7]·   ·
+
+[B] Hoy sien[C#m]to un sol de madru[D#m]gadas, huelo la [F#7]brisa en mi ven-[B]tana
+Sien[E]to volar mi cora[F#7]zón [Ab]
+[C#m] Y hay un a[Ab]roma de esperan[C#m]zas, un ti[Ab]bio mar, una añoran[C#m]za
+Un país [F#7]dulce, una can[B]ción [F#7]
+[B] Amo mi [C#m]gente y su belle[D#m]za, a nuestra [F#7]tierra y su gran-[B]deza
+Al cie[E]lo azul con su es[F#7]plendor [Ab]
+[C#m] A sus [Ab]pueblos multico[C#m]lores, y al mar en [Ab]todos sus bal[C#m]cones
+Es el Ca[F#7]ribe es la emo[B]ción [G]
+
+{start_of_verse: Cambio de clave}
+[C] Hay que ser del Ca[Em]ribe pa’ saber [Am]   [G]  [F]todo el valor de [Em]la palabra a[Dm]migo [G]
+[C] Disfrutar de un [Em]"pásate por[Am] la casa", [G]  [F]hay que ser del Ca[Em]ribe pa’ enten[Dm]derlo [G]
+{end_of_verse}
+
+{start_of_verse: Cambio de clave}
+[D] Hay que ser del Ca[F#m]ribe y haber cre[Bm]cido con el "cam[F#m]bur pintón" en el [G]cuatro
+La tradi[F#m]ción renace[Em] contigo [A7]
+
+[G] Hay que ser ([F#m]hay que ser)    , [G] hay que ser ([F#m]hay que ser)
+[G] Hay que ser del Ca[A7]ribe, hay que (D)ser
+
+[D]· · [Em]·  · | [F#m]·   · [G]· · | [F#m]·   · [A7]·  · | [D]· · [A7]·  ·
+
+[D] Vamos a sem[Em]brarlo de ilusion[F#m]es, amar la [Em]vida y sus pasio[D]nes
+Amar lo[G] nuestro de ver[A7]dad [B7]
+[Em] Lo nuestro es [B7]este mar Ca[Em]ribe, nuestra amis[B7]tad lo que per[Em]vive
+Seamos [A7]nuestra reali[D]dad [A7]
+[D] Amo mi [Em]gente y su belle[F#m]za, a nuestra [Em]tierra y su grande[D]za
+Al cielo a[G]zul con su esplen[A7]dor [B7]
+[Em] A sus pue[B7]blos multicolo[Em]res, y al mar en [B7]todos sus bal[Em]cones
+Es el Ca[A7]ribe es la emo[D]ción [Bb]
+{end_of_verse}
+
+{start_of_verse: Cambio de clave}
+[Eb] Hay que ser del Ca[Gm]ribe pa’ sa[Cm]ber [Bb]   [Ab]todo el valor de [Gm]la palabra a[Fm]migo [Bb]
+[Eb] Disfrutar de un [Gm]"pásate por[Cm] la casa", [Bb]   [Ab]hay que ser del Ca[Gm]ribe pa’ enten[Fm]derlo [Bb]
+
+[Cm]↓  Hay que ser del Ca[G+]↓ribe pa’ sentir, [Eb]↓hay que ser del Ca[Cm6]↓ ribe pa’ entender
+[Ab]↓ Hay que ser del Ca[Ab]↓ribe pa’ saber[Bb]↓ qué es lo que [G]↓siente el cora(C)zón
+{end_of_verse}
+
+{start_of_verse: Cambio de clave}
+[C]· · | [F]· [G]· | [C]· · | [F]· [G]· | [C]· · | [F]· [G]· | [C]· · | [F]↓ [G]↓
+
+[C] Hay que ser del Ca[Dm]ribe, hay que ser, [Em]para saber cómo se [G]debe querer
+[C] Caribe soy,[Dm] Caribe soy,[Em] lo mío es el[G] mar Caribe
+[C] Hay que ser del Ca[Dm]ribe, hay que ser, [Em]para saber cómo se [G]debe querer
+[C] Riquitiquitiqui [Dm]placa chumba, [Em] aquí se prendió[G] esta rumba
+
+[C]· · | [F]· [G]· | [C]· · | [F]· [G]· | [C]· · | [F]· [G]· | [C]· · | [F]↓ [G]↓
+
+[C] Hay que ser del Ca[Dm]ribe, hay que ser, [Em]para saber cómo se [G]debe querer
+[C] La madre na[Dm]turaleza [Em] nos rega[G]ló esta belleza
+[C] Hay que ser del Ca[Dm]ribe, hay que ser, [Em]para saber cómo se [G]debe querer
+[C] Al ritmo de es[Dm]te tambor [Em]siento vo[G]lar mi cora[Bb]zon [Bb]
+{end_of_verse}
+
+{start_of_verse: Outro/Cambio de clave}
+[Eb] Hay que ser del Ca[Gm]ribe pa’ sen[Cm]tir que aquí la [Bb]gente es mi gente,
+[Ab] Que la amis[Gm]tad es para [Fm]siempre [Bb]
+[Ab] Hay que ser ([Gm]hay que ser)    , [Ab] hay que ser ([Gm]hay que ser)
+[Ab] Hay que ser del Ca[Bb]ribe, hay que [Eb]ser [Cm]
+[Ab] Hay que ser ([Gm]hay que ser)    , [Ab] hay que ser ([Gm]hay que ser)
+[Ab] Hay que ser del Ca[Bb]ribe, hay que [Eb]↓ser
+{end_of_verse}

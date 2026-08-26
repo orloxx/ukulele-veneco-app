@@ -1,0 +1,66 @@
+{title: Libre de ti}
+{artist: Elisa Rego}
+{year: 1988}
+{key: F}
+{key: G}
+{time: 4/4}
+
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: G base-fret 1 frets 0 2 3 2}
+
+[Dm]·  · · · | [Bb]·  · · · | [Dm]·  · · · | [Bb]·  · · ·
+[Dm]·  · · · | [Bb]·  · · · | [Dm]·  · · · | [Bb]·  · · ·
+
+[Dm] Fueron mil noches [Bb] pensando en ti
+[Dm] Un embrujo sin fin[Bb]
+[Dm] Y ya no llamas, [Bb] no vienes más
+[Dm] Qué extraño es ya no llorar[Bb]
+[Gm]Tu presencia [C]no podrá in[Gm]timidarme [C]más
+El amor[Am] que sen[Bb]tí ya no exis[Gm]te en mi[Bb]↓ in[Bb]↓te[C]↓rior
+
+{start_of_chorus: Coro}
+Libre de [F]ti, [Bb] oh,[C] si es[Gm]toy libre de [Gm]ti (li[Bb]bre  [C]de ti)
+Así quiero vi[F]vir y re[Bb]ír, [C]  [Gm] libre de [Gm]ti (li[Bb]bre  [C] de ti)
+Hoy me sien[F]to ilu[Bb]sio[C]nada, [Gm] tus menti[Gm]ras no [Bb]valen [C]nada
+Libre de [F]ti, [Bb] oh,[C] si es[Gm]toy libre de [Gm]ti (li[Bb]bre de    [C]↓ti)
+
+[Dm] Aún recuerdo [Bb] tu voz, tu piel
+[Dm] Y los días que [Bb] te amé
+[Dm] Tú como siempre [Bb] indiferente
+[Dm] Ya no espero más por ti[Bb]
+[Gm]Tengo tiempo [C]para amar [Gm]y tanto que [C]dar
+Ahora [Am]voy a sa[Bb]lir y así [Gm]poder[Bb]↓me [Bb]↓sen[C]↓tir
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Libre de [F]ti, [Bb] oh,[C] si es[Gm]toy libre de [Gm]ti (li[Bb]bre  [C]de ti)
+Así quiero vi[F]vir y re[Bb]ír, [C]  [Gm] libre de [Gm]ti (li[Bb]bre  [C] de ti)
+Hoy me sien[F]to ilu[Bb]sio[C]nada, [Gm] tus menti[Gm]ras no [Bb]valen [C]nada
+Libre de [F]ti, [Bb] oh,[C] si es[Gm]toy libre de [Gm]ti (li[Bb]bre de    [C]↓ti)
+{end_of_chorus}
+
+{start_of_verse: Cambio de clave}
+[C]↓ [C]↓ [D]↓
+
+Libre de [G]ti, [C] oh,[D] si es[Am]toy libre de [Am]ti (li[C]bre  [D]de ti)
+Así quiero vi[G]vir y re[C]ír, [D]  [Am] libre de [Am]ti (li[C]bre  [D] de ti)
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Libre de [G]ti, [C] oh,[D] si es[Am]toy libre de [Am]ti (li[C]bre  [D]de ti)
+Así quiero vi[G]vir y re[C]ír, [D]  [Am] libre de [Am]ti (li[C]bre  [D] de ti)
+Estoy libre de [G]ti, [C] oh,[D] si es[Am]toy libre de [Am]ti (li[C]bre  [D]de ti)
+Así quiero vi[G]vir y re[C]ír, [D]  [Am] libre de [Am]ti (li[C]bre  [D] de ti)
+Estoy libre de [G]ti, [C] de [D]ti, es[Am]toy libre de [Am]ti (li[C]bre  [D]de ti)
+Así quiero vi[G]vir y re[C]ír, [D]  [Am] libre de [Am]ti (li[C]bre  [D] de ti)
+Estoy libre de [G]ti, [C] oh,[D] si es[Am]toy libre de [Am]ti (li[C]bre  [D]de ti)
+Así quiero vi[G]vir y re[C]ír, [D]  [Am] libre de [Am]ti (li[C]bre  [D] de ti)
+
+[G]↓
+{end_of_chorus}

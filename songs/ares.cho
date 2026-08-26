@@ -1,0 +1,56 @@
+{title: Ares}
+{artist: Viniloversus}
+{year: 2012}
+{key: Gm}
+{time: 4/4}
+
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Gsus2 base-fret 1 frets 0 2 3 0}
+{define: Gsus4 base-fret 1 frets 0 2 3 3}
+
+[Gm]·  · · · | [Eb]·  · [D]· ·
+[Gm]·  · · · | [Eb]·  · [D]· ·
+[Gm]·  · · · | [Eb]·  · [D]· ·
+[Gm]·  · · · | [Eb]·  · [D]· ·
+
+[Gm] El odio te quema
+La ven[Eb]ganza es parte [D]de tu se-[Gm]er
+El perdón no llega
+Nunca [Eb]cedes y nun[D]ca vas a cede-[Gm]er
+La rivalidad es una mal[Eb]dad
+Que nos tra[D]jiste tú-[Gm]u
+No lo olvides y [Eb]llévalo a la [D]tumba
+
+{start_of_chorus: Coro}
+[Gm]↓ Ares no dispares
+[Eb] No de[D]sates una [Gm]↓ guerra que no viene
+[Gm]↓ Sin armas no puede... [Eb]desper[D]tar
+
+[Gm]·  · · · | [Eb]·  · [D]· ·
+[Gm] · · · | [Eb] ¡Des-·-per-[D]-tar! ·
+[Gm]·  · · · | [Eb]·  · [D]· ·
+[Gm]·  · · · | [Eb]·  · [D]· ·
+
+[Gm] ¿Cómo crees que te [Eb]van a re[D]corda-[Gm]ar?
+No eres martir, tú só[Eb]lo sabes[D] mata-[Gm]-ar
+Y has creado este [Eb]cemente[D]rio
+[Gm] No lo olvides y [Eb]llévalo a la [D]tumba
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Gm]↓ Ares no dispares
+[Eb] No de[D]sates una [Gm]guerra que no viene
+[Gm]Sin armas no puede... [Eb]desper[D]tar
+
+[Gm] · · · | [Eb] · [D] ¡Des-·-per-
+[Gm]-tar! · · · | [Eb] · [D] ·
+[Gm]·  · · · | [Gm]·  · · ·
+[Gm]·  · · · | [Gm]·  · · ·
+[Gm]Ares no dispares... [Gsus2] ... [Gm]Ares no dispares... [Gsus4] ...
+[Gm]Ares no dispares... [Gsus2] ... [Gm]¡Areee-[Gsus4]-ees!
+[Gm]·  · · · | [Gsus2]·     · · · | [Gm]·  · · · | [Gsus4]·     · · ·
+[Gm]·  · · · | [Gsus2]·     · · · | [Gm]·  · · · | [Gsus4]·     · · ·
+[Gm]↓
+{end_of_chorus}

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
+import { parseChordPro, parseDefine } from "@/lib/chordpro";
 import { INSTRUMENTS, type InstrumentId } from "@/lib/instrument";
 import { buildTranspositions, type Transposition } from "@/lib/transpose";
 import { buildChordVocabulary, type ChordVocabulary } from "@/lib/vocabulary";
@@ -8,80 +8,79 @@ import type { Chord, ParsedSong, SongMetadata } from "@/types/song";
 
 const songsDirectory = path.join(process.cwd(), "songs");
 
-/** A capo, exactly as the book prints it and the format spec keeps it. */
-const CAPO_LINE = /^Capo (\d+)$/;
+/**
+ * The extension `songs/` has carried since M18.
+ *
+ * `.cho` is ChordPro's most common one and the one Ciro Durán's own toolchain
+ * takes. It is named here rather than spelt in six places because a slug is the
+ * filename minus the extension, and the slug is the URL.
+ */
+export const SONG_EXTENSION = ".cho";
 
 /**
- * Characters that only ever appear in something aligned to a beat: a chord in
- * brackets, a bar line, a strum arrow, a rasgueo stroke.
+ * A `.cho` file as this app understands it.
  *
- * A leading line carrying any of them belongs to the sheet and has to stay in
- * it — `songs/jota-carupanera.md` opens with a rasgueo whose chord names sit
- * over a row of `↦ ← ↠`, and lifting that out would destroy the one thing the
- * app has to preserve. The middle dot is deliberately not in this set: it marks
- * a beat inside a lyric, but it also turns up in prose quoting a riff.
+ * Every field of `SongMetadata` maps to a ChordPro directive the standard
+ * already defines, which is the finding that made M18 a copy rather than a
+ * redesign: `{title}`, `{artist}`, `{year}`, `{key}`, `{time}`, `{capo}`, and
+ * `{define}` for the chords. Nothing needed a `{meta:}` (vault `DECISIONS.md`
+ * 39).
+ *
+ * Two of them are worth reading twice:
+ *
+ * - **`{key}` may appear more than once**, in the order the masthead prints
+ *   them, and the ten songs that modulate are why. They are joined back into
+ *   the one string the screens have always shown — `A; Bb` — rather than moved
+ *   to the bar where the change happens, which would be an edit to the
+ *   cancionero rather than a change of format.
+ * - **`{subtitle}` is the notes slot**, the lines the book sets under the title:
+ *   *Versión más simple para el ukulele*, a duet's voice legend, the century a
+ *   song with no year comes from. Until M18 a heuristic lifted these out of the
+ *   body by guessing; now the file says which lines they are, and the guess is
+ *   gone.
+ *
+ * **It is forgiving on purpose.** A missing directive gives a song with no
+ * artist rather than a build that fails; what a song file *may* contain is
+ * `pnpm validate`'s subject, and it is a separate command for the same reason
+ * it always was.
  */
-const ALIGNED = /[[\]|↓↑↦←↠]/;
+export function songFromChordPro(source: string, slug: string): ParsedSong {
+  const { directives, lyrics } = parseChordPro(source);
 
-/** How many leading lines can be metadata before the block is just the song. */
-const MAX_LEADING_LINES = 3;
+  const first = (name: string): string | undefined =>
+    directives.find((directive) => directive.name === name)?.value;
+  const every = (name: string): string[] =>
+    directives
+      .filter((directive) => directive.name === name)
+      .map((directive) => directive.value);
 
-/**
- * Split the run of lines above the first blank line into metadata and the rest.
- *
- * The book has one slot for things true of a whole song — a capo, a duet's voice
- * legend, "Versión más simple para el ukulele" — and it is a plain line at the
- * top of the page, above the first section. `DECISIONS.md` 7 in the vault kept
- * it as a plain line of text rather than inventing a frontmatter field, which is
- * why this is read here instead of by `gray-matter`, and why nothing in `songs/`
- * had to change for the capo badge to exist.
- *
- * It is deliberately conservative. If any line in the block looks aligned, or
- * the block runs past three lines, nothing is lifted and all of it stays in the
- * sheet: leaving an instruction in the lyrics costs a slightly untidy sheet,
- * and taking a lyric out of them costs a song a line. Across all 276 songs this
- * lifts 50 capos and 12 notes, and no lyric.
- */
-export function parseLeadingNotes(body: string): {
-  capo?: number;
-  notes?: string[];
-  lyrics: string;
-} {
-  const lines = body.split("\n");
+  const chordDefinitions: Chord[] = directives
+    .filter((directive) => directive.name === "define")
+    .map(parseDefine)
+    .filter((define) => define !== null)
+    .map(({ name, positions }) => ({ name, positions }));
 
-  const block: string[] = [];
-  for (const line of lines) {
-    if (!line.trim()) break;
-    block.push(line.trim());
-  }
+  const year = Number(first("year"));
+  const capo = Number(first("capo"));
+  const notes = every("subtitle");
 
-  if (
-    block.length === 0 ||
-    block.length > MAX_LEADING_LINES ||
-    block[0].startsWith("##")
-  ) {
-    return { lyrics: body };
-  }
-
-  let capo: number | undefined;
-  const notes: string[] = [];
-
-  for (const [index, line] of block.entries()) {
-    const match = index === 0 ? line.match(CAPO_LINE) : null;
-    if (match) {
-      capo = Number(match[1]);
-      continue;
-    }
-    if (ALIGNED.test(line)) return { lyrics: body };
-    notes.push(line);
-  }
-
-  if (capo === undefined && notes.length === 0) return { lyrics: body };
+  const metadata: SongMetadata = {
+    title: first("title") || "Untitled",
+    artist: first("artist") || "Unknown",
+    year: Number.isInteger(year) ? year : undefined,
+    key: every("key").join("; "),
+    timeSignature: first("time") || "4/4",
+    chords: chordDefinitions.map((chord) => chord.name),
+    capo: Number.isInteger(capo) ? capo : undefined,
+    notes: notes.length > 0 ? notes : undefined,
+  };
 
   return {
-    capo,
-    notes: notes.length > 0 ? notes : undefined,
-    lyrics: lines.slice(block.length).join("\n").replace(/^\n+/, ""),
+    slug,
+    metadata,
+    lyrics,
+    chordDefinitions,
+    filePath: path.join(songsDirectory, `${slug}${SONG_EXTENSION}`),
   };
 }
 
@@ -95,58 +94,18 @@ export function getSongFiles(): string[] {
 
   return fs
     .readdirSync(songsDirectory)
-    .filter((file) => file.endsWith(".md") && file !== "README.md");
+    .filter((file) => file.endsWith(SONG_EXTENSION));
 }
 
 /**
- * Parse a song markdown file
+ * Parse a song file
  */
 export function parseSongFile(filename: string): ParsedSong {
   const filePath = path.join(songsDirectory, filename);
-  const fileContents = fs.readFileSync(filePath, "utf8");
-
-  // Parse frontmatter and content
-  const { data, content } = matter(fileContents);
-
-  // Extract slug from filename
-  const slug = filename.replace(/\.md$/, "");
-
-  // Parse chord definitions from frontmatter
-  const chordDefinitions: Chord[] = (data.chords || []).map(
-    (chord: Chord | string) => {
-      if (typeof chord === "string") {
-        // If chords are just strings, create basic chord objects
-        return { name: chord, positions: "" };
-      }
-      return {
-        name: chord.name,
-        positions: chord.positions || "",
-      };
-    },
+  return songFromChordPro(
+    fs.readFileSync(filePath, "utf8"),
+    filename.slice(0, -SONG_EXTENSION.length),
   );
-
-  // Lift the capo and any leading instruction out of the body
-  const { capo, notes, lyrics } = parseLeadingNotes(content.trim());
-
-  // Build metadata
-  const metadata: SongMetadata = {
-    title: data.title || "Untitled",
-    artist: data.artist || "Unknown",
-    year: data.year,
-    key: data.key || "",
-    timeSignature: data.timeSignature || "4/4",
-    chords: chordDefinitions.map((c) => c.name),
-    capo,
-    notes,
-  };
-
-  return {
-    slug,
-    metadata,
-    lyrics,
-    chordDefinitions,
-    filePath,
-  };
 }
 
 /**
@@ -169,7 +128,7 @@ export function getAllSongs(): ParsedSong[] {
  * Get a single song by slug
  */
 export function getSongBySlug(slug: string): ParsedSong | null {
-  const filename = `${slug}.md`;
+  const filename = `${slug}${SONG_EXTENSION}`;
   const filePath = path.join(songsDirectory, filename);
 
   if (!fs.existsSync(filePath)) {
@@ -184,7 +143,7 @@ export function getSongBySlug(slug: string): ParsedSong | null {
  */
 export function getAllSongSlugs(): string[] {
   const files = getSongFiles();
-  return files.map((filename) => filename.replace(/\.md$/, ""));
+  return files.map((filename) => filename.slice(0, -SONG_EXTENSION.length));
 }
 
 /**

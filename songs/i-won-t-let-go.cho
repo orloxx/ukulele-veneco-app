@@ -1,0 +1,75 @@
+{title: I Won't Let Go}
+{artist: Arimaya}
+{year: 2019}
+{key: C}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: G base-fret 1 frets 0 2 3 2}
+
+{start_of_verse: Intro}
+[C]· · [F]· · | [Am]·  · [G]· ·
+[C]· · [F]· · | [Am]·  · [G]· ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[C] I stayed in the [F]shadows for a while
+[Am] But now the darkness is [G]over, now it's bright
+[C] There's nothing I can't [F]do if the sun shinee-[Am]ee-ee-[G]ees
+
+[C] The music now is [F]beating in my heart
+[Am] There's a new be[G]ginning taking part
+[C] It's something in the [F]air, I feel aliii-[Am]iii-[G]iive
+{end_of_verse}
+
+{start_of_verse: Pre-coro}
+[C] Music, [F] dance, [Am] baila, [G] my friend
+[C] Dime [F] que estarás[Am] bieee-[G]een
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[C]I will never tell you [F]disappear
+[Am] The feeling now is[G] so surreal
+[C] I promise that I [F]won't let go
+[Am]    If I [G]lose control
+[C]I will never tell you [F]disappear
+[Am] The feeling now is[G] so surreal
+[C] I promise that I [F]won't let go
+[Am]    If I [G]lose control
+[C] If I [F]lose control,[Am] if I [G]lose control,[C]   if I [F]lose control[Am]   [G]
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[C]· · [F]· · | [Am]·  · [G]· ·
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[C] Time is running [F]faster than before
+[Am] Something in[G]side me has grown
+[C]   I'm ex[F]cited and now I [Am] know oh-oh-[G]-oh
+{end_of_verse}
+
+{start_of_verse: Pre-coro 2}
+[C] Music, [F] dance, [Am] baila, [G] my friend
+[C] Tell me [F] you're gonna be ok[Am]aay eh-eh-[G]-ay
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[C]I will never tell you [F]disappear
+[Am] The feeling now is[G] so surreal
+[C] I promise that I [F]won't let go
+[Am]    If I [G]lose control
+[C]I will never tell you [F]disappear
+[Am] The feeling now is[G] so surreal
+[C] I promise that I [F]won't let go
+[Am]    If I [G]lose control
+[C] If I [F]lose control,[Am] if I [G]lose control,[C]   if I [F]lose control[Am]   [G]
+{end_of_chorus}
+
+{start_of_verse: Final}
+[C]· · [F]· · | [Am]·  · [G]· ·
+[C]· · [F]· · | [Am]·  · [G]· ·
+[C]↓
+{end_of_verse}

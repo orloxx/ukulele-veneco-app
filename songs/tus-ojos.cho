@@ -1,0 +1,88 @@
+{title: Tus ojos}
+{artist: Diveana}
+{year: 1991}
+{key: G}
+{key: E}
+{key: C}
+{time: 4/4}
+{capo: 1}
+
+{define: G base-fret 1 frets 0 2 3 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: E base-fret 1 frets 4 4 4 2}
+
+{start_of_verse: Intro}
+[G]· · · · | [C]· · · · | [G]· · · · | [C]· · · · | [G]· · · · | [C]· · · · | [C]↓ [D7]↓  [D7]↑
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+Tus o[G]jos (tus ojos, tus ojos)       ¿Qué tienen tus o[C]jos? (tus ojos, tus ojos)
+Que cuando me mi[G]ras (tus ojos, tus ojos)       Inquietan mis o[C]jos (tus ojos, tus ojos)
+Y quiero arrojar[Am]me en aguas profundas teñidas de ro[D]jo [D7]
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+Tu bo[G]ca, tu boca (tu boca, tu boca)        ¿Qué tiene tu bo[C]ca? (tu boca, tu boca)
+Sedienta y sabro[G]sa (tu boca, tu boca)        Ay, maliciosa bo[C]ca (tu boca, tu boca)
+Que cuando me be[Am]sas atrapa mis labios y me vuelve lo[D]ca [D7]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Yo no pue[G]do dejar de soñar[B7]te, y noche tras no[Em]che tener junto a mí[C]
+En mis sue[G]ños de amor incesan[Bm]te, un cálido aman[Am]tee-[D7]ee
+Despertar[G] entre nubes de be[B7]sos, sentir embele[Em]so de estar junto a ti[C]
+Y tu cuer[G]po posado en mi cuer[Bm]po, y sobre mis o[Am]jos [D7]
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+Tus o[G]jos... · · · | [C] · · · | [G] · · · | [C] · · · | [C]↓ [D7]↓  [D7]↑
+{end_of_verse}
+
+{start_of_verse: Verso 3}
+Tus o[G]jos (tus ojos, tus ojos)       ¿Qué tienen tus o[C]jos? (tus ojos, tus ojos)
+Que excitan mis sue[G]ños (tus ojos, tus ojos)       Y mis labios ro[C]jos (tus ojos, tus ojos)
+Quisiera saber[Am]lo, saber qué misterio ocultan tus o[D]jos [D7]
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+Yo no pue[G]do dejar de soñar[B7]te, y noche tras no[Em]che tener junto a mí[C]
+En mis sue[G]ños de amor incesan[Bm]te, un cálido aman[Am]tee-[D7]ee
+Despertar[G] entre nubes de be[B7]sos, sentir embele[Em]so de estar junto a ti[C]
+Y tu cuer[G]po posado en mi cuer[Bm]po, y sobre mis o[Am]jos [D7]
+{end_of_chorus}
+
+{start_of_verse: Post-coro}
+Tus o[G]jos... Tus o[C]jos... [G]  [C]
+{end_of_verse}
+
+{start_of_verse: Cambio de clave}
+[E]· · · · | [B7]·  · · · | [E]· · · · | [B7]·  · · · | [E]· · · · | [B7]·  · · · | [E]· · · · | [B7]·  · · ·
+
+[E](¿Qué misterio hay en tus o[B7]jos?)
+Que me hace soñar[E]que llenan mis o[B7]jos de pasión
+[E](¿Qué fuego hay en tu bo[B7]ca?)
+Que invita a pecar[E] y me vuelve lo[B7]ca de amor
+
+[E]· · · · | [B7]·  · · · | [E]· · · · | [B7]·  · · · | [E]· · · · | [B7]·  · · · | [E]· · · · | [B7]·  · · ·
+
+[E](¿Qué misterio hay en tus o[B7]jos?)
+Que me hace soñar[E], que llenan mis o[B7]jos de pasión
+[E](¿Qué fuego hay en tu bo[B7]ca?)
+Que invita a pecar[E] y me vuelve lo[B7]ca de amor por ti
+
+[B7]↓  [B7]↓  [B7]↑
+{end_of_verse}
+
+{start_of_verse: Cambio de clave 2}
+[C] ¿Cómo? · · · | [G] · · · | [C] · · · | [G] · · ·¡Sí!
+[C]· · · · | [G]· · · · | [C]· · · · | [G]· · · ·
+[C] · · · | [G] · · · | [C] · · · | [G] Dímelo · · ·
+[C]· · · · | [G]· · · · | [C]· · · · | [G]· · · ·
+[C]↓ [C]↓ [C]↑
+{end_of_verse}

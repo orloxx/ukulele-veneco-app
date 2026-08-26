@@ -1,0 +1,80 @@
+{title: Deskarado}
+{artist: Kiara}
+{year: 1987}
+{key: Am}
+{key: Bm}
+{time: 4/4}
+{capo: 1}
+{subtitle: Am6 puede tocarse como Am}
+
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: Am6 base-fret 1 frets 2 4 2 3}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: E7sus4 base-fret 1 frets 2 2 0 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+{define: Bm6 base-fret 1 frets 1 2 2 2}
+
+[Am]·  · · · | [Am6]·   · · · | [Dm]·  · · · | [E7]·  · · ·
+[Am]·  · · · | [Am6]·   · · · | [Dm]·  · · · | [E7]·  · · ·
+
+[Am] Tu mirada penetrante
+[Am6] De inmediato me invadió
+Des[Dm]caro... [E7] vive en [Am]ti [E7]
+
+[Am] Casi puedo sentirte
+[Am6] Para sentirte estoy yo
+Des[Dm]caro... [C] vive en [E7sus4]ti [E7]
+
+{start_of_chorus: Coro}
+Desca[C]rado... [Am]eres un desca[G]rado
+Tu única [Am]ley es vivir[F] con des[G]caro
+Desca[C]rado... [Am]eres un desca[G]rado
+Odio lo que [Dm]eres [E7]
+
+...pero amo tu des[Am]caro · · · | [Am6] · · · | [Dm] · · · | [E7] · · ·
+
+[Am] Con tu andar resuelto
+[Am6] Intenso, remoto
+Des[Dm]caro... [E7] vive en [Am]ti [E7]
+
+[Am] Al margen de la comedía
+[Am6] Derrochas descaro
+Des[Dm]caro... [C] vive en [E7sus4]ti [E7]
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Desca[C]rado... [Am]eres un desca[G]rado
+Tu única [Am]ley es vivir[F] con des[G]caro
+Desca[C]rado... [Am]eres un desca[G]rado
+Odio lo que [Dm]eres [E7]
+
+...pero amo tu des[F]caro · · · | [Dm] · [G] ·des-|[F]caro · · · | [Dm] · [G] ·
+{end_of_chorus}
+
+{start_of_verse: Cambio de clave}
+[A]↓-[A]↓-[A]↓-[A]↓ [A]↓
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Desca[D]rado... [Bm]eres un desca[A]rado
+Tu úuu-[Bm]unica ley es vivir[G] con des[A]caro
+Desca[D]rado... [Bm]eres un desca[A]rado
+Odio lo que [Em]eres [F#7]
+
+...pero amo tu des[Bm]caro · · · | [Bm6] · · · | [Em] · · · | [F#7] · · ·
+des[Bm]caro · · · | [Bm6] · · · | [Em] · · · | [F#7] · · ·
+[Bm] · · · | [Bm6] · · · | (des  [Em]caro)   · · · | [F#7] · ·vive ·en
+[Bm]ti · · · | [Bm6] · · ·(des  |[Em]caro)   · · · | [F#7] ·eso que ·vive ·en
+[Bm]ti · · · | [Bm6] · · ·(des  |[Em]caro)   · · · | [F#7] aa-·-ah ·vive ·en
+[Bm]ti · · · | [Bm6] · · ·(des  |[Em]caro)   uuh· · · | [F#7] · ·vive ·en
+[Bm]ti · · · | [Bm6] · · ·(des  |[Em]caro)   · · · | [F#7] · · ·
+[Bm]↓
+{end_of_chorus}

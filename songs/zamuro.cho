@@ -1,0 +1,64 @@
+{title: Zamuro}
+{artist: Charliepapa}
+{year: 2010}
+{key: Bb}
+{time: 4/4}
+
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Dm7 base-fret 1 frets 2 2 1 3}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: F base-fret 1 frets 2 0 1 0}
+
+{start_of_verse: Intro}
+[Dm]·  [Dm7]·   [Eb]·  · | [Bb]·  · [Bb]·  · (x2)
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[Dm]   [Dm7]¿Qué-[Eb]e ·pasó?[Bb] · [Bb] ·
+[Dm] El [Dm7]mundo [Eb]nos quedó· gran[Bb]de · [Bb] ·
+[Dm]   [Dm7]Hoy no [Eb]vengo a en·mendar[Bb] ·ni hablar[Bb] ·
+[Dm] So[Dm7]lo a de[Eb]cir que esta·ré bien[Bb] · [Bb] ·
+{end_of_verse}
+
+{start_of_verse: Pre-coro}
+Sien[Dm]to · que [Eb]ya no pue·do más[Bb] · [Bb] ·
+Sabí[Dm]a y ·no que[Eb]ría a·ceptar[Bb] · [Bb]
+¿Y ·qué más da?[Eb]↓  ◦ ◦ ◦ | ◦ ◦ ◦ ◦
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[Dm]·  [Dm7]·   [Eb]·  · | [Bb]·  · [Bb]·  ·
+[Dm]   [Dm7]¿Por qué[Eb] ·temer?[Bb] · [Bb] ·
+[Dm] Si [Dm7]nadie [Eb]muere ·de amor[Bb] · [Bb] ·
+[Dm] Y [Dm7]nunca [Eb]fui tan sin·ce[Bb]ro · [Bb] ·
+[Dm]   [Dm7]Te de[Eb]seo lo ·mejor[Bb] · [Bb]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+·Entien[Dm]do · que [Eb]no habrá mar·cha atrás[Bb] · [Bb]
+El· sue[Dm]ño ha ·llega[Eb]do a su ·final[Bb] · [Bb]
+¿Y ·qué más da?[Eb] · [Gm] · [F] ·
+Tris[F]te feli·cidad[Eb] · [Gm] · [F] ·
+La [F]siento hoy· al ver[Eb]te, · me [Gm]siento di·feren[F]te · [F] · [F] · [F] ·
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[Dm]·  [Dm7]·   [Eb]·  · | [Bb]·  · [Bb]·  · (x2)
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+Entien[Dm]do · que [Eb]no habrá mar·cha atrás[Bb] · [Bb]
+·Sabí[Dm]a · y [Eb]no quería a·ceptar[Bb] · [Bb]
+¿Y ·qué más da?[Eb] · [Gm] · [F] ·
+Tris[F]te feli·cidad[Eb] · [Gm] · [F] ·
+La [F]siento hoy· al ver[Eb]te, · me [Gm]siento di·feren[F]te · [F]
+¿Y ·qué más da?[Eb] · [Gm] · [F] ·
+Tris[F]te feli·cidad[Eb] · [Gm] · no-[F]oo ·
+La [F]siento hoy· al ver[Eb]te, · me [Gm]siento di·feren[F]te · [F] ·
+[F] · La [F]vida si·gue
+[F] · La [F]vida si·gue
+[F]· · [F]· ·
+[F]· · [F]· · [F]↓
+{end_of_chorus}

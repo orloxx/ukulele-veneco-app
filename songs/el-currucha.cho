@@ -1,0 +1,47 @@
+{title: El curruchá}
+{artist: Jesús Sevillano}
+{year: 1928}
+{key: Am}
+{time: 6/8}
+{capo: 2}
+
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: C base-fret 1 frets 0 0 0 3}
+
+{start_of_verse: Verso (x2)}
+A mi [Am]negra la quiero, la ·quiero más que a la co·tiza que llevó en el [E7]pie
+A mi [E7]negra la quiero, la ·quiero más que a la ti·naja cuando tengo [Am]sed
+A mi [Am]negra la quiero, la ·quiero más que a mi chin[A7]chorro que me hace so[Dm]ñar
+Más que al [Dm]penco alazán que co[Am]leando en el pueblo mil
+[E7]veces me ha hecho ga[Am]nar
+{end_of_verse}
+
+{start_of_chorus: Coro (x2)}
+Cuando [G7]baila mi negra un jo[C]ropo, el amor zapa[G7]tea por dentro de [C]mí
+Al com[E7]pás de puntera y ta[Am]lón, al com[A7]pás de una quirpa sin [Dm]fin
+Con tal [G7]gracia menea la ca[C]dera ¡ay!
+Mi negra que [G7]me hace perder la ra[C]zón
+Curruchá, con tal [G7]gracia menea la ca[C]dera ¡ay!
+Mi negra que [G7]me hace perder la ra[C]zón
+{end_of_chorus}
+
+{start_of_verse: Verso (x2)}
+Si a mi [Am]negra la miro a los ·ojos se pone más ·roja que el paragua[E7]tán
+Cuya [E7]flor es incendio en el ·bosque, corazón de a·beja, licor de pa[Am]nal
+Si me [Am]rozo con ella en el ·baile, me sube al co[A7]gollo un inmenso ca[Dm]lor
+Pues mi [Dm]negra es chamiza de hor[Am]nalla que enciende en
+Ce[E7]nizas mi leño de a[Am]mor
+{end_of_verse}
+
+{start_of_chorus: Coro (x2)}
+Cuando [G7]baila mi negra un jo[C]ropo, el amor zapa[G7]tea por dentro de [C]mí
+Al com[E7]pás de puntera y ta[Am]lón, al com[A7]pás de una quirpa sin [Dm]fin
+Con tal [G7]gracia menea la ca[C]dera ¡ay!
+Mi negra que [G7]me hace perder la ra[C]zón
+Curruchá, con tal [G7]gracia menea la ca[C]dera ¡ay!
+Mi negra que [G7]me hace perder la ra[C]zón
+{end_of_chorus}

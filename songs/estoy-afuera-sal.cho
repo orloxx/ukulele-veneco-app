@@ -1,0 +1,60 @@
+{title: Estoy afuera, sal}
+{artist: Americania}
+{year: 2013}
+{key: C}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G# base-fret 1 frets 4 2 3 2}
+
+{start_of_verse: Intro}
+Versión más simple para el ukulele
+
+[C]· · | [C]· · | [Em]·  · | [Dm]·  ·
+[C]· · | [Dm]·  · | [Em]·  · | [Dm]·  ·
+[C]· · | [Dm]·  · | [C]· · | [C]· ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[C] Es difí·cil recobrar· mi caminar·
+Sabiendo que [F]no voy a volver·te a tocar [F] ·
+Si [Dm]miro hacia atrás· y veo [Dm]tu sonrisa a·tada en mis [C]sábanas ·
+[Dm]Veo que quieres ju·gar [Dm] ·
+A [C]quién extraña me·nos, quién extra[C]ña más ·
+Quién [C]va a a perder la com·postura pri[C]mero y va a llamar·
+[Dm]Sólo para salu·dar [Dm]y tal ·vez un [C]cómo estás ·
+{end_of_verse}
+
+{start_of_verse: Interludio}
+[Em]·  · | [Dm]·  · | [C]· · | [Dm]·  · | [C]· ·
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[C] Imposi·ble llegar a[C] pensar que ·todo esto fue[F] un error ·
+Y [Dm]veo que quieres ju·gar [Dm] ·
+A [C]quién extraña me·nos, quién ex[C]traña más ·
+Quién [C]va a a perder la com·postura pri[C]mero y va a llamar·
+[Dm]Sólo para salu·dar [Dm]y, con ·suerte un es[C]toy afuera sal ·
+{end_of_verse}
+
+{start_of_verse: Interludio 2}
+[Em]·  · | [Dm]·  · | [C]· · | [Dm]·  ·
+[Em]·  · | [Dm]·  · | [C]· ·
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Dm] Es·toy afuera [C] sal ·
+[C] Es·toy afuera [F] sal ·
+[G#] Es·toy a[C]fuera sal·
+[C] Es·toy afuera [G#] sal · Sal
+[G#] Saa-·-aaal
+{end_of_chorus}
+
+{start_of_verse: Final}
+[Em]·  · | [Dm]·  · | [C]· · | [Dm]·  ·
+[C]· · | [C]· ·
+[C]↓
+{end_of_verse}

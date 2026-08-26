@@ -1,0 +1,70 @@
+{title: It Never Ends (Quinta Anauco)}
+{artist: Aldemaro Romero}
+{year: 1966}
+{key: Gm}
+{time: 3/4}
+
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Gm6 base-fret 1 frets 0 2 0 1}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: Ebm base-fret 1 frets 3 3 2 1}
+{define: F7 base-fret 1 frets 2 3 1 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: Edim7 base-fret 1 frets 0 1 0 1}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Bbm base-fret 1 frets 3 1 1 1}
+{define: Eb7 base-fret 1 frets 3 3 3 4}
+{define: Ab base-fret 3 frets 3 1 2 1}
+
+{start_of_verse: Verso 1}
+It just goes [Cm]on, it never [D7]ends
+From dawn to [Gm]dawn, it never [Gm6]ends
+The dark of [Cm]night, it never [D7]ends
+You're there in [Gm]sight, it never [Gm6]ends
+
+And when I [Fm]sleep, there is no [G7]sleep
+No tears at [Cm]all although I [Cm]weep
+The dreams I [Ebm]shape take hold of [F7]me
+There's no es[Dm]cape, I'm never [Gm]free
+I run and [A7]run, and when I'm [Edim7]through, I run to [D7]you
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+Down leafy [Cm]lanes, it never [D7]ends
+Through summer [Gm]rains, it never [Gm6]ends
+The sound of [Cm]larks, it never [D7]ends
+Deserted [Gm]parks, it never [Gm6]ends
+
+Time can't e[Fm]rase, cannot dis[G7]pel
+That smiling [Cm]face I knew so [Cm]well
+It's always [Ebm]there, as you can [F7]guess
+To bring des[Dm]pair and loneli[Gm]ness
+Lord knows I've [A7]tried to kiss all [D7]new
+But I've kissed [Gm]you
+{end_of_verse}
+
+{start_of_verse: Puente}
+When love was [Cm]mine, the earth was [F7]new
+And there were [Bb]things to see and [Bbm]do
+When love was [Bbm]mine, the skies were, [Eb7]too
+You clung to [Ab]me and I to [Ab]you
+
+Now it's more [Cm]comfort to re[D7]call
+That it is [Gm]better, dear, by [Cm]far
+To once have [Gm]love than never [D7]to have love at [Gm]all
+{end_of_verse}
+
+{start_of_verse: Puente 2}
+When love was [Cm]mine, the earth was [F7]new
+And there were [Bb]things to see and [Bbm]do
+When love was [Bbm]mine, the skies were, [Eb7]too
+You clung to [Ab]me and I to [Ab]you
+
+Now it's more [Cm]comfort to re[D7]call
+That it is [Gm]better, dear, by [Cm]far
+To once have [Gm]love than never [D7]to have love at [Gm]all
+{end_of_verse}

@@ -1,0 +1,65 @@
+{title: Entrada de bala}
+{artist: Zapato3}
+{year: 1993}
+{key: D}
+{time: 4/4}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Bm base-fret 1 frets 4 2 2 2}
+
+{start_of_verse: Intro}
+[D]· [A]· [Em]·  [Em]·  (x4)
+{end_of_verse}
+
+{start_of_verse: Estrofa}
+[D] Veo los án[A]geles bri[Em]llar... [Em]bajo la luna
+[D] Estaba tan [A]muerto ya [Em] que encontré [Em] la muerte
+[D] Detrás de [A]las escamas, [Em] el ácido [Em]quema la piel,
+[D] La suerte no [A]vendrá hoy, [Em] como otras [Em]veces
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[G] Casi [Bm]puedo dormir[A]  [A]
+[G] Casi [Bm]puedo comer[A]  [A]
+[G] Casi [Bm]puedo vivir[A] sin ti[A]
+Pero [G]hoy no pue[Bm]do, no pue[A]do [A]
+{end_of_chorus}
+
+{start_of_verse: Estrofa}
+[D] En en sue[A]lo del cas[Em]tigo [Em]
+[D] Caen lá[A]grimas de a[Em]mantes [Em]
+[D] Y flore[A]cen los pe[Em]cados [Em]
+[D] En la som[A]bra del ol[Em]vido [Em]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[G] Casi [Bm]puedo dormir[A]  [A]
+[G] Casi [Bm]puedo comer[A]  [A]
+[G] Casi [Bm]puedo vivir[A] sin ti[A]
+Pero [G]hoy no pue[Bm]do, no pue[A]do [A]
+{end_of_chorus}
+
+{start_of_verse: Estrofa}
+[D] Llévame al [A]fin eter[Em]no [Em]
+[D] Donde descan[A]sa tu [Em]alma [Em]
+[D] Veo los án[A]geles bri[Em]llar... [Em]bajo la luna
+[D] Veo los án[A]geles bri[Em]llar... [Em]sobre la luna
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[G] Casi [Bm]puedo dormir[A]  [A]
+[G] Casi [Bm]puedo comer[A]  [A]
+[G] Casi [Bm]puedo vivir[A] sin ti[A]
+Pero [G]hoy no pue[Bm]do, no pue[A]do [A]
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[G]· [Bm]·  [A]· [A]·
+[G]· [Bm]·  [A]· [A]·
+[G] Veo los án[Bm]geles brillar[A]  [A]
+[G] Veo los án[Bm]geles brillar[A]  [A]
+[D]
+{end_of_verse}

@@ -1,0 +1,78 @@
+{title: Gaita onomatopéyica}
+{artist: Gran Coquivacoa}
+{year: 1988}
+{key: A}
+{time: 6/8}
+
+{define: A base-fret 1 frets 2 1 0 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: C#7 base-fret 1 frets 1 1 1 2}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: B7 base-fret 1 frets 4 3 2 0}
+
+[A] · | [A] · | [E7] ·(¡Canta    | [A] mi  ·pueblo!)    | [E7] · | [A] ·
+
+Nana[A]i nana nana naina, nana[F#7]i nana naina [Bm]na
+Nana [D]nana nana[A] naina, nana na[E7]na nana [A]na
+Ay, nanai [A]nanai nana naina, nana[F#7]i nana naina [Bm]na
+Nana [D]nana nana[A] naina, nana na[E7]na nana [A]na
+
+{start_of_chorus: Coro}
+Nana [E7]naina na, nana [A]naina na, nana [E7]naina nanaina, [A]nanai na
+Nana [C#7]naina na, nana [F#m]naina na, nana[B7]i nana naina [E7]↓na
+Nana[D]i nana nana na[A]ina naina[E7] nana naina [A]na
+Nana [E7]naina na, nana [A]naina na, nana [E7]naina nanaina, [A]nanai na
+Nana [C#7]naina na, nana [F#m]naina na, nana[B7]i nana naina [E7]↓na
+Nana[D]i nana nana na[A]ina naina[E7] nana naina [A]na
+
+[E7]·  · | [A]· · | [E7]·  · | [A]· ·
+
+Ay [A]rikiki riki riki, riki[F#7] riki riki [Bm]ra
+Riki [D]riki riki ri[A]ki, riki, [E7] riki riki [A]ra
+Ay [A]rikiki riki riki, riki[F#7] riki riki [Bm]ra
+Riki [D]riki riki ri[A]ki, riki, [E7] riki riki [A]ra
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Nana [E7]naina na, nana [A]naina na, nana [E7]naina nanaina, [A]nanai na
+Nana [C#7]naina na, nana [F#m]naina na, nana[B7]i nana naina [E7]↓na
+Nana[D]i nana nana na[A]ina naina[E7] nana naina [A]na
+Nana [E7]naina na, nana [A]naina na, nana [E7]naina nanaina, [A]nanai na
+Nana [C#7]naina na, nana [F#m]naina na, nana[B7]i nana naina [E7]↓na
+Nana[D]i nana nana na[A]ina naina[E7] nana naina [A]na
+
+[E7]·  · | [A]· · | [E7]·  · | [A]· ·
+
+Ay [A]chucu cuchucu chucu, ay [F#7]chucu cuchucu [Bm]cha
+Chucu [D]chucu chucu chu[A]cu, cuchu, [E7] cuchu chucu [A]cha
+Ay [A]chucu cuchucu chucu, ay [F#7]chucu cuchucu [Bm]cha
+Chucu [D]chucu chucu chu[A]cu, cuchu, [E7] cuchu chucu [A]cha
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Nana [E7]naina na, nana [A]naina na, nana [E7]naina nanaina, [A]nanai na
+Nana [C#7]naina na, nana [F#m]naina na, nana[B7]i nana naina [E7]↓na
+Nana[D]i nana nana na[A]ina naina[E7] nana naina [A]na
+Nana [E7]naina na, nana [A]naina na, nana [E7]naina nanaina, [A]nanai na
+Nana [C#7]naina na, nana [F#m]naina na, nana[B7]i nana naina [E7]↓na
+Nana[D]i nana nana na[A]ina naina[E7] nana naina [A]na
+
+[E7]·  · | [A]· · | [E7]·  · | [A]· ·
+
+Ay la[A]lala lala laila, lala[F#7]i lala laila [Bm]la
+Lala [D]lala lala[A] laila, lalai la[E7]lai lai la[A]la
+Ay lalai [A]lalai lalai lala, lala[F#7]i lala laila [Bm]la
+Lala [D]lala lala[A] laila, lalai la[E7]lai lai la[A]la
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Nana [E7]naina na, nana [A]naina na, nana [E7]naina nanaina, [A]nanai na
+Nana [C#7]naina na, nana [F#m]naina na, nana[B7]i nana naina [E7]↓na
+Nana[D]i nana nana na[A]ina naina[E7] nana naina [A]na
+Nana [E7]naina na, nana [A]naina na, nana [E7]naina nanaina, [A]nanai na
+Nana [C#7]naina na, nana [F#m]naina na, nana[B7]i nana naina [E7]↓na
+Nana[D]i nana nana na[A]ina naina[E7] nana naina [A]na
+{end_of_chorus}

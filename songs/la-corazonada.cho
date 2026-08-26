@@ -1,0 +1,81 @@
+{title: La corazonada}
+{artist: Augusto Bracho}
+{year: 2022}
+{key: F}
+{time: 4/4}
+{capo: 1}
+
+{define: F base-fret 1 frets 2 0 1 0}
+{define: C7 base-fret 1 frets 0 0 0 1}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Db7 base-fret 1 frets 1 1 1 2}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Bbm6 base-fret 1 frets 0 1 1 1}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: F6 base-fret 5 frets 1 1 1 1}
+
+{start_of_verse: Intro}
+◦ [F]· · ·
+[C7]·  · · · | [C7]·  · · · | [F]· · [E7]·  · | [Eb]·  · [D7]·  ·
+[Gm]·  · · · | [C7]·  · · · | [F]· · · · | [F]· · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+Ten[F]go la corazo[C7]nada, nueva[F]mente [F]- [E7]-  [Eb]
+[D7]De que en tus disimulados ojos [Gm]negros
+To[C]da mi verdad colmada en sentimien[F]to [D7]
+[Db7]Puede verse reflejada para [C7]siempre
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+No[F] quisiera abandonar[C7]me en impo[F]sibles [F]- [E7]-  [Eb]
+Ni[D7] pretendo, mucho menos, sufri[Gm]miento
+Pe[C]ro este deseo vivo que yo [Bb]siento
+Es[D7] poema de suspiro incorre[Gm]gible
+[Bbm6]↓ Sí, ten[F]go la corazo[C7]nada más su[F]blime
+{end_of_verse}
+
+{start_of_verse: Pre-Coro}
+Es[A]ta noche cautivada por tu resplan[Dm]dor
+Olvi[A]dé los desengaños que me permi[Dm]ti
+Y a[G]postando la baraja de mayor va[C]lor
+Canta[G]ré mis alegrías todas para [C]ti
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[C]↓ Tengo la corazo[C7]nada, mi bien
+[C7] Pronto yo me acerca[F]ré a tu querer
+[D7] Y el consuelo llega[Gm]rá para mí
+[C7]↓ Al menos eso es[F]pero
+{end_of_chorus}
+
+{start_of_verse: Solo instrumental}
+[C7]·  · · · | [F]· · · · | [C7]·  · · · | [F]· · · ·
+[F]· · [E7]   [Eb] | [D7]·  · · · | [D7]·  · · · | [Gm]·  · · ·
+[Bbm6]·    · · · | [F]· · · · | [C7]·  · · · | [F]· · · ·
+{end_of_verse}
+
+{start_of_verse: Pre-Coro 2}
+Es[A]ta noche cautivada por tu resplan[Dm]dor
+Olvi[A]dé los desengaños que me permi[Dm]ti
+Y a[G]postando la baraja de mayor va[C]lor
+Canta[G]ré mis alegrías todas para [C]ti
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[C]↓ Tengo la corazo[C7]nada, mi bien
+[C7] Pronto yo me acerca[F]ré a tu querer
+[D7] Y el consuelo llega[Gm]rá para mí
+[C7] Al menos eso es[F]pero [F]- [E7]-  [Eb]
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[D7] Y el consuelo llega[Db7]rá para mí
+[C7]↓ Al menos eso es[F]pero [F]  [F]  [F6]↓
+{end_of_verse}

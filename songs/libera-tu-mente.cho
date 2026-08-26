@@ -1,0 +1,58 @@
+{title: Libera tu mente}
+{artist: Trino Mora}
+{year: 1972}
+{key: G}
+{key: Ab}
+{time: 4/4}
+
+{define: G base-fret 1 frets 0 2 3 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Ab base-fret 3 frets 3 1 2 1}
+{define: Db base-fret 1 frets 1 1 1 4}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: Bbm base-fret 1 frets 3 1 1 1}
+{define: Ab7 base-fret 5 frets 2 3 1 3}
+
+[G]· · · · | [G]· · · · | [D]· · · · | [D]· · · ·
+[G]· · · · | [C]· · · ·
+
+Si [G]tienes en tus ma[C]nos la verdad[G] · · · | [G] · · ·
+Ya [G]nadie te podrá[G] a ti cambiar[C] · · · | [D] · · ·
+Co[C]nocerás mejor[D] la gente, [G] y actuarás siempre[Em] de frente
+[Am] Porque ellos algún dí[D]a así lo harán[G] · · · | [G7] · · ·
+
+{start_of_chorus: Coro}
+Li[C]bera, pues, tu men[D]te, no [G]bajes más la fren[Em]te, no
+[Am] Ve siempre hacia adelan[D]↓te, nunca atrás[G] · · · | [C] · · ·
+
+Hay [G]algo que en la vi[C]da es normal[G] · · · | [G] · · ·
+Ha[G]cer siempre el amor[G] con libertad[C] · · · | [D] · · ·
+No [C]creas que tú has [D]hecho mal, [G] porque el amor es na[Em]tural
+[Am] Mantén tu pensamien[D]to hasta el final[G] · · · | [G7] · · ·
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Li[C]bera, pues, tu men[D]te, no [G]bajes más la fren[Em]te, no
+[Am] Ve siempre hacia adelan[D]↓te, nunca atrás[G] · · · | [Eb] · · ·
+{end_of_chorus}
+
+{start_of_verse: Cambio de clave}
+Si [Ab]tienes en tus ma[Db]nos la verdad[Ab] · la ·lara ·la la | [Ab] la · · ·
+Ya [Ab]nadie te podrá[Ab] a ti cambiar[Db] · · · | [Eb] · · ·
+Co[Db]nocerás mejor[Eb] la gente, [Ab] y actuarás siempre[Fm] de frente
+[Bbm] Porque ellos algún dí[Eb]a así lo harán[Ab] · · · | [Ab7] · · ·
+{end_of_verse}
+
+{start_of_chorus: Coro (x2)}
+Li[Db]bera, pues, tu men[Eb]te, no [Ab]bajes más la fren[Fm]te, no
+[Bbm] Ve siempre hacia adelan[Eb]te, nunca atrás[Ab] · · · | [Ab7] · · ·
+Li[Db]bera, pues, tu men[Eb]te, no [Ab]bajes más la fren[Fm]te, no
+[Bbm] Porque ellos algun día[Eb] así lo harán
+
+[Ab]·  · · · | [Ab]↓
+{end_of_chorus}

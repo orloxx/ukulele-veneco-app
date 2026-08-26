@@ -1,0 +1,80 @@
+{title: La negra Filomena}
+{artist: Cecilia Todd}
+{year: 1940}
+{key: A}
+{time: 5/8}
+{capo: 2}
+
+{define: A base-fret 1 frets 2 1 0 0}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+
+{start_of_verse: Intro}
+[A]· · · · · | [F#m]·   · · · · | [Bm]·  · · · · | [E7]·  · · · · (x3)
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[A] Vamos a [F#m]cantar yo y [Bm]tú, u[E7]na guaracha muy [A]buena
+De la ne[F#m]gra Filo[Bm]mena, mu[E7]lata lachapin[A]cú
+Ay, vamos a [F#m]cantar yo y [Bm]tú, u[E7]na guaracha muy [A]buena
+De la ne[F#m]gra Filo[Bm]mena, mu[E7]lata lachapin[A]cú
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[A] Kuiyo, kuiyo, kuiyo, mu[F#m]lata lachapin[Bm]cú,
+Mi negra de la [E7]vida, quién fuera como [A]tú
+Kuiyo, kuiyo, kuiyo, mu[F#m]lata lachapin[Bm]cú,
+Mi negra de la [E7]vida, quién fuera como [A]tú
+{end_of_chorus}
+
+{start_of_verse: Verso 2}
+Traigo to[A]mates, traigo cebollas, ajices [F#m]dulces y pere[Bm]jil
+Ay, si supieras, mi negra [E7]santa, la burundanga que traigo a[A]quí
+Traigo to[A]mates, traigo cebollas, ajices [F#m]dulces y pere[Bm]jil
+Ay, si supieras, mi negra [E7]santa, la burundanga que traigo a[A]↓quí
+Ay, mi haba[Bm]nera, me [E7]muero por [A]ti,
+[F#m] si tú no me [Bm]quieres me [E7]voy a mo[A]rir
+Ay,[F#m] mi haba[Bm]nera, me [E7]muero por [A]ti,
+[F#m] si tú no me [Bm]quieres me [E7]voy a mo[A]rir
+{end_of_verse}
+
+{start_of_verse: Solo (Cambio de clave a C)}
+[G7] · · · · | [C] Vamos a [Am]cantar yo y [Dm]tú, u[G7]na guaracha muy [C]buena
+De la ne[Am]gra Filo[Dm]mena, mu[G7]lata lachapin[C]cú
+Ay, vamos a [Am]cantar yo y [Dm]tú, u[G7]na guaracha muy [C]buena
+De la ne[Am]gra Filo[Dm]mena, mu[G7]lata lachapin[C]cú
+{end_of_verse}
+
+{start_of_verse: Verso 1 bis}
+[E7] · · · · | [A] Vamos a [F#m]cantar yo y [Bm]tú, u[E7]na guaracha muy [A]buena
+De la ne[F#m]gra Filo[Bm]mena, mu[E7]lata lachapin[A]cú
+Ay, vamos a [F#m]cantar yo y [Bm]tú, u[E7]na guaracha muy [A]buena
+De la ne[F#m]gra Filo[Bm]mena, mu[E7]lata lachapin[A]cú
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[A] Kuiyo, kuiyo, kuiyo, mu[F#m]lata lachapin[Bm]cú,
+Mi negra de la [E7]vida, quién fuera como [A]tú
+Kuiyo, kuiyo, kuiyo, mu[F#m]lata lachapin[Bm]cú,
+Mi negra de la [E7]vida, quién fuera como [A]tú
+{end_of_chorus}
+
+{start_of_verse: Verso (Dos veces)}
+Traigo to[A]mates, traigo cebollas, ajices [F#m]dulces y pere[Bm]jil
+Ay, si supieras, mi negra [E7]santa, la burundanga que traigo a[A]quí
+Traigo to[A]mates, traigo cebollas, ajices [F#m]dulces y pere[Bm]jil
+Ay, si supieras, mi negra [E7]santa, la burundanga que traigo a[A]↓quí
+Ay, mi haba[Bm]nera, me [E7]muero por [A]ti,
+[F#m] si tú no me [Bm]quieres me [E7]voy a mo[A]rir
+Ay,[F#m] mi haba[Bm]nera, me [E7]muero por [A]ti,
+[F#m] si tú no me [Bm]quieres me [E7]voy a mo[A]rir
+{end_of_verse}
+
+{start_of_verse: Outro}
+[A] Vamos a [F#m]cantar yo y [Bm]tú... [E7]↓  [A]↓
+{end_of_verse}

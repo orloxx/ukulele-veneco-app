@@ -1,0 +1,35 @@
+{title: Woman del Callao}
+{artist: Un Solo Pueblo}
+{year: 1987}
+{key: Cm}
+{time: 4/4}
+
+{define: C# base-fret 1 frets 1 1 1 4}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: Fm7 base-fret 1 frets 1 3 1 3}
+{define: Fm6 base-fret 1 frets 1 2 1 3}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: Fm base-fret 1 frets 1 0 1 3}
+
+[C#]·  · · · | [Cm]·  · · · | [C#]·  · · · | [Cm]·  · · ·
+
+{start_of_chorus: Coro (x4)}
+Tiene [Cm]mucho hunt, tiene [Fm7]mucho tempo
+Tiene [Fm6]mucho down, [G7] woman[Cm] del callao
+{end_of_chorus}
+
+{start_of_verse: Verso}
+It’s a [C#]custom to love the man going to El [Cm]Callao
+All the [C#]woman has the calypso into the [Cm]blood
+When you [C#]go you will like to living dancing in [Cm]this paradise
+Every [Fm]time, aha[G7]ha aha[Cm]ha
+{end_of_verse}
+
+{comment: Repetir desde el principio al menos una vez más}
+
+{start_of_verse: Outro (x4)}
+Tiene [Cm]mucho hunt, tiene [Fm7]mucho tempo
+Tiene [Fm6]mucho down, [G7] woman[Cm] del callao
+
+[Cm]↓
+{end_of_verse}

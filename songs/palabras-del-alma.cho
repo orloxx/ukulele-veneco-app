@@ -1,0 +1,71 @@
+{title: Palabras del alma}
+{artist: Ilan Chester}
+{year: 1990}
+{key: F}
+{time: 4/4}
+
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+
+[F]· · · · | [Bb]·  · [F]· · | [C]· · · [Dm]·  | [Gm]·  · · [C]· | [Bb]·  · · [C]·
+
+[F]Dame tan solo un mo[Dm]mento más
+Y te di[Bb]ré lo que guardo por ti[C]
+[A7]Un corazón que de [Dm]tanto esperar
+Ya no [G]quiere volver a latir[C]
+
+[F]Quiéreme así como te [Dm]quiero yo
+A toda [Bb]hora y sin reservas ata[C]das
+[A7]Dime que no para mo[Dm]rir de una vez
+Como se [G]muere en la ausencia del [C]agua
+Y eso es amor[F] · · [Bb] | [F] · · ·
+
+{start_of_chorus: Coro}
+[Dm] Palabras del al[Am]ma se despi[Bb]er[F]tan para [C]ti
+[D]-[Gm] Es tan solo de[Dm]cir [Am]la verdad[Gm]   [C]
+[Dm] Palabras del al[Am]ma se despi[Bb]er[F]tan para [C]ti
+[D]-[Gm] No podemos hacer[Dm]-[E7] del amor[Am]-[D] un adiós[Gm]
+Por eso [C]digo
+
+[F]Dime que sí, para vi[Dm]vir junto a ti
+A tiempo en[Gm]tero y con tarjeta marca[C]da
+[A7]Dime que no para mo[Dm]rir de una vez
+Como se [G]muere en la ausencia del [C]agua
+Y eso es amor
+{end_of_chorus}
+
+{start_of_verse: Solo}
+[F] · · · | [Bb] · [F] · | [C] · ·¡Y eso es ·amor!
+[F]Dame tan solo un mo[Dm]mento más
+Y te di[Bb]ré lo que guardo por ti[C]
+[A7]Un corazón que de [Dm]tanto esperar
+Ya no [G]quiere volver a latir[C]
+Y eso es amor[F] · · [Bb] | [F] · · ·
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Dm] Palabras del al[Am]ma se despi[Bb]er[F]tan para [C]ti
+[D]-[Gm] Es tan solo de[Dm]cir [Am]la verdad[Gm]   [C]
+[Dm] Palabras del al[Am]ma se despi[Bb]er[F]tan para [C]ti
+[D]-[Gm] No podemos hacer[Dm]-[E7] del amor[Am]-[D] un adiós[Gm]
+Por eso [C]digo
+
+[F] Dame tan solo un mo[Dm]mento más
+Y te di[Gm]ré lo que guardo por ti[C]
+[A7]Un corazón que de [Dm]tanto esperar
+Ya no [G]quiere volver a latir[C]
+Y eso es amor
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[F]· · · · | [Bb]·  · [F]· · | [C]· · · [Dm]·  | [Gm]·  · · [C]· | [Bb]·  · · [C]·
+[F]↓
+{end_of_verse}

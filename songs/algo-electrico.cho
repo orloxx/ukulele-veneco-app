@@ -1,0 +1,73 @@
+{title: Algo eléctrico}
+{artist: Aditus}
+{year: 1987}
+{key: D}
+{time: 4/4}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: C base-fret 1 frets 0 0 0 3}
+
+{start_of_verse: Intro}
+[D]· · · · | [Bm]·  · · ·
+[G]· · [F#m]·   · | [Em]·  · [A]↓ ·
+{end_of_verse}
+
+{start_of_verse: Estrofa 1}
+[D] Es tu sonri[F#m]sa o tu [G]pelo no lo sé[D]
+[A] O esa [Bm] manera [G] de [G]caminar
+[D] Pregun[F#m]té a los [G]grandes entendi[D]dos
+[A] Y ellos [Bm] no entienden [G] lo que tra[G]to de explicar
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[G] No razono [A]ni escucho
+[Bb] tú me has cam[C]biado mucho[G]
+esto [A]tiene que ser [G]electricidad[A]
+
+[A]↓Hay algo eléctrico entre [D]tú y yo [D] que no sabemos como a[Bm]pareció
+[Bm] es algo eléctrico entre [G]tú y yo, [F#m]tú y yo, [Em]tú y [A]yo
+[A]↓Hay algo eléctrico entre [D]tú y yo [D] que no sabemos como a[Bm]pareció
+[Bm] es algo eléctrico entre [G]tú y yo, [F#m]tú y yo, [Em]tú y [A]yo
+{end_of_chorus}
+
+{start_of_verse: Estrofa 2}
+[D] No pode[F#m]mos expli[G]carlo con pala[D]bras
+[A] Es una [Bm] corriente [G] de extraña [G]polaridad
+[D] Cada [F#m]vez que nos [G]vemos a los o[D]jos
+[A] Decimos [Bm] palabras [G] que no escu[G]chan los demás
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[G] No razono [A]ni escucho
+[Bb] tú me has cam[C]biado mucho[G]
+esto [A]tiene que ser [G]electricidad[A]
+
+[A]↓Hay algo eléctrico entre [D]tú y yo [D] que no sabemos como a[Bm]pareció
+[Bm] es algo eléctrico entre [G]tú y yo, [F#m]tú y yo, [Em]tú y [A]yo
+[A]↓Hay algo eléctrico entre [D]tú y yo [D] que no sabemos como a[Bm]pareció
+[Bm] es algo eléctrico entre [G]tú y yo, [F#m]tú y yo, [Em]tú y [A]yo
+{end_of_chorus}
+
+{start_of_verse: Solo}
+[A]↓Hay algo eléctrico entre [D]tú y yo [D] que no sabemos como a[Bm]pareció
+[Bm] es algo eléctrico entre [G]tú y yo, [F#m]tú y yo, [Em]tú y [A]yo
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[G] No razono [A]ni escucho
+[Bb] tú me has cam[C]biado mucho[G]
+esto [A]tiene que ser [G]electricidad[A]
+
+[A]↓Hay algo eléctrico entre [D]tú y yo [D] que no sabemos como a[Bm]pareció
+[Bm] es algo eléctrico entre [G]tú y yo, [F#m]tú y yo, [Em]tú y [A]yo
+[A]↓Hay algo eléctrico entre [D]tú y yo [D] que no sabemos como a[Bm]pareció
+[Bm] es algo eléctrico entre [G]tú y yo, [F#m]tú y yo, [Em]tú y [A]yo
+
+[A]↓Hay algo eléctrico entre [D]↓tú y [D]↓yo
+{end_of_chorus}

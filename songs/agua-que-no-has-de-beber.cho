@@ -1,0 +1,83 @@
+{title: Agua que no has de beber}
+{artist: Daiquirí}
+{year: 1984}
+{key: C}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: C7 base-fret 1 frets 0 0 0 1}
+
+{start_of_verse: Intro}
+[C]  [F]  [G]  [G]
+[C]  [F]  [G]  [G]
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[C]Sabes que me estás gus[Dm]tando
+Tu [F]cuerpo [G] me está arreba[C]tando
+[C]Oye, suavízalo un [Dm]poco
+[F]Mira [G] que me vuelves [C]loco
+{end_of_verse}
+
+{start_of_verse: Pre-coro}
+[F]Sabes [G] que no puedo amar[C]te
+[A7] No tengo de[Dm]recho [G] para conquis[C]tarte [C7]
+[F]Pero [G] así es la [C]vida
+[A7] Siempre me ena[Dm]moro [G]de mujer prohi[C]bida [C]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[C]Agua que no [F]has de beber[G]  [G]
+[C]Agua que no [F]has de beber[G]  [G]
+{end_of_chorus}
+
+{start_of_verse: Verso 2}
+[C]Sabes que cuando te [Dm]veo
+Me [F]enfermo [G] de tanto de[C]seo
+[C]Vamos a tomarlo [Dm]suave
+[F]Porque [G] la cosa está [C]grave
+{end_of_verse}
+
+{start_of_verse: Pre-coro 2}
+[Dm]Mira [G] no puedo besar[C]te
+[A7] No puedo son[Dm]reirte, [G] no puedo ni ha[C]blarte (y te digo [C7]yo)
+Que [Dm]pienses [G] si vale la pe[C]na
+[A7] Que estemos ro[Dm]deados [G] por tantos pro[C]blemas [C]
+{end_of_verse}
+
+{start_of_verse: Break instrumental}
+[C]Sabes que me estás gus[Dm]tando
+Tu [F]cuerpo [G] me está arreba[C]tando
+[C]Oye, suavízalo un [Dm]poco
+[F]Mira [G] que me vuelves [C]loco
+{end_of_verse}
+
+{start_of_verse: Pre-coro 3}
+[F]Sabes [G] que no puedo amar[C]te
+[A7] No tengo de[Dm]recho [G] para conquis[C]tarte [C7]
+[F]Pero [G] así es la [C]vida
+[A7] Siempre me ena[Dm]moro [G]de mujer prohi[C]bida [C]
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[C]Agua que no [F]has de beber[G]  [G]
+[C]Agua que no [F]has de beber[G]  [G]
+{end_of_chorus}
+
+{start_of_chorus: Coro 3}
+[C]Agua que no [F]has de beber[G]  [G]
+[C]Agua que no [F]has de beber[G]  [G]
+{end_of_chorus}
+
+{start_of_chorus: Coro 4}
+[C]Agua que no [F]has de beber[G]  [G]
+[C]Agua que no [F]has de beber[G]  [G]
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[C]↓
+{end_of_verse}

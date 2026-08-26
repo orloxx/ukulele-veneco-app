@@ -5,7 +5,8 @@ Thank you for your interest in contributing to this project! We welcome contribu
 ## Before You Start
 
 - Read the [README.md](./README.md) for an overview of the project
-- Check the [songs/README.md](./songs/README.md) for details on the song file format
+- Check the [songs/README.md](./songs/README.md) for details on the song file format — songs
+  are [ChordPro](https://www.chordpro.org), and that file covers only what the standard does not say
 - Review the [LICENSE](./LICENSE) - this project is licensed under CC BY-NC 4.0 (non-commercial use only)
 
 ## How to Contribute
@@ -39,7 +40,7 @@ git checkout -b fix/your-bug-fix
 
 ### 5. Make Your Changes
 
-- **Adding songs**: Follow the format in `songs/README.md` exactly
+- **Adding songs**: Follow the format in `songs/README.md` exactly, and run `pnpm run validate`
 - **Code changes**: Follow the existing code style and structure
 - **Testing**: Run `pnpm run dev` to test your changes locally
 - **Linting**: Run `pnpm run lint` before committing
@@ -75,7 +76,7 @@ git push origin feature/your-feature-name
 
 - Ensure songs are Venezuelan or relevant to Venezuelan music culture
 - Verify chord positions are accurate for ukulele (GCEA tuning)
-- Include proper metadata (title, artist, year, key, time signature)
+- Include the metadata directives `{title:}`, `{artist:}`, `{key:}` and `{time:}` — they are required
 - Credit original sources when known
 - Respect copyright - only add songs in the public domain or with appropriate permissions
 

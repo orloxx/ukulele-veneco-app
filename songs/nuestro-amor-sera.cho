@@ -1,0 +1,68 @@
+{title: Nuestro amor será}
+{artist: Rhapsodia}
+{year: 1987}
+{key: C}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: Dm base-fret 1 frets 2 2 1 0}
+
+[C]· · [F]· · | [G]· · · · (x4)
+
+[C]Cuántas veces [Am]escuché "¡No [Em]puede ser!" [Em]
+Pe[F]ro en tus ojos po[G]día ver que [C]algo sentías [F] · [G] ·
+
+No [C]puedes tú, i[Am]maginar lo [Em]que sufrí [Em]
+Pa[F]ra poderte [G]conquistar, y a[Em]sí sentir lo que [Am]somos ahora
+
+Po[F]der reír, po[Fm]der vivir, ma[C]ñana [C]
+Te[F]nerte aquí, cer[Fm]ca de mí
+Y a [G]cada momento sen[G]tirte en mi ser
+
+{start_of_chorus: Coro}
+[Dm] Nuestro amor será,[G] limpio como el cie[C]lo azul[Am]
+[Dm] Nuestro amor será,[G] como un manantial[C] de luz[Am]
+[Dm] Nuestro amor será,[G]  [Dm] Nuestro amor será,[G] así
+
+[Dm]·  · · · | [G]· · · · | [C]· · · · | [Am]·  · · ·
+[Dm]·  · · · | [G]· · · · | [C]· · · · | [Am]·  · · ·
+
+[C]Cuántas veces [Am]escuché "¡No [Em]puede ser!" [Em]
+Pe[F]ro en tus ojos po[G]día ver que [C]algo sentías [F] · [G] ·
+
+No [C]puedes tú, i[Am]maginar lo [Em]que sufrí [Em]
+Pa[F]ra poderte [G]conquistar, y a[Em]sí sentir lo que [Am]somos ahora
+
+Po[F]der reír, po[Fm]der vivir, ma[C]ñana [C]
+Te[F]nerte aquí, cer[Fm]ca de mí
+Y a [G]cada momento sen[G]tirte en mi ser
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Dm] Nuestro amor será,[G] limpio como el cie[C]lo azul[Am]
+[Dm] Nuestro amor será,[G] como un manantial[C] de luz[Am]
+[Dm] Nuestro amor será,[G]  [Dm] Nuestro amor será,[G] así
+
+Yo [C]quiero ser co[Am]mo esa nube que [Em]riega el mar [Em]
+Y en [F]un instante de [G]amor vibrante de[C]cirte, te quiero [F] · [G] ·
+
+No [C]puedes tú, i[Am]maginar lo [Em]que sufrí [Em]
+Pa[F]ra poderte [G]conquistar, y a[Em]sí sentir lo que [Am]somos ahora
+
+Po[F]der reír, po[Fm]der vivir, ma[C]ñana [C]
+Te[F]nerte aquí, cer[Fm]ca de mí
+Y a [G]cada momento sen[G]tirte en mi ser
+{end_of_chorus}
+
+{start_of_chorus: Coro (x2)}
+[Dm] Nuestro amor será,[G] limpio como el cie[C]lo azul[Am]
+[Dm] Nuestro amor será,[G] como un manantial[C] de luz[Am]
+[Dm] Nuestro amor será,[G]  [Dm] Nuestro amor será,[G] así
+
+[C]↓
+{end_of_chorus}

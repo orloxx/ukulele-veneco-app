@@ -1,0 +1,66 @@
+{title: Solo importas tú}
+{artist: Franco De Vita}
+{year: 1987}
+{key: D}
+{time: 4/4}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: Em base-fret 1 frets 0 4 0 2}
+
+[D]· · · · | [F#7]·   · · · | [G]· · [Gm]·  · | [A]· · · ·
+[D]· · · · | [F#7]·   · · · | [G]· · [Gm]·  · | [A]· · · ·
+
+Lo [D]siento si alguna vez[Bm] te he he[Em]rii-[A]do
+[D]Y no supe dar[Bm]me cuenta a tie-[Em]-em[A]po
+[G]Mientras soporta[Gm]bas en silen[D]cio
+Tal vez algún despre[F#7]cio
+Tal vez no sirva de na[G]da
+El[Gm] darme cuenta a[D]hora
+Solo im[A]portas tú
+
+{start_of_chorus: Coro}
+[G]Siento que en mi vi[A]da solo importas [D]tú
+[Em]Entre tanta gen[A]te, [G]solo impor[A]tas tú[D]
+Hasta el [Em]punto que a mí mis[A]mo
+Se me olvi[D]da que también exis[G]to
+[G]Solo impor[A]tas tú[D]
+Da igual si [Em]tengo todo o na[A]da
+[G]Solo impor[A]tas tú
+
+[D]· · · · | [F#7]·   · · · | [G]· · [Gm]·  · | [A]· · · ·
+
+Lo [D]siento si en tu lugar[Bm] he puesto a [Em]oo-[A]tra
+[D]Era solo par[Bm]te de este jue-[Em]-ee-[A]go
+[G]Y mientras yo juga[Gm]ba tú ibas en [D]serio
+Fui tonto y no lo nie[F#7]go
+Mis aires de importan[G]te
+Y[Gm] me doy cuenta a[D]hora
+Solo im[A]portas tú
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[G]Siento que en mi vi[A]da solo importas [D]tú
+[Em]Entre tanta gen[A]te, [G]solo impor[A]tas tú[D]
+Hasta el [Em]punto que a mí mis[A]mo
+Se me olvi[D]da que también exis[G]to
+[G]Solo impor[A]tas tú[D]
+Da igual si [Em]tengo todo o na[A]da
+[G]Solo impor[A]tas tú[D]  [D]
+[G]Solo impor[A]tas [D]tú
+[Em]Entre tanta gen[A]te, [G]solo impor[A]tas tú[D]
+Hasta el [Em]punto que a mí mis[A]mo
+Se me olvi[D]da que también exis[G]to
+[G]Solo impor[A]tas tú[D]
+Da igual si [Em]tengo todo o na[A]da
+[G]Solo impor[A]tas tú[D]
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[D]Solo impor[D]tas tú[D]
+[G]Solo impor[A]tas...    [D]tú
+{end_of_verse}

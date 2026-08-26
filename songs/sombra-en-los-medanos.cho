@@ -1,0 +1,64 @@
+{title: Sombra en los médanos}
+{artist: Jesús Sevillano}
+{year: 1916}
+{key: A}
+{time: 3/4}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Gdim7 base-fret 1 frets 0 1 0 1}
+{define: G#m base-fret 1 frets 4 3 4 2}
+{define: C#7 base-fret 1 frets 1 1 1 2}
+{define: F# base-fret 1 frets 3 1 2 1}
+{define: D#m base-fret 1 frets 3 3 2 1}
+
+[D]· · · | [Dm]·  · · | [E7]·  · · | [E7]↓
+
+{start_of_verse: Verso 1}
+[E7]↓
+[A]↓Bajo el cla◦ror de la [A]lu·na
+[A]Sobre las [F#7]tibias a[Bm]re·nas
+[Bm]Entre car[D]dones y [E7]tu·nas
+Un chu[D]chube mo[Dm]dula un can[A]tar   [Bm]↓ -[E7]↓
+
+[A]↓De otro dis◦tante pai[A]sa·je
+[Em]Surge un con[F#7]cierto de [Bm]be·sos
+[D]Es el mar[Dm] que con su o[A]leaje [F#7]
+Vie[Bm]ne a la pla[E7]ya a be[A]sar
+{end_of_verse}
+
+{comment: Repetir verso 1}
+
+{start_of_verse: Verso 2 (más rápido)}
+[A] Los cu[Bm]jíes lloran de do[E7]lor
+De mi [A]vida mustia de espe[F#m]rar
+Las ca[Bm]ricias de un lejano a[E7]mor
+Que ha som[A]breado mi peregri[Gdim7]nar
+Y en la [D]ruta que marca el des[Dm]tino
+Sobre las a[A]renas que esperan ca[F#7]minos
+Dolorosa[Bm]mente se alarga mi [E7]sombra
+Sobre el meda[A]nal
+{end_of_verse}
+
+{start_of_verse: Verso 3}
+[A] Los cu[G#m]jíes lloran de do[C#7]lor
+De mi [F#]vida mustia de espe[D#m]rar
+Las ca[Bm]ricias de un lejano a[E7]mor
+Que ha som[A]breado mi peregri[Gdim7]nar
+Y en la [D]ruta que marca el des[Dm]tino
+Sobre las a[A]renas que esperan ca[F#7]minos
+Dolorosa[Bm]mente se alarga mi [E7]sombra
+Sobre el meda[A]nal   [A]↓
+{end_of_verse}
+
+{comment: Repetir verso 1 (a tempo inicial)}
+
+{comment: Repetir verso 2 (mas rápido)}
+
+{comment: Repetir verso 3}

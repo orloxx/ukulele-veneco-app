@@ -1,0 +1,58 @@
+{title: Dueño de nada}
+{artist: José Luis Rodríguez}
+{year: 1982}
+{key: D}
+{time: 6/8}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: D7 base-fret 1 frets 2 0 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Em7M base-fret 1 frets 0 3 0 2}
+{define: Em7 base-fret 1 frets 0 2 0 2}
+{define: Em6 base-fret 1 frets 0 1 0 2}
+{define: Asus4 base-fret 1 frets 2 2 0 0}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+
+[D]· · [D]· · [G]· · [G]· · [D]· · [D]· ·
+
+No soy [D]yo · [D] · El que [F#m]hace cre·cer tu ale[F#m]gría ·
+[D7] · Y ocupa en [D7]tu vida · [Bm] un lu·gar [Em]especial ·
+[Em] · No[Em] soy yo· [Em] · El que [Em7M] te hace so·ñar con la [Em7M] luna ·
+[Em7] Y ·ver en la [Em7]lluvia · [Em6] Go·tas de [Asus4]cristal · [A] ·
+
+{start_of_verse: Pre-Coro}
+No soy [Bm]yo · [Bm] · Ese a [Bm]quien tú le ·dices mi [Em]dueño ·
+[Em] Yo ·soy solo un [A]perro · [A7] Que ·tú haces sal[F#m]tar · [F#m] ·
+Y que [G]buscas · [G] Cuan·do sientes [D]ganas ·
+[D] De un ·hombre que [E7]te haga · [E7] sen·tir de ver[A]dad · [A7]
+{end_of_verse}
+
+{start_of_chorus: Coro (x2)}
+·Dueño de [D]ti, ·dueño ¿de [G]qué?
+·Dueño de na[D]da ·
+[D] ·Un arle[D]quín ·que hace tem[G]blar
+·Tu piel sin al[D]ma ·
+[D] ·Dueño del [F#m]aire ·y del re[Bm]flejo ·
+De la [G]luna· sobre el [A]agua · [A]
+
+·Dueño de [D]nada, · [G] ·dueño de [D]nada ·
+
+[D]· · [D]· · [G]· · [G]· · [D]· · [D]· ·
+
+No soy [D]yo · [D] · El que [F#m]siempre com·parte tu [F#m]vida ·
+[D7] · Tus penas y [D7]risas · [Bm] · Y [Em]tu realidad·
+
+[Em] · No[Em] soy yo· [Em] · El que [Em7M] pasa las ·noches en [Em7M] vela ·
+[Em7] ·Cuando la tris[Em7]teza · [Em6] · Pertur[Asus4]ba tu hogar· [A] ·
+{end_of_chorus}
+
+{start_of_verse: Pre-Coro (x1) y Coro (x2)}
+
+·Dueño de [D]nada, · [G] ·dueño de [D]nada · [D] ·
+[D]↓
+{end_of_verse}

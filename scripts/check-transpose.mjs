@@ -30,7 +30,6 @@ import { registerHooks } from "node:module";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import matter from "gray-matter";
 
 const REPO_ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -86,6 +85,9 @@ const { INSTRUMENTS, instrumentById } = await import(
 const { songbookShiftSemitones } = await import(
   pathToFileURL(path.join(REPO_ROOT, "src/lib/tunings.ts")).href
 );
+const { songFromChordPro } = await import(
+  pathToFileURL(path.join(REPO_ROOT, "src/lib/songs.ts")).href
+);
 
 /** The instrument every check below section 6 is about, unless it says otherwise. */
 const UKULELE = instrumentById("ukulele");
@@ -97,26 +99,14 @@ const SONGS = path.join(REPO_ROOT, "songs");
 
 const songs = fs
   .readdirSync(SONGS)
-  .filter((file) => file.endsWith(".md") && file !== "README.md")
+  .filter((file) => file.endsWith(".cho"))
   .sort()
   .map((file) => {
-    const { data, content } = matter(
+    const song = songFromChordPro(
       fs.readFileSync(path.join(SONGS, file), "utf8"),
+      file.replace(/\.cho$/, ""),
     );
-    const capo = content
-      .trim()
-      .split("\n")[0]
-      .match(/^Capo (\d+)$/);
-    return {
-      slug: file.replace(/\.md$/, ""),
-      metadata: { key: String(data.key ?? "") },
-      capo: capo ? Number(capo[1]) : undefined,
-      chordDefinitions: (data.chords ?? []).map((chord) =>
-        typeof chord === "string"
-          ? { name: chord, positions: "" }
-          : { name: chord.name, positions: chord.positions ?? "" },
-      ),
-    };
+    return { ...song, capo: song.metadata.capo };
   });
 
 const vocabulary = buildChordVocabulary(songs);

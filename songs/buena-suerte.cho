@@ -1,0 +1,62 @@
+{title: Buena suerte}
+{artist: Las Cuatro Monedas}
+{year: 1969}
+{key: C}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+
+{start_of_verse: Intro}
+[C]· · · · | [F]· · [G]· ·
+[C]· · · · | [F]· · [G]· ·
+[C]· · · · | [F]· ·
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[G]Buena [C]suerte
+[F]  [G]Buena [C]suerte
+[F] No [G]quiero per[C]derte
+[F] Ya yo [G]tengo quien me [C]quiera
+[F] Quien me [G]quiera a mi ma[C]nera
+[F] Poco a [G]poco y sin a[C]puro
+[F] El a[G]mor es mas se[C]guro
+Oh oh [F]oh [G]oh
+{end_of_chorus}
+
+{start_of_verse: Verso}
+[C] Corazón corazón dormido ([F]corazón[G])
+[C] Corazón corazón despierta ([F]corazón[G])
+[C] Porque yo vivo soñando ([F]mi ilusión[G])
+[C] Si el amor ha llegado ([F]corazón[G])
+{end_of_verse}
+
+{start_of_verse: Interludio}
+[C]· · · · | [F]· · [G]· ·
+[C]· · · · | [F]· · [G]· ·
+[C]· · · · | [F]· · [G]· ·
+[C]· · · · | [F]· · [G]· ·
+[C]· · · · | [F]· · [G]· ·
+[C]· · · · | [F]· ·
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[G]Buena [C]suerte
+[F]  [G]Buena [C]suerte
+[F] No [G]quiero per[C]derte
+[F] Ya yo [G]tengo quien me [C]quiera
+[F] Quien me [G]quiera a mi ma[C]nera
+[F] Poco a [G]poco y sin a[C]puro
+[F] El a[G]mor es mas se[C]guro
+Oh oh [F]oh [G]oh
+{end_of_chorus}
+
+{start_of_verse: Outro (x4)}
+[C] Corazón corazón dormido ([F]corazón[G])
+[C] Corazón corazón despierta ([F]corazón[G])
+[C] Porque yo vivo soñando ([F]mi ilusión[G])
+[C] Si el amor ha llegado ([F]corazón[G])
+
+[C]↓
+{end_of_verse}

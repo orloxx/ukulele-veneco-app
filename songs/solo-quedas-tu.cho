@@ -1,0 +1,68 @@
+{title: Sólo quedas tú}
+{artist: Los Paranoias}
+{year: 2006}
+{key: Dm}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: Gm7 base-fret 1 frets 0 2 1 1}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: C7 base-fret 1 frets 0 0 0 1}
+
+[C]· · · · | [C]· · · · | [C]· · · · | [C]· · · ·
+[Dm]·  · · · | [Dm]·  · · · | [G7]·  · · · | [Gm7]·   · · ·
+
+Por favor[Dm] llévenme ya para el cole[G7]gio
+Por favor[Dm] llévenme allí, déjenme ver[G7]lo
+Ya no ve[Bb]o lo malo, lo bue[Am]no
+Ya no están[Bb] ni los niños, se fue[Am]ron
+Es verdad,[Bb] es totalmente en se[F]rio, ya no está[Am] · · · | [C7] · · ·
+
+Por favor[Dm] que suene ya el timbre del recre[G7]o
+Por favor[Dm] despídete con un be[G7]so
+No me impor[Bb]ta perder cinco a ce[Am]ro
+Ni llevar[Bb] tu nombre en el pe[Am]cho
+Es verdad,[Bb] es totalmente en se[F]rio, ya no está[Am] · · · | [C7] · · ·
+
+{start_of_chorus: Coro}
+Sólo [F]quedas tú, nadie [C]te pudo borrar[Am] Ah-ah-ah[Bb]
+Sola[F]mente tú, lo de[C]más echo a rodar[Am] Ah-ah-ah[Bb]
+Sólo [F]quedas tú, nadie [C]te pudo borrar[Am] Ah-ah-ah[Bb] · · · | [C] · · ·
+
+[Dm]·  · · · | [Dm]·  · · · | [G7]·  · · · | [Gm7]·   · · ·
+{end_of_chorus}
+
+{start_of_verse: Instrumental}
+Por favor[Dm] llévenme ya para el cole[G7]gio
+Por favor[Dm] llévenme allí, déjenme ver[G7]lo
+Ya no ve[Bb]o lo malo, lo bue[Am]no
+Ya no están[Bb] ni los niños, se fue[Am]ron
+Es verdad,[Bb] es totalmente en se[F]rio, ya no está[Am]   [C]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Sólo [F]quedas tú, nadie [C]te pudo borrar[Am] Ah-ah-ah[Bb]
+Sola[F]mente tú, lo de[C]más echo a rodar[Am] Ah-ah-ah[Bb]
+Sólo [F]quedas tú, nadie [C]te pudo borrar[Am] Ah-ah-ah[Bb] · · · | [C] · · ·
+
+[Dm]·  · · · | [Dm]·  · · · | [G7]·  · · · | [Gm7]·   · · ·
+
+Por favor[Dm] llévenme ya para el cole[G7]gio
+Por favor[Dm] llévenme allí, déjenme ver[G7]↓lo
+Ya no ve[Bb]↓o lo malo, lo bue[Am]↓ no
+Ya no están[Bb]↓ ni los niños, se fue[Am]↓ ron
+Es verdad,[Bb]↓ es totalmente en se[F]↓rio, ya no está[Am]↓  ◦ ◦ ◦ | [C7]↓  ◦ ◦ ◦
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Sólo [F]quedas tú, nadie [C]te pudo borrar[Am] Ah-ah-ah[Bb]
+Sola[F]mente tú, lo de[C]más echo a rodar[Am] Ah-ah-ah[Bb]
+Sólo [F]quedas tú, nadie [C]te pudo borrar[Am] Ah-ah-ah[Bb] · · · | [C] · · ·
+
+[Dm]·  · · · | [Dm]·  · · · | [G7]·  · · · | [Gm7]·   · · ·
+[Dm]↓
+{end_of_chorus}

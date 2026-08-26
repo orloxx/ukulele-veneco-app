@@ -1,0 +1,74 @@
+{title: Vamos pa’ la conga}
+{artist: Ricardo Montaner}
+{year: 1991}
+{key: D}
+{key: F}
+{time: 4/4}
+{capo: 2}
+{subtitle: El riff D · · · se puede tocar como D D6 D D6, y A · · · como A Aadd9 A Aadd9}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: D6 base-fret 1 frets 2 2 2 2}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: Aadd9 base-fret 1 frets 2 1 0 2}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: G base-fret 1 frets 0 2 3 2}
+
+[D]· · · · | [D]· · · · | [D]· · · · | [D]· · · ·
+[D]· · · · | [D]· · · · | [D]· · · · | [D]· · · ·
+[D]· · · · | [D]· · · · | [D]· · · · | [D]· · · ·
+
+[D]    Vamos [D]negro pa’ la conga,[D]    mira [D]que quiero arro[A]llar
+[A]    Mi cuer[A]po desespera’o oye [A]sonar la bongó, me pon[A]go a bailar, bailar
+La san[A]gre se me alborota y me ten[A]go que reme[D]diar
+
+[D]· · · · | [D]· · · · | [D]· · · · | [D]· · · · | [D]· · · · | [D]· · · · | [D]· · · · | [D]· · · ·
+
+{start_of_verse: Riff metales}
+[D]· · · · | [D]· · · · | [A]· · · · | [D]· · [A]· · | [D]· · · · | [D]· · · · | [A]· · · · | [D]· · · ·
+
+[D]↓-[D]↓-[D]↓    Vamo’ ·negro que tú a[D]rrollas, [D] mira [D]que estoy embu[A]llao
+[A] Pues mi[A]rando este farol con sus [A]luces colorá
+cada [A]vez me embullo más, rumba [A]pasa, rumba pasa,
+cuatro [A]pasos y echo a an[D]dar
+
+[D]· · · · | [D]· · · · | [D]· · · · | [D]· · · ·
+{end_of_verse}
+
+{start_of_verse: Cambio de clave, F}
+[F]· · · · | [F]· · · · | [Bb]·  · · · | [C]· · · · | [F]· · · · | [F]· · · · | [Bb]·  · · · | [C]· · · ·
+[F]· · · ·
+{end_of_verse}
+
+{start_of_verse: Fin del cambio de clave}
+[A]· · · · | [D]· · · · | [D]· · · ·
+
+[D]  [D]↓Negro ya no puedo [D]más, más, más,[D]    mira [D]como estoy can[A]sa’o,
+[A]   La ro[A]dilla me ha afloja’o, de tan[A]to bailar, bailar,
+al sue[A]lo me voy a sentar, porque es[A]toy desbaratado, que bue[A]na la conga [D]va
+
+[D]· · · · | [D]· · · · | [D]· · · · | [D]· · · ·
+{end_of_verse}
+
+{start_of_verse: Riff metales}
+[D]· · · · | [D]· · · · | [A]· · · · | [D]· · · ·
+
+[D]↓-[D]↓-[D]↓    Vamos [D]negro pa’ la conga,[D]    mira [D]que quiero arro[A]llar
+[A]    Mi cuer[A]po desespera’o oye [A]sonar la bongó, me pon[A]go a bailar, bailar
+La san[A]gre se me alborota y me ten[A]go que reme[D]diar
+
+[D]· · · · | [D]· · · · | [D]· · · · | [D]· · · · | [D]· · · ·
+
+[D]Vamo’  pa’ la conga, [D]dice mi mamá, [D]vamo’ a la pachanga [D]dice mi pa[E7]pá
+¡Aa-[G]eeeee-[A]eeeeee-[D]ah! · · · | [D] · · ·
+[D]La pequeña Habana [D]vive el carnaval, [D]todos los cubanos [D]salen a bai[E7]lar
+¡Aa-[G]eeeee-[A]eeeeee-[D]ah! · · · | [D] · · · | [D] · · · | [D] · · ·
+{end_of_verse}
+
+{start_of_verse: Riff metales}
+[D]· · · · | [D]· · · · | [A]· · · · | [D]· · [A]· · | [D]· · · · | [D]· · · · | [A]· · · · | [D]· · · ·
+[D]↓-[D]↓-[D]↓
+{end_of_verse}

@@ -1,0 +1,81 @@
+{title: Mi eterno}
+{artist: Davis Bravo}
+{year: 2010}
+{key: D}
+{time: 4/4}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: G base-fret 1 frets 0 2 3 2}
+
+{start_of_verse: Intro}
+[D]· · · · | [F#m]·   · · · | [D]· · · · | [F#m]·   · · · | [D]· · · · | [F#m]·   · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[D] Cansado de estar aquí,[F#m]    [D] me apresa... [F#m] mi miedo infantil
+[D] Si te tienes que ir,  [F#m] vete de una vez y ya
+[D] Tu presencia sigue aquí [F#m] y no me abandonará
+[Bm] He[F#m]rido sin curar,[Bm] un [F#m]dolor tan real
+[Bm] Tan[F#m]to que el tiempo [A]no podrá borrar
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Bm] Si lloras[G]te,   [A]yo te quise[F#m] consolar
+[Bm] Si gritas[G]te,   [A]yo te quise a[F#m]paciguar
+[Bm] Tu ma[G]no,   [A]no he queri[F#m]do soltar
+[Bm] Todo es tu[G]yo a[A]ún... · · · | [A]↓ ◦ ◦ ◦
+{end_of_chorus}
+
+{start_of_verse: Post-coro}
+...en [D]mí · · · | [F#m] · · · en | [D]mii · · · | [F#m] · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[D] Solías fascinarme [F#m]con tu resplandor de luz
+[D] Ahora me ato a la vi[F#m]da que dejaste en mí
+[D] Tu rostro va, [F#m] trayéndome tu paz
+[D] Tu voz acarició [F#m] toda mi felicidad
+[Bm] He[F#m]rido sin curar,[Bm] un [F#m]dolor tan real
+[Bm] Tan[F#m]to que el tiempo [A]no podrá borrar
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[Bm] Si llo[G]raste,   [A]yo te quise[F#m] consolar
+[Bm] Si gritas[G]te,   [A]yo te quise a[F#m]paciguar
+[Bm] Tu ma[G]no,   [A]no he queri[F#m]do soltar
+[Bm] Todo es tu[G]yo a[A]ún... · · · | [A]↓ ◦ ◦ ◦
+{end_of_chorus}
+
+{start_of_verse: Puente}
+(...en  [G]mí)  Traté de de[F#m]cir que no es[A]táaas
+Aa[G]quí,     más [Bm]tú sigues en [A]mí,
+Es[G]tuve muy [A]solo hasta...
+{end_of_verse}
+
+{start_of_verse: Intro Coros}
+[Bm]hoy · [G] · Hasta | ho[A]oy · [F#m] · | [Bm] · [G] · | [A] (¡lleva!) · [F#m] ·
+{end_of_verse}
+
+{start_of_chorus: Coro 3}
+[Bm] (Si lloras   [G]te)  Tus [A]lágrimas mi a[F#m]mor secaré
+[Bm] (Si gritas   [G]te)  To[A]ditos tus gritos, yo[F#m] los voy a callar
+[Bm] (Y tu ma    [G]no)  Pero que [A]yo, que yo, que [F#m]yo, la voy a tomar
+[Bm] (Todo es tu     [G]yo a  [A]ún)   [F#m]
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+A[Bm]ún · [G]↓ · | [Bm]↓  · [A]↓ · | [Bm]↓  · [G]↓ · | [A]↓ · [F#m]↓   ·
+[Bm]·  · [G]· · | [A]· · [F#m]·   · | [Bm]·  · [G]· · | [A]· · [F#m]·   ·
+{end_of_verse}
+
+{start_of_chorus: Coro 4}
+[Bm] (Si lloras   [G]te)  [A]yo te quise[F#m] consolar
+[Bm] (Si gritas   [G]te)  A[A]mor ya pasó[F#m] no quiero más(Bm) dolor
+[Bm] (Y tu ma    [G]no)  Te lo con[A]fieso mi amor,[F#m] que todo fue(Bm) mi error
+[Bm] (Todo es tu     [G]yo a  [A]ún)  · · · Todo es | [A]↓tuyo a◦ún... ◦
+◦en [D]mí · · · | [F#m] · · · en | [D]mii · · · | [F#m] · · ·
+[D]↓
+{end_of_chorus}

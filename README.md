@@ -22,11 +22,11 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 
 ## Song Format
 
-Songs are written in Markdown files with YAML Frontmatter, stored in the `songs/` directory. Each song includes:
+Songs are written in [ChordPro](https://www.chordpro.org), one `.cho` file per song in the `songs/` directory. Since `3.0.0` the format is a standard other songbook tools already read — it is the format Ciro Durán's own toolchain takes, and he asked for it. Each song includes:
 
-- Metadata (title, artist, year, key, time signature)
-- Chord definitions as four-digit fret strings, read as GCEA (the ukulele) or A-D-F♯-B (the cuatro)
-- Lyrics with chord placement markers
+- Metadata directives (`{title:}`, `{artist:}`, `{year:}`, `{key:}`, `{time:}`, `{capo:}`)
+- A `{define:}` per chord, whose frets are read as GCEA (the ukulele) or A-D-F♯-B (the cuatro)
+- Sections and lyrics with chord placement markers
 
 For detailed information about the song file format and how to add new songs, see [songs/README.md](./songs/README.md).
 

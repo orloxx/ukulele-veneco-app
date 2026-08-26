@@ -1,0 +1,67 @@
+{title: Muchacha triste}
+{artist: Los Fantasmas del Caribe}
+{year: 1991}
+{key: D}
+{key: E}
+{time: 4/4}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: E base-fret 1 frets 4 4 4 2}
+{define: C#m base-fret 4 frets 3 1 1 1}
+{define: B base-fret 1 frets 4 3 2 2}
+{define: G#m base-fret 1 frets 4 3 4 2}
+
+[D] · · · | [Bm] Hey, · tú · · Mucha-|[G]-chita de mi ·vida · · | [A] Dame un ·beso · ·
+[D] · · · | [Bm] · · · | [G] · · · | [A] · ·¡Ri-·-co!
+[D]· · · · | [F#m]·   · · · | [G]· · · · | [Em]·  · [A]· ·
+[D]· · · · | [F#m]·   · · · | [G]· · · · | [Em]·  · [A]· [Em]·
+
+[D]Cuando la vi me e[Bm]namoré, [G]me enamoré como por [A]vez primera
+[D]Por ella sí, mi a[Bm]mor sembré, [G]e iluminé con luz de [A]primavera
+
+{start_of_chorus: Coro}
+[D]Era tan [F#m]linda, [G]más linda que una es[Em]tre[A]lla
+[D]Sus ojos [F#m]bellos, [G]mi corazón a[Em]ún cau[A]tivan
+[D]Hey tú, mu[Bm]chacha triste, [G]ven, dame un [A]beso, eso, ¡ah!
+
+[D] · · · | [Bm] · · · |[G] · · · | [A]Bella · ·Nadie · como
+[D]tú · · · | [Bm] · · · | [G] · · · | [A] · · ¡Sabro-·sito!
+[D]· · · · | [F#m]·   · · · | [G]· · · · | [Em]·  · [A]· ·
+[D]· · · · | [F#m]·   · · · | [G]· · · · | [Em]·  · [A]· [Em]·
+
+[D]Le quise hablar y [Bm]me acerqué, [G]no se porqué pero tem[A]blé al verla
+[D]Pálida flor, me [Bm]sonrió, [G]más su sonrisa era co[A]mo una pena
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[D]Era tan [F#m]linda, [G]más linda que una es[Em]tre[A]lla
+[D]Sus ojos [F#m]bellos, [G]mi corazón a[Em]ún cau[A]tivan
+[D]Hey tú, mu[Bm]chacha triste, [G]ven, dame un [A]beso, eso, ¡ah!
+
+[D]· · · · | [Bm]·  · · · | [G]· · · · | [A]· · · ·
+[D] · · · | [Bm] · · · | [G] · · · ¡Con | [A] sa-·bor! · ·
+[D]· · · · | [F#m]·   · · · | [G]· · · · | [Em]·  · [A]· ·
+[D]· · · · | [F#m]·   · · · | [G]· · · · | [Em]·  · [A]· [Em]·
+{end_of_chorus}
+
+{start_of_verse: Cambio de clave}
+[E]Ayer pase por [C#m]su balcón, [A]y la esperé como la [B]vez primera
+[E]Alguien me habló, me [C#m]dio una flor, [A]y supe que no volve[B]ría a verla
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[E]Era tan [G#m]linda, [A]más linda que una es[F#m]tre[B]lla
+[E]Sus ojos [G#m]bellos, [A]mi corazón a[F#m]ún cau[B]tivan
+[E]Hey tú, mu[C#m]chacha triste, [A]ven, dame un [B]beso, eso, ¡ah!
+
+[E] · · · | [C#m] · · · | [A] Muchachita de mi vida | [B] Mi corazón se
+[E] fue contigo · · · | [C#m] · · · | [A] · · · | [B] · · ·
+[E]· · · · | [G#m]·   · · · | [A]· · · · | [F#m]·   · [B]· ·
+[E]· · · · | [G#m]·   · · · | [A]· · · · | [F#m]·   · [B]· [F#m]·
+[E]↓
+{end_of_chorus}

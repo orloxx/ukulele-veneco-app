@@ -1,0 +1,62 @@
+{title: Una casita bella para ti}
+{artist: Teo Galíndez}
+{year: 1980}
+{key: Am}
+{time: 6/8}
+{capo: 2}
+
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+
+Donde podamos[Am] bailar este joropi[E7]to
+Como se baila allá en el llano apure[Am]ño,
+A punta’e soga poco a poco y trancadi[E7]to
+Oyendo el arpa del Maestro Figuere[Am]do
+
+{start_of_chorus: Coro}
+[Am] Quiero com[Am]prar para ti[A7] una casa be[Dm]lla
+Que tenga nardos y clave[E7]les al en[Am]trar,
+Donde se cojan con la mano las es[E7]trellas
+Donde se duerma con el ruido de la mar[Am]
+[Am] Quiero com[Am]prar para ti[A7] una casa be[Dm]lla
+Que tenga dalias y clave[E7]les al en[Am]trar,
+Donde se cojan con la mano las es[E7]trellas
+Donde se duerma con el ruido de la mar[Am]
+
+[Am]Donde el celaje de tu perro centine[E7]la
+Pase la noche de la puerta a los balco[Am]nes,
+Con sus ladridos y sus ojos de cande[E7]la
+No deje chica que se metan los ladro[Am]nes
+
+Donde podamos bailar este joropi[E7]to
+Como se baila allá en el llano apure[Am]ño,
+A punta’e soga poco a poco y trancadi[E7]to
+Oyendo el arpa del Maestro Figuere[Am]do
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Am] Quiero com[Am]prar para ti[A7] una casa be[Dm]lla
+Que tenga lirios y clave[E7]les al en[Am]trar,
+Donde se cojan con la mano las es[E7]trellas
+Donde se duerma con el ruido de la mar[Am]
+{end_of_chorus}
+
+{start_of_verse: Instrumental}
+[Am]Donde el celaje de tu perro centine[E7]la
+Pase la noche de la puerta a los balco[Am]nes,
+Con sus ladridos y sus ojos de cande[E7]la
+No deje chica que se netan los ladro[Am]nes
+
+Donde podamos[Am] bailar este joropi[E7]to
+Como se baila allá en el llano apure[Am]ño,
+A punta’e soga poco a poco y trancadi[E7]to
+Oyendo el arpa del Maestro Figuere[Am]do
+{end_of_verse}
+
+{comment: Repetir desde el primer coro hasta el final del segundo}
+
+{start_of_verse: Outro}
+[E7]Donde se duerma con el ruido de la mar[Am]↓
+{end_of_verse}

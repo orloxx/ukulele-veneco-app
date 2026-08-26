@@ -1,0 +1,74 @@
+{title: Tun, tun, ¿quién es?}
+{artist: Hugo Liscano, Javier Galué}
+{year: 1937}
+{key: A}
+{time: 6/8}
+{capo: 2}
+
+{define: A5 base-fret 1 frets 2 4 0 0}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: C#7 base-fret 1 frets 1 1 1 2}
+{define: B base-fret 1 frets 4 3 2 2}
+
+[A5]↓Tun [A5]↓tun, [A]↓¿Quién [A]↓es?
+[D]↓Gente [E7]↓de [A]↓paz
+[D]Ábranos la [A]puerta
+Que[E7] ya es Navi[A]dad
+
+{start_of_chorus: Coro}
+[A5]↓Tun [A5]↓tun, [A]↓¿Quién [A]↓es?
+[D]↓Gente [E7]↓de [A]↓paz
+[D]Ábranos la [A]puerta
+Que[E7] ya es Navi[A]dad
+
+Que [F#m]veeenga el comi[D]saaario
+Pri[C#7]meeero a averi[F#m]guar
+Si [B]naaadie dio la [E7]orden
+O [B]quieeeren pertur[E7]↓bar
+{end_of_chorus}
+
+{start_of_chorus: Coro (x2)}
+[A5]↓Tun [A5]↓tun, [A]↓¿Quién [A]↓es?
+[D]↓Gente [E7]↓de [A]↓paz
+[D]Ábranos la [A]puerta
+Que[E7] ya es Navi[A]dad
+
+Si es [F#m]que haaa nacido el [D]Niiiño
+Pues, [C#7]váaayanse a Be[F#m]léeen,
+Que [B]yooo desde mi [E7]caaama
+No [B]doooy mi para[E7]↓bién
+{end_of_chorus}
+
+{start_of_chorus: Coro (x2)}
+[A5]↓Tun [A5]↓tun, [A]↓¿Quién [A]↓es?
+[D]↓Gente [E7]↓de [A]↓paz
+[D]Ábranos la [A]puerta
+Que[E7] ya es Navi[A]dad
+
+Me es[F#m]táaan robando el [D]sueeeño
+Me a[C#7]rruiiinan la sa[F#m]luuud
+No [B]quieeero transno[E7]chaaarme
+Por[B]queee nació Je[E7]↓sús
+{end_of_chorus}
+
+{start_of_chorus: Coro (x2)}
+[A5]↓Tun [A5]↓tun, [A]↓¿Quién [A]↓es?
+[D]↓Gente [E7]↓de [A]↓paz
+[D]Ábranos la [A]puerta
+Que[E7] ya es Navi[A]dad
+
+Ya [F#m]leees abro la [D]pueeerta
+No [C#7]pueeedo ir a dor[F#m]miiir
+A[B]laaabemos a [E7]Diooos
+¿Qué [B]haaacemos a[E7]↓quí?
+{end_of_chorus}
+
+{start_of_chorus: Coro (x2)}
+[A5]↓Tun [A5]↓tun, [A]↓¿Quién [A]↓es?
+[D]↓Gente [E7]↓de [A]↓paz
+[D]Ábranos la [A]puerta
+Que[E7] ya es Navi[A]dad
+{end_of_chorus}

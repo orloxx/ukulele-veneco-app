@@ -1,0 +1,61 @@
+{title: ¿Por qué?}
+{artist: Sónica}
+{year: 2005}
+{key: D}
+{time: 4/4}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: A base-fret 1 frets 2 1 0 0}
+
+{start_of_verse: Intro lento}
+[D]· · · · | [G]· · · · | [Bm]·  · · · | [G]· · [A]↓ ◦
+{end_of_verse}
+
+{start_of_verse: Más rápido}
+[D]· · [G]· · | [D]· · [G]· · | [Bm]·  · [G]· · | [D]· · [A]· ·
+[D]· · [G]· · | [D]· · [G]· · | [Bm]·  · [G]· · | [D]· · [A]·
+
+·¿Por qué [G]hoy soñé que estaba [A]junto a ti?
+Des[Bm]pierto y veo que no es[A]tás aquí
+Pien[G]so y creo que ayer [A]fui feliz
+Mi[Bm]rándote y haciéndo[A]te reir
+¿Por [G]quée·ee? [G]↓ ◦
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[D]Siempre busco [G]la manera [Bm]de sacarte de [G]mi ca[A]beza y
+◦ [D]Nunca encuentro u[G]na respuesta [Bm] para sacarte de [G]mi ca[A]beza, y ahora—
+
+[G]Yo estoy a[A]quí, tal vez
+Escri[Bm]biendo letras, tratan[A]do de entender
+Que ya no es[G]tás junto a mí, e[A]so lo sé
+Y ahora [Bm]sólo me pregun[A]to ¿por qué?
+¿Por [G]quée·ee? [G]↓ ◦
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[D]Siempre busco [G]la manera [Bm]de sacarte de [G]mi ca[A]beza y
+◦ [D]Nunca encuentro u[G]na respuesta [Bm] para sacarte de [G]mi ca[A]beza, y ahora—
+
+[Bm]·  · · · | [A]· · · · | [G]· · · · | [A]· · · ·
+[Bm]   Tal vez [A]     no existe [G]       una res[A]↓pues-ta ni un por qué
+
+[D]· · · · | [G]· · · · | [Bm]·  · · · | [G]· · [A]· ·
+◦ [D]· · · | [G]· · · · | [Bm]·  · · · | [G]· · [A]· ·
+
+[Bm]·  · · · | [A]· · · · | [G]· · · · | [A]· · · ·
+[Bm]   Tal vez [A]     no existe [G]       una res[A]↓pues-ta ni un por qué
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[D]Siempre busco [G]la manera [Bm]de sacarte de [G]mi ca[A]beza y
+[D]  Nunca encuentro u[G]na respuesta [Bm] para sacarte de [G]↓mi ca[A]↓beza, y
+[D]Siempre busco [G]la manera [Bm]de sacarte de [G]mi ca[A]beza y
+◦ [D]Nunca encuentro u[G]na respuesta [Bm] para sacarte de [G]mi ca[A]beza, y
+
+¿Por [D]qué·ee-[G]-e·e-|-[D]-e·e-[G]-e?·
+¿Por [Bm]qué·ee-[G]-e·e-|-[D]-e·e-[A]-e?·
+[D]↓
+{end_of_chorus}

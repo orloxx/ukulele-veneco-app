@@ -1,0 +1,70 @@
+{title: Corre caballito}
+{artist: Serenata Guayanesa}
+{year: 1978}
+{key: F}
+{time: 5/8}
+{capo: 1}
+
+{define: F base-fret 1 frets 2 0 1 0}
+{define: C7 base-fret 1 frets 0 0 0 1}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: C base-fret 1 frets 0 0 0 3}
+
+{start_of_verse: Estrofa 1}
+[F]Corre caballito, vamos a Be[C7]lén [Bb]
+A ver a Ma[C7]ría y al Niño tam[F]bién
+[F]Corre caballito, vamos a Be[C7]lén [Bb]
+A ver a Ma[C7]ría y al Niño tam[F]↓bién
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Al Niño tam[G7]↓bién, [G7]↓dicen los pas[C]↓tores:
+[Bb]Que ha nacido un [F]niño cu[C7]bierto de [F]flores
+[Bb]Que ha nacido un [F]niño cu[C7]bierto de [F]flores
+{end_of_chorus}
+
+{start_of_verse: Estrofa 2}
+[F]El Ángel Gabriel anunció a Ma[C7]ría [Bb]
+Que el hijo di[C7]vino de ella nace[F]ría
+[F]El Ángel Gabriel anunció a Ma[C7]ría [Bb]
+Que el hijo di[C7]vino de ella nace[F]↓ría
+{end_of_verse}
+
+{start_of_chorus: Coro}
+De ella nace[G7]↓ría, [G7]↓dicen los pas[C]↓tores:
+[Bb]Que ha nacido un [F]niño cu[C7]bierto de [F]flores
+[Bb]Que ha nacido un [F]niño cu[C7]bierto de [F]flores
+{end_of_chorus}
+
+{start_of_verse: Estrofa 3}
+[F]Los tres Reyes Magos vienen del O[C7]riente [Bb]
+Y le traen al [C7]Niño hermosos pre[F]sentes
+[F]Los tres Reyes Magos vienen del O[C7]riente [Bb]
+Y le traen al [C7]Niño hermosos pre[F]↓sentes
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Hermosos pre[G7]↓sentes, [G7]↓dicen los pas[C]↓tores:
+[Bb]Que ha nacido un [F]Niño cu[C7]bierto de [F]flores
+[Bb]Que ha nacido un [F]Niño cu[C7]bierto de [F]flores
+{end_of_chorus}
+
+{start_of_verse: Estrofa 4}
+[F]San José y la Virgen, la mula y el [C7]buey, [Bb]
+Fueron los que [C7]vieron al Niño na[F]cer
+[F]San José y la Virgen, la mula y el [C7]buey, [Bb]
+Fueron los que [C7]vieron al Niño na[F]↓cer
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Al Niño na[G7]↓cer, [G7]↓dicen los pas[C]↓tores:
+[Bb]Que ha nacido un [F]Niño cu[C7]bierto de [F]flores
+[Bb]Que ha nacido un [F]Niño cu[C7]bierto de [F]flores
+{end_of_chorus}
+
+{comment: Repetir Estrofa 1 y Coro}
+
+{start_of_verse: Repetir hasta terminar}
+[Bb]Que ha nacido un [F]niño cu[C7]bierto de [F]flores
+{end_of_verse}

@@ -1,0 +1,58 @@
+{title: Ocho días a la semana}
+{artist: Los Impala}
+{year: 1965}
+{key: C}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: D base-fret 1 frets 2 2 2 0}
+
+[C]· · · · | [D7]·  · · · | [F]· · · · | [C]· · · ·
+
+{start_of_verse: Verso 1}
+[C]Tú me nece[D7]sitas, [F]tal como yo a ti[C]
+[C]El tiempo es más [D7]corto [F]si no estás aquí[C]
+[Am]Quiero [F]darte [Am]muchos [D7]besos
+Pe[C]ro nece[D7]sito [F] un día más[C]
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[C]Siete días [D7]solo [F]no pueden bastar[C]
+[C]Quiero ocho [D7]días [F]para disfrutar[C]
+[C]Quiero [F]darte [C]muchos [D7]besos
+Pe[C]ro nece[D7]sito [F] un día más[C]
+{end_of_verse}
+
+{start_of_verse: Puente}
+[G]Al completar   es[Am]ta nueva semana
+[D]Tu me querrás, yo [F]sé que más y [G]mucho más
+{end_of_verse}
+
+{start_of_verse: Verso 3}
+[C]Tú me nece[D7]sitas, [F]tal como yo a ti[C]
+[C]El tiempo es más [D7]corto [F]si no estás aquí[C]
+[Am]Quiero [F]darte [Am]muchos [D7]besos
+Pe[C]ro nece[D7]sito [F] un día más[C]
+{end_of_verse}
+
+{start_of_verse: Puente}
+[G]Al completar   es[Am]ta nueva semana
+[D]Tu me querrás, yo [F]sé que más y [G]mucho más
+{end_of_verse}
+
+{start_of_verse: Verso 4}
+[C]Siete días [D7]solo [F]no pueden bastar[C]
+[C]Quiero ocho [D7]días [F]para disfrutar[C]
+[C]Quiero [F]darte [C]muchos [D7]besos
+Pe[C]ro nece[D7]sito [F] un día más[C]
+{end_of_verse}
+
+{start_of_verse: Outro}
+[F] Un día más[C]
+[F] Un día más[C]
+[C]· · · · | [D7]·  · · · | [F]· · · · | [C]↓
+{end_of_verse}

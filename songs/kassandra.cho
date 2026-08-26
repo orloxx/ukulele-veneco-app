@@ -1,0 +1,72 @@
+{title: Kassandra}
+{artist: José Antonio Bordell}
+{year: 1992}
+{key: Bm}
+{time: 4/4}
+
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+
+[Bm]·  · · · | [G]· · · · | [Bm]·  · · · | [G]· · · ·
+
+Es[D]píritu del viento, [F#m]hija de la luna,
+A[G]mante solitaria... que [Em]grita en el silencio
+Guar[F#m]dando el sentimiento... en [Bm]soledad
+
+[Bm]Halo de misterio, sal[F#m]vaje es tu belleza
+Fan[G]tasmas del camino... a[Em]doptan tu existencia
+Gi[F#m]tana, gi[Bm]tana
+
+{start_of_chorus: Coro}
+[Bm]Ahh   [F#m]Ahh
+[Bm]Ahh   [F#m]Ahh
+Ka  [G]ssandra
+Amor re[G]belde
+Eres para mí[F#m]
+Kassan[Bm]dra
+La fuerza de mi ra[Bm]za
+Lucha[F#m]rá por ti
+Kassan[G]dra
+An[G]cestros del pasado
+Ilumi[F#m]nan el amor
+Que e[F#m]↓ manan nuestros (Bm)cuerpos
+
+[Bm]·  · · · | [G]· · · ·
+
+Los [D]brujos y hechiceros... en[F#m]turbian el destino
+En[G]trégame tu alma, la [Em]sangre de mis venas
+Que [F#m]fluye como lava... por [Bm]nuestro amor
+
+[Bm]Reina de la noche, en[F#m]vidia de princesas
+Yo [G]canto en la penumbra, bus[Em]cando en las estrellas
+Tu [F#m]boca, tu [Bm]boca
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Bm]Ahh   [F#m]Ahh
+[Bm]Ahh   [F#m]Ahh
+Ka  [G]ssandra
+Amor re[G]belde
+Eres para mí[F#m]
+Kassan[Bm]dra
+La fuerza de mi ra[Bm]za
+Lucha[F#m]rá por ti
+Kassan[G]dra
+An[G]cestros del pasado
+Ilumi[F#m]nan el amor
+Que e[F#m]↓ manan nuestros cuerpos
+{end_of_chorus}
+
+{start_of_verse: Outro}
+Que e[Bm]manan nuestros cuerpos [F#m]
+Kassa-[Bm]-aan-[F#m]draa
+Va[G]gando sentimientos
+De noches solitarias por [G]ti
+Por [F#m]ti
+
+[Bm] · · · | [Bm] · · · | [F#m] · · · | Ka-[G]ssandra · · ·
+[Bm]↓
+{end_of_verse}

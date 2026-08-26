@@ -1,0 +1,63 @@
+{title: Cucaracha}
+{artist: Bacalao Men}
+{year: 2001}
+{key: Am}
+{time: 4/4}
+
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: Bm7b5 base-fret 1 frets 2 2 1 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: C7sus4 base-fret 1 frets 3 0 1 3}
+
+{start_of_verse: Intro}
+[Am]   [Am]   [Am]   [Am] | [Am]↓  [Am]↓  [F]↑ [D]↓ [E7]↑
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+El [Am]cuento 'e la cucara·cha es que no pued[Bm7b5]e caminar[E7]
+Porque [Am]ha perdido en bata·lla su [Bm7b5]pata principal[E7]
+Ella [Am]ha tenido un graví·simo acciden[Bm7b5]te el día anterior[E7]
+Su [Am]pata quedó aplasta·da en un zapa[Bm7b5]to de tacón[E7]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Se te es[Am]tán aca[F]bando las [Bm7b5]paa-[E7]tas, cuca[Am]racha · · ·
+Se te es[Am]tán aca[F]bando las [Bm7b5]paa-[E7]tas, cuca[Am]↓ ra[Am]↓ cha ◦ ◦
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[Am]   [Am]   [Am]   [Am] | [Am]↓  [Am]↓  [F]↑ [D]↓ [E7]↑
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+La [Am]cuca-la cucara·cha estaba metía[Bm7b5] debajo 'e la me[E7]sa
+Cuan[Am]do sintió un tacona·zo como un ca[Bm7b5]ñón [E7]
+Aunque el[Am] cuerpo le dolí·a se sacó[Bm7b5] su arma secre[E7]ta
+Se[Am] fue volando por· el cielo co[Bm7b5]mo una chancle[E7]ta
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+Ten cui[Am]dado con [F]la cuca[Bm7b5]raa-[E7]cha vola[Am]dora · · ·
+Ten cui[Am]dado con [F]la cuca[Bm7b5]raa-[E7]cha vola[Am]↓ do[Am]↓ ra ◦ ◦
+{end_of_chorus}
+
+{start_of_verse: Interludio 2}
+[Am]   [Am]   [Am]   [Am] | [Am]↓  [Am]↓  [F]↑ [D]↓ [E7]↑
+{end_of_verse}
+
+{start_of_chorus: Coro 3}
+Ten cui[Am]dado con [F]la cuca[Bm7b5]raa-[E7]cha vola[Am]dora · · ·
+Ten cui[Am]dado con [F]la cuca[Bm7b5]raa-[E7]cha vola[Am]↓ do[Am]↓ ra ◦ ◦
+{end_of_chorus}
+
+{start_of_verse: Outro}
+Cuca[C]↓ra[C]↓cha... Cuca[F]↓ra[F]↓cha...
+Cuca[Em]↓ ra[Em]↓ cha... Cuca[Dm]↓ ra[Dm]↓ cha...
+Cuca[C]↓ra[C]↓cha... Cuca[C7sus4]↓ra[C7sus4]↓cha...
+[E7]↓ Cu-ca-ra-chi-[Am]-ta
+{end_of_verse}

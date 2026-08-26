@@ -1,0 +1,65 @@
+{title: Un buen perdedor}
+{artist: Franco De Vita}
+{year: 1984}
+{key: C}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Gm base-fret 1 frets 0 2 3 1}
+
+[C]· · [Fm]·  · [C]· · [Fm]·  ·
+
+[Am] Sé que ·piensas marchar[Dm]te, ya· lo sé[G] ·
+Y [C]no te de·tendré[F] · [D7]haz lo que· tú [G]quieras · [G] ·
+
+Sin em[Am]bargo, recuer·da que yo[Dm] es·taré aquí[G] en el mis·mo lugar
+[C] · y si [F]solo tienes ·ganas de hablar[Dm] con gus·to es[D]cucha[E7]ré [D]↓-[E7]↓
+
+Y si [Am]él supo dar·te más[Dm] amor· [G]supo llenar·te más[E7] que yo· [E7] ·
+[Am]Claro que sé· perder[Dm], · [G]claro que sé· perder
+
+[C]· · [Fm]·  · [C]· · [Fm]·  ·
+
+[Am] No ·tienes por qué[Dm] disi·mular[G] ·
+Esas [C]lágrimas es·tán de más[F] · Si [D7]tienes que ir·te, [G]vete ya· [G] ·
+
+Sin em[Am]bargo, espera·ba que te[Dm] queda·ras, pero el [G]agua hay que de·jarla correr
+[C] · Mientras [F]yo me traga·ba pala[Dm]bras que· no [D]pude decir[E7]   [D]↓-[E7]↓
+
+{start_of_chorus: Coro}
+Y si el [Am]viento hoy so·pla a tu[Dm] favo-·or [G]yo no te guar·daré[E7] renco-·o-·o-·o-
+[F]-or · [G7]Claro que sé· per[C]der, · no se[Am]rá la prime·ra vez[Dm] ·
+[Bb]Hoy te vas tú· maña[Gm]na me i[C]ré
+[F]yo, · se[G7]ré un buen per·de[C]dor · el [Am]mundo no cam·bia[Dm]rá ·
+[Bb]Alguien sin du·da ocu[Gm]pe tu[C] lugar[F] · [G] ·
+
+[C]· · [Am]·  · [Dm]·  · [Bb]·  · [Gm]·  [C]· [F]· · [C]· ·
+
+Sin em[Am]bargo, espera·ba que te[Dm] queda·ras, pero el [G]agua hay que de·jarla correr
+[C] · Mientras [F]yo me traga·ba pala[Dm]bras que· no [D]pude decir[E7]   [D]↓-[E7]↓
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Y si el [Am]viento hoy so·pla a tu[Dm] favo-·or [G]yo no te guar·daré[E7] renco-·o-·o-·o-
+[F]-or · [G7]Claro que sé· per[C]der, · no se[Am]rá la prime·ra vez[Dm] ·
+[Bb]Hoy te vas tú· maña[Gm]na me i[C]ré
+[F]yo, · se[G7]ré un bu·en perde[C]dor · el [Am]mundo no cam·bia[Dm]rá ·
+[Bb]Alguien sin du·da ocu[Gm]pe tu[C] lugar[F] · [G] ·
+
+[C]· · [Am]·  · [Dm]·  · [Bb]·  · [Gm]·  [C]· [F]· · [G7]·  ·
+[C]· · [Am]·  · [Dm]·  · [Bb]·  · [Gm]·  [C]· [F]· ·
+
+Oh, se[G7]ré un buen per·de[C]dor · el [Am]mundo no cam·bia[Dm]rá ·
+[Bb]Alguien sin du·da ocu[Gm]pe tu[C] lugar[F] · [G] ·
+[C]↓
+{end_of_chorus}

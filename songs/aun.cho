@@ -1,0 +1,68 @@
+{title: Aún}
+{artist: La Vida Bohème}
+{year: 2013}
+{key: D}
+{time: 4/4}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: A base-fret 1 frets 2 1 0 0}
+
+{start_of_verse: Intro Riff}
+ [D]          ·    [D]          ·  [Bm]      [F#m] [D]          ·
+A|0---0-2-0---0-----0---0-2-0---0---5---5-4-2-4--9--0---0---------|
+E|----------3----2------------3---------------------------3-2-0---|
+C|--------------------------------------------------------------2-|
+G|----------------------------------------------------------------|
+
+[D]Ya cansadas mis ·piernas
+[D]De tanto cami·nar
+[Bm]He dejado la [F#m]sierra
+[D]Para no volver ·más
+[D]Las rodillas me ·tiemblan
+[D]Pero no puedo pa·rar
+[Bm]Quiero que mis hijos [F#m]tengan
+[D]Lo que a mí me qui·sieron quitar
+{end_of_verse}
+
+{start_of_chorus: Coro}
+A[Em]ún hay a[G]ún, ¡ay, a[D]ún!, ¡ay, a[A]ún!
+A[Em]ún hay a[G]ún, ¡ay, a[D]ún!, ¡ay, a[A]ún!
+A[Em]ún hay a[G]ún, a[D]ún, ¡ay, a[A]ún!
+A[Em]ún hay a[G]ún, ¡ay, a[D]ún!, ¡ay, a[A]↓ún!
+{end_of_chorus}
+
+{start_of_verse: Riff del Intro}
+ [D]          ·    [D]          ·  [Bm]      [F#m] [D]          ·
+A|0---0-2-0---0-----0---0-2-0---0---5---5-4-2-4--9--0---0---------|
+E|----------3----2------------3---------------------------3-2-0---|
+C|--------------------------------------------------------------2-|
+G|----------------------------------------------------------------|
+
+[D]Los cobardes se en·cierran
+[D]A esperar el fi·nal
+[D]Lamen sus heridas ·mientras
+[D]Otros andan sin sa·nar
+[D]Las rodillas me ·tiemblan
+[D]Pero no puedo pa·rar
+[Bm]Quiero que mis hijos [F#m]tengan
+[D]Un nombre que dé or·gullo mostrar
+{end_of_verse}
+
+{start_of_chorus: Coro}
+A[Em]ún hay a[G]ún, ¡ay, a[D]ún!, ¡ay, a[A]ún!
+A[Em]ún hay a[G]ún, ¡ay, a[D]ún!, ¡ay, a[A]ún!
+A[Em]ún hay a[G]ún, a[D]ún, ¡ay, a[A]ún!
+A[Em]ún hay a[G]ún, ¡ay, a[D]ún!, ¡ay, a[A]↓ún!
+{end_of_chorus}
+
+{start_of_verse: Riff del Intro}
+ [D]          ·    [D]          ·  [Bm]      [F#m] [D]          ·
+A|0---0-2-0---0-----0---0-2-0---0---5---5-4-2-4--9--0---0---------|
+E|----------3----2------------3---------------------------3-2-0---|
+C|--------------------------------------------------------------2-|
+G|----------------------------------------------------------------|
+{end_of_verse}

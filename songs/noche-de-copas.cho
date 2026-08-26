@@ -1,0 +1,79 @@
+{title: Noche de copas}
+{artist: María Conchita Alonso}
+{year: 1982}
+{key: Gm}
+{time: 4/4}
+
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Edim7 base-fret 1 frets 0 1 0 1}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Dm base-fret 1 frets 2 2 1 0}
+
+[Gm]·  [Eb]·  [Edim7]-[D7]
+
+No te pido perdón[Gm], aunque a veces te llore
+Y te jure mil ve[F]ces que nunca más
+No te pido te ca[Eb]lles para que me la guardes
+Seamos since[D7]ros y Dios dirá [Edim7]-[D7]↓
+
+Ya no te pido fe[Gm], es imposible
+mirar al pasa[F]do y dejar de pasar
+No te pido que olvi[Eb]des y empezar de cero
+Sé bien que esa no[D7]che yo hice mal
+
+{start_of_chorus: Coro}
+[Edim7] Fue una [D7]noche de [Gm]copas, una noche lo[C]ca
+Besé otros [F]besos, olvidé tu [Dm]boca
+Manché tu i[Gm]magen, me perdí yo so[Edim7]la
+Y esa es la his[D7]toria
+[Edim7] Fue una [D7]noche de [Gm]copas, una noche lo[C]ca
+Besé otros [F]besos, olvidé tu [Dm]boca
+Manché tu i[Gm]magen, me perdí yo so[Edim7]la
+Y esa es la his[D7]toria
+
+[Edim7]-[D7]↓
+
+No te pido perdón[Gm], pues tuve motivos
+Tú estabas tan le[F]jos y yo tan mal
+Y a pesar de que nun[Eb]ca te había engañado
+Esa noche, amor mí[D7]o, no pude más [Edim7]-[D7]
+
+Pero ahora yo [Gm]sé que fue una torpeza
+Te quise y te quie[F]ro, aunque es tarde ya
+Yo me quise vengar[Eb] y el daño está hecho
+Te pido que olvi[D7]des ¿amor, podrás?
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Edim7] Fue una [D7]noche de [Gm]copas, una noche lo[C]ca
+Besé otros [F]besos, olvidé tu [Dm]boca
+Manché tu i[Gm]magen, me perdí yo so[Edim7]la
+Y esa es la his[D7]toria
+[Edim7] Fue una [D7]noche de [Gm]copas, una noche lo[C]ca
+Besé otros [F]besos, olvidé tu [Dm]boca
+Manché tu i[Gm]magen, me perdí yo so[Edim7]la
+Y esa es la his[D7]toria
+
+[Edim7]-[D7]↓
+
+Fue una noche de [Gm]copas, una noche lo[C]ca
+Besé otros [F]besos, olvidé tu [Dm]boca
+Manché tu i[Gm]magen, me perdí yo so[Edim7]la
+Y esa es la his[D7]toria
+{end_of_chorus}
+
+{start_of_chorus: Coro (x2)}
+[Edim7] Fue una [D7]noche de [Gm]copas, una noche lo[C]ca
+Besé otros [F]besos, olvidé tu [Dm]boca
+Manché tu i[Gm]magen, me perdí yo so[Edim7]la
+Y esa es la his[D7]toria
+[Edim7] Fue una [D7]noche de [Gm]copas, una noche lo[C]ca
+Besé otros [F]besos, olvidé tu [Dm]boca
+Manché tu i[Gm]magen, me perdí yo so[Edim7]la
+Y esa es la his[D7]toria
+
+[Gm]↓
+{end_of_chorus}

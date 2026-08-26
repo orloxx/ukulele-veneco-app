@@ -1,0 +1,82 @@
+{title: Desesperanza}
+{artist: Eduardo Lanz}
+{year: 1947}
+{key: C}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: G+ base-fret 1 frets 0 3 3 2}
+{define: C7 base-fret 1 frets 0 0 0 1}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Gm base-fret 1 frets 0 2 3 1}
+
+{start_of_verse: Intro}
+[C]  [A7]   [Dm]   [G7]   [C]  [A7]   [Dm]↓  [G7]↓
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[C]Nunca me i[A7]ré de tu [Dm]vida, [G7]   [C] ni tú de [A7]mi cora[Dm]zón [G7]
+[C] Aunque por o[E7]tros cami[Am]nos, nos lleve el desti[D7]no
+Que im[Fm]porta a los [G]dos [G+]
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[C]Te llevo [A7]dentro del [Dm]alma, [G7]   [C]como un ta[E7]tuaje de [Am]sol [C7]
+Y [F]entre mis [B7]venas pal[Em]pita
+[A7]la llama encen[Dm]dida [G7] de tu cora[C]zón
+{end_of_verse}
+
+{start_of_verse: Interludio}
+[A7]   [Dm]   [G7]   [C]  [B7]
+{end_of_verse}
+
+{start_of_verse: Puente}
+[Em] En una noche calla[F#m]da   te [B7]fuiste no has [Em]vuelto [Em]
+[G] Mi vida en[Em]tera te lla[Am]ma  [D7] y anhela tus [G]↓besos, [G+]↓míos
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[C]Es que tú acaso no escu[E7]chas mi grito dolien[Am]te
+La [Am]voz de mi al[Gm]ma que [C7]llora [F] tu amor [A7]   [Dm]
+Y te pide que [Fm]vuelvas, con tus labios ar[C]dientes
+Y tu alma encen[A7]dida, a volverme la [Dm]vida
+Que un día te lle[G7]vaste con mi cora[C]zón [A7]   [Dm]   [G7]
+{end_of_chorus}
+
+{start_of_verse: Instrumental}
+[C]Nunca me i[A7]ré de tu [Dm]vida, [G7]   [C] ni tú de [A7]mi cora[Dm]zón [G7]
+[C] Aunque por o[E7]tros cami[Am]nos, nos lleve el desti[D7]no
+Que im[Fm]porta a los [G]dos [G+]
+
+[C]Te llevo [A7]dentro del [Dm]alma, [G7]   [C]como un ta[E7]tuaje de [Am]sol [C7]
+Y [F]entre mis [B7]venas pal[Em]pita
+[A7]la llama encen[Dm]dida [G7] de tu cora[C]zón
+{end_of_verse}
+
+{start_of_verse: Interludio 2}
+[B7]
+{end_of_verse}
+
+{start_of_verse: Puente 2}
+[Em] En una noche calla[F#m]da   te [B7]fuiste no has [Em]vuelto [Em]
+[G] Mi vida en[Em]tera te lla[Am]ma  [D7] y anhela tus [G]↓besos, [G+]↓míos
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[C]Es que tú acaso no escu[E7]chas mi grito dolien[Am]te
+La [Am]voz de mi al[Gm]ma que [C7]llora [F] tu amor [A7]   [Dm]
+Y te pide que [Fm]vuelvas, con tus labios ar[C]dientes
+Y tu alma encen[A7]dida, a volverme la [Dm]vida
+Que un día te lle[G7]↓vaaaaste... con mi corazón [C]  [A7]   [Dm]   [G7]   [C]↓
+{end_of_chorus}

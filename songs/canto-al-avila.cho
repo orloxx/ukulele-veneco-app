@@ -1,0 +1,73 @@
+{title: Canto al Ávila}
+{artist: Ilan Chester}
+{year: 1983}
+{key: A}
+{time: 4/4}
+
+{define: A base-fret 1 frets 2 1 0 0}
+{define: E base-fret 1 frets 4 4 4 2}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: C#m base-fret 4 frets 1 1 0 4}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+
+[A]· [E]· [F#m]·   [E]· [Bm]·  [E7]·
+[A]· · [A]· · | [A]· · [A]·
+
+Voy ·de Pe[A]tare [C#m]rumbo a La Pas[D]tora [D]
+Contem[Bm]plando la monta[E7]ña que de[Bm]cora a mi[E7] ciu(A)dad
+[A]· · [A]· · | [A]· · [A]·
+Lle·vando ma[A]tices [C#m]de la buena au[D]rora [D]
+Con la [Bm]fauna y con la flo[E7]ra de un an[Bm]taño sin[E7] igual[A]  [A]
+Y sabe [E]Dios [F#m] los pin[Bm]tores, las pa[E]letas,
+Cuánta [Dm]pluma del po[A]eta
+Cuántos [F#m]ojos encon[Bm]traron un mo[E]mento de solaz[A]  [A]
+Y digo [E]yo, [F#m]    [Bm]vas regalándole al[E] dia
+[C#m]Carga de buena ener[F#m]gía
+Vas ha[D]ciendo más huma[C#m]no mi sen[Bm]tir y mi can[E7]tar [E7]
+
+{start_of_chorus: Coro}
+Cerro [A]Á-[E7]vi[F#m]la, [D]cerro el Á[E7]vila[A]
+[A]Á-[E7]vi[F#m]la, [D]cerro el Á[E7]vila[A]
+[A]Á-[E7]vi[F#m]la, [D]cerro el Á[E7]vila[A]
+[A]Á-[E7]vi[F#m]la, [D]cerro el Á[E7]vila[A]
+
+[A]· [E]· [F#m]·   [E]· [Bm]·  [E7]·
+[A]· · [A]· · | [A]· · [A]·
+
+Voy ·de Pe[A]tare [C#m]rumbo a La Pas[D]tora [D]
+Contem[Bm]plando la monta[E7]ña que de[Bm]cora a mi[E7] ciu(A)dad
+[A]· · [A]·
+Lle·vando ma[A]tices [C#m]de la buena au[D]rora [D]
+Con la [Bm]fauna y con la flo[E7]ra de un an[Bm]taño sin[E7] igual[A]  [A]
+Y sabe [E]Dios [F#m] los pin[Bm]tores, las pa[E]letas,
+Cuánta [Dm]pluma del po[A]eta
+Cuántos [F#m]ojos encon[Bm]traron un mo[E]mento de solaz[A]  [A]
+Y digo [E]yo, [F#m]    [Bm]vas regalándole al[E] dia
+[C#m]Carga de buena ener[F#m]gía
+Vas ha[D]ciendo más huma[C#m]no mi sen[Bm]tir y mi can[E7]tar [E7]
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Cerro [A]Á-[E7]vi[F#m]la, [D]cerro el Á[E7]vila[A]
+[A]Á-[E7]vi[F#m]la, [D]cerro el Á[E7]vila[A]
+[A]Á-[E7]vi[F#m]la, [D]cerro el Á[E7]vila[A]
+[A]Á-[E7]vi[F#m]la, [D]cerro el Á[E7]vila[A]↓ [G7]↓
+{end_of_chorus}
+
+{start_of_verse: Outro (Cambio de clave)}
+[C]Á-[G7]vi[Am]la, [F]cerro el Á[G7]vila[C]
+[C]Á-[G7]vi[Am]la, [F]cerro el Á[G7]vila[C]
+[C]Á-[G7]vi[Am]la, [F]cerro el Á[G7]vila[C]
+[C]Á-[G7]vi[Am]la, [F]cerro el Á[G7]vila[C]
+
+[C]· [G]· | [Am]·  [G]· [Dm]·  [G7]·
+[C]· [G7]·  [C]↓
+{end_of_verse}

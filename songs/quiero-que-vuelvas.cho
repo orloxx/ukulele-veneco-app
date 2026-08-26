@@ -1,0 +1,78 @@
+{title: Quiero que vuelvas}
+{artist: Lasso, Sheryl Rubio}
+{year: 2012}
+{key: Cm}
+{time: 4/4}
+{capo: 1}
+
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Ab base-fret 3 frets 3 1 2 1}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Ebm base-fret 1 frets 3 3 2 1}
+
+{start_of_verse: Lasso}
+[Cm]·  · · · | [Gm]·  · · · | [Fm]·  · · · | [Fm]·  · [G7]·  ·
+{end_of_verse}
+
+{start_of_verse: Sheryl Rubio}
+[Cm]·  · · · | [Gm]·  · · · | [Fm]·  · · · | [Fm]·  · [G7]·  ·
+{end_of_verse}
+
+{comment: Ambos}
+
+{start_of_verse: Verso 1}
+[Cm] No si-[Gm]-gas más, [Fm]que te vas a a[Fm]rrepentir[G7]
+[Cm] Déja-[Gm]-lo atrás [Fm]lo que vayas [Fm]a decir[G7]
+[Cm] Y no quiero[Gm] pelear más,[Eb] la razón• no importa ya
+[Cm] Y así[Gm] me doy cuen[Eb]ta, me doy [Eb]↓cuenta
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Ab]Sólo[Bb] quiero que vuel[Cm]vas •
+[Ab]Vuelve-[Bb]eee [Eb] yaaa-•aaa
+[Ab]Sólo[Bb] quiero que [Cm]vuel[Bb]vas [Ab]ya
+[Fm]Nada es igual sin ti,[G7] quiero que regreses
+
+[Cm]·  · · · | [Gm]·  · · · | [Fm]·  · · · | [Fm]·  · [G7]·  ·
+{end_of_chorus}
+
+{start_of_verse: Verso 2}
+[Cm] Piensa[Gm] en mi, [Fm]todo lo que hi[Fm]ce por ti[G7]
+[Cm] Debes[Gm] tratar [Fm]de olvidar y [Fm]perdonar[G7]
+[Cm] ¿Cuándo vas[Gm] a escuchar?,[Eb] ¿cuánto ten•go que cantar?
+[Cm] ¿Cuándo vas[Gm] a escuchar?,[Eb] ¿tengo [Eb]↓que gritar?
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Ab]Sólo[Bb] quiero que vuel[Cm]vas •
+[Ab]Vuelve-[Bb]eee [Eb] yaaa-•aaa
+[Ab]Sólo[Bb] quiero que [Cm]vuel[Bb]vas [Ab]ya
+[Fm]Nada es igual sin ti,[G7] quiero que regreses
+{end_of_chorus}
+
+{start_of_verse: Puente}
+[Cm]¿Cómo puedo haber •tanta destrucción?
+[Bb]Era tan sencillo, te lle•vaste la ilusión
+[Cm]Tienes que tomar u•na decisión
+No [Bb]ves que tengo miedo, que no •tengo otra opción
+[Cm]No regreses nun•ca más, No-[Bb]ooo-•-ooo
+[Cm]No regreses nun•ca más, No-[Bb]oo Noo-•-ooo
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Ab]Sólo[Bb] quiero que vuel[Cm]vas •
+[Ab]Vuelve-[Bb]eee [Eb] yaaa-•aaa
+[Ab]Sólo[Bb] quiero que [Cm]vuel[Bb]vas [Ab]ya
+[Fm]Nada es igual sin ti,[G7] quiero que regreses
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Ab]Creo que [Cm]todo esta me[Gm]jor •
+[Ab]Creo que [Cm]todo esta me[Gm]jor •
+[Ab]Creo que [Cm]todo esta me[Gm]jor •
+[Ab]Creo que [Cm]todo esta me[Eb]↓jooo-[Ebm]↓ -oooor
+{end_of_verse}

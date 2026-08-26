@@ -1,0 +1,73 @@
+{title: A dormir juntitos}
+{artist: Liz, Eddy Herrera}
+{year: 2005}
+{key: D}
+{time: 4/4}
+{capo: 2}
+
+{define: D base-fret 1 frets 2 2 2 0}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: F# base-fret 1 frets 3 1 2 1}
+
+{start_of_verse: Eddy Herrera}
+[D]· · · · | [F#m]·   · · · | [G]· · · · | [A]· · · ·
+{end_of_verse}
+
+{comment: Liz}
+
+{start_of_verse: Ambos}
+[Bm]·  · · · | [Bm]·  · · · | [A]· · · · | [A]· · · · | [G]· · · · | [Em]·  · · · | [A]· · · · | [A7]·  · · ·
+
+Me per[D]sigue tu recuerdo todo el [F#m]tiempo te escucho hasta en el si[Bm]lencio,
+No aprendo a vivir [F#m]sin ti...    y [G]pongo un cubierto de[Em]más en nuestra mesa
+Cada [F#]día se me olvida [Bm]que no estás...  [G] Mi mente niega esa ver[A]dad
+
+[F#] Igual que a mí,[Bm] que me ha [G]dado por llegar temprano a [A]casa,
+Y en tu [Bm]puerta es que recuerdo que vi[F#m]vo en otro lugar
+Doy la es[G]palda, me doy vuelta [Em]    ...y me [A]voy
+
+Y yo te [Bm]veo   [G] a través de la ven[D]tana cuando te[F#m] vas
+Y llo[G]rando me dan ganas de de[Em]cirte quéda[A]te,
+Porque es     [Bm]↓ tamos durmiendo so         [A]los,
+Si nos seguimos que         [Bm]riendo, si nos seguimos aman             [G]do,
+No dejamos de la        [A]do el orgullo al vol      [D]vemos...
+{end_of_verse}
+
+{start_of_chorus: Coro}
+A dormir jun[A]titos, ay como antes, a dormir jun[Bm]titos, abrazaditos,
+A dormir jun[A]titos, ay bien juntitos, y bo  [G]rrar lo que empaña nuestro a            [A]mor
+A dormir jun[A]titos, ay como antes, a dormir jun[Bm]titos, ay bien juntitos,
+A dormir jun[A]titos, abrazaditos, y bo  [G]rrar lo que empa       [A]ña nuestro a     [D]mor
+
+[D]· · · · | [A]· · · · | [A]· · · · | [D]· · · ·
+[D]· · · · | [A]· · · · | [A]· · · · | [D]↓ [D]↓ [D]↓ [D]↓
+[Em]·  · · · | [A]· · · · | [D]· · · · | [D]· · · ·
+[Em]·  · · · | [A]· · · · | [D]· · · · | [D]· · · ·
+[Em]·  · · · | [A]· · · · | [D]· · · · | [D]· · · ·
+[Em]·  · · · | [A]· · · · | [Em]·  · · · | [A]· · · ·
+
+Y yo te [Bm]veo   [G] a través de la ven[D]tana cuando te[F#m] vas
+Y llo[G]rando me dan ganas de de[Em]cirte quéda[A]te,
+Porque es     [Bm]↓ tamos durmiendo so         [A]los,
+Si nos seguimos que         [Bm]riendo, si nos seguimos aman             [G]do,
+No dejamos de la        [A]do el orgullo al vol      [D]vemos...
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+A dormir jun[A]titos, ay como antes, a dormir jun[Bm]titos, ay bien juntitos,
+A dormir jun[A]titos, abrazaditos, y bo  [G]rrar lo que empaña nuestro a            [A]mor
+A dormir jun[A]titos, ay como antes, a dormir jun[Bm]titos, abrazaditos,
+A dormir jun[A]titos, ay bien juntitos, y bo  [G]rrar lo que empa       [A]ña nuestro a     [D]mor
+
+[Em]·  · · · | [A]· · · · | [D]· · · · | [D]· · · · (x2)
+[Em]·  · · · | [A]· · · · | [Em]·  · · · | [A]· · · ·
+[Em]·  · · · | [A]· · · · | [D]· · · · | [D]· · · · (x2)
+
+A dormir jun[A]titos, ay como antes, a dormir jun[Bm]titos, abrazaditos,
+A dormir jun[A]titos, ay bien juntitos, y bo  [G]rrar lo que empa       [A]ña nuestro a     [D]mor   [D]↓
+{end_of_chorus}

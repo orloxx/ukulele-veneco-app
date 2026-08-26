@@ -1,0 +1,81 @@
+{title: Las luces que bailan}
+{artist: Los Delorean}
+{year: 2019}
+{key: A}
+{time: 4/4}
+
+{define: A base-fret 1 frets 2 1 0 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: E base-fret 1 frets 4 4 4 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Bb base-fret 1 frets 3 2 1 1}
+
+{start_of_verse: Intro}
+[A]· · · · | [A]· · · · | [F]· · · · | [G]· · · · | [A]· · · · | [A]· · · · | [C]· · [F]· · | [G]· · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[A]  [A]Una lu[F]na de[F] cristal
+[A]  [A]Cae en nues[C]↓tra [F]↓tum[G]↓ba
+[A]  [A]Haciéndo[F]nos vii(E)rar
+[E]· · · · | [E]· · · · | [E]· · · · | [E]· · · ·
+[A]  [A]Una so[F]la li[F]bertad
+[A]  [A]Nos canta [C]↓des[F]↓nu[G]↓da
+[A]  [A]Haciéndo[F]nos desper(E)tar
+[E]· · · · | [E]· · · · | [E]· · · · | [E]· · · ·
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[D] Y ahora que[D] estamos los dos
+[G] Sólo quie[G]ro verte
+[D]  [A]Uuuh    [D]  [A]uuuh
+[D] Ahora en o[D]tra dimensión
+[G] Sólo quie[G]ro verte
+[D]  [A]Uuuh    [D]  [A]uuuh
+[F]   Los [F]campos se han [G]↓puesto verdes
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[A]· · · · | [A]· · · · | [F]· · · · | [G]· · · · | [A]· · · · | [A]· · · · | [C]· · [F]· · | [G]· · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[A]  [A]Una du[F]ra rea[F]lidad
+[A]  [A]Nos golpe-[C]↓a [F]↓fuer[G]↓te
+[A]  [A]Haciéndo[F]nos lloo(E)rar
+[E]· · · · | [E]· · · · | [E]· · · · | [E]· · · ·
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[D] Y ahora que[D] estamos los dos
+[G] Sólo quie[G]ro verte
+[D]  [A]Uuuh    [D]  [A]uuuh
+[D] Ahora en o[D]tra dimensión
+[G] Sólo quie[G]ro verte
+[D]  [A]Uuuh    [D]  [A]uuuh
+[F] Las [F]luces bai[G]↓lan con el sol
+{end_of_chorus}
+
+{start_of_verse: Cambio ritmo a 6/8}
+[C]· · · · · · | [Bb]·  · · · · · | [A]· · · · · · | [A]· · · · · ·
+[C]· · · · · · | [Bb]·  · · · · · | [A]· · · · · · | [A]· · · · · ·
+[A]· · · · · · | [F]· · · · · · | [A]· · · · · · | ◦ [C]↓ ◦ [F]↓ ◦ [G]↓
+[A]· · · · · · | [F]· · · · · · | [A]· · · · · · | ◦ [C]↓ ◦ [F]↓ ◦ [G]↓
+[A]Oooh-ooh      [F]oooh-oh-oh    [A]oooh-oh-oh-oh   ◦ [C]↓ ◦ [F]↓ ◦ [G]↓
+[A]Oooh-ooh      [F]oooh-oh-oh    [E] · · · · · | [F] · · · · ·
+[E]· · · · · · | [F]↓ ↑↓↑    [G]↓ ◦ ◦
+{end_of_verse}
+
+{start_of_verse: Outro}
+[A]· · · · · · | [F]· · · · · · | [A]· · · · · · | ◦ [C]↓ ◦ [F]↓ ◦ [G]↓
+[A]· · · · · · | [F]· · · · · · | [A]· · · · · · | ◦ [C]↓ ◦ [F]↓ ◦ [G]↓
+[A]Oooh-ooh      [F]oooh-oh-oh    [A]oooh-oh-oh-oh   ◦ [C]↓ ◦ [F]↓ ◦ [G]↓
+[A]Oooh-ooh      [F]oooh-oh-oh    [A]oooh-oh-oh-oh   ◦ [C]↓ ◦ [F]↓ ◦ [G]↓
+{end_of_verse}
+{start_of_verse: Continúa el ooh-ooh}
+[A](Oooh-ooh)       Una [F]luna de cris[A]tal cae en [C]↓nuestra [F]↓tu-[G]↓umba
+[A](Oooh-ooh)       Una [F]luna de cris[A]tal cae en [C]↓nuestra [F]↓tu-[G]↓umba
+◦Oooh-ooh      ◦oooh-oh-oh    ◦oooh-oh-oh-oh
+{end_of_verse}

@@ -1,0 +1,73 @@
+{title: Escríbeme}
+{artist: Alfredo Sadel}
+{year: 1957}
+{key: Em}
+{time: 4/4}
+
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: E base-fret 1 frets 4 4 4 2}
+
+{start_of_verse: Intro}
+  [Em]·  · · | [C]· · [B7]·  · | [Em]·  · · · | [C]· · [B7]·  ·
+[Em]·  · · · | [C]· · [D]· · | [G]· · [C]· · | [B7]·  · · ·
+[Em]↓  ◦ [B7]↓  ◦ | [Em]↓  ◦ ◦ [B7]↓
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[Em]↓  Son tus cartas mi espe[C]raanzaa
+[D] Mis temores, mi ale[G]gríi[Bm]aa
+[Em] Y aunque sean tonte[Am]ríiaas
+Es[B7]críbeme, es[Em]críbeme
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[Em]↓  Tu silencio me acon[C]goojaa
+[D] Me preocupa y predis[G]poo[Bm]nee
+[Em] Y aunque sea con bo[Am]rroonees
+Es[B7]críbeme, [Em] escríbeme
+{end_of_verse}
+
+{start_of_verse: Verso 3}
+[Em]↓  Me hacen más falta tus [Am]cartas
+Que la [D]misma vida [G]míi[Bm]aa
+[Em] Lo mejor morir se[Am]ría
+Si algún [B7]día me olvi[Em]daaraas
+{end_of_verse}
+
+{start_of_verse: Verso 4}
+[Em]↓  Cuando llegan a mis [C]maanoos
+[D] Su lectura me con[G]muee[Bm]vee
+[Em] Y aunque sean malas [Am]nuevas
+Es[B7]críbeme, es[Em]críbeme
+{end_of_verse}
+
+{start_of_verse: Verso 1 bis}
+[Em]↓  Son tus cartas mi espe[C]raanzaa
+[D] Mis temores, mi ale[G]gríi[Bm]aa
+[Em] Y aunque sean tonte[Am]ríiaas
+Es[B7]críbeme, es[Em]críbeme
+{end_of_verse}
+
+{start_of_verse: Verso 3 bis}
+[Em]↓  Me hacen más falta tus [Am]cartas
+Que la [D]misma vida [G]míi[Bm]aa
+[Em] Lo mejor morir se[Am]ría
+Si algún [B7]día me olvi[Em]daaraas
+{end_of_verse}
+
+{start_of_verse: Verso 4 bis}
+[Em]↓  Cuando llegan a mis [C]maanoos
+[D] Su lectura me con[G]muee[Bm]vee
+[Em] Y aunque sean malas [Am]nuevas
+[B7]↓  Escríbeme  [B7]↓
+{end_of_verse}
+
+{start_of_verse: Final}
+Escríiibe[Em]me ·  [D]· · [C]· · [B7]·  · [E]↓
+{end_of_verse}

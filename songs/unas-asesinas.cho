@@ -1,0 +1,61 @@
+{title: Uñas asesinas}
+{artist: Seguridad Nacional}
+{year: 1983}
+{key: G}
+{time: 4/4}
+
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: A base-fret 1 frets 2 1 0 0}
+
+{start_of_verse: Riff Intro}
+[G]· · · · · · · · [Bm]·  · · · · · · ·
+[G]· · · · · · · · [Bm]·  · · · · · · ·
+{end_of_verse}
+
+{start_of_verse: Estrofa}
+[G] ·Y pen·sar · que ·me quie·res· ma·tar[Bm] · · · · · · ·
+[G] ·con tus ·uñas · me ·vas a a·se·si·nar[Bm] · · · · · · ·
+[G] ·y pen·sar · que ·tú no e·ras · a·sí,
+[Bm] · · a·sí,[C] · · a·sí,[D] · · ii-·-ii-[Em]ii · · a·sí,
+[Bm] · · ii-·ii-[C]ii · · tú ·y yo-[D]oo · · ¡qué-·e va!
+{end_of_verse}
+
+{start_of_verse: Riff}
+[G]· · · · · · · · [Bm]·  · · · · · · ·
+[G]· · · · · · · · [Bm]·  · · · · · · ·
+{end_of_verse}
+
+{start_of_verse: Estrofa}
+[G] ·Y pen·sar · que ·no pue·do · dor·mir[Bm] · · · · · · ·
+[G] ·y tú ·dices ·que ya ·no te ex·ci·to· más[Bm] · · · · · · ·
+[G] ·y pen·sar · que ·tú no e·ras · a·sí,
+[Bm] · · a·sí,[C] · · a·sí,[D] · · · [Em] · · ·
+¡oh-[Bm]-oh! · · · [C]¡oh! · · tú ·y yo-[D]oo · · ¡qué-·e va!
+{end_of_verse}
+
+{start_of_verse: Instrumental (Solo)}
+[G]· · · · · · · · [Bm]·  · · · · · · ·
+[G]· · · · · · · · [Bm]·  · · · · · · ·
+[G]· · · · · · · · [Bm]·  · · · · · · ·
+[G]· · · · · · · · [Bm]·  · · · · · · ·
+[C]· · · · [D]· · · · [Em]·  · · ·
+[Bm]·  · · · [C]· · · · [D]· · · ·
+{end_of_verse}
+
+{start_of_verse: Puente}
+[A]· · · · · · · · [C]· · · · · · · ·
+[D]· · · · · · · · [Bm]·  · · · · · · ·
+[C]· · · · · · · · [D]· · · · · · · ·
+{end_of_verse}
+
+{start_of_verse: Estrofa}
+[G] ·Y pen·sar · que ·me quie·res· ma·tar[Bm] · · · · · · ·
+[G] que ·con tus ·uñas ·tú me ·vas a a·se·si·nar[Bm] · · · · · · ·
+[G] ·y pen·sar · que ·tú no e·ras · a·sí,
+[Bm] · · a·sí,[C] · · a·sí,[D] · · oh-·-oh-[Em]oh · · a·sí,
+[Bm]¡oh! · · · [C]¡oh! · · tú ·y yo-[D]oo · · ¡qué-·e va-[G]↓-a!
+{end_of_verse}

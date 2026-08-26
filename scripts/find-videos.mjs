@@ -73,11 +73,11 @@
 
 import { execFile } from "node:child_process";
 import fs from "node:fs";
+import { registerHooks } from "node:module";
 import path from "node:path";
 import process from "node:process";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { promisify } from "node:util";
-import matter from "gray-matter";
 
 const execFileAsync = promisify(execFile);
 
@@ -87,6 +87,19 @@ const REPO_ROOT = path.resolve(
 );
 const SONGS = path.join(REPO_ROOT, "songs");
 const OUTPUT = path.join(REPO_ROOT, "data", "videos.json");
+
+/** Read `songs/` with the app's own reader; the hook only resolves `@/`. */
+registerHooks({
+  resolve(specifier, context, nextResolve) {
+    if (specifier.startsWith("@/")) {
+      const target = path.join(REPO_ROOT, "src", specifier.slice(2));
+      return { url: `${pathToFileURL(target).href}.ts`, shortCircuit: true };
+    }
+    return nextResolve(specifier, context);
+  },
+});
+
+const { songFromChordPro } = await import("@/lib/songs");
 
 /**
  * The raw search results, kept so the rule can be re-applied without asking
@@ -256,15 +269,18 @@ function creditParts(artist) {
 function loadSongs() {
   return fs
     .readdirSync(SONGS)
-    .filter((file) => file.endsWith(".md") && file !== "README.md")
+    .filter((file) => file.endsWith(".cho"))
     .sort()
     .map((file) => {
-      const { data } = matter(fs.readFileSync(path.join(SONGS, file), "utf8"));
+      const { slug, metadata } = songFromChordPro(
+        fs.readFileSync(path.join(SONGS, file), "utf8"),
+        file.replace(/\.cho$/, ""),
+      );
       return {
-        slug: file.replace(/\.md$/, ""),
-        title: String(data.title ?? ""),
-        artist: String(data.artist ?? ""),
-        year: data.year,
+        slug,
+        title: metadata.title,
+        artist: metadata.artist,
+        year: metadata.year,
       };
     });
 }

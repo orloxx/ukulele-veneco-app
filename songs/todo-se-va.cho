@@ -1,0 +1,76 @@
+{title: Todo se va}
+{artist: Caseroloops}
+{year: 2008}
+{key: Em}
+{time: 4/4}
+
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Dm base-fret 1 frets 2 2 1 0}
+
+{start_of_verse: Intro}
+[Em]·  · · · | [Am]·  · · · | [Em]·  · · · | [Am]·  · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[Em]Miro, cómo se mueve tu [Am]cuerpo imitando al las pal[Em]meras
+Cuando juegan con el [Am]viento, aferradas a la a[Em]rena
+Yo me que[Am]do aquí mirando
+Có[Em]mo sopla el viento y tú[Am] me vas cambiando,
+Sin[D] que yo me oponga, sin[B7] mi resistencia
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Em]Todo se va, sólo que[Am]damos tú y yo
+Bailando [Em]frente al mar, mirándo[Am]nos, y yo te digo que
+[Em]Todo se va, sólo que[Am]damos tú y yo
+Bailando [Em]frente al mar, mirándo[Am]nos
+{end_of_chorus}
+
+{start_of_verse: Puente}
+[Em]·  · · · | [Em]·  · · ·
+Cuando el a[Em]mor llega así de esta ma[Em]nera
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[Em]Planto mis pies en la playa,
+Dejo que los [Am]malos recuerdos se alejen,
+Hoy me des[Em]pido’e mi vida pasada
+Yo solo [Am]quiero que tú aqui te quedes,
+Bai[Em]lando... con[Am]tigo...
+De [Em]todo... me ol[Am]vido...
+Sin[D] que yo me oponga, sin[B7] mi resistencia
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[Em]Todo se va, sólo que[Am]damos tú y yo
+Bailando [Em]frente al mar, mirándo[Am]nos, y yo te digo que
+[Em]Todo se va, sólo que[Am]damos tú y yo
+Bailando [Em]frente al mar, mirándo[Am]nos
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[Em]·  · [Bm]·  · | [C]· · [B7]·  ·
+[Em]·  · [Bm]·  · | [C]· · [B7]·  ·
+[Em]·  · [Bm]·  · | [C]· · [B7]·  ·
+[Em]·  · [Bm]·  · | [C]· · [Dm]·  [B7]·
+{end_of_verse}
+
+{start_of_chorus: Coro 3}
+[Em]Todo se va, sólo que[Am]damos tú y yo
+Bailando [Em]frente al mar, mirándo[Am]nos, y yo te digo que
+[Em]Todo se va, sólo que[Am]damos tú y yo
+Bailando [Em]frente al mar, mirándo[Am]nos
+{end_of_chorus}
+
+{start_of_verse: Outro}
+Y yo te digo que [Em]todo se va
+[Em]Todo se va
+[Em]Todo se va
+[Em]Todo se va
+[Em]↓ Todo se va
+{end_of_verse}

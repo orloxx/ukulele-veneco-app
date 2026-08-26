@@ -1,0 +1,80 @@
+{title: Culebrón}
+{artist: Sentimiento Muerto}
+{year: 1987}
+{key: Eb}
+{time: 4/4}
+{capo: 1}
+
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Bb base-fret 1 frets 3 2 1 1}
+
+[Cm]·  · | [Eb]·  · | [Gm]·  · | [Eb]·  ·
+
+[Cm]Ya del bolígrafo no ·salen palabras
+[Eb]Pero mi boca ·habla sin miedo
+Y de [Gm]pronto no porque· no quiero sino [Eb]porque no debo ·
+[Cm]Abro la mano y es·tiro los dedos
+[Eb]Guardo mi puño ·de tensión
+Con la son[Gm]risa bien marcada me re·cuesto de la almohada
+A [Eb]olvidar mi dolor ·
+
+{start_of_chorus: Coro}
+[Dm]Yo no quiero que [Gm]se convierta
+En [Bb]un guión para u[Eb]na novela
+[Dm]En... en... [Gm]pura culebra...
+[Bb] Cucu cucu! [Eb] cucu cuculebro-[Dm]oooón [Gm]   [Bb]   [Eb]   [Dm]   [Gm]   [Bb]   [Eb]
+
+[Cm]·  · | [Eb]·  · | [Gm]·  · | [Eb]·  ·
+
+Me man[Cm]tengo esperando si sie·mpre esperando
+Con es[Eb]trés de saber lo que es·tá pasando
+Me man[Gm]tengo pensando en ·algo nuevo, en [Eb]algo mejor ·
+Y [Cm]desde la cama ·hasta el show
+Mi [Eb]cuarto se ha converti·do en una sala de espe[Gm]ra
+En mi ni·do, en una fór[Eb]mula a punto de hacer· reacción
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Dm]Yo no quiero que [Gm]se convierta
+En [Bb]un guión para u[Eb]na novela
+[Dm]En... en... [Gm]pura culebra...
+[Bb] Cucu cucu! [Eb] cucu cuculebro-[Dm]oooón [Gm]   [Bb]   [Eb]   [Dm]   [Gm]   [Bb]   [Eb]
+
+[Cm]·  · | [Eb]·  · | [Gm]·  · | [Eb]·  ·
+
+Y es[Cm]toy volando no de·seo aterrizar
+Y con los [Eb]palos en la mano eso se ·puede agilizar
+A[Gm]hora te conviertes en ·otra dimensión
+Te [Eb]veo entre mis dedos ·
+Y cuantas [Cm]horas se usado en ·esta pasión
+Y el [Eb]tren que corre por den·tro ya quiere llegar[Gm] a la estación·
+[Eb] Cucu cucu-cu · Cucu cucu-cu ·Cucu cucu-cu ·¡Culebrón!
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[Dm]Yo no quiero que [Gm]se convierta
+En [Bb]un guión para u[Eb]na novela
+[Dm]En... en... [Gm]pura culebra...
+[Bb] Cucu cucu! [Eb] cucu cuculebro-[Dm]oooón [Gm]   [Bb]   [Eb]   [Dm]   [Gm]   [Bb]   [Eb]
+{end_of_chorus}
+
+{start_of_verse: Puente}
+[Cm]·  [Eb]·  | [Gm]·  [Eb]·  | [Cm]·  [Eb]·  | [Gm]·  [Eb]·  (x3)
+[Cm] Cucu-cucu [Eb] | [Gm] Cucu-cucu [Eb] | [Cm] Cucu-cucu [Eb] | [Gm] Cucu-cucu [Eb] (x2)
+[Eb]·  [Cm]·  | [Gm]·  [Eb]·  | [Cm]↓
+[Cm]·  [Eb]·  | [Gm]·  [Bb]·  | [Eb]·  [Cm]·  | [Cm]·  [Bb]·  | [Eb]·  [Cm]·  | [Cm]·  [Bb]·  | [Eb]·  [Cm]·  [Cm]·
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Dm]Yo no quiero que [Gm]se convierta
+En [Bb]un guión para u[Eb]na novela
+[Dm]En... en... [Gm]pura culebra...
+[Bb] Cucu cucu! [Eb] cucu cuculebro-[Dm]oooón [Gm]   [Bb]   [Eb]   [Dm]   [Gm]   [Bb]   [Eb]
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Dm]·  [Gm]·  [Bb]·  [Eb]·  [Dm]·  [Gm]·  [Bb]·  [Eb]↓
+{end_of_verse}

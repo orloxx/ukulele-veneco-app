@@ -1,0 +1,74 @@
+{title: Niño}
+{artist: Candy66}
+{year: 2003}
+{key: Cm}
+{time: 4/4}
+
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: C5 base-fret 1 frets 0 0 3 3}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Ab7 base-fret 1 frets 1 0 2 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Ab base-fret 3 frets 3 1 2 1}
+{define: Db base-fret 1 frets 1 1 1 4}
+
+{start_of_verse: Intro}
+[Cm]·  · · · | [C5]·  · · · | [Bb]·  · · · | [Ab7]·   · · · (x2)
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[Cm]Si algún día te has[Cm] confundido, te has[Bb] preguntado por[Ab7] qué ha sido
+[Cm]Todo tan rápido si es[Cm] que apenas eras [Bb]otro, o[Ab7]tro, y no has querido entender
+[Cm] que eras joven, que co[Cm]mo un niño anda[Bb]bas corriendo detrás[Ab7] de un juego
+[Cm]Pero no aceptas que aho[Cm]ra ya no eres más que [Bb]otro, o[Ab7]tro
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[F]· · · · | [F]· · [F]↓ ◦
+[Cm] · · · | [Cm] · Y no ·sé lo ·que pa[Eb]só [Eb]
+Todo ha[Ab] cambia[Ab]do, todo se ha[Db] borra[Cm]do · · ·
+[Cm] · Y soy ·otro ·que no [Eb]soy yo [Eb]
+Todo ha[Ab] cambia[Ab]do, nada ha[Db] quedado [Db]
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[Cm]·  · · · | [C5]·  · · · | [Bb]·  · · · | [Ab7]·   · · · (x2)
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[Cm] Cada vez que me veo[Cm] siento que[Bb] no soy aquel[Ab7] que conozco
+[Cm]Pasa el tiempo y no lo[Cm]gro saber si dete[Bb]nerlo se[Ab7]rá lo que quería saber
+[Cm]La respuesta a toda[Cm] esta intriga que no es[Bb] más que algo que me[Ab7] condena
+[Cm]Sigo sin ver que todo[Cm] va igual que cuando [Bb]era... el de a[Ab7]yer
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[F]· · · · | [F]· · [F]↓ ◦
+[Cm] · · · | [Cm] · Y no ·sé lo ·que pa[Eb]só [Eb]
+Todo ha[Ab] cambia[Ab]do, todo se ha[Db] borra[Cm]do · · ·
+[Cm] · Y soy ·otro ·que no [Eb]soy yo [Eb]
+Todo ha[Ab] cambia[Ab]do, todo se ha[Db] borrado[Db]-oo
+{end_of_chorus}
+
+{start_of_verse: Puente}
+[Cm] · · · | [Cm] · · ·Por sie-|[Ab]-ee-|[Bb]-mpre
+[Cm] · · · | [Cm] · · ·Por sie-|[Ab]-ee-|[Bb]-mpre
+[Cm] · · · | [Cm] · · · | [Cm] · Por sie-|[Ab]-ee-|[Bb]-mpre
+[Cm] · · · | [Cm] · · ·Por sie-|[Ab]-ee-|[Bb]-mpre
+[Cm] · · · | [Cm] · · ·Por sie-|[Ab]-ee-|[Bb]-mpre
+[Cm] · · · | [Cm] · · ·Por sie-|[Ab]-ee-|[Bb]-mpre
+{end_of_verse}
+
+{start_of_chorus: Coro 3}
+[Cm]·  · · · | [Cm]·  · [Cm]↓  ◦
+[Cm] · · · | [Cm] · Y no ·sé lo ·que pa[Eb]só [Eb]
+Todo ha[Ab] cambia[Ab]do, todo se ha[Db] borrado
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Cm] · · · | [Cm] · Y no ·sé lo ·que pa[Eb]só [Eb]
+Todo ha[Ab] cambia[Ab]do, todo se ha[Db] borra[Cm]do · · ·
+[Cm] · Y soy ·otro ·que no [Eb]soy yo [Eb]
+Todo ha[Ab] cambia[Ab]do, nada ha[Db] quedado [Db]↓
+{end_of_verse}

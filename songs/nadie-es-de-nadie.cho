@@ -1,0 +1,64 @@
+{title: Nadie es de nadie}
+{artist: Yátu}
+{year: 2006}
+{key: E}
+{time: 4/4}
+
+{define: E base-fret 1 frets 4 4 4 2}
+{define: G#m base-fret 1 frets 4 3 4 2}
+{define: C#m base-fret 4 frets 3 1 1 1}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: B base-fret 1 frets 4 3 2 2}
+
+[E]· · · · | [G#m]·   · · · | [C#m]·   · · · | [A]· · · ·
+[E]· · · · | [G#m]·   · · · | [C#m]·   · · · | [A]· · · ·
+
+[E] Cielo e in[G#m]fierno  [C#m] en un mismo lu[A]gar
+[E] Infierno y [G#m]cielo  [C#m] sin poder vo[A]lar
+[E] Pero es tan[G#m] bonito  [C#m] que no puedo cre[A]er
+[E] Que al paso[G#m] del tiempo  [C#m] uno es solo otra [A]vez
+
+[E]· · · · | [G#m]·   · · · | [C#m]·   · · · | [A]· · · ·
+[E]· · · · | [G#m]·   · · · | [C#m]·   · · · | [A]· · · ·
+
+[E] Tenerte en mis [G#m]brazos   [C#m] y no dejarte [A]ir
+[E] Estar atra[G#m]pado   [C#m] sin poder sa[A]lir
+[E] Despertar [G#m]temprano   [C#m] con ganas de ac[A]tuar
+[E] Amar es en [G#m]vano   [C#m] si no vas a es[A]tar
+
+{start_of_chorus: Coro}
+Porque [A]nadie es de [E]nadie
+Y eso [G#m]ya me lo aprendí[C#m]
+Tantas [A]veces que me he [E]ido
+Pero a[G#m]ún estoy aquí[C#m]
+Pero a[A]ún... esto[G#m]y... aquí(C#m)iii
+
+[C#m]·   · · · | [E]· · · · | [F#m]·   · · · | [A]· · · ·
+[C#m]·   · · · | [E]· · · · | [F#m]·   · · · | [A]· · · ·
+
+[E] Tenerte en mis [G#m]brazos   [C#m] y no dejarte [A]ir
+[E] Estar atra[G#m]pado   [C#m] sin poder sa[A]lir
+[E] Despertar [G#m]temprano   [C#m] con ganas de ac[A]tuar
+[E] Amar es en [G#m]vano   [C#m] si no vas a es[A]tar
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Porque [A]nadie es de [E]nadie
+Y eso [G#m]ya me lo aprendí[C#m]
+Tantas [A]veces que me he [E]ido
+Pero a[G#m]ún estoy aquí[C#m]
+Porque [A]nadie es de [E]nadie
+Y eso [G#m]ya me lo aprendí[C#m]
+Tantas [A]veces que me he [E]ido
+Pero a[G#m]ún estoy aquí[C#m]
+Pero a[A]ún... esto[G#m]y... aquí(C#m)iii
+
+[C#m]·   · · · | [E]· · · · | [F#m]·   · · · | [A]· · · ·
+[C#m]·   · · · | [E]· · · · | [F#m]·   · · · | [A]· · · ·
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[C#m]·   · · · | [B]· · · · | [A]· · · · | [E]· · · ·
+[C#m]·   · · · | [B]· · · · | [A]· · · · | [E]↓
+{end_of_verse}

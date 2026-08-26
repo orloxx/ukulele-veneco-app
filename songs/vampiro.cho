@@ -1,0 +1,69 @@
+{title: Vampiro}
+{artist: Seguridad Nacional}
+{year: 1990}
+{key: G}
+{time: 4/4}
+
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Bb base-fret 1 frets 3 2 1 1}
+
+{start_of_verse: Riff (x2)}
+[Dm]·  · [Am]·  · | [Dm]·  · [Am]·  ·
+[Dm]·  · [Am]·  · | [Gm]·  · · ·
+[F]· · · ·
+{end_of_verse}
+
+{start_of_verse: Estrofa}
+Siempre está de[Dm]seando más[Am]
+Siempre está exi[Dm]giendo más[Am]
+Siempre está de[Dm]seando más[Am]
+Desean[Gm]do... más de mí[Dm]
+{end_of_verse}
+
+{start_of_verse: Riff}
+[Dm]·  · [Am]·  · | [Dm]·  · [Am]·  ·
+[Dm]·  · [Am]·  · | [Gm]·  · · ·
+[F]· · · ·
+{end_of_verse}
+
+{start_of_verse: Estrofa}
+Siempre está de[Dm]seando más[Am]
+Siempre está exi[Dm]giendo más[Am]
+Siempre está de[Dm]seando más[Am]
+Y no la pue[Gm]do... controlar[Dm]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Porque es un vampi[Bb]-ii-[F]ro [Bb] que me quita el poder[F]
+Es un vampi-[Bb]-ii-[F]ro [Bb] vestido de mujer[F]
+Es un vampi-[Bb]-ii-[F]ro [Bb] ella me da que hacer[F]
+Es un vampi-[Bb]-ii-[F]ro [Bb] pero es toda una mujer[Dm]
+{end_of_chorus}
+
+{start_of_verse: Riff}
+[Dm]·  · [Am]·  · | [Dm]·  · [Am]·  ·
+[Dm]·  · [Am]·  · | [Gm]·  · · ·
+[F]· · · ·
+{end_of_verse}
+
+{start_of_verse: Estrofa}
+Siempre está de[Dm]seando más[Am]
+Siempre está exi[Dm]giendo más[Am]
+Chupándome la san[Dm]gre está[Am]
+Y no la pue[Gm]do... sa[Dm]ciar
+{end_of_verse}
+
+{start_of_chorus: Coro (x2)}
+Porque es un vampi[Bb]-ii-[F]ro [Bb] que me quita el poder[F]
+Es un vampi-[Bb]-ii-[F]ro [Bb] vestido de mujer[F]
+Es un vampi-[Bb]-ii-[F]ro [Bb] ella me da que hacer[F]
+Es un vampi-[Bb]-ii-[F]ro [Bb] pero es toda una mujer[Dm]
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Bb]   [F]  [Bb] (que me quita el poder)[F]
+[Bb]   [F]  [Bb]↓-[Bb]↓-[Bb]↓  [Bb]↓-[Bb]↓-[Bb]↓  [Dm]↓
+{end_of_verse}

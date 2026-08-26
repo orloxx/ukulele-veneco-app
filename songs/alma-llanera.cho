@@ -1,0 +1,57 @@
+{title: Alma llanera}
+{artist: Simón Díaz}
+{year: 1914}
+{key: C}
+{time: 3/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: G base-fret 1 frets 0 2 3 2}
+
+[C]· · · | [F]· · · | [G7]·  · · | [G7]·  · ·
+[C]· · · | [F]· · · | [G7]·  · · | [G7]·  · ·
+[C]· · · | [F]· · · | [G7]·  · · | [G7]·  · ·
+
+[C]Yoo-[Dm]-oo [Em] yo na[F]cí en esta ri[C]bera
+Del A[D7]rauca vibra[G]dor
+[F] Soy her[D7]mano de la es[G]puma,
+[F] De las [D7]garzas, de las [G]rosas,
+[F]Soy her[D7]mano de la es[Em]puma,
+De las [Dm]garzas, de las [C]rosas
+[F] Y del [G7]sooo-[G7]-ooo-[G7]-ooo-[G7]-ol, y del (C)sol
+
+{start_of_verse: Intro 2}
+[C]· · · | [F]· · · | [G7]·  · · | [G7]·  · ·
+[C]· · · | [F]· · · | [G7]·  · · | [G7]·  · ·
+
+[C]Mee-[Dm]-ee [Em] arru[F]lló la viva [C]diana
+De la [D7]brisa en el pal[G]mar,
+[F] Y por [D7]eso tengo el [G]alma
+[F] Como el [D7]alma primo[G]rosa,
+[F] Y por [D7]eso tengo el [Em]alma
+Como el [Dm]alma primo[C]rosa
+[F] Del cris[G7]taaa-[G7]-aaa-[G7]-aaa-[G7]-al, del cris[C]↓tal
+
+[C]↓Amo, [F]↓lloro, [G7]↓canto, [C]↓sueño
+[C]Con claveles de pa[Dm]sión,
+[G7]Con claveles de pa[C]sión
+[C]Amo, [F]lloro, [G7]canto, [C]sueño
+[C]Para ornar las rubias [G7]crines
+Al potro de mi ama[C]dor
+
+[C]Yo nací en esta ri[G7]bera
+Del Arauca vibra[C]dor,
+[C]Soy hermano de la es[G7]puma,
+De las garzas, de las [C]rosaaa-[C]-aaa-[C]↓-as
+[G7]↓ Y del (C)sol
+{end_of_verse}
+
+{comment: Repetir desde el intro 2}
+
+{start_of_verse: Outro}
+[C]· · · | [C]· · · | [C]↓ ◦ ◦ | [G7]↓  ◦ ◦ | [C]↓
+{end_of_verse}

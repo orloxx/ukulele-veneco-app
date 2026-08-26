@@ -1,0 +1,103 @@
+{title: La propuesta}
+{artist: Caseroloops, Laura Guevara}
+{year: 2018}
+{key: G}
+{time: 4/4}
+{subtitle: Hector Martínez}
+{subtitle: Laura Guevara}
+{subtitle: Ambos}
+
+{define: G base-fret 1 frets 0 2 3 2}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Em7 base-fret 1 frets 0 2 0 2}
+{define: G7 base-fret 1 frets 0 2 1 2}
+
+{start_of_verse: Intro}
+[G]· · · [D7]↓  | [G]· · · [D7]↓  | [G]· · · [D7]↓  | [G]· · · [D7]↓
+[G]· · · · | [G]· · · · | [G]· · · · | [G]· · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[G]Dame     lo que [B7]tengas,  lo que [Em]queda de mi[Dm] yo te lo guar[C]do
+Está in[Cm]tacto, espe[Eb]rando en el mis[F]mo lugar [G] · · · | [G] · · ·
+
+[G]Todas    las pa[B7]labras que pro[Em]vendrán de ti[Dm] son la respues[C]ta
+Es por [Cm]eso    la pro[Eb]puesta que [F]vengo a dejar(G)
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[G] Dime que[B7] sí vendrás[Em], que no[Dm] me fallarás[C]
+No nece[Eb]↓sii[F]↓to más
+[G]Dime que[B7] sí vendrás[Em], que al fin[Dm] te quedarás[C]
+No nece[Eb]↓sii[F]↓to más
+[G]Dime que[B7] sí vendrás,[Em] que no[Dm] me fallarás[C]
+No nece[Eb]↓sii[F]↓to más
+[G]Dime que[B7] sí vendrás,[Em] que al fin[Dm] te quedarás[C]
+No nece[Eb]siii-[F]iii-to más(G)
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[G]· · · · | [G]· · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[G]Toma    lo que [B7]siento, lo pasa[Em]do ha si[Dm]do necesa[C]rio
+Con el [Cm]tiempo las he[Eb]ridas se pue[F]den curar[G] · · · | [G] · · ·
+
+[G]Todos los si[B7]lencios que pro[Em]vengan de ti[Dm] son la respues[C]ta
+Y esta [Cm]fuerza   nos a[Eb]cerca [F]cada vez más(G)
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[G] Dime que[B7] sí vendrás[Em], que no[Dm] me fallarás[C]
+No nece[Eb]↓sii[F]↓to más
+[G]Dime que[B7] sí vendrás[Em], que al fin[Dm] te quedarás[C]
+No nece[Eb]↓sii[F]↓to más
+[G]Dime que[B7] sí vendrás,[Em] que no[Dm] me fallarás[C]
+No nece[Eb]↓sii[F]↓to más
+[G]Dime que[B7] sí vendrás,[Em] que al fin[Dm] te quedarás[C]
+No nece[Eb]siii-[F]iii-to más(G)
+{end_of_chorus}
+
+{start_of_verse: Interludio 2}
+[G]· · · · | [G]· · · ·
+{end_of_verse}
+
+{start_of_verse: Puente}
+Y [G]↓aunque el sol no vea las estrellas de[B7]↓ día
+Les canta una melo[Em]↓ día
+Que les [Em7]↓ dé su calor pa’ que brillen me[G7]↓jor de [C]↓noche
+Amar es [Eb]↓solo ener[F]↓gía [G]↓ ◦ ◦ ◦ | [G]↓ ◦ ◦ ◦
+{end_of_verse}
+
+{start_of_verse: Puente 2}
+Y [G]↓aunque las agujas de reloj vayan [B7]↓dando vuelta
+El tiempo avanza en lí[Em]↓ nea recta
+No se [G7]↓puede frenar ni echar pa atrás
+Por [C]↓eso aprove[Eb]↓chemos el [F]↓tiempo y...
+{end_of_verse}
+
+{start_of_chorus: Coro 3}
+[G] Dime que[B7] sí vendrás[Em], que no[Dm] me fallarás[C]
+No nece[Eb]↓sii[F]↓to más
+[G]Dime que[B7] sí vendrás[Em], que al fin[Dm] te quedarás[C]
+No nece[Eb]↓sii[F]↓to más
+[G]Dime que[B7] sí vendrás,[Em] que no[Dm] me fallarás[C]
+No nece[Eb]↓sii[F]↓to más
+[G]Dime que[B7] sí vendrás,[Em] que al fin[Dm] te quedarás[C]
+No nece[Eb]siii-[F]iii-to más(G)
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[G]· · · · | [G]· · · ·
+[G]· · · [D7]↓  | [G]· · · [D7]↓  | [G]· · · [D7]↓  | [G]· · · [D7]↓
+[G]· · · [D7]↓  | [G]· · · [D7]↓  | [G]· · · [D7]↓  | [G]· · · [D7]↓
+[G]· · · [D7]↓  | [G]· · · [D7]↓  | [G]· · · [D7]↓  | [G]· · · [D7]↓  | [G]↓
+{end_of_verse}

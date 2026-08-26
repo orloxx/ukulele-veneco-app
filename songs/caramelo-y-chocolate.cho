@@ -1,0 +1,45 @@
+{title: Caramelo y chocolate}
+{artist: Sexteto Juventud}
+{year: 1971}
+{key: C}
+{time: 4/4}
+{capo: 1}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: C7 base-fret 1 frets 0 0 0 1}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: G7 base-fret 1 frets 0 2 1 2}
+
+[C]· · · · | [Dm]·  · · · | [Dm]·  · · · | [C]· · · ·
+[C]· · · · | [Dm]·  · · · | [Dm]·  · · · | [C]· · · ·
+
+Tú [C]eres caramelo y choco[Dm]late
+Tú [Dm]eres la alegría de mi [C]vida
+[C]Nena, cuando pasas por mi [Dm]lado
+El [Dm]corazón a mí me suena a[C]↓sí ◦ ◦ ◦ | ◦ ◦ ◦ ◦
+
+[C]Eres la chica de mis [Dm]sueños
+Voy[Dm] atrás de ti, sin ce[C]sar
+[C]Mira caramelo e’ choco[Dm]late
+Po[Dm]co a poco me vas a ma[C]tar
+
+Si te [C7]miro, no me [F]miras
+Si te [C7]llamo, no me es[F]cuchas
+Me pro[D]hibes... que te [G]quiera...
+Que [D]toque a las puertas de tu a[G7]mor
+
+Lle[C]guemos a un acuerdo cara[Dm]melo
+[Dm]Que te hará feliz a ti y a [C]mí
+Yo [C]sé que en el fondo tú me [Dm]quieres
+Y[Dm] quizás mañana digas [C]sí
+
+{comment: Toda la canción nuevamente desde el principio}
+
+{start_of_verse: Outro}
+Y[Dm] quizás mañana digas [C]sí
+Y[Dm] quizás mañana digas [C]sí
+Y[Dm] quizás mañana digas [C]síiiii-[Dm]-ii [G7]   [C]↓
+{end_of_verse}

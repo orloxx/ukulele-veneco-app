@@ -1,0 +1,72 @@
+{title: Vuelve}
+{artist: Insólito Universo}
+{year: 2018}
+{key: Gm}
+{time: 6/8}
+
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: Eb base-fret 1 frets 0 3 3 1}
+
+[Gm]↓  [D7]↓  ◦ ◦ ◦ ◦
+
+[Gm]·  · · · · · | [Bb]·  · · · · · | [Gm]·  · · · · · | [Cm]·  · · · · ·
+[A7]·  · · · · · | [Bb]·  · · · · · | [D7]·  · · · · · | [Gm]·  · · [Gm]↓  [D7]↓  ◦
+
+{start_of_verse: Verso (x2)}
+[Gm]Vuelve la ·huella y va
+[Bb] Regresando al ·paso no lo suelta
+[Gm]Vuelve y se ·queda y va
+[Cm] Asaltando la ·sombra de tu suela
+[A7] Corre, sube, enca·rama escamotea
+[Bb] No lava ni pres·ta batea
+Esa [D7]huella que· vuelve diciendo:
+[Gm]↓ "Repeat af    ◦ter me"
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[A7] Pero este cami·nito verde tiene [Bb]su ambición de ·libertad
+Só[A7]lo recibe y· sostiene el [Bb]paso que es ·en verdad
+[D7] Arco recién nacido y [Gm]suelto al an[Eb]dar
+Vuelta de [Bb]baile, [D7] tinta de[Gm] gozo en el ·aire
+[A7] Pero este cami·nito verde tiene [Bb]su ambición de ·libertad
+Só[A7]lo recibe y· sostiene el [Bb]paso que es ·en verdad (¡ese!)
+[D7] Arco recién nacido y [Gm]suelto al an[Eb]dar
+Vuelta de [Bb]baile, [D7] tinta de[Gm] gozo en el ·aire
+
+[Gm]·  · · · · · | [Bb]·  · · · · · | [Gm]·  · · · · · | [Cm]·  · · · · ·
+[A7]·  · · · · · | [Bb]·  · · · · · | [D7]·  · · · · · | [Gm]·  · · [Gm]↓  [D7]↓  ◦
+[Gm]·  · · · · · | [Bb]·  · · · · · | [Gm]·  · · · · · | [Cm]·  · · · · ·
+[A7]·  · · · · · | [Bb]·  · · · · · | [D7]·  · · · · · | [D7]·  · · · · ·
+{end_of_chorus}
+
+{start_of_verse: Verso (x2)}
+[Gm]Vuelve la ·huella y dice:
+[Bb] Ya lo vi lo fui,· ya lo sé todo
+[Gm]Vuelve y se ·queja y va
+[Cm] Trazando su vie·jo mapa de lodo
+[A7] Yo la dejo vol·teada en su reverso [Bb]terso y tram·poso
+De lo an[D7]dado atrás, fu·gaz
+Entre el ol[Gm]vido de mis dos es[Gm]↓ puelas
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[A7] Pero este cami·nito verde tiene [Bb]su ambición de ·libertad
+Só[A7]lo recibe y· sostiene el [Bb]paso que es ·en verdad
+[D7] Arco recién nacido y [Gm]suelto al an[Eb]dar
+Vuelta de [Bb]baile, [D7] tinta de[Gm] gozo en el ·aire
+[A7] Pero este cami·nito verde tiene [Bb]su ambición de ·libertad
+Só[A7]lo recibe y· sostiene el [Bb]paso que es ·en verdad (¡ese!)
+[D7] Arco recién nacido y [Gm]suelto al an[Eb]dar
+Vuelta de [Bb]baile, [D7] tinta de[Gm] gozo en el ·aire
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[D7] Arco recién nacido y [Gm]suelto al an[Eb]dar
+Vuelta de [Bb]baile, [D7] tinta de[Gm] gozo en el ·aire
+[D7] Arco recién nacido y [Gm]suelto al an[Eb]dar
+Vuelta de [Bb]baile, [D7] tinta de[Gm] gozo en el [Gm]↓ aire
+{end_of_verse}

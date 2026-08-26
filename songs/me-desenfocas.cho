@@ -1,0 +1,61 @@
+{title: Me desenfocas}
+{artist: Mochuelo}
+{year: 2006}
+{key: C}
+{time: 4/4}
+
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: G base-fret 1 frets 0 2 3 2}
+
+[Am]·  · · · | [Am]·  · · · | [Dm]·  · · · | [Dm]·  · · ·
+
+[Am]Dejaré... que las ventanas organizen [Dm]su venganza
+[Fm]Entrar el viento en mi espalda eleva[Dm]rá toda tu aa-[Em]-alma
+[Am]Le enviarán de regreso a un mundo nuevo [Dm]sin remedio
+[Fm]Por empañar los lentes que me hacen vee-[Dm]-ertee-[Em]-ee
+
+[Dm]·  · · · | [Em]·  · ·
+
+{start_of_chorus: Coro}
+·Me desen-[F]-[C]focas, a[Am]traes todo el [G]metal
+Me desen-[F]-[C]focas, a[Am]traes todo el [G]metal
+Me desen-[F]-[C]focas... [Am]-[G]
+[F]-[C]  ...A[Am]traes todo el [G]metal
+
+[Am]·  · · · | [Am]·  · · · | [Am]·  · · · | [Am]·  · · ·
+
+[Am]Dejaré... que las ventanas organizen [Dm]su venganza
+[Fm]Entrar el viento en mi espalda eleva[Dm]rá toda tu aa-[Em]-alma
+[Am]Te enviarán de regreso a un mundo nuevo [Dm]sin remedio
+[Fm]Por empañar los lentes que me hacen vee-[Dm]-ertee-[Em]-ee
+
+[Dm]·  · · · | [Em]·  · · · | [Dm]·  · · · | [Em]·  · ·
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+·Me desen-[F]-[C]focas, a[Am]traes todo el [G]metal
+Me desen-[F]-[C]focas, a[Am]traes todo el [G]metal
+Me desen-[F]-[C]focas, (a [Am]traes todo el     [G]metal)
+[F]-[C]  ...A[Am]traes todo el [G]metal
+{end_of_chorus}
+
+{start_of_verse: Instrumental (Sigue la progresión del coro)}
+[F]-[C]  [Am]-[G]
+[F]-[C]  [Am]-[G]
+[F]-[C]  [Am]-[G]
+[F]-[C]  [Am]-[G]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Me desen-[F]-[C]focas, a[Am]traes todo el [G]metal
+Me desen-[F]-[C]focas, a[Am]traes todo el [G]metal
+Me desen-[F]-[C]focas, a[Am]traes todo el [G]metal
+[F]-[C] ...A[Am]traes todo el [G]metal
+
+[Am]·  · · · | [Am]·  · · · | [Am]·  · · · | [Am]·  · · ·↓
+{end_of_chorus}

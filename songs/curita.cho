@@ -1,0 +1,72 @@
+{title: Curita}
+{artist: Okills}
+{year: 2024}
+{key: Bb}
+{time: 4/4}
+{capo: 1}
+
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Bdim7 base-fret 1 frets 1 2 1 2}
+{define: Cdim7 base-fret 1 frets 2 3 2 3}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Ab base-fret 3 frets 3 1 2 1}
+{define: Eb base-fret 1 frets 0 3 3 1}
+
+Todo se a[Cm]caba    [F]    tarde o tem[Cm]prano    [F]
+No fue [Cm]culpa ni tuya ni [F]mía, tal vez fue el ve[Bb]rano  [Bb]↓
+[Bdim7]↓Todo se a[Cm]caba    [F]    tarde o tem[Cm]prano    [F]
+No te [Cm]veo como una ene[F]miga y yo no soy vi[Bb]llano
+
+Y ahora [Cm]↓ sé por qué
+Ahora [Cdim7]↓ sé por ↓ qué
+
+{start_of_chorus: Coro}
+Tengo una cu[Bb]rita que me tapa el gol[Gm]pe
+Golpe que me en[Cm]seña lo que hice mal[F]
+Mal que termi[Bb]nó, lindo te recuer[Gm]do
+Gracias por haber[Cm]me enseñado a bailar[F]
+Sé que no me [Dm]vas a devolver el sué[Gm]ter
+Yo tampoco [Cm]voy a devolverte na’[F]
+Y si algún [Dm]día vuelvo yo a verte[Gm]
+Espero la cu[Cm]↓ rita [Cdim7]↓ no esté más[Bb]   [Bb]↓
+{end_of_chorus}
+
+{start_of_verse: Instrumental}
+[Cm]·  · · · | [F]· · · · | [Cm]·  · · · | [F]· · · ·
+[Cm]·  · · · | [F]· · · · | [Bb]↓-↓ -↓  [Bb]↓-↓ -↓  | [Bb]↓
+
+[Bdim7]↓Todo se a[Cm]caba,    [F]    todo ter[Cm]mina     [F]
+Con el [Cm]tiempo las flores más [F]lindas también se mar[Bb]chitan
+
+Y ahora [Cm]↓ sé por qué
+Ahora [Cdim7]↓ sé por [Cdim7]↓ qué ◦ ◦ ◦ | ◦ ◦
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Tengo una cu[Bb]rita que me tapa el gol[Gm]pe
+Golpe que me en[Cm]seña lo que hice mal[F]
+Mal que termi[Bb]nó, lindo te recuer[Gm]do
+Gracias por haber[Cm]me enseñado a bailar[F]
+Sé que no me [Dm]vas a devolver el sué[Gm]ter
+Yo tampoco [Cm]voy a devolverte na’[F]
+Y si algún [Dm]día vuelvo yo a verte[Gm]
+Espero la cu[Cm]rita [Cdim7]no esté más
+
+[Cm]  Juntos vaci[Ab]lábamos todo[F]
+Reco[Bb]rrimos [F]cielo y [Ab]mar  [Eb]
+Pero [Cm]todo tiene su fi[F]↓nal
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Bb]↓Vamos a quitar la curita[Gm]↓  que ya no duele más[Cm]
+Que ya no duele más,[F] no duele
+[Bb]Vamos a quitar la curita[Gm] que ya no duele más[Cm]
+No duele, no duele, no [F]duele más
+[Bb]Vamos a quitar la curita[Gm] que ya no duele más[Cm]
+Que ya no duele, no [F]duele por aquí ni por allá
+[Bb]Vamos a quitar la curita[Gm] que ya no duele más[Cm]   [F]
+[Bb]↓Vamos a quitar la curita[Bb]↓
+{end_of_verse}

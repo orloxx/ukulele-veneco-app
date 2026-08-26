@@ -1,0 +1,49 @@
+{title: Polaroid}
+{artist: TLX}
+{year: 2010}
+{key: G}
+{time: 4/4}
+{capo: 1}
+
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+
+[G]· [Em]·  [G]· [Em]·  [G]· [Em]·  [D]· [D]·
+[G]· [Em]·  [G]· [Em]·  [G]· [Em]·  [D]· [D]·
+
+Quéda[G]te donde es[Em]tás, y a[G]paga el exterior[Em]
+Sin pre[G]guntarte, voy[Em] detrás, soy yo,[D] mil veces hoy[D]
+Pedí tus [G]labios, los encon[Em]tré bajo una [G]foto Polaro[Em]id
+Un bre[G]ve espacio [Em] para estar en tu [D]pobre corazón [D]
+
+Suéñame [G]como fui[Bm], lo que qui[G]siste ser[Em]
+Ciégame en [G]lo que vi[Bm], sé que pu[D]diste ser[D]
+
+{start_of_chorus: Coro}
+Te vi pa[G]sar, te vi pa[Bm]sar, te vi pa[A]saa-[E7]aar
+Te vi pa[G]sar, te vi pa[Bm]sar, te vi pa[A]saa-[E7]aar
+Algo en tus [G]ojos, un mal sem[Bm]blante, un cuerpo ex[A]traño en tu mi[E7]rar
+Cierro la [G]puerta, guardo mis [Bm]ojos para que [A]no me vean lloraa-[E7]aar [E7]↓
+Tú me hiciste gri(G)tar
+
+[G]· [Em]·  [G]· [Em]·  [G]· [Em]·  [D]· [D]·
+[G]· [Em]·  [G]· [Em]·  [G]· [Em]·  [D]· [D]·
+
+Suéñame [G]como fui[Bm], lo que qui[G]siste ser[Em]
+Ciégame en [G]lo que vi[Bm], sé que pu[D]diste ser[D]
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Te vi pa[G]sar, te vi pa[Bm]sar, te vi pa[A]saa-[E7]aar
+Te vi pa[G]sar, te vi pa[Bm]sar, te vi pa[A]saa-[E7]aar
+Algo en tus [G]ojos, un mal sem[Bm]blante, un cuerpo ex[A]traño en tu mi[E7]rar
+Cierro la [G]puerta, guardo mis [Bm]ojos para que [A]no me vean lloraa-[E7]aar
+Tú me hiciste gri(G)tar
+
+[G]· [Bm]·  [D]· [E7]·  [G]· [Bm]·  [D]· [E7]·
+[G]· [Em]·  [G]· [Em]·  [G]· [Em]·  [G]· [Em]↓
+{end_of_chorus}

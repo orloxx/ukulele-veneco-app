@@ -1,0 +1,77 @@
+{title: Acidito}
+{artist: Carota, Ñema y Tajá}
+{year: 1990}
+{key: A}
+{time: 5/8}
+
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: F#m base-fret 1 frets 2 1 2 0}
+
+{start_of_verse: Intro}
+[Dm]·  · · · · | [Am]·  · · · · | [E7]·  · · · · | [A7]·  · · · ·
+[Dm]·  · · · · | [Am]·  · · · · | [E7]·  · · · · | [Am]·  · · · ·
+[A]· · · · · | [A]· · · · · | [A]· · · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+A[A]noche se refle[E7]jaba la luna [D]sobre el espejo [A]de la laguna
+y [D]me hizo acordar [A]de una ilusión que [E7]llevo en el cora[A]zón · · · ·
+[A]· · · · · | [A]· · · · ·
+A[A]noche se refle[E7]jaba la luna [D]sobre el espejo [A]de la laguna
+y [D]me hizo acordar [A]de una ilusión que [E7]llevo en el cora[A]zón ·cual ·nin·gu·na
+[A]· · · · · | [A]· · · · ·
+{end_of_verse}
+
+{start_of_verse: Pre-coro}
+[A]Cual la tuna[E7] del limón[F#m] se clavó en mi[E7] corazón [D]
+y me dejó [A]sin ilusión, sin a[E7]mor y sin fortu[A]na · · · · | [A] · · · ·
+[A]Cual la tuna[E7] del limón[F#m] se clavó en mi[E7] corazón [D]
+y me dejó [A]sin ilusión, sin a[E7]mor y sin fortu[A]na · · · · | [A] · · · ·
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[A]Debajo de un[D] limonero en [A]flor no se me olvi[E7]da el "te quiero, a[A]mor"
+(Debajo de un      [D] limonero en      [A]flor no se me olvi      [E7]da el "te quiero, a      [Am]mor")
+Aunque de[Dm]biera olvidar[Am]te, porque ya[E7] pasó la flora[A7]ción
+Y se le [Dm]cae de la ma[Am]ta, acidito, el [E7]juguito ’e li[Am]món,
+(Aunque de      [Dm]biera olvidar    [Am]te, porque ya     [E7] pasó la flora    [A7]ción
+Y se le    [Dm]cae de la ma      [Am]ta, acidito, el    [E7]juguito ’e li   [Am]món),
+Gota a [Dm]gota va cayen[Am]do y ardiendo en[E7] mi corazón
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[Am]·  · · · · | [A]· · · · · | [A]· · · · · | [A]· · · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+A[A]noche mientras pa[E7]saba el destello [D]pintaba en el azul[A] de tu cielo
+[D]Con tinta de mi[A] corazón un [E7]cuadro de ilusión[A] · · · · | [A] · · · · | [A] · · · ·
+A[A]noche mientras pa[E7]saba el destello [D]pintaba en el azul[A] de tu cielo
+[D]Con tinta de mi[A] corazón un [E7]cuadro de ilusión[A] ·y ·de an·he·lo | [A] · · · · | [A] · · · ·
+{end_of_verse}
+
+{start_of_verse: Pre-coro 2}
+[A] Acidito es[E7] el sabor, [F#m] como néctar[E7] del amor [D]
+Que está escondi[A]do en una flor [E7]de un limonero en [A]celo· · · · | [A] · · · ·
+[A] Acidito es[E7] el sabor, [F#m] como néctar[E7] del amor [D]
+Que está escondi[A]do en una flor [E7]de un limonero en [A]celo· · · · | [A] · · · ·
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[A]Debajo de un[D] limonero en [A]flor no se me olvi[E7]da el "te quiero, a[A]mor"
+(Debajo de un      [D] limonero en      [A]flor no se me olvi      [E7]da el "te quiero, a      [Am]mor")
+Aunque de[Dm]biera olvidar[Am]te, porque ya[E7] pasó la flora[A7]ción
+Y se le [Dm]cae de la ma[Am]ta, acidito, el [E7]juguito ’e li[Am]món,
+(Aunque de      [Dm]biera olvidar    [Am]te, porque ya     [E7] pasó la flora    [A7]ción
+Y se le    [Dm]cae de la ma      [Am]ta, acidito, el    [E7]juguito ’e li   [Am]món),
+Gota a [Dm]gota va cayen[Am]do y ardiendo en[E7] mi corazón[Am]
+{end_of_chorus}
+
+{start_of_verse: Outro}
+(Gota a    [Dm]gota va cayen      [Am]do y ardiendo en       [E7] mi cora   [A]↓zón)
+{end_of_verse}

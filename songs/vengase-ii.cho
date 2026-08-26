@@ -1,0 +1,74 @@
+{title: Véngase II}
+{artist: Rawayana}
+{year: 2016}
+{key: Em}
+{time: 4/4}
+
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: B base-fret 1 frets 4 3 2 2}
+{define: Cmaj7 base-fret 1 frets 0 0 0 2}
+{define: C# base-fret 4 frets 3 2 1 1}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: Ab base-fret 3 frets 3 1 2 1}
+
+[Em]·  · · · | [F#m]·   · · · | [Em]·  · · · | [F#m]·   · · ·
+
+[Em]Vengo del Caribe, esa es la ver[F#m]daaad, ooh
+[Em] Y la receta de mi canción, lle[F#m]va calor y humedad
+
+{start_of_chorus: Coro}
+[G]Somos de esta región, desorganización
+[A]Si me mandas invierno, [B]se me nubla la razón
+[G]No me rechaces, no, muero sin tu [A]mar [B]
+Ay-ay[Cmaj7]-ay, oh-ioh-ioh
+Feel this [F#m]reggae rhythm in your soul
+Ay-ay[Em]-ay, oi-oi-oi
+No re[A]quiere sacrificio, no[B]
+
+We-ri-[Cmaj7]re-da-da-da, we-ri-[F#m]re-da-da-dau
+We-ri-[Em]re-da-da-da, we-ri-[A]re-da-da[B]
+
+Co[Em]mo en toda costa, sube la ma[F#m]rea
+[Em] Tranquila, mi amor, [F#m]↓ que eso se surfea
+Si[Em] no se surfea, nuestro amor lo drena
+[F#m]Eso no es problema, oh, oh
+[Em] Juntos somos recios
+No nos lleva un [F#m]simple mar de leva
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[G]Somos de esta región, desorganización
+[A]Si me mandas invierno, [B]se me nubla la razón
+[G]No me rechaces, no, muero sin tu [A]mar [B]
+Ay-ay[Cmaj7]-ay, oh-ioh-ioh
+Feel this [F#m]reggae rhythm in your soul
+Ay-ay[Em]-ay, oi-oi-oi
+No re[A]quiere sacrificio, no[B]  [C#]
+{end_of_chorus}
+
+{start_of_verse: Cambio de clave}
+Ay-ay[Eb]-ay, oh-ioh-ioh
+Feel this [Dm]reggae rhythm in your soul
+Ay-ay[Gm]-ay, oi-oi-oi
+No re[C]quiere sacrificio, no[D]
+
+We-ri-[Eb]re-da-da-dau, we-ri-[Dm]re-da-da-dau
+We-ri-[Gm]re-da-da-dau, we-ri-[C]re-da-da-dau[D]
+{end_of_verse}
+
+{start_of_verse: Outro}
+Vén[Eb]gase, mi amor, si[Fm] siente dolor
+Mi[Eb]re, corazón, todo su[Fm]yo
+Dul[Eb]ce es el dolor, ro[Ab]sa o girasol
+Mi[Eb]re, corazón, todo su[Ab]yo
+
+[G]↓
+{end_of_verse}

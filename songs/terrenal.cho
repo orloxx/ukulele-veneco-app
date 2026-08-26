@@ -1,0 +1,78 @@
+{title: Terrenal}
+{artist: Dermis Tatú}
+{year: 1995}
+{key: Em}
+{time: 4/4}
+
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Em7^ base-fret 7 frets 1 1 1 1}
+{define: Cmaj7 base-fret 1 frets 0 0 0 2}
+{define: Am7 base-fret 1 frets 0 0 0 0}
+{define: A7 base-fret 1 frets 0 1 0 0}
+
+{start_of_verse: Intro}
+[Em]·  · · · | [Em]·  · · · | [Am]·  · · · | [C]· · [F]· ·
+
+[Em]·  · · · | [Em]·  · · · | [Am]·  · · · | [C]· · [F]· ·
+[Em]·  · · · | [Em]·  · · · | [Am]·  · · · | [C]· · [F]· ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[Em] He decidido escapar[Em] de esta ladilla de ciudad
+[Am] · · ·Escapar[C] al [F]otro lado
+[Em] He soportado en cantidad[Em] cualquier especie terrenal
+[Am] · · ·Terrenal,[C] te [F]has quedado
+[Em] Mudó de piel como pa[Em]sar las páginas de un mismo cuen(Am)to
+[Am] · · De un ·mismo cuen[C]to, en[F]vejeciendo
+[Em] Moriré en paz deseando ver[Em] las cosas cambiar de lu(Am)gar
+[Am] · · De al·gún lu[C]gar, · [F]↓ a otro lugar
+{end_of_verse}
+
+{start_of_verse: Interludio}
+[Em]·  · · · | [Em]·  · · · | [Am]·  · · · | [C]· · [F]· ·
+[Em]·  · · · | [Em]·  · · · | [Am]·  · · · | [C]· · [F]· ·
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[Em] Espero el día en ansiedad[Em] y en ella la felicidad
+[Am] · · Fe·licidad,[C] se [F]me ha escapado
+[Em] Juro seguirla hasta el final,[Em] pero el principio del final,
+[Am] · · De e·se final,[C] no [F]me ha tocado
+[Em] He revisado cualquier [Em]cloaca en mi ciudad sin encontrar,
+[Am] · · sin ·encontrar,[C] ra[F]tas con hambre
+[Em] Moriré en paz deseando ver[Em] las cosas cambiar de lu(Am)gar
+[Am] · · De al·gún lu[C]gar, · [F]↓ a otro lugar
+{end_of_verse}
+
+{start_of_verse: Interludio 2}
+[Em] · · · | [Em] · · · | [Am] · · · | [C] · [F] a o·tro lugar
+[Em]·  · · · | [Em]·  · · · | [Am]·  · · · | [C]· · [F]· ·
+[Em]·  · · [F]· | [Em]·  · · [F]· | [Em]·  · · [F]· | [Em]·  · · ·
+{end_of_verse}
+
+{start_of_verse: Funky}
+[Em7^]·    · · · | [Em7^]·    · · · | [Em]·  · · · | [Cmaj7]·     · [Am7]·   ·
+[Em7^]·    · · · | [Em7^]·    · · · | [Em]·  · · · | [Cmaj7]·     · [Am7]·   ·
+[Em7^]·    · · · | [Em7^]·    · · · | [Em]·  · · · | [Cmaj7]·     · [Am7]·   ·
+[Em7^]·    · · · | [Em7^]·    · · · | [Em]·  · · · | [Cmaj7]·     · [Am7]·   ·
+
+[Em]·  · · · | [Em]·  · · · | [A7]·  · · · | [Cmaj7]·     · [F]· ·
+[Em]·  · · · | [Em]·  · · · | [A7]·  · · · | [Cmaj7]·     · [F]· ·
+[Em]·  · · · | [Em]·  · · · | [A7]↓  [A7]·  · · | [Cmaj7]·     · [F]· ·
+[Em]·  · · · | [Em]·  · · · | [A7]↓  [A7]·  · · | [Cmaj7]·     · [F]· ·
+
+[Em]·  · · · | [Em]·  · · · | [A7]·  · · · | [Cmaj7]·     · [F]· ·
+
+[Em7^]·    · · · | [Em7^]·    · · · | [Em]·  · · · | [Cmaj7]·     · [F]· ·
+[Em7^]·    · · · | [Em7^]·    · · · | [Em]·  · · · | [Cmaj7]·     · [F]· ·
+{end_of_verse}
+
+{start_of_verse: Hablado}
+[Em] "Ay, y me ofrecie[Em]ron un caballo [Em]para montarlo en la feria...
+[Em]  ¿O sea no puedes estar ni en la [Em]sombra, ni en el sol, ni en la habita[Em]ción,
+ Ni en ninguna [Em]parte? O sea, mué[Em]rete..." [Em]
+[Em]↓
+{end_of_verse}

@@ -1,0 +1,70 @@
+{title: Canción suave (Despecho N°2)}
+{artist: Caramelos de Cianuro}
+{year: 1996}
+{key: Eb}
+{time: 4/4}
+
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: Db base-fret 1 frets 1 1 1 4}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Ab base-fret 3 frets 3 1 2 1}
+
+{start_of_verse: Intro}
+[Eb]·  · · · | [Eb]·  · · · | [Cm]·  · · · | [Db]·  · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[Eb]Una foto de[Eb] tu ombligo
+Vir[Cm]ginal y ado[Db]lescente
+[Eb]Nunca fuiste de[Eb]masiado
+Siem[Cm]pre fuiste su[Db]ficiente
+[Eb]No es secreto pa[Eb]ra nadie
+To[Cm]do el mal que nos[Db] hicimos
+[Eb]Tirarás con cuan[Eb]tos quieras
+Pe[Cm]ro el amor... no[Db] lo harás jamás
+{end_of_verse}
+
+{start_of_verse: Pre-coro}
+[Eb]·  · · · | [Eb]·
+Que solo yo[Cm] te se tocar[Db] como te
+gus[Eb]ta     [Eb]
+Conozco ca[Cm]da poro, ca[Db]da nervio
+tu[Eb]yo      [Eb]
+Que con mi ma[Cm]no te simu[Db]lo tantas
+ve[Eb]ces     [Eb]
+Recuerdo ca[Cm]da noche, ca[Db]da beso jun[Eb]tos [Eb]
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Cm] Y más me hun[Cm]do mientras más[Eb] me esfuer[Eb]zo
+[Cm] Es tan difí[Cm]cil olvidar[Bb] Borrar las mar[Bb]cas
+que dejó el[Ab] pasado[Ab], volver a empe(Eb)zar
+{end_of_chorus}
+
+{start_of_verse: Pre-coro 2}
+[Eb]·  · · · | [Eb]·
+Y nunca pien[Cm]ses que perdi[Db]mos nuestro
+tiem[Eb]po    [Eb]
+Sigues sien[Cm]do lo que mue[Db]ve mi
+univer[Eb]so   [Eb]
+Sabes que es[Cm] inútil re[Db]sistirnos
+A un[Eb] destino com[Eb]partido
+Estan[Cm]do juntos no hay[Db] eterni[Eb]dad [Eb]
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[Cm] Es tan difí[Cm]cil olvidar[Bb] Borrar las mar[Bb]cas
+que dejó el[Ab] pasado[Ab]
+{end_of_chorus}
+
+{start_of_verse: Verso 2}
+[Eb]Una foto de[Eb] tu ombligo
+Vir[Cm]ginal y ado[Db]lescente
+[Eb]Nunca fuiste de[Eb]masiado
+Siem[Cm]pre fuiste su[Db]ficiente
+[Eb]No es secreto pa[Eb]ra nadie
+To[Cm]do el mal que nos[Db] hicimos
+[Eb]Tirarás con cuan[Eb]tos quieras
+Pe[Cm]ro el amor... no[Db] lo harás jamás [Eb]↓
+{end_of_verse}

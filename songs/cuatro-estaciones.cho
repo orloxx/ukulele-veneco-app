@@ -1,0 +1,75 @@
+{title: Cuatro estaciones}
+{artist: Guaco}
+{year: 1988}
+{key: C}
+{time: 4/4}
+
+{define: Gsus4 base-fret 1 frets 0 2 3 3}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Ab base-fret 3 frets 3 1 2 1}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Cmaj7 base-fret 1 frets 0 0 0 2}
+{define: C7 base-fret 1 frets 0 0 0 1}
+{define: D7 base-fret 1 frets 2 2 2 3}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+
+[Gsus4]·     · · · | [G]· · · · | [Ab]·  · [Bb]·  [G]·
+[C]· [Cmaj7]·     [C7]·  · | [Ab]·  · [D7]·  · | [G]· · · ·
+[C]· · · · | [Am]·  · · · | [F]· · [G]· ·
+
+{start_of_chorus: Coro}
+Nues[C]tro amor duró cuatro esta[G]ciones
+Nues[F]tro amor duró[D7] cuatro esta[G]ciones
+Nues[C]tro amor duró cuatro esta[G]ciones
+Nues[F]tro amor duró[D7] cuatro esta[G]ciones
+
+Cuando[C] te conocí fue co[G]mo primavera
+Yo te en[Am]tregaba toda mi vi[Em]da por entera
+Y así[F] llegó el verano y con[C] él la pasión
+Con fue[Am]go nos quema[D7]mos, con[G] el fuego de amor
+
+Cuando[C] te conocí fue co[G]mo primavera
+Yo te en[Am]tregaba toda mi vi[Em]da por entera
+Y así[F] llegó el verano y con[C] él la pasión
+Con fue[Am]go nos quema[D7]mos, con[G] el fuego de amor
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Nues[C]tro amor duró cuatro esta[G]ciones
+Nues[F]tro amor duró[D7] cuatro esta[G]ciones
+Nues[C]tro amor duró cuatro esta[G]ciones
+Nues[F]tro amor duró[D7] cuatro esta[G]ciones
+
+Pero[C] sin darnos cuenta el o[G]toño llegaba
+Caye[Am]ron hojas secas, todo[Em] se deshojaba
+Y un to[F]no blanquecino de frí[C]o nos cubrió
+La nie[Am]ve del invier[D7]no todo[G] lo congeló
+
+[C]· · · · | [G]· · · · | [F]· · [D7]·  · | [G]· · · · (x2)
+
+[C]Ró cuatro estaciones, du[G]ró cuatro estaciones,
+Nues[F]tro amor duró[D7] cuatro esta[G]ciones
+Cuando[C] brota la flor de maña[G]na muy serena
+Así[F] nace el amor[D7] como[G] la primavera
+[C]Ró cuatro estaciones, du[G]ró cuatro estaciones,
+Nues[F]tro amor duró[D7] cuatro esta[G]ciones
+De pron[C]to la pasión como[G] llega el verano
+De cuer[F]pos ancestra[D7]dos llenan[G]do el corazón
+
+[C]· · · · | [G]· · · · | [F]· · [D7]·  · | [G]· · · · (x4)
+
+[C]Ró cuatro estaciones, du[G]ró cuatro estaciones,
+Nues[F]tro amor duró[D7] cuatro esta[G]ciones
+El o[C]toño desho[G]jado, la ru[F]tina [D7] y el en[G]gaño
+[C]Ró cuatro estaciones, du[G]ró cuatro estaciones,
+Nues[F]tro amor duró[D7] cuatro esta[G]ciones
+Todo[C] se congeló con [G]frío del invierno
+De[F]jando los recuer[D7]dos, las [G]manos en cancióooon...
+
+[Gsus4]·     · · · | [G]· · · · | [Ab]·  · [Bb]·  [G]·
+[C]· [Cmaj7]·     [C7]·  · | [Ab]·  · [D7]·  · | [G]· · · ·
+[C]↓
+{end_of_chorus}

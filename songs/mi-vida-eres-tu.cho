@@ -1,0 +1,50 @@
+{title: Mi vida eres tú}
+{artist: Rudy La Scala}
+{year: 1985}
+{key: E}
+{time: 4/4}
+
+{define: E base-fret 1 frets 4 4 4 2}
+{define: C#m base-fret 4 frets 3 1 1 1}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: A base-fret 1 frets 2 1 0 0}
+{define: Emaj7 base-fret 1 frets 1 3 0 2}
+{define: B base-fret 1 frets 4 3 2 2}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: G#7 base-fret 1 frets 1 0 2 3}
+{define: E6 base-fret 1 frets 1 1 0 2}
+
+[E]· · · [C#m]·   | [B7]·  · [A]· · | [E]· · · ·
+
+[E] · Per·dona · es que [E]yo caminaba por a[Emaj7]quí y en tu alcoba vi la [B]luz
+[B7] Perdona mi acti[F#m]tud quizá debí lla[B7]mar y no presentarme a[E]sí
+[E] · Per·dona · la oca[E]sión así lo deci[G#7]dió y de vuelta estoy a[C#m]quí [C#m]↓   [B]↓
+[A] Creo que me equivo[E]qué, qué bella que te [F#m]ves, ya no puedo se[B7]guir [B7]↓
+
+{start_of_chorus: Coro}
+Mi vida eres [E]tú · [E6] · [E] · y [G#7]solamen·te [C#m]tú · · ·
+[F#m] · Tra[C#m]tando ·de expli[F#m]car · su [A]mano le· to[B7]mé ·
+Y [B7]la inten·té be[E]sar · [A] · [B7]↓
+Mi vida eres [E]tú · [E6] · [E] · y [G#7]solamen·te [C#m]tú · · ·
+[F#m] · A[C#m]bráza·me y ve[F#m]rás · que a[A]ún en ·nuestro [B7]ser ·
+Hay [B7]fuego ·que apa[E]gar · [A] · [B7]↓
+
+[E]· · · [C#m]·   | [B7]·  · [A]· · | [E]· · · ·
+
+[E] · No ·sabes · que tan [E]mal lo puede uno pa[Emaj7]sar ausentándose de [B]ti
+[B7] Cada día yo tra[F#m]té amar a alguien [B7]más que fuese igual que [E]tú
+[E] · Ya ·ves, hoy· regre[E]sé
+con mi vergüenza es[G#7]toy cara a cara frente a [C#m]ti [C#m]↓   [B]↓
+[A] Si me quedo díme[E]lo y si tengo que par[F#m]tir perdona es que [B7]aún [B7]↓
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+Mi vida eres [E]tú · [E6] · [E] · y [G#7]solamen·te [C#m]tú · · ·
+[F#m] · Tra[C#m]tando ·de expli[F#m]car · su [A]mano le· to[B7]mé ·
+Y [B7]la inten·té be[E]sar · [A] · [B7]↓
+Mi vida eres [E]tú · [E6] · [E] · tan [G#7]solamen·te [C#m]tú · · ·
+[F#m] · A[C#m]bráza·me y ve[F#m]rás · que a[A]ún en ·nuestro [B7]ser ·
+Hay [B7]fuego ·que apa[E]gar · [A] · [B7]↓
+
+Mi vida eres [E]tú · · [C#m] | [B7] · [A] · | [E] · · · [E]↓
+{end_of_chorus}

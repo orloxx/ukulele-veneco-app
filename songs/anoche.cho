@@ -1,0 +1,57 @@
+{title: Anoche}
+{artist: Arca}
+{year: 2017}
+{key: Am}
+{time: 4/4}
+{capo: 1}
+
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Cmaj7 base-fret 1 frets 0 0 0 2}
+
+{start_of_verse: Intro}
+[F]· · · · | [F]· · · · | [Am]·  · · · | [G]· · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+A[F]noche ·te so[Am]ñé [G]
+Tu fi[Dm]gura ·y tus [Am]bra[G]zos
+A[F]noche ·te a[Am]ñoré [G]
+Aunque [Dm]no te he ·cono[Am]cido a[G]ún
+
+[G]
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+A [F]solas ·te sa[Am]né [G]
+Las he[Dm]ridas de las ·guerras que has lu[Am]cha[G]do
+A[Dm]noche ·yo te a[Am]mé, y [G]tú...
+Me de[Dm]jaste tri·zas [Am]   [G]
+{end_of_verse}
+
+{start_of_verse: Verso 3}
+A[F]noche ·yo so[Am]ñé [G]
+Nuestra [F]muerte ·simul[Am]táne[G]a
+A[F]noche ·yo llo[Am]ré [G]
+De fe[F]lici·dad, qué ex[Am]traño me sen[G]tí
+{end_of_verse}
+
+{start_of_verse: Puente}
+[F] Que el a·mor me haya la[Em]vado
+Que [F]tu sangre ·calen[Em]tó ·
+[G]↓ [C]↓ [Dm] El tejido de mis [G]en[Em]trañas
+A[Cmaj7]noche yo te so[F]ñé
+[G]↓ [C]↓Aunque [Dm]tú seas [F]real o[G] i-[Em]magina[F]rioo-[Dm]-oo
+{end_of_verse}
+
+{start_of_verse: Final}
+A[F]noche yo [Am]son[G]reía
+Al pen[F]sar que e[Am]ras po[Dm]sible
+[F] Me basta con sa[Am]ber [G]
+[Em]   [Am]Me basta con[F] saber
+[Am]↓
+{end_of_verse}

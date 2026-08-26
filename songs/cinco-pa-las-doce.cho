@@ -1,0 +1,63 @@
+{title: Cinco pa’ las doce}
+{artist: Nestor Zavarce}
+{year: 1963}
+{key: Am}
+{time: 6/8}
+
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+
+[Am]·  · · · | [Am]·  · · · | [Am]·  · · · | [Am]·  · · ·
+
+{start_of_verse: Verso 1}
+Las cam[E7]panas de la iglesia están so[Am]nando
+Anun[E7]ciando que el año viejo se [Am]va
+La ale[Am]gría del año [G]nuevo viene [E7]ya
+Los a[E7]brazos se confunden sin ce[Am]sar
+Las cam[E7]panas de la iglesia están so[Am]nando
+Anun[E7]ciando que el año viejo se [Am]va
+La ale[Am]gría del año [G]nuevo viene [E7]ya
+Los a[E7]brazos se confunden sin ce[Am]sar
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Falta[A7] cinco pa’ las [Dm]doce el año va a terminar[Am]
+Me voy corriendo a mi ca[E7]sa a abrazar a mi mamá[Am]
+Falta[A7] cinco pa’ las [Dm]doce el año va a termi[Am]nar
+Me voy corriendo a mi [E7]casa a abrazar a mi ma[Am]má
+{end_of_chorus}
+
+{start_of_verse: Verso 2}
+Me per[E7]donan que me vaya de la fies[Am]ta
+Pero hay [E7]algo que jamás podré dejar[Am]
+Una [Am]linda viejeci[G]ta que me es[E7]pera
+En las [E7]noches de una eterna Navi[Am]dad
+Me per[E7]donan que me vaya de la fies[Am]ta
+Pero hay [E7]algo que jamás podré dejar[Am]
+Una [Am]linda vieje[G]cita que me es[E7]pera
+En las [E7]noches de una eterna Navi[Am]dad
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Falta[A7] cinco pa’ las [Dm]doce el año va a terminar[Am]
+Me voy corriendo a mi ca[E7]sa a abrazar a mi mamá[Am]
+Falta[A7] cinco pa’ las [Dm]doce el año va a termi[Am]nar
+Me voy corriendo a mi [E7]casa a abrazar a mi ma[Am]má
+{end_of_chorus}
+
+{start_of_verse: Verso 1}
+Las cam[E7]panas de la iglesia están so[Am]nando
+Anun[E7]ciando que el año viejo se [Am]va
+La ale[Am]gría del año [G]nuevo viene [E7]ya
+Los a[E7]brazos se confunden sin ce[Am]sar
+Las cam[E7]panas de la iglesia están so[Am]nando
+Anun[E7]ciando que el año viejo se [Am]va
+La ale[Am]gría del año [G]nuevo viene [E7]ya
+Los a[E7]brazos se confunden sin ce[Am]sar
+
+Las cam[E7]panas de la iglesia están so[Am]nando
+[Am]·  [Am]↓
+{end_of_verse}

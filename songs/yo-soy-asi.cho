@@ -1,0 +1,63 @@
+{title: Yo soy así}
+{artist: PP’S}
+{year: 1984}
+{key: A}
+{time: 4/4}
+
+{define: A base-fret 1 frets 2 1 0 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Bb base-fret 1 frets 3 2 1 1}
+
+[A]· · · · | [G]· · [Em]·  · | [A]· · · · | [G]· · [Em]·  ·
+
+Si [A]salgo a la calle me [A]miran mal, si ca[G]mino por ahí, soy [Em]todo un freak
+Me [A]pongo los zapatos [A]en el cuello, y [G]la camisa me la [Em]pongo aquí
+Mi [A]pantalón [A]se revienta, el [G]sexo cuenta [Em]
+Ejer[A]cicios en la cara so[A]bre los pies, tu i[G]magen rompe espejos, la [Em]mía está bien
+
+{start_of_chorus: Coro}
+[D] Yo, yo [G]soy así, [F] ¿y qué te impor[Bb]ta a ti?
+[D] Yo, yo [G]soy así, [F] porque me gus[Bb]ta a mí
+[D] Yo, yo [G]soy así, [F] ¿y qué te impor[Bb]ta a ti?
+[D] Yo, yo [G]soy así, [F] porque me gus[Bb]ta a mí
+
+[A]· · · · | [G]· · [Em]·  · | [A]· · · · | [G]· · [Em]·  ·
+
+Un [A]club de cultura es [A]fruta madura, es [G]la pertinencia u[Em]na consecuencia
+Ab[A]surdo lisante, con[A]sulta distante, la [G]resaca es fuerte, te [Em]sientes demente
+A[A]cá hay un vaso roto, yo[A] sí monto moto, pre[G]juicios en vano, yo[Em] casi gano
+Tu-[A]tu-ki-tá, [A]tu-ki-tá, [G]tu-ki-tá, Tu-[Em]-tu-ki-Tchhh
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[D] Yo, yo [G]soy así, [F] ¿y qué te impor[Bb]ta a ti?
+[D] Yo, yo [G]soy así, [F] porque me gus[Bb]ta a mí
+[D] Yo, yo [G]soy así, [F] ¿y qué te impor[Bb]ta a ti?
+[D] Yo, yo [G]soy así, [F] porque me gus[Bb]ta a mí
+
+[A]· · · · | [G]· · [Em]·  · | [A]· · · · | [G]· · [Em]·  ·
+
+Ma [A]niobras el destino, com[A]plejo camino, sien[G]tes dos o tres, tres,[Em] cuatro o cinco
+De[A]seos cautivos an[A]fibios oprimidos, so[G]mos de colores con [Em]muchos sabores,
+Arco[A]iris brillante, cris[A]tal de diamante, la [G]música hace falta, me di[Em]rijo a Malta
+[A]Aunque yo no beba, soy[A] un punto y coma, sho[G] tucutá tu[Em]cutucutu tutá
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[D] Yo, yo [G]soy así, [F] ¿y qué te impor[Bb]ta a ti?
+[D] Yo, yo [G]soy así, [F] porque me gus[Bb]ta a mí
+[D] Yo, yo [G]soy así, [F] ¿y qué te impor[Bb]ta a ti?
+[D] Yo, yo [G]soy así, [F] porque me gus[Bb]ta a mí
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[D] Yo soy así,[G]  [F] ¿y qué te importa?, [Bb] ¿y qué te importa a ti?
+[D] Yo soy así,[G]  [F] ¿y qué te importa?, [Bb] ¿y qué te importa a ti?
+[D] Yo soy así,[G]  [F] ¿y qué te importa?, [Bb] ¿y qué te importa a ti?
+[D] Yo soy así,[G]  [F] ¿y qué te importa?, [Bb] ¿y qué te importa a (A)ti?
+[A]· · · · | [G]· · [Em]·  · | [A]· · · · | [G]· · [Em]·  ·
+[A]↓
+{end_of_verse}

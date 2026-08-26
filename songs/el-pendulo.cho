@@ -1,0 +1,67 @@
+{title: El péndulo}
+{artist: Sentimiento Muerto}
+{year: 1991}
+{key: A}
+{time: 4/4}
+
+{define: A base-fret 1 frets 2 1 0 0}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+
+[A]  [A]↓-[Gm]↑  [Gm]↓ -[A]↑ | [A]↓-[Gm]↑  [Gm]↓ -[A]↑ (x4)
+
+[A]Fue · [Gm] ·
+[A] ·Fue [Gm]su propia ·deci[A]sión... · [Gm] ·
+[A] ·Eva[Gm]dirse ·de mi a[A]fee-·ee-[Gm]ecto, ·
+[A] ·y to[Gm]do lo ·que era [A]yo · [Gm] · [Em] · [Gm] ·
+
+[A]Sin... · [Gm] ·
+[A] ·Sin nin[Gm]guna ·precau[A]ción... · [Gm] ·
+[A] ·Conver[Gm]tido ·en un [A]too-·oo-[Gm]ro... ·
+[A] ·En la a[Gm]rena ·del traid[A]or · [Gm] · [Em] · [Gm] ·
+
+{start_of_chorus: Coro}
+[C]Ella es·taba ·fas·ci[C]nada
+·de que ·no ·la [Gm]per·dona·ra · [Gm] · · ·
+[Bb] ·No po·dría ex·cusar[F] ·a su ·propio ·rival[G] · · · [G] · · ·
+[C]Ella es·taba ·fas·ci[C]nada
+·de que ·no ·la [Gm]per·dona·ra · [Gm] · · ·
+[Bb] ·No po·dría ex·cusar[F] ·a su ·propio ·rival[G] · · · [G] · · ·
+
+[A]  [A]↓-[Gm]↑  [Gm]↓ -[A]↑ | [A]↓-[Gm]↑  [Gm]↓ -[A]↑ (x2)
+
+[A]Ve... · [Gm] ·
+[A] ·De ambos [Gm]lados ·un ri[A]val, · [Gm] ·
+[A] ·Incon[Gm]forme ·como [A]pén·-du[Gm]lo, ·
+[A] ·en la es[Gm]pera ·de un fi[A]nal · [Gm] · [Em] · [Gm] ·
+
+[A]Fue... · [Gm] ·
+[A] ·Fue tam[Gm]bién mi ·deci[A]sión... · [Gm] ·
+[A] ·Ale[Gm]jarme ·de su a[A]fee-·ee-[Gm]cto... ·
+[A] ·Y to[Gm]do lo ·que era [A]yo · [Gm] · [Em] · [Gm] ·
+{end_of_chorus}
+
+{start_of_chorus: Coro}
+[C]Ella es·taba ·fas·ci[C]nada
+·de que ·no ·la [Gm]per·dona·ra · [Gm] · · ·
+[Bb] ·No po·dría ex·cusar[F] ·a su ·propio ·rival[G] · · · [G] · · ·
+[C]Ella es·taba ·fas·ci[C]nada
+·de que ·no ·la [Gm]per·dona·ra · [Gm] · · ·
+[Bb] ·No po·dría ex·cusar[F] ·a su ·propio ·rival[G] · · · [G] · · ·
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[C]Ella es·taba ·fas·ci[C]nada
+·de que ·no ·la [Gm]per·dona·ra · [Gm] · · ·
+[Bb] ·No po·dría ex·cusar[F] ·a su ·propio ·rival
+[C]Ella es·taba ·fas·ci[C]nada
+·de que ·no ·la [Gm]per·dona·ra · [Gm] · · ·
+[Bb] ·No po·dría ex·cusar[F] ·a su ·propio ·rival
+[C]Ella es·taba ·fas·ci[C]nada
+·de que ·no ·la [Gm]per·dona·ra · [Gm] · · ·
+[Bb] ·No po·dría ex·cusar[F] · su ·parte a·nimal[G]↓
+{end_of_verse}

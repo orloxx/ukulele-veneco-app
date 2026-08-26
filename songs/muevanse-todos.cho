@@ -1,0 +1,47 @@
+{title: Muévanse todos}
+{artist: Los Impala}
+{year: 1965}
+{key: C}
+{time: 4/4}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: G7 base-fret 1 frets 0 2 1 2}
+
+[C]· [F]· [G]· [G7]·
+[C]· [F]· [G]·
+
+{start_of_verse: Estrofa 1}
+[G7]Muévanse to[C]dos ([F]muévanse to      [G]dos)
+[G7]Al bai[C]lar ([F]al bai  [G]lar)
+[G7]Vamos to[C]dos ([F]vamos     [G]todos)
+que quiero [G7]verlos gritar[C] ([F]verlos gri   [G]tar, ¡uuh!)
+
+[G7]Muévanse to[C]dos ([F]muévanse to      [G]dos)
+[G7]Sin pa[C]rar ([F]sin pa  [G]rar)
+[G7]Vamos to[C]dos ([F]vamos     [G]todos)
+que quiero [G7]verlos gritar[C] ([F]verlos gri   [G]tar, ¡uuh!)    [G7]
+
+[C]· [F]· [G]· [G7]·
+[C]· [F]· [G]· [G7]·
+[C]· [F]· [G]· [G7]·
+[C]· [F]· [G]· [G7]·
+
+[G]Aahh Aahh [G7]Aahh Aahh
+[G7]Aaaaa[G7]aaaaah
+{end_of_verse}
+
+{comment: Repetir desde Estrofa 1}
+
+{start_of_verse: Outro}
+[G7]Muévanse to[C]dos ([F]muévanse to      [G]dos)
+[G7]Al bai[C]lar ([F]al bai  [G]lar)
+[G7]Vamos to[C]dos ([F]vamos     [G]todos)
+que quiero [G7]verlos gritar[C] ([F]verlos gri   [G]tar, ¡uuh!)
+Well shake it [G7]shake it shake it [C]baby now ([F]shake it up [G]baby)
+Well shake it [G7]shake it shake it [C]baby now ([F]shake it up [G]baby, ¡uuh!) [G7]
+
+[G]Aahh Aahh [G7]Aahh
+[G7]↓(¡Ah!)-[G7]↑-[G7]↓  [G7]↑-[G7]↓-[G7]↑  [C]↓
+{end_of_verse}

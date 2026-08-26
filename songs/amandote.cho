@@ -1,0 +1,79 @@
+{title: Amándote}
+{artist: Colina}
+{year: 1986}
+{key: C}
+{time: 4/4}
+
+{define: Fmaj7 base-fret 5 frets 1 1 0 0}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Em base-fret 1 frets 0 4 0 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Am base-fret 1 frets 2 0 0 0}
+
+{start_of_verse: Intro}
+[Fmaj7]·     · · · | [G]· · · · | [Fmaj7]·     · · · | [G]· · · ·
+[Fmaj7]·     · · · | [G]· · · · | [G]· · · · | [Em]·  · · · | [Fmaj7]·     · · ·
+[Fmaj7]·     · · · | [G]· · · · | [Em]·  · · · | [Fmaj7]·     · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[Fmaj7]Es la manera que tie[G]nes de mirarme
+[Em] Es la ternura como [Fmaj7]haces el amor
+[Fmaj7]La vida pierde todo [G]su sentido
+[Em] Si me hace falta [Fmaj7]tu calor
+{end_of_verse}
+
+{start_of_verse: Pre-coro}
+[Fmaj7]¡Oh!, es impo[G]sible
+[Em] Aceptar dis[Fmaj7]tancia entre tú y yo
+[Fmaj7] Y me deses[G]pero
+[Em] Cuando en mi cama [Fmaj7]solo estoy
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[C]Quiero vivir con[F]tigo... [Dm] Toda la [G]vida
+[Em]   A[Am]mándote, [F]   a[G]mándote,
+[C]Quiero vivir con[F]tigo... [Dm] Noche y [G]día
+[Em] Acari[Am]ciándote, [F]   a[G]mándote
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[G]· · · · | [G]· · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[Fmaj7]Esa dulzura que [G]tienen tus labios
+[Em] Es el elíxir que ali[Fmaj7]menta nuestro amor
+[Fmaj7] Si algún día me [G]los negaras
+[Em] Yo moriría [Fmaj7]de amor
+[Fmaj7]¡Oh!, dame esa son[G]risa
+[Em]Que me inspira es[Fmaj7]ta canción
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[C]Quiero vivir con[F]tigo... [Dm] Toda la [G]vida
+[Em]   A[Am]mándote, [F]   a[G]mándote,
+[C]Quiero vivir con[F]tigo... [Dm] Todos los [G]días
+[Em] Acari[Am]ciándote, [F]   a[G]mándote
+{end_of_chorus}
+
+{start_of_verse: Puente}
+[Am] · · · | [F] · · · | [G] · · · | [Am]Háblame, dime,
+{end_of_verse}
+
+{start_of_verse: Puente 2}
+[F] Dame esa son[G]risa [Em] que me inspira es[F]ta canción
+{end_of_verse}
+
+{start_of_chorus: Coro 3}
+[C]Quiero vivir con[F]tigo... [Dm] Toda la [G]vida
+[Em] ¡Oh!   A[Am]mándote, [F]   a[G]mándote,
+[C]Quiero vivir, [F]no puedo vivir [Dm]sin ti, te necesi[G]to a mi lado
+[Em] Acari[Am]ciándote, [F]   a[G]mándote
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[C]↓
+{end_of_verse}

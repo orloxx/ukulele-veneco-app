@@ -1,0 +1,59 @@
+{title: Mi querencia}
+{artist: Simón Díaz}
+{year: 1972}
+{key: Am}
+{time: 6/8}
+
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: Am base-fret 1 frets 2 0 0 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: A7 base-fret 1 frets 0 1 0 0}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: C base-fret 1 frets 0 0 0 3}
+{define: B7 base-fret 1 frets 4 3 2 0}
+
+[Dm]·  · · · · · | [Am]·  · · · · · | [E7]·  · · · · · | [Am]·  · · [A7]·  · ·
+[Dm]·  · · · · · | [Am]·  · · · · · | [E7]·  · · · · · | [Am]·  · · [Am]↓  ◦ ◦
+
+{start_of_verse: Lento, rasgado suave y constante}
+Lu[Am]cero de la mañana
+[F]Préstame tu claridad
+Para alum[E7]brarle los [Am]pasos
+A mi a[E7]mante que se [Am]va
+
+Si [G7]pasas algún tra[C]bajo
+Le[B7]jos de mi sole[E7]dad
+[Dm]Dile al lucero del [Am]alba
+Que te [E7]vuelva a regre[Am]sar
+[Dm]Dile al lucero del [Am]alba
+Que te [E7]vuelva a regre[Am]sar
+{end_of_verse}
+
+{start_of_verse: Rasgado normal}
+[Am]·  · · · · · | [Am]·  · ·
+
+Si mi que[Am]rencia es el monte
+[F]↓ [Am]↓  [Dm]  Y mi fuerza un cima[Am]rrón [A7]
+[Dm] Cómo no quieres que [Am]cante
+Cómo no quieres que [E7]cante
+Como canta un cora[Am]zón
+
+Si mi que[Am]rencia es el monte
+[F]↓ [Am]↓  [Dm]  Y la flor de aragua[Am]ney [A7]
+[Dm] Cómo no quieres que [Am]tenga
+Cómo no quieres que [E7]tenga
+Tantas ganas de vol[Am]ver
+
+Si mi que[Am]rencia es el monte
+[F]↓ [Am]↓  [Dm]  Y una punta de ga[Am]na’o [A7]
+[Dm] Cómo no quieres que [Am]sueñe
+Cómo no quieres que [E7]sueñe
+Con el sol de los ve[Am]na’os [A7]
+{end_of_verse}
+
+{comment: Repetir desde el inicio}
+
+{start_of_verse: Outro}
+[Dm]·  · · · · · | [Am]·  · · · · · | [E7]·  · · · · · | [Am]↓
+{end_of_verse}

@@ -1,0 +1,25 @@
+{title: All Day Today}
+{artist: Convenezuela}
+{year: 1982}
+{key: C}
+{time: 4/4}
+{capo: 1}
+
+{define: C base-fret 1 frets 0 0 0 3}
+{define: G7 base-fret 1 frets 0 2 1 2}
+{define: C7 base-fret 1 frets 0 0 0 1}
+{define: Dm base-fret 1 frets 2 2 1 0}
+{define: A7 base-fret 1 frets 0 1 0 0}
+
+{start_of_verse: Verso}
+[C]All day today[C]
+[G7]All night tonight[C]
+[C]All day today[C]
+[G7]All night tonight[C]
+[C7]Harriet Ross was a [Dm]married woman
+[G7]Living just by the [C]police station
+[A7]Friending with a [Dm]cop called Collie
+[G7]All day today[C]
+{end_of_verse}
+
+{comment: Repetir desde el principio}

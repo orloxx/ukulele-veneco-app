@@ -1,0 +1,75 @@
+{title: Nirvana}
+{artist: Arawato}
+{year: 2019}
+{key: Gm}
+{time: 4/4}
+
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Dsus4 base-fret 1 frets 2 2 3 0}
+{define: Gsus4 base-fret 1 frets 0 2 3 3}
+{define: G base-fret 1 frets 0 2 3 2}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: F base-fret 1 frets 2 0 1 0}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: C# base-fret 1 frets 1 1 1 4}
+{define: D7 base-fret 1 frets 2 2 2 3}
+
+{start_of_verse: Intro}
+[Gm]·  · · · | [Gm]·  · · · | [Gm]·  · · · | [Gm]·  · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[Gm]Soy   terre[Dsus4]nal
+Un [Gsus4]sim...ple ani[G]mal
+La [Eb]ne...cesi[Dsus4]dad
+Me [Gm]gana
+
+[Gm]Ven,    lléva[Dsus4]me
+De [Gsus4]vuel...ta a tus [G]pies
+Vol[Eb]ver...te a te[Dsus4]ner
+Nir[Gm]vana
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Eb]Tuve que seguir, tu[Cm]ve que buscar... [Gm] la [F]clave
+[Eb]Volver hasta ti pa[Cm]ra reencontrar [Gm]  la [F]llave [Bb]
+[Eb]Y al fi[Cm]nal no [Gm]queda [F]nada
+[Eb]↓Solo la adicción de [Cm]↓ volver al mismo lugar
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[Gm]·  · · · | [Gm]·  · · · | [Gm]·  · · · | [Gm]·  · · ·
+[Gm]·  · · · | [Dsus4]·     · · · | [Gsus4]·     · · · | [G]· · · ·
+[Eb]·  · · · | [Dsus4]·     · · · | [Gm]·  · · · | [Gm]·  · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[Gm]Nun...ca pensé[Dsus4]
+Que [Gsus4]bajo   tu [G]piel
+Se i[Eb]ríiia a escon[Dsus4]der
+Mi [Gm]karma
+
+[Gm]Re...grésa[Dsus4]me
+A [Gsus4]e...se ni[G]vel
+Vol[Eb]ver...te a te[Dsus4]ner
+Nir[Gm]vana
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[Eb]Tuve que seguir, tu[Cm]ve que buscar... [Gm] la [F]clave
+[Eb]Volver hasta ti pa[Cm]ra reencontrar [Gm]  la [F]llave [Bb]
+[Eb]Y al fi[Cm]nal no [Gm]queda [F]nada
+[Eb]↓Solo la adicción de [Cm]↓ volver al mismo lugar
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Gm]·  · · · | [Gm]·  · · · | [Gm]·  · · · | [Gm]·  · · ·
+[Gm]·  · · · | [Gm]·  · · · | [Gm]·  · · · | [Gm]·  · · ·
+[E7]·  · · · | [Eb]·  · · · | [D]· · · · | [C#]·  · · · | [Cm]·  · [D7]·  ·
+[Gm]·  · · · | [Gm]·  · · · | [Gm]·  · · · [Gm]·  · · ·
+[E7]·  · · · | [Eb]·  · · · | [D]· · · · | [C#]·  · · · | [Cm]·  · [D7]·  ·
+[Gm]·  · · · | [Gm]·  · · · | [Gm]↓
+{end_of_verse}

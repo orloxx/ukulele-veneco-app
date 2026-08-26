@@ -4,6 +4,38 @@ Every release, newest first — one entry per tag on `main`. The entry is writte
 release commit, beside the `package.json` bump. This file is the index, not the story:
 the detail lives in the issues and decisions each entry cites and in `git log`.
 
+## 3.0.0 — 2026-08-26
+
+M18 — `songs/` is **[ChordPro](https://www.chordpro.org)**. All 276 songs are `.cho` files
+speaking a standard other songbook tools already read, and the format is no longer this
+project's to maintain: Ciro Durán asked for it on 2026-08-24, and it is his own toolchain.
+
+Major, because the file format is the contract with anyone who forks this repo. Nothing a
+reader sees changed — all 276 rendered sheets are byte-identical before and after, and the
+round trip was checked field for field, chord for chord and line for line on every file
+before a single one was written.
+
+Every frontmatter field had a directive already, so the migration was a copy rather than a
+redesign (DECISIONS 39). `{key:}` repeats for the twelve songs that modulate rather than
+moving to the bar where the change happens; `{define:}` keeps the book's own fingering per
+song, with the fret window `ChordDiagram` already chose; a section is the book's heading
+verbatim and only *Coro* is typed; the rasgueo arrows stay literal text, because
+`{start_of_grid}` has a grammar they do not fit. `{capo:}` and `{subtitle:}` are now
+directives, which deleted `parseLeadingNotes()` — the heuristic that used to guess which
+leading lines of a body were metadata.
+
+`src/lib/chordpro.ts` is the reader, about 100 lines, and `chordsheetjs` was declined
+(DECISIONS 40): a library that understands chords is a library that normalises them, and
+this collection's `Edim7²` and `Em7^` are page-local labels rather than chord theory.
+`gray-matter` went out in the same release, so the app ends the milestone one dependency
+lighter. `pnpm validate` is rewritten against the spec and keeps every check that is this
+collection's — no Cyrillic, a `{define:}` for every chord used, the alignment spacing — and
+gains three the format makes possible: an unknown directive, an unclosed section, a stray
+brace. It still reads `276 songs, 0 errors, 18 warnings`.
+
+BUG-023 came out of it: two duets label a voice with nothing under it, which the migration
+found because an empty heading is a `{comment:}` now and all 23 are one grep.
+
 ## 2.11.0 — 2026-08-10
 
 *Guardar todas* becomes a button in the filter row, at every width, naming and counting

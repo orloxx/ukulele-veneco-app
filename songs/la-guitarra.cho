@@ -1,0 +1,61 @@
+{title: La guitarra}
+{artist: Azúcar, Cacao y Leche}
+{year: 1971}
+{key: A}
+{time: 4/4}
+
+{define: A base-fret 1 frets 2 1 0 0}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: B7 base-fret 1 frets 4 3 2 0}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+{define: D base-fret 5 frets 3 2 1 1}
+{define: C#m base-fret 4 frets 3 1 1 1}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: G base-fret 1 frets 0 2 3 2}
+
+{start_of_verse: Verso 1}
+[A] Una gui[E7]tarra escu[A]ché [A]
+[A] Cuando so[B7]lo medita[E7]ba [E7]
+[E7] Mientras tan[E7]to me llega[A]ba una canción[F#7]
+[B7]Llena de alegría, fan[E7]tasía y color[A]  [E7]
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[A] Era tan[E7]ta la creación[A]  [A]
+[A] Que la gui[B7]tarra inspira[E7]ba [E7]
+[E7] Que mi men[E7]te se forja[A]ba una ilusión[F#7]
+[B7]Ver al mundo lleno de a[E7]legría y color[A]  [A]
+{end_of_verse}
+
+{start_of_verse: Puente}
+Me dió luz,[D]- [C#m]-   [Bm] ilusio[E7]nes y fe[A]
+Asi fué[D]- [C#m]-   [Bm] que mi mun[G]do encontré[E7]
+
+[E7]   [E7]
+{end_of_verse}
+
+{start_of_verse: Solo/Break instrumental}
+[A] Una gui[E7]tarra escu[A]ché.... [A]
+[A] Cuando so[B7]lo medita[E7]ba [E7]
+[E7] Mientras tan[E7]to me llega[A]ba una canción[F#7]
+[B7]Llena de alegría, fan[E7]tasía y color[A]  [A]
+{end_of_verse}
+
+{start_of_verse: Puente 2}
+Me dió luz,[D]- [C#m]-   [Bm] ilusio[E7]nes y fe[A]
+Asi fué[D]- [C#m]-   [Bm] que mi mun[G]do encontré[E7]
+
+[E7]   [E7]
+{end_of_verse}
+
+{start_of_verse: Final}
+[A] Una gui[E7]tarra escu[A]ché [A]
+[A] Cuando so[B7]lo medita[E7]ba [E7]
+[E7] Mientras tan[E7]to me llega[A]ba una canción[F#7]
+[B7]Llena de alegría, fan[E7]tasía y color[A]  [F#7]
+[B7]Llena de alegría, fan[E7]tasía y color[A]  [F#7]
+[B7]Llena de alegría, fan[E7]tasía y color[A] Yee-[F#7]-eeh
+[B7]Llena de alegría, fan[E7]tasía y color[A]  [F#7]
+[B7]Llena de alegría, fan[E7]tasía y color[A]
+[E7]↓  [A]↓
+{end_of_verse}

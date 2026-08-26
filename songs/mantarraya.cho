@@ -1,0 +1,78 @@
+{title: Mantarraya}
+{artist: Claroscuro}
+{year: 1995}
+{key: F}
+{time: 4/4}
+
+{define: F base-fret 1 frets 2 0 1 0}
+{define: F7 base-fret 1 frets 2 3 1 0}
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Eb base-fret 1 frets 0 3 3 1}
+{define: Cm base-fret 1 frets 0 3 3 3}
+{define: Fm base-fret 1 frets 1 0 1 3}
+{define: Fm7 base-fret 1 frets 1 3 1 3}
+{define: Ab7 base-fret 1 frets 1 0 2 3}
+{define: Ab base-fret 3 frets 3 1 2 1}
+{define: Bb base-fret 5 frets 3 1 2 1}
+
+{start_of_verse: Intro}
+[F]· · · · | [F]· · · [F7]·  | [F]· · · · | [F]· · · [F7]·
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+[F]Raya mantarraya, nada [F]sobre mí
+[F]Nada sobre mí lamiéndo[F]me en el mar
+[F]Lisa, se desliza y alum[F]bra mi piel
+[F]Juega resbalosa, déja[F]me tocar
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[F]Aal-[F]gaas [F7]↓en al[F]míii-[F]baaar
+[F]Me lubrican... [F] · · [F7]↓  [F]al pasar [F]
+[Gm]·  · · · | [Gm]·  · · · | [Eb]·  · · · | [Cm]·  · · ·
+[Gm]·  · · · | [Gm]·  · · · | [Eb]·  · · · | [Cm]·  · · ·
+{end_of_chorus}
+
+{start_of_verse: Verso 2}
+[F]Poros dilatados de tan[F]to esperar
+[F]Dulce es la agonía de quien [F]quiere estar
+[F]Chupando ese beso, láti[F]go de amor
+[F]un veneno intenso rasga [F]mi interior
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[F]Aal-[F]gaas [F7]↓en al[F]míii-[F]baaar
+[F]Me lubrican... [F] · · [F7]↓  [F]al pasar [F]
+[Gm]·  · · · | [Gm]·  · · · | [Eb]·  · · · | [Cm]·  · · ·
+[Gm]·  · · · | [Gm]·  · · · | [Eb]·  · · · | [Cm]·  · · ·
+{end_of_chorus}
+
+{start_of_verse: Puente}
+[Fm]·  · · · | [Fm]·  · · [Fm7]·   | [Fm]·  · · · | [Fm]·  · · ·
+[Fm] Raya, [Fm]mantarraya, [Fm] nada [Fm]sobre mí
+[Fm] Raya, [Fm]mantarraya, [Fm] nada [Fm]sobre mí
+[Fm]·  · · · | [Ab7]·   · · · | [Fm]·  · · · | [Fm]·  · · ·
+{end_of_verse}
+
+{start_of_verse: Solo guitarra}
+[Fm]·  · · · | [Fm]·  · · [Fm7]·   | [Fm]·  · · · | [Fm]·  · · ·
+[Fm]·  · · · | [Fm]·  · · [Fm7]·   | [Fm]·  · · · | [Fm]·  · · ·
+{end_of_verse}
+
+{start_of_verse: Drum fill}
+[Fm]↓  ◦ ◦ ◦ | ◦ ◦ ◦ ◦ | ◦ ◦ ◦ ◦ | ◦ ◦ ◦ ◦
+{end_of_verse}
+
+{start_of_verse: Solo guitarra 2}
+[Fm]·  · · · | [Fm]·  · [Ab]·  [Bb]·  | [Fm]·  · · · | [Fm]·  · [Ab]·  [Bb]·
+[Fm]·  · · · | [Fm]·  · [Ab]·  [Bb]·  | [Fm]·  · · · | [Fm]·  · [Ab]·  [Bb]·
+[Fm]·  · · · | [Fm]·  · [Ab]·  [Bb]·  | [Fm]·  · · · | [Fm]·  · [Ab]·  [Bb]·
+[Fm]·  · · · | [Fm]·  · [Ab]·  [Bb]·  | [Fm]·  · · · | [Fm]·  · [Ab]·  [Bb]·
+{end_of_verse}
+
+{start_of_verse: Outro}
+[Fm]·  · · · | [Fm]·  · [Fm]↓  ◦ | [Fm]·  · · · | [Fm]·  · [Fm]↓  ◦
+Nada, mantarraya, nada sobre míiii
+[Fm]·  · · · | [Fm]·  · [Fm]↓  ◦ | [Fm]·  · · · | [Fm]·  · [Fm]↓  ◦
+[Fm]·  · · · | [Fm]·  · [Fm]↓  ◦ | [Fm]·  · · · | [Fm]·  · [Fm]↓
+{end_of_verse}

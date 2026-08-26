@@ -1,0 +1,59 @@
+{title: Subió el maldito dolar}
+{artist: Bucle Lunar}
+{year: 2025}
+{key: Gm}
+{time: 4/4}
+
+{define: Gm base-fret 1 frets 0 2 3 1}
+{define: Bb base-fret 1 frets 3 2 1 1}
+{define: Eb base-fret 1 frets 0 3 3 1}
+
+{start_of_verse: Intro}
+[Gm]·  · · · | [Bb]·  · · · | [Gm]·  · · · | [Bb]·  · ↓  ◦
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+Vol[Gm]ví     a ver su[Bb]frir     a la [Gm]gente   que me ro[Bb]dea
+A[Gm]yer    aterri[Bb]cé     en mi [Gm]bella,    mi bella [Bb]Mérida
+Vol[Gm]ví    a sen[Bb]tir     la cali[Gm]dez   de su gente [Bb]bella
+¿No [Gm]ves   cómo lo de[Bb]jé?,   ahora sus [Gm]calles   están [Bb]huecas
+{end_of_verse}
+
+{start_of_chorus: Coro}
+[Gm]Y subió [Eb]el maldito [Bb]dólar [Bb]
+Y [Gm]mis amigos [Eb]se van del pa[Bb]ís [Bb]
+A[Gm]hora sí [Eb]hay que echarle [Bb]bola [Bb]
+Para [Gm]no morir[Eb]nos   a[Bb]quí [Bb]
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[Gm]·  · [Eb]·  · | [Bb]·  · · · | [Gm]·  · [Eb]·  · | [Bb]·  · · ·
+{end_of_verse}
+
+{start_of_verse: Puente}
+[Gm] Sí, sí, [Eb] así, [Bb]no te vayas de aquí
+[Gm] Sí, sí, [Eb] así, [Bb]no te vayas de aquí
+{end_of_verse}
+
+{start_of_verse: Interludio 2}
+[Gm]·  · · · | [Bb]·  · · · | [Gm]·  · · · | [Bb]·  · · ·
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+[Gm]Quiero encontrarte   y ha[Bb]certe el amor
+[Gm]Quiero abrazarte    y es[Bb]tar para vos
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+[Gm]Y subió [Eb]el maldito [Bb]dólar [Bb]
+Y [Gm]mis amigos [Eb]se van del pa[Bb]ís [Bb]
+A[Gm]hora sí [Eb]hay que echarle [Bb]bola [Bb]
+Para [Gm]no morir[Eb]nos   a[Bb]quí [Bb]
+{end_of_chorus}
+
+{start_of_verse: Outro}
+[Gm]·  · [Eb]·  · | [Bb]·  · · · | [Gm]·  · [Eb]·  · | [Bb]·  · · ·
+[Gm]·  · [Eb]·  · | [Bb]·  · · · | [Gm]·  · [Eb]·  · | [Bb]·  · · ·
+
+[Bb]↓ (No pasa nada, deja que te transmitan estos chamos de colegio público)
+{end_of_verse}

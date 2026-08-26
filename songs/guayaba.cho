@@ -1,0 +1,73 @@
+{title: Guayaba}
+{artist: Anakena}
+{year: 2018}
+{key: A}
+{time: 4/4}
+
+{define: A base-fret 1 frets 2 1 0 0}
+{define: F#m base-fret 1 frets 2 1 2 0}
+{define: Bm base-fret 1 frets 4 2 2 2}
+{define: E7 base-fret 1 frets 1 2 0 2}
+{define: D base-fret 1 frets 2 2 2 0}
+{define: C#m base-fret 4 frets 3 1 1 1}
+{define: F#7 base-fret 1 frets 3 4 2 4}
+
+{start_of_verse: Intro}
+[A]· · · · | [A]· · · · | [F#m]·   · · · | [F#m]·   · · · | [Bm]·  · · · | [Bm]·  · · · | [E7]·  · · · | [E7]↓  ◦ ◦ ◦
+{end_of_verse}
+
+{start_of_verse: Verso 1}
+Fru[A]tal
+Eso fue lo que pen[F#m]sé cuando te vi
+No es nor[Bm]mal
+Eso no se [E7]siembra por aquí
+Ella debe [A]ser de otra tierra porque
+Yo recorda[F#m]ría haberla visto
+Ay frutica, me [Bm]gusta tu aspecto, perfume perfecto
+Y [E7]cómo me haces sonreír
+{end_of_verse}
+
+{start_of_chorus: Coro}
+Gua[Bm]↓ yaba...     ¿Dónde es[D]↓taabaa-[A]↓-aas?
+Gua[Bm]↓ yaba...     [D]↓No te espe[D]raabaa-[A]aa [A]↓
+{end_of_chorus}
+
+{start_of_verse: Interludio}
+[A]· · · · | [A]· · · · | [F#m]·   · · · | [F#m]·   · ·↓ ·↓ | [Bm]·  · · · | [Bm]·  · · · | [E7]·  · · · | [E7]↓
+{end_of_verse}
+
+{start_of_verse: Verso 2}
+Tu [E7]↓siem↑ pre ↓ ca-[A]sual
+Me encanta cuando es[F#m]tás posando en el stand
+Y es di[Bm]fícil esconder
+El eriza[E7]miento en mi piel
+Porque me corazón va [A]↓Racu↓ tacu↓ tan↓ tacunpao
+Cuando te veo pasar[F#m]
+Y es verdad, es ver[Bm]dad que nadie sabe lo que el río trae
+Ay fru[E7]tica menos mal te encontré
+{end_of_verse}
+
+{start_of_chorus: Coro 2}
+Gua[Bm]yaba...     ¿Dónde es[D]taabaa-[A]-aas?
+Gua[Bm]yaba...     No te espe[D]raabaa-[A]aa
+Gua[Bm]yaba...     ¿Dónde es[D]taabaa-[A]-aas?
+Gua[Bm]yaba...     No te espe[D]raabaa-[E7]aaa [E7]
+{end_of_chorus}
+
+{start_of_verse: Instrumental}
+[C#m]·   · · · | [C#m]·   · · · | [F#7]·   · · · | [F#7]·   · · · | [D]· · · · | [A]· · · · | [E7]↓  ↓  ↓↑
+◦ ◦ ◦ ◦ | ◦ ◦ ◦ ◦ | ◦ ◦ ◦ ◦
+{end_of_verse}
+
+{start_of_verse: Outro}
+[A]Quiero tenerte muy [C#m]cerca no [Bm]lejos
+[F#m] Quiero tenerte a [C#m]ti a[Bm]quí
+[A]Gracias a ti descu[C#m]brí el se[Bm]creto
+[F#m] Poco hace falta pa' [C#m]ser fe[Bm]liz
+[A]Quiero tenerte muy [C#m]cerca no [Bm]lejos
+[A] Quiero tenerte a [C#m]ti a[Bm]quí
+[A]Gracias a ti descu[C#m]brí el se[Bm]creto
+[A] Poco hace falta pa' [C#m]ser fe[Bm]liz
+[A] Poco hace falta pa' [C#m]ser fe[Bm]liz
+[A] Poco hace falta pa'.. [C#m]↓   ↓  [Bm]↓
+{end_of_verse}
