@@ -36,6 +36,17 @@ brace. It still reads `276 songs, 0 errors, 18 warnings`.
 BUG-023 came out of it: two duets label a voice with nothing under it, which the migration
 found because an empty heading is a `{comment:}` now and all 23 are one grep.
 
+**Four commits had been sitting on `main` unreleased since `2.11.0`, and this tag ships
+them too.** M17 — the landing and `/list` copy stops performing venezolanidad and starts
+speaking it, no phonetic spelling and no invented scenery (DECISIONS 38). BUG-021: the
+whole song card on a phone is the tap target two comments in the code already claimed it
+was. BUG-022: the `/list` empty state stopped telling a reader to tick a casilla a release
+after the last checkbox became a button. And `CHANGELOG.md` itself, backfilled to `0.1.0`.
+
+*Written one commit after the tag, which therefore does not contain the four paragraphs
+above — the alternative was moving a pushed tag on a public branch, and it isn't worth
+one.*
+
 ## 2.11.0 — 2026-08-10
 
 *Guardar todas* becomes a button in the filter row, at every width, naming and counting
