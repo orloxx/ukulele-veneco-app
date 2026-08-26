@@ -124,10 +124,14 @@ is a `{subtitle:}` — rendered under the title, never as part of the sheet:
 {subtitle: Capo en traste 1, versión de estudio}
 ```
 
-The two that occur most are a plain instruction like `Versión más simple para el ukulele`
-and a duet's voice legend — two songs name their voices in a stacked legend that the book
-sets in the top-right margin, keying a colour coding that plain text cannot carry. A bare
-capo is **not** one of these: it is `{capo: 1}`, which the sheet draws as a badge.
+The commonest is a plain instruction like `Versión más simple para el ukulele` or a note
+about a chord — *`Am6` puede tocarse como `Am`*. A bare capo is **not** one of these: it is
+`{capo: 1}`, which the sheet draws as a badge.
+
+**A voice is not one of these either.** `la-propuesta` still names three in a stacked
+legend the book sets in the top-right margin, keyed to a colour coding plain text cannot
+carry — so the names sit at the top attached to nothing. It is the last of them; see
+*Nobody is named as a voice* below.
 
 Until M18 a heuristic guessed which leading lines of the body were metadata, and it had to
 be conservative because guessing wrong costs a song a lyric. The file now says which lines
@@ -246,16 +250,27 @@ Two things the book prints look alike and are not:
   spare one scroll. They are a **`{comment:}`**, which is what ChordPro calls a line the
   book prints that nothing hangs under.
 
-The collection holds 23 of them: 21 repeat instructions and two `Cambio de clave`, which
+The collection holds 21 of them: 19 repeat instructions and two `Cambio de clave`, which
 marks a modulation at the bar the next section starts on. **Those are the only reasons a
 heading here is ever a comment rather than an environment**; anything else with nothing
 under it is a transcription that stopped halfway. See `DECISIONS.md` 8 in the vault.
 
-Two headings are exactly that, and they are
-[BUG-023](https://github.com/orloxx/ukulele-veneco-app/issues/126): `a-dormir-juntitos`
-and `quiero-que-vuelvas` each name a voice in a duet and put nothing under it. The
-migration is what found them — an empty heading is a `{comment:}` now, so all 23 are one
-grep — and fixing them needs the book, which went at M6.
+## Nobody is named as a voice
+
+**A duet is transcribed as one part.** Two songs used to break their opening into
+`Eddy Herrera` / `Liz` / `Ambos` and `Lasso` / `Sheryl Rubio` / `Ambos`, one heading per
+singer; `a-dormir-juntitos` and `quiero-que-vuelvas` are plain sections now, and the lines
+are all still there in the order the book prints them. Vault `DECISIONS.md` 41.
+
+The reason is that the attribution does not survive the medium. The cancionero keys its
+voices with colour, a phone sheet is monospaced black on one background, and what is left
+is a name over a line — which tells a player nothing they cannot hear on the reference
+recording the song page already links. It also produced the collection's only two headings
+with nothing under them, because a legend turned into headings has to label *something*.
+
+**Do not add one back**, and do not put a singer's name in a `{comment:}` or a
+`{subtitle:}` either. The artists are `{artist:}`, which is where the book's masthead puts
+them.
 
 ## Alignment the rules cannot describe
 

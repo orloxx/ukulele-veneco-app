@@ -14,17 +14,9 @@
 {define: Bb base-fret 1 frets 3 2 1 1}
 {define: Ebm base-fret 1 frets 3 3 2 1}
 
-{start_of_verse: Lasso}
-[Cm]·  · · · | [Gm]·  · · · | [Fm]·  · · · | [Fm]·  · [G7]·  ·
-{end_of_verse}
-
-{start_of_verse: Sheryl Rubio}
-[Cm]·  · · · | [Gm]·  · · · | [Fm]·  · · · | [Fm]·  · [G7]·  ·
-{end_of_verse}
-
-{comment: Ambos}
-
 {start_of_verse: Verso 1}
+[Cm]·  · · · | [Gm]·  · · · | [Fm]·  · · · | [Fm]·  · [G7]·  ·
+[Cm]·  · · · | [Gm]·  · · · | [Fm]·  · · · | [Fm]·  · [G7]·  ·
 [Cm] No si-[Gm]-gas más, [Fm]que te vas a a[Fm]rrepentir[G7]
 [Cm] Déja-[Gm]-lo atrás [Fm]lo que vayas [Fm]a decir[G7]
 [Cm] Y no quiero[Gm] pelear más,[Eb] la razón• no importa ya

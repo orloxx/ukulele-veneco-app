@@ -4,6 +4,24 @@ Every release, newest first — one entry per tag on `main`. The entry is writte
 release commit, beside the `package.json` bump. This file is the index, not the story:
 the detail lives in the issues and decisions each entry cites and in `git log`.
 
+## 3.0.1 — 2026-08-26
+
+BUG-023: `a-dormir-juntitos` and `quiero-que-vuelvas` are transcribed as one part.
+
+The bug was two headings with nothing under them; the fix is that **nobody is named as a
+voice at all** (DECISIONS 41). Both songs had broken their opening into one heading per
+singer, and the attribution does not survive the medium: the cancionero keys its voices
+with colour, this sheet is monospaced and one colour, and what crossed over was a name
+over a line. Every song page has linked a reference recording since M14, and who sings
+which line is what a recording carries and a text sheet cannot.
+
+Every line is still present and in the book's order — the two songs are plain sections
+now. Both singers stay in `{artist:}`, which is where the masthead puts them; what went is
+the line-by-line attribution inside the sheet, not anybody's credit.
+
+`songs/README.md` gains the rule, and the comment count it quotes drops to 21: 19 repeat
+instructions and two `Cambio de clave`, with nothing left that labels nothing.
+
 ## 3.0.0 — 2026-08-26
 
 M18 — `songs/` is **[ChordPro](https://www.chordpro.org)**. All 276 songs are `.cho` files
