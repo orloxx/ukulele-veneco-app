@@ -128,10 +128,7 @@ The commonest is a plain instruction like `Versión más simple para el ukulele`
 about a chord — *`Am6` puede tocarse como `Am`*. A bare capo is **not** one of these: it is
 `{capo: 1}`, which the sheet draws as a badge.
 
-**A voice is not one of these either.** `la-propuesta` still names three in a stacked
-legend the book sets in the top-right margin, keyed to a colour coding plain text cannot
-carry — so the names sit at the top attached to nothing. It is the last of them; see
-*Nobody is named as a voice* below.
+**A voice is not one of these either** — see *Nobody is named as a voice* below.
 
 Until M18 a heuristic guessed which leading lines of the body were metadata, and it had to
 be conservative because guessing wrong costs a song a lyric. The file now says which lines
@@ -257,10 +254,12 @@ under it is a transcription that stopped halfway. See `DECISIONS.md` 8 in the va
 
 ## Nobody is named as a voice
 
-**A duet is transcribed as one part.** Two songs used to break their opening into
-`Eddy Herrera` / `Liz` / `Ambos` and `Lasso` / `Sheryl Rubio` / `Ambos`, one heading per
-singer; `a-dormir-juntitos` and `quiero-que-vuelvas` are plain sections now, and the lines
-are all still there in the order the book prints them. Vault `DECISIONS.md` 41.
+**A duet is transcribed as one part, and this holds for the whole collection.** Two songs
+used to break their opening into one heading per singer — `Eddy Herrera` / `Liz` / `Ambos`
+and `Lasso` / `Sheryl Rubio` / `Ambos` — and a third, `la-propuesta`, carried the same
+legend as three `{subtitle:}` lines. All three are plain now, every line still there in the
+order the book prints it, and no section label in `songs/` names a person. Vault
+`DECISIONS.md` 41.
 
 The reason is that the attribution does not survive the medium. The cancionero keys its
 voices with colour, a phone sheet is monospaced black on one background, and what is left

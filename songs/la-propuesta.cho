@@ -3,9 +3,6 @@
 {year: 2018}
 {key: G}
 {time: 4/4}
-{subtitle: Hector Martínez}
-{subtitle: Laura Guevara}
-{subtitle: Ambos}
 
 {define: G base-fret 1 frets 0 2 3 2}
 {define: D7 base-fret 1 frets 2 2 2 3}

@@ -4,6 +4,23 @@ Every release, newest first — one entry per tag on `main`. The entry is writte
 release commit, beside the `package.json` bump. This file is the index, not the story:
 the detail lives in the issues and decisions each entry cites and in `git log`.
 
+## 3.0.2 — 2026-08-26
+
+The last voice legend goes, and DECISIONS 41 now covers the whole collection: *all songs
+should not specify the different voices that sing, just the lyrics.*
+
+`la-propuesta` named `Hector Martínez`, `Laura Guevara` and `Ambos` in three `{subtitle:}`
+lines — the same legend `3.0.1` removed from two songs, in the shape it takes when the
+colour coding that keyed it cannot cross: three names at the top of a page attached to
+nothing. Every one of the 154 section labels in `songs/` was swept at the same time, and
+none of the rest names a person.
+
+Every content line of the file is untouched; three directives were deleted and nothing
+else. One name did leave the repo with them — `la-propuesta`'s masthead reads
+`Caseroloops, Laura Guevara`, so Hector Martínez was only ever in the legend. Adding him
+to `{artist:}` was rejected: the masthead is the book's, and this project transcribes the
+cancionero rather than improving it.
+
 ## 3.0.1 — 2026-08-26
 
 BUG-023: `a-dormir-juntitos` and `quiero-que-vuelvas` are transcribed as one part.
