@@ -27,16 +27,26 @@ import { EXTERNAL_URLS, SITE_INFO } from "@/lib/constants";
 const FEATURES = [
   {
     n: "01",
-    title: "Se guarda en el teléfono",
-    body: "Guarda las canciones que vayas a tocar y se quedan en el teléfono. Sin señal y sin datos siguen ahí, con su letra y sus acordes.",
+    title: "Instálala en Android",
+    body: "Ábrela en Chrome, toca el menú de los tres puntos y dale a «Instalar app». Queda con su ícono en la pantalla, igual que cualquier otra.",
   },
   {
     n: "02",
+    title: "Instálala en iPhone",
+    body: "Ábrela en Safari, toca el botón de compartir y baja hasta «Agregar a inicio». Queda con su ícono en la pantalla, igual que cualquier otra.",
+  },
+  {
+    n: "03",
+    title: "Guárdalas para después",
+    body: "Cada canción tiene su botón «Guardar». La que guardes se queda en el teléfono con su letra y sus acordes, y ahí sigue sin señal y sin datos.",
+  },
+  {
+    n: "04",
     title: "Acordes de verdad, no capturas",
     body: "Cada acorde se dibuja en su cuadrícula de cuatro cuerdas — G C E A en el ukulele, A D F♯ B en el cuatro. El círculo de arriba es cuerda al aire y el número dice en qué traste empieza.",
   },
   {
-    n: "03",
+    n: "05",
     title: "Búscala como te acuerdes",
     body: "Por título, por artista, por tono o por lo difícil que sea. Doscientas y pico de canciones y ninguna a más de dos toques.",
   },
@@ -84,36 +94,10 @@ export default function Home() {
       <main>
         <section className="uv-landing-section uv-hero">
           <div>
-            <p className="uv-eyebrow">Cancionero venezolano · sin internet</p>
-            {/* 276, said out loud. "Doscientas" understates it by a quarter and
-                the exact figure does not belong in display type, so the hero
-                rounds up and the stat row below carries the number. */}
-            <h1 className="uv-hero__title">
-              Casi trescientas canciones
-              <br />y un ukulele
-              <br />
-              nada más.
-            </h1>
-            {/* The lede said "estas canciones se tocan en cuatro", and the
-                cancionero is not a cuatro repertoire — it is Venezuelan songs
-                across every genre (BUG-011). The cuatro belongs in the
-                sentence as the instrument you reach for at home and cannot get
-                hold of abroad, which is the reason the ukulele is here at all.
-                Wording is Iker's, 2026-07-31.
-
-                M15 added the last clause and nothing else. Iker's sentence is
-                still exactly true — it is the reason the *arrangement* exists —
-                but on an app that now draws cuatro diagrams it stops being the
-                whole story, and a reader with a cuatro in the room would read
-                the old lede as this app not being for them. That is `M15 · 5`:
-                every word was reviewed for tone at M7 and none for truth, which
-                is how BUG-011 got in. */}
+            <p className="uv-eyebrow">Cancionero Venezolano</p>
+            <h1 className="uv-hero__title">El Ukulele Veneco</h1>
             <p className="uv-hero__lede">
-              Canciones venezolanas de todas las épocas y de todo tipo. En casa
-              uno agarra el cuatro, pero el cuatro no se consigue en todas
-              partes y el ukulele sí — así que aquí están, con sus acordes, para
-              los que andamos lejos. Y si tienes el cuatro a mano, cambias el
-              instrumento arriba y los acordes se dibujan para el cuatro.
+              Cancionero para ukulele de artistas y compositores venezolanos.
             </p>
             {/* The credit belongs here and not only in the footer: the
                 cancionero is Ciro Durán's, and naming him is the condition it
@@ -166,9 +150,7 @@ export default function Home() {
         </section>
 
         <section id="como" className="uv-landing-section">
-          <h2 className="uv-features__title">
-            Hecha para tocar, no para navegar.
-          </h2>
+          <h2 className="uv-features__title">¿Cómo funciona?</h2>
           <div className="uv-features__list">
             {FEATURES.map((feature) => (
               <div key={feature.n} className="uv-feature">
@@ -194,9 +176,8 @@ export default function Home() {
               <p className="uv-eyebrow">El afinador</p>
               <h2 className="uv-tuner-pitch__title">Antes de tocar, afina.</h2>
               <p className="uv-tuner-pitch__body">
-                El micrófono oye la cuerda, te dice qué nota es y cuánto le
-                falta. Afinación estándar para el ukulele, cambur pintón para el
-                cuatro, y sin señal también.
+                Afinación estándar para el ukulele, cambur pintón para el
+                cuatro, y funciona sin señal también.
               </p>
             </div>
             <Link
@@ -213,13 +194,10 @@ export default function Home() {
           <div className="uv-preview__grid">
             <div>
               <p className="uv-eyebrow">La hoja</p>
-              <h2 className="uv-preview__title">
-                El acorde encima de la sílaba donde cae.
-              </h2>
+              <h2 className="uv-preview__title">Canción ejemplo</h2>
               <p className="uv-preview__body">
-                Todo en monoespaciada, para que el acorde nunca se corra de su
-                sitio. Los que van entre paréntesis llegan antes de tiempo: si
-                te salen, mejor; si no, no pasa nada.
+                Los acordes aparecen al compás de la letra, bastante estándar.
+                Los que van entre paréntesis son preámbulo al siguiente acorde.
               </p>
             </div>
             {/* Every verse here is invented. The catalogue in `songs/` is
@@ -253,7 +231,6 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              <p className="uv-preview__caption">Letra de ejemplo</p>
             </div>
           </div>
         </section>
@@ -261,7 +238,7 @@ export default function Home() {
         <section className="uv-poster">
           <div className="uv-poster__inner">
             <div>
-              <p className="uv-poster__eyebrow">Se toca donde sea</p>
+              <p className="uv-poster__eyebrow">Toca donde sea</p>
               <h2 className="uv-poster__title">
                 El cancionero ya está en tu bolsillo.
               </h2>

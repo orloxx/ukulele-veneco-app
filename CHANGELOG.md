@@ -4,6 +4,26 @@ Every release, newest first — one entry per tag on `main`. The entry is writte
 release commit, beside the `package.json` bump. This file is the index, not the story:
 the detail lives in the issues and decisions each entry cites and in `git log`.
 
+## 3.0.3 — 2026-08-28
+
+`M17 · 3`: the landing in Iker's own words.
+
+`M17 · 1` took the costume off the copy. This takes the reaching off it. The hero used to
+open on `Casi trescientas canciones y un ukulele nada más.` and spend a paragraph
+explaining that the cuatro is hard to come by abroad; it now says its own name and what it
+is — *Cancionero para ukulele de artistas y compositores venezolanos.* — and lets the stat
+row carry the number. The credit to Ciro Durán under it is untouched.
+
+`¿Cómo funciona?` replaces `Hecha para tocar, no para navegar.`, and answers the question
+in the order a reader meets it: install it on Android, install it on iPhone, press
+`Guardar` on a song and it stays. Drawing the chords and searching the list follow, as they
+did.
+
+Three shorter ones. The tuner card drops the microphone sentence and keeps the fact that it
+works with no signal. The sheet example is titled `Canción ejemplo` and calls a
+parenthesised chord what it is — a preamble to the next one — instead of a chord that
+arrives early. And the poster eyebrow loses its `Se`.
+
 ## 3.0.2 — 2026-08-26
 
 The last voice legend goes, and DECISIONS 41 now covers the whole collection: *all songs

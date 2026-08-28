@@ -2563,14 +2563,6 @@ samp {
   padding: var(--space-6) var(--space-8);
   box-shadow: var(--shadow-md);
 }
-.uv-preview__caption {
-  font-size: var(--size-micro);
-  color: var(--text-faint);
-  margin-top: var(--space-4);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-weight: var(--weight-semibold);
-}
 
 /* ---------------- Poster close ---------------- */
 .uv-poster {
