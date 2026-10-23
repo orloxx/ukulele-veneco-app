@@ -16,27 +16,39 @@ import { serwist } from "@serwist/next/config";
  */
 
 /**
- * A revision for `/afinador`: the build id.
+ * A revision for `/afinador`: the build id, once the route is known to be there.
  *
  * A precache entry is re-fetched when its revision changes and left alone when
  * it does not, so the revision is the whole of the update policy for this one
  * URL. It used to be a hash of the page's own bytes, read from
- * `.next/server/app/afinador.html`; Vercel's build adapter takes that file out
- * of the tree before `serwist build` runs, so the build id is what is left to
- * key on. The tuner is re-downloaded once per deploy, and it is one small page.
+ * `.next/server/app/afinador.html`. With a build adapter configured — Vercel
+ * sets one through `NEXT_ADAPTER_PATH` — Next 16.4 writes the prerendered HTML
+ * to `.next/server/route-cache/` instead, and every page's HTML carries the
+ * build id, so that hash changed on every build anyway.
  *
- * It throws rather than falling back if the file is missing, because the
- * fallback is the failure: a random or dated revision would build a worker that
- * looks fine and precaches nothing anybody asked for.
+ * It throws rather than falling back if the build or the route is missing,
+ * because the fallback is the failure: an entry for a URL that is not there
+ * fails the worker's install, and nothing in the build goes red.
  */
 function tunerRevision() {
+  let buildId;
+  let routes;
   try {
-    return readFileSync(".next/BUILD_ID", "utf8").trim();
+    buildId = readFileSync(".next/BUILD_ID", "utf8").trim();
+    routes = JSON.parse(
+      readFileSync(".next/prerender-manifest.json", "utf8"),
+    ).routes;
   } catch {
     throw new Error(
-      "serwist.config.js: no .next/BUILD_ID. `serwist build` runs after `next build` — check the order in package.json.",
+      "serwist.config.js: no .next/BUILD_ID or prerender-manifest.json. `serwist build` runs after `next build` — check the order in package.json.",
     );
   }
+  if (!routes["/afinador"]) {
+    throw new Error(
+      "serwist.config.js: /afinador is not a prerendered route, so its precache entry would 404 and the worker would not install.",
+    );
+  }
+  return buildId;
 }
 
 export default serwist({

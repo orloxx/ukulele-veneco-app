@@ -113,26 +113,38 @@ const SOURCES = [
  */
 const BUILD_DIR = path.join(REPO_ROOT, ".next", "server", "app");
 
+/**
+ * Where the documents are when a build adapter is configured — Vercel sets one through
+ * `NEXT_ADAPTER_PATH`. Next 16.4 then writes them to
+ * `.next/server/route-cache/APP_PAGE/<hash>/$/` instead of `BUILD_DIR`, one `$` directory per
+ * source route and the same layout inside it, so `BUILD_DIR` is left with no documents at all
+ * and this check, reading only it, would pass on nothing.
+ */
+const ROUTE_CACHE = path.join(
+  REPO_ROOT,
+  ".next",
+  "server",
+  "route-cache",
+  "APP_PAGE",
+);
+
+function documentRoots() {
+  const scoped = fs.existsSync(ROUTE_CACHE)
+    ? fs
+        .readdirSync(ROUTE_CACHE)
+        .map((hash) => path.join(ROUTE_CACHE, hash, "$"))
+        .filter((dir) => fs.existsSync(dir))
+    : [];
+  return [BUILD_DIR, ...scoped];
+}
+
 function renderedPages() {
   if (!fs.existsSync(BUILD_DIR)) return null;
   const pages = [];
-  // Named one by one, and that is the weakness of this half: the song routes
-  // below are walked, so a third one is covered for free, but a new top-level
-  // route is invisible here until somebody remembers to add it. `afinador.html`
-  // is the first one that had to be — the count going 555 → 556 is how you know
-  // it is actually being read.
-  for (const name of ["index.html", "list.html", "afinador.html"]) {
-    const file = path.join(BUILD_DIR, name);
-    if (fs.existsSync(file)) pages.push({ file, needs: [AUTHOR, ORIGIN] });
-  }
-  const notFound = path.join(BUILD_DIR, "_not-found.html");
-  if (fs.existsSync(notFound)) pages.push({ file: notFound, needs: [AUTHOR] });
-
   // Both song routes, not just the sheet: `/song/<slug>` and `/song/<slug>/acordes` are
   // two prerendered documents per song, they are cached separately, and a reader offline
   // can be on either. Walking the tree also means a third song route added later is
   // covered without anyone remembering to come back here.
-  const songs = path.join(BUILD_DIR, "song");
   const walk = (dir) => {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true }).sort()) {
       const file = path.join(dir, entry.name);
@@ -144,7 +156,22 @@ function renderedPages() {
       }
     }
   };
-  if (fs.existsSync(songs)) walk(songs);
+  for (const root of documentRoots()) {
+    // Named one by one, and that is the weakness of this half: the song routes
+    // below are walked, so a third one is covered for free, but a new top-level
+    // route is invisible here until somebody remembers to add it. `afinador.html`
+    // is the first one that had to be — the count going 555 → 556 is how you know
+    // it is actually being read.
+    for (const name of ["index.html", "list.html", "afinador.html"]) {
+      const file = path.join(root, name);
+      if (fs.existsSync(file)) pages.push({ file, needs: [AUTHOR, ORIGIN] });
+    }
+    const notFound = path.join(root, "_not-found.html");
+    if (fs.existsSync(notFound))
+      pages.push({ file: notFound, needs: [AUTHOR] });
+    const songs = path.join(root, "song");
+    if (fs.existsSync(songs)) walk(songs);
+  }
   return pages;
 }
 
@@ -178,6 +205,11 @@ function main() {
       }
     }
     console.log(`  ${pages.length} rendered pages checked`);
+    if (pages.length === 0) {
+      failures.push(
+        ".next — a build is there but no rendered page was found, so none was checked",
+      );
+    }
   }
 
   if (failures.length === 0) {
