@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { serwist } from "@serwist/next/config";
 
@@ -16,32 +15,28 @@ import { serwist } from "@serwist/next/config";
  * mode; the extension is this repo's own convention.
  */
 
-/** The tuner's prerendered document, as `next build` leaves it. */
-const TUNER_HTML = ".next/server/app/afinador.html";
-
 /**
- * A revision for `/afinador` taken from the page's own bytes.
+ * A revision for `/afinador`: the build id.
  *
  * A precache entry is re-fetched when its revision changes and left alone when
  * it does not, so the revision is the whole of the update policy for this one
- * URL. `cg-autonomo` uses the git SHA, which is honest but re-downloads the page
- * on every deploy that touched anything at all; the content hash re-downloads it
- * when the tuner changes, which is what it means.
+ * URL. It used to be a hash of the page's own bytes, read from
+ * `.next/server/app/afinador.html`; Vercel's build adapter takes that file out
+ * of the tree before `serwist build` runs, so the build id is what is left to
+ * key on. The tuner is re-downloaded once per deploy, and it is one small page.
  *
  * It throws rather than falling back if the file is missing, because the
  * fallback is the failure: a random or dated revision would build a worker that
  * looks fine and precaches nothing anybody asked for.
  */
 function tunerRevision() {
-  let html;
   try {
-    html = readFileSync(TUNER_HTML);
+    return readFileSync(".next/BUILD_ID", "utf8").trim();
   } catch {
     throw new Error(
-      `serwist.config.js: no ${TUNER_HTML}. \`serwist build\` runs after \`next build\` — check the order in package.json.`,
+      "serwist.config.js: no .next/BUILD_ID. `serwist build` runs after `next build` — check the order in package.json.",
     );
   }
-  return createHash("sha256").update(html).digest("hex").slice(0, 32);
 }
 
 export default serwist({
